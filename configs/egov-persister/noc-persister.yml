@@ -57,7 +57,7 @@ serviceMaps:
             INSERT INTO eg_noc_document (
               uuid, documenttype, documentAttachment, documentuid, nocid, createdby,
               lastmodifiedby, createdtime, lastmodifiedtime
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $.Noc.documents.*
           jsonMaps:
             - jsonPath: $.Noc.documents.*.uuid
