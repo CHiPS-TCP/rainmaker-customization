@@ -11,8 +11,8 @@ serviceMaps:
             INSERT INTO eg_layout (
               id, applicationno, tenantid, status, createdby,
               lastmodifiedby, createdtime, lastmodifiedtime, layoutno, applicationtype, layouttype,
-              accountid, applicationstatus
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+              accountid, applicationstatus, vasikaNumber, vasikaDate
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?);
           basePath: $.Layout
           jsonMaps:
             - jsonPath: $.Layout.id
@@ -28,6 +28,8 @@ serviceMaps:
             - jsonPath: $.Layout.layoutType
             - jsonPath: $.Layout.accountId
             - jsonPath: $.Layout.applicationStatus
+            - jsonPath: $.Layout.vasikaNumber
+            - jsonPath: $.Layout.vasikaDate
 
         - query: >
             INSERT INTO eg_layout_auditdetails (
@@ -88,8 +90,8 @@ serviceMaps:
             - jsonPath: $.Layout.layoutDetails.auditDetails.lastModifiedTime
             - jsonPath: $.Layout.layoutDetails.tenantId
 
-            
-        - query: > 
+
+        - query: >
             INSERT INTO eg_layout_owner (
               id, tenantid, layoutId, status, isprimaryowner,
               ownertype, ownershippercentage, institutionid, relationship,
@@ -129,36 +131,36 @@ serviceMaps:
       queryMaps:
         - query: >
             
-             UPDATE eg_layout
-              SET status = ?, applicationstatus = ?, layoutno = ?,
-              applicationtype = ?, layouttype = ?,
-              lastmodifiedby = ?, lastmodifiedtime = ?
-              WHERE id = ?;
+            UPDATE eg_layout
+             SET status = ?, applicationstatus = ?, layoutno = ?,
+             applicationtype = ?, layouttype = ?,
+             lastmodifiedby = ?, lastmodifiedtime = ?
+             WHERE id = ?;
 
           basePath: $.Layout
           jsonMaps:
             - jsonPath: $.Layout.status
             - jsonPath: $.Layout.applicationStatus
-            
+
             - jsonPath: $.Layout.layoutNo
             - jsonPath: $.Layout.applicationType
             - jsonPath: $.Layout.layoutType
-            
+
             - jsonPath: $.Layout.auditDetails.lastModifiedBy
             - jsonPath: $.Layout.auditDetails.lastModifiedTime
-            
+
             - jsonPath: $.Layout.id
 
 
-            
+
 
 
         - query: >
-             INSERT INTO eg_layout_auditdetails (
-              id, applicationno, tenantid, status, createdby,
-              lastmodifiedby, createdtime, lastmodifiedtime, layoutno, applicationtype, layouttype,
-              accountid, applicationstatus
-              ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+            INSERT INTO eg_layout_auditdetails (
+             id, applicationno, tenantid, status, createdby,
+             lastmodifiedby, createdtime, lastmodifiedtime, layoutno, applicationtype, layouttype,
+             accountid, applicationstatus
+             ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $.Layout
           jsonMaps:
             - jsonPath: $.Layout.id
@@ -178,19 +180,19 @@ serviceMaps:
 
 
         - query: >
-             INSERT INTO eg_layout_document (
-             uuid, documenttype,documentAttachment, documentuid, layoutId,createdby,
-             lastmodifiedby, createdtime, lastmodifiedtime
-             ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-              ON CONFLICT (uuid) DO UPDATE SET
-               documenttype = EXCLUDED.documenttype,
-               documentAttachment = EXCLUDED.documentAttachment,
-               documentuid = EXCLUDED.documentuid,
-               layoutid = EXCLUDED.layoutid,
-               createdby = EXCLUDED.createdby,
-               lastmodifiedby = EXCLUDED.lastmodifiedby,
-               createdtime = EXCLUDED.createdtime,
-               lastmodifiedtime = EXCLUDED.lastmodifiedtime;
+            INSERT INTO eg_layout_document (
+            uuid, documenttype,documentAttachment, documentuid, layoutId,createdby,
+            lastmodifiedby, createdtime, lastmodifiedtime
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+             ON CONFLICT (uuid) DO UPDATE SET
+              documenttype = EXCLUDED.documenttype,
+              documentAttachment = EXCLUDED.documentAttachment,
+              documentuid = EXCLUDED.documentuid,
+              layoutid = EXCLUDED.layoutid,
+              createdby = EXCLUDED.createdby,
+              lastmodifiedby = EXCLUDED.lastmodifiedby,
+              createdtime = EXCLUDED.createdtime,
+              lastmodifiedtime = EXCLUDED.lastmodifiedtime;
           basePath: $.Layout.documents.*
           jsonMaps:
             - jsonPath: $.Layout.documents.*.uuid
@@ -207,10 +209,10 @@ serviceMaps:
 
 
         - query: >
-             UPDATE eg_layout_details
-             SET additionaldetails = ?, tenantid = ?,
-             lastmodifiedby = ?, lastmodifiedtime = ?
-             WHERE id = ?;
+            UPDATE eg_layout_details
+            SET additionaldetails = ?, tenantid = ?,
+            lastmodifiedby = ?, lastmodifiedtime = ?
+            WHERE id = ?;
           basePath: $.Layout.layoutDetails
           jsonMaps:
 
@@ -258,7 +260,7 @@ serviceMaps:
       fromTopic: update-layout-document-checklist
       isTransaction: true
       queryMaps:
-        - query: UPDATE public.eg_layout_document_check_list SET action = ?, remarks = ?, lastmodifiedby = ?, lastmodifiedtime = ? WHERE applicationno = ? AND tenantId = ?;
+        - query: UPDATE public.eg_layout_document_check_list SET action = ?, remarks = ?, lastmodifiedby = ?, lastmodifiedtime = ? WHERE id = ? AND tenantId = ?;
           basePath: checkList.*
           jsonMaps:
 
@@ -270,7 +272,7 @@ serviceMaps:
 
             - jsonPath: $.checkList.*.lastmodifiedtime
 
-            - jsonPath: $.checkList.*.applicationNo
+            - jsonPath: $.checkList.*.id
 
             - jsonPath: $.checkList.*.tenantId
 
