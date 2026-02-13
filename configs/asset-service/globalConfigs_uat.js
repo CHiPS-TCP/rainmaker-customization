@@ -1,5 +1,5 @@
 var globalConfigs = (function () {
-    var stateTenantId = "pb";
+    var stateTenantId = "cg";
     var contextPath = "digit-ui";
     var gmaps_api_key_old = "AIzaSyAQOd09-vjmk1sXFb_ZQYDz2nlfhXq7Wf8";
     var gmaps_api_key_old1 = "AIzaSyASqkAr3d494ihZaJeCOg4CJ3xnQ_83e2s";
