@@ -55,7 +55,7 @@ serviceMaps:
 
         - query: >
             INSERT INTO eg_noc_document (
-              uuid, documenttype, documentAttachment, documentuid, nocid, additionaldetails, createdby,
+              uuid, documenttype, documentAttachment, documentuid, nocid, createdby,
               lastmodifiedby, createdtime, lastmodifiedtime
             ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $.Noc.documents.*
@@ -65,10 +65,6 @@ serviceMaps:
             - jsonPath: $.Noc.documents.*.documentAttachment
             - jsonPath: $.Noc.documents.*.documentUid
             - jsonPath: $.Noc.documents.*.nocId
-            - jsonPath: $.Noc.documents.*.additionalDetails
-              type: JSON
-              dbType: JSONB
-
             - jsonPath: $.Noc.documents.*.auditDetails.createdBy
             - jsonPath: $.Noc.documents.*.auditDetails.lastModifiedBy
             - jsonPath: $.Noc.documents.*.auditDetails.createdTime
