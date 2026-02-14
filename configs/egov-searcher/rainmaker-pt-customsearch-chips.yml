@@ -1,6 +1,6 @@
 SearchDefinitions:
- moduleName: rainmaker-pt-customsearch-punjab
- summary: Vasika number search for punjab
+ moduleName: rainmaker-pt-customsearch-chips
+ summary: Vasika number search for chips
  version: 1.0.0
  definitions:
  - name: searchPropertyIDByVasikaNo
