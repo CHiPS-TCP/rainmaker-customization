@@ -10,14 +10,9 @@
         {
         "style": "noc-head",
         "table": {
-          "widths": [60, "*"],
+          "widths": ["*"],
           "body": [
             [
-              {
-                "image": "{{logoImage}}",
-                "width": 50,
-                "height": 61.25
-              },
               {
                 "stack": [
                   {
