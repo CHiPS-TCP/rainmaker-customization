@@ -19,6 +19,13 @@
                 }
               },
               {
+                "variable": "SubmittedOn",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.SubmittedOn"
+                },
+                "type":"date"
+              },
+              {
                 "variable": "Ulblisttype",
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.Ulblisttype"
@@ -640,6 +647,85 @@
                 "variable": "applicantName",
                 "value": {
                   "path": "$.edcrDetail[0].planDetail.planInformation.applicantName"
+                }
+              },
+              {
+                "variable": "villageName",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.village[0].name"
+                }
+              },
+              {
+                "variable": "halkaNo",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.halkaNo"
+                }
+              },
+              {
+                "variable": "riNo",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.riNo"
+                }
+              },
+
+              {
+                "variable": "tehsilName",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.tehsil[0].name"
+                }
+              },
+               {
+                "variable": "districtName",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.district.name"
+                }
+              },
+               {
+                "variable": "khasraNo",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.khasraNo"
+                }
+              },
+               {
+                "variable": "builtUpArea",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.scrutinyDetails.planDetail.blocks[0].building.floors[0].occupancies[0].builtUpArea"
+                }
+              },
+               {
+                "variable": "openAreaPlantation",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.scrutinyDetails.planDetail.blocks[0].plantationGreenStripes[0].area"
+                }
+              },
+               {
+                "variable": "totalplotArea",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.scrutinyDetails.planDetail.planInformation.plotArea"
+                }
+              },
+              {
+                "variable": "frontSetBack",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.scrutinyDetails.planDetail.blocks[0].setBacks[0].frontYard.minimumDistance"
+                }
+              },
+               {
+                "variable": "rearSetBack",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.scrutinyDetails.planDetail.blocks[0].setBacks[0].rearYard.minimumDistance"
+                }
+              },
+               {
+                "variable": "sideSetBack1",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.scrutinyDetails.planDetail.blocks[0].setBacks[0].sideYard1.minimumDistance"
+                }
+              },
+               {
+                "variable": "sideSetBack2",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.scrutinyDetails.planDetail.blocks[0].setBacks[0].sideYard2.minimumDistance"
                 }
               },
               {
