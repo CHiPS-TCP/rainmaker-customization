@@ -26,7 +26,7 @@
               {
                 "variable": "rejectionComments",
                 "value": {
-                  "path": "$.rejectionComments"
+                  "path": "$.applicationData.rejectionComments"
                 }
               },
               
