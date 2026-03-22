@@ -19,6 +19,18 @@
                 }
               },
               {
+                "variable": "districtName",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.district.name"
+                }
+              },
+              {
+                "variable": "villageName",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.village[0].name"
+                }
+              },
+              {
                 "variable": "Ulblisttype",
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.Ulblisttype"
@@ -687,7 +699,7 @@
             "externalAPI": [
               {
                 "path": "http://egov-mdms-service:8080/egov-mdms-service/v1/_get",
-                "queryParam": "moduleName=tenant&masterName=tenants&tenantId=cg&filter=%5B?(@.code=='{$.tenantId}')%5D",
+                "queryParam": "moduleName=tenant&masterName=tenants&tenantId=cg&filter=%5B?(@.code=='{$.applicationData.tenantId}')%5D",
                 "apiRequest": null,
                 "responseMapping": [
                   {

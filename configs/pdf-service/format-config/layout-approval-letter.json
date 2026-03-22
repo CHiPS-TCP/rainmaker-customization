@@ -10,16 +10,16 @@
       {
         "columns": [
           {
-            "width": "auto",
-            "text": "1332 (24)",
-            "alignment": "left",
-            "bold": true
-          },
-          {
             "width": "*",
             "text": "छत्तीसगढ़ राजपत्र, दिनांक {{otpverifieddate}}",
             "alignment": "center",
             "margin": [0, 0, 0, 0],
+            "bold": true
+          },
+          {
+            "width": "auto",
+            "text": "1332 (23)",
+            "alignment": "right",
             "bold": true
           }
         ]
@@ -45,426 +45,211 @@
       },
 
       {
-        "text": "प्ररूप-अठ्ठारह",
+        "text": "प्ररूप-सोलह",
         "alignment": "center",
         "bold": true,
         "margin": [0, 0, 0, -2]
       },
       {
-        "text": "(नियम 19(ग) देखिये)",
+        "text": "(नियम 19(क) देखिये)",
+        "alignment": "center",
+        "margin": [0, 0, 0, 2]
+      },
+      {
+        "text": "नगर तथा ग्राम निवेश विभाग, छत्तीसगढ़",
+        "alignment": "center",
+        "margin": [0, 0, 0, 2]
+      },
+      {
+        "text": "आदेश",
         "alignment": "center",
         "margin": [0, 0, 0, 2]
       },
 
       {
-        "text": "धारा 30-क के अधीन अनुमोदित अभिन्यास में संशोधन के लिये आवेदन पत्र का प्ररूप",
-        "alignment": "center",
-        "margin": [0, 0, 0, 0]
+        "columns": [
+          {
+            "width": "*",
+            "text": [
+              { "text": "क्रमांक ", "bold": true },
+              {
+                "text": "{{applicationNo}}",
+                "decoration": "underline",
+                "decorationStyle": "dotted"
+              }
+            ],
+            "alignment": "left"
+          },
+          {
+            "width": "*",
+            "text": [
+              { "text": "दिनांक ", "bold": true },
+              {
+                "text": "{{otpverifieddate}}",
+                "decoration": "underline",
+                "decorationStyle": "dotted"
+              }
+            ],
+            "alignment": "right",
+            "margin": [0, 0, 0, 0]
+          }
+        ]
       },
       {
         "stack": [
           { "text": "प्रति" },
-          { "text": "संचालक", "margin": [20, 0, 0, 0] },
-          { "text": "नगर तथा ग्राम निवेश, छत्तीसगढ़।", "margin": [20, 0, 0, 0] }
-        ],
-        "margin": [0, 0, 0, 0]
-      },
-
-      {
-        "text": "महोदय,",
-        "margin": [0, 0, 0, 8]
-      },
-
-      {
-        "text": "छत्तीसगढ़ नगर तथा ग्राम निवेश अधिनियम, 1973 की धारा 30-क में अंतर्विष्ट प्रावधानों के अनुसार मैं/हम, {{ulbselection}} , द्वारा प्रदान की गई अनुज्ञा में उक्त अधिनियम की धारा 30 के अंतर्गत संशोधन करने के लिये आवेदन करता हूँ/ करते हैं। अनुमोदित अभिन्यास के अंतर्गत आने वाली भूमि का विवरण निम्नानुसार दिया गया है :-",
-        "margin": [40, 0, 0, 0]
-      },
-
-      {
-        "ol": [
           {
-            "text": [
-              { "text": "ग्राम का नाम " },
-              {
-                "text": "{{villageName}}",
-                "decoration": "underline",
-                "decorationStyle": "dotted"
-              },
-              { "text": " प.ह.नं." },
-              {
-                "text": "{{halkaNo}}",
-                "decoration": "underline",
-                "decorationStyle": "dotted"
-              },
-              { "text": " राजस्व वृत्त क्र." },
-              {
-                "text": "{{riNo}}",
-                "decoration": "underline",
-                "decorationStyle": "dotted"
-              },
-              { "text": " तहसील का नाम " },
-              {
-                "text": " {{tehsilName}} ",
-                "decoration": "underline",
-                "decorationStyle": "dotted"
-              },
-              { "text": " जिला " },
-              {
-                "text": "{{districtName}} ",
-                "decoration": "underline",
-                "decorationStyle": "dotted"
-              },
-              { "text": " खसरा क्र. " },
-              {
-                "text": "{{khasraNo}} ",
-                "decoration": "underline",
-                "decorationStyle": "dotted"
-              }
-            ],
-
-            "margin": [30, 0, 0, 0]
+            "text": "श्री/श्रीमती/सुश्री/ {{ownername}}",
+            "margin": [20, 0, 0, 0],
+            "decoration": "underline",
+            "decorationStyle": "dotted"
           }
         ],
         "margin": [0, 0, 0, 0]
       },
-
       {
-        "text": "2.           मैं/ हम अनुमोदित अभिन्यास के संबंध में निम्नलिखित जानकारी प्रस्तुत करते हैं :-",
-        "margin": [0, 0, 0, 0]
-      },
-
-      {
-        "table": {
-          "widths": [30, "auto"],
-          "body": [
-            [
-              { "text": "(क)" },
-              {
-                "text": [
-                  { "text": " क्र." },
-                  {
-                    "text": "             ",
-                    "decoration": "underline",
-                    "decorationStyle": "dotted"
-                  }
-                ]
-              }
-            ],
-            [
-              { "text": "(ख)" },
-              {
-                "text": [
-                  { "text": "भूमि के व्यपवर्तन प्रकरण का क्र. " },
-                  {
-                    "text": "{{applicationNo}} ",
-                    "decoration": "underline",
-                    "decorationStyle": "dotted"
-                  },
-                  { "text": "दिनांक " },
-                  {
-                    "text": "{{appDate}} ",
-                    "decoration": "underline",
-                    "decorationStyle": "dotted"
-                  }
-                ]
-              }
-            ],
-            [
-              { "text": "(ग)" },
-              {
-                "text": [
-                  {
-                    "text": "सक्षम प्राधिकारी से प्राप्त की गई भवन निर्माण अनुज्ञा का पत्र क्र."
-                  },
-                  {
-                    "text": "                ",
-                    "decoration": "underline",
-                    "decorationStyle": "dotted"
-                  },
-                  { "text": "दिनांक " },
-                  {
-                    "text": "                 ",
-                    "decoration": "underline",
-                    "decorationStyle": "dotted"
-                  }
-                ]
-              }
-            ]
-          ]
-        },
-        "layout": "noBorders",
-        "margin": [40, 0, 0, -3]
-      },
-
-      {
-        "text": "3.           अनुमोदित अभिन्यास स्थल पर किये गये विकास की अद्यतन स्थिति :-",
-        "margin": [0, 0, 0, 0]
-      },
-
-      {
-        "table": {
-          "widths": [30, "auto"],
-          "body": [
-            [
-              { "text": "(एक)" },
-              {
-                "text": "निर्माण की गई संरचनाओं का विवरण : ______________________________"
-              }
-            ],
-            [
-              { "text": "(दो)" },
-              {
-                "text": "विक्रय किये गये भूखण्ड/आवास/प्रकोष्ठ का विवरण : ______________________________"
-              }
-            ],
-            [
-              { "text": "(तीन)" },
-              {
-                "text": "बंधक रखे गये भूखंडों/आवासों का विवरण : ______________________________"
-              }
-            ]
-          ]
-        },
-        "layout": "noBorders",
-        "margin": [40, 0, 0, -3]
-      },
-
-      {
-        "table": {
-          "widths": ["auto", "*"],
-          "body": [
-            [
-              { "text": "4." },
-              {
-                "rowSpan": 2,
-                "stack": [
-                  {
-                    "text": [
-                      "रजिस्ट्रीकृत वास्तुविद/नगर नियोजक/इंजीनियर/संरचना इंजीनियर/पर्यवेक्षक का नाम व पता ",
-                      {
-                        "text": "{{stakeHolderName}}, {{stakeHolderAddress}}",
-                        "decoration": "underline",
-                        "decorationStyle": "dotted"
-                      }
-                    ],
-                    "margin": [28, 0, 0, 0]
-                  },
-                  {
-                    "text": [
-                      { "text": "पंजीकरण क्र. " },
-                      {
-                        "text": "{{architectId}}",
-                        "decoration": "underline",
-                        "decorationStyle": "dotted"
-                      }
-                    ],
-                    "margin": [28, 0, 0, 0]
-                  }
-                ]
-              }
-            ],
-            [{ "text": "" }, {}]
-          ]
-        },
-        "layout": "noBorders",
-        "margin": [0, 0, 0, 0]
-      },
-
-      {
-        "text": "5.           (एक) अनुमोदित अभिन्यास में प्रस्तावित संशोधन का विवरण :",
-        "margin": [0, 0, 0, 0]
-      },
-
-      {
-        "table": {
-          "widths": [30, "auto"],
-          "body": [
-            [
-              { "text": "(1)" },
-              {
-                "text": " ______________________________"
-              }
-            ],
-            [
-              { "text": "(2)" },
-              {
-                "text": " ______________________________"
-              }
-            ],
-            [
-              { "text": "(3)" },
-              {
-                "text": " ______________________________"
-              }
-            ]
-          ]
-        },
-        "layout": "noBorders",
-        "margin": [40, 0, 0, -3]
-      },
-      {
-        "text": "           (दो) आर्किटेक्ट/ इंजीनियर द्वारा हस्ताक्षरित संशोधित अभिन्यास की रेखांक जिसके साथ निम्नानुसार रेखांक (नक्शा)/जानकारी संलग्न की जाये",
-        "margin": [0, 0, 0, 0]
-      },
-
-      {
-        "table": {
-          "widths": [30, "*"],
-          "body": [
-            [
-              { "text": "(क)" },
-              {
-                "text": "समस्त जल निकास पंक्तियां, मल संयोजनों या मलाशय की स्थिति, सॉक पिट और गृह जल निकास दर्शाते हुए 1:200 के अनुपात में स्थल रेखांक।"
-              }
-            ],
-            [
-              { "text": "(ख)" },
-              {
-                "stack": [
-                  {
-                    "text": "निम्नलिखित को दर्शाते हुए 1:100 के अनुपात में भवन रेखांक।"
-                  },
-                  {
-                    "stack": [
-                      { "text": "(एक) भू-तल रेखांक" },
-                      { "text": "(दो) अन्य तल रेखांक" },
-                      {
-                        "text": "(तीन) विशिष्ट अनुप्रच्छेद (टिपिकल क्रॉस सेक्शन)"
-                      },
-                      { "text": "(चार) अन्वायामाछेद (लांगीट्यूडीनल सेक्शन)" }
-                    ],
-                    "margin": [20, 4, 0, 0]
-                  }
-                ]
-              }
-            ],
-            [
-              { "text": "(ग)" },
-              {
-                "stack": [
-                  { "text": "क्षेत्रों की सूची" },
-                  {
-                    "stack": [
-                      {
-                        "text": "(एक) निर्मित क्षेत्र (builtuparea)   वर्गमीटर"
-                      },
-                      { "text": "(दो) खुला क्षेत्र (openarea)   वर्गमीटर" },
-                      {
-                        "text": "(तीन) भूखण्ड का कुल क्षेत्र (totalplotarea)   वर्गमीटर"
-                      }
-                    ],
-                    "margin": [20, 4, 0, 0]
-                  }
-                ]
-              }
-            ],
-            [
-              { "text": "(घ)" },
-              {
-                "stack": [
-                  { "text": "खुले स्थानों की अनुसूची" },
-                  {
-                    "stack": [
-                      {
-                        "text": "(एक) अग्र खुला क्षेत्र (फ्रन्ट सेट बैक)  frontSetBack"
-                      },
-                      {
-                        "text": "(दो) पार्श्व खुला क्षेत्र (साईड सेट बैक)  sideSetBack"
-                      },
-                      {
-                        "text": "(तीन) पृष्ठ खुला क्षेत्र (रीअर सेट बैक)  rearSetBack"
-                      }
-                    ],
-                    "margin": [20, 4, 0, 0]
-                  }
-                ]
-              }
-            ],
-            [
-              { "text": "(ड.)" },
-              {
-                "text": "भूमि के स्वामित्व के दस्तावेजों जैसे खसरा पांचसाला, बी-1 तथा भूमि के मजमूली नक्शे की पटवारी द्वारा प्रमाणित प्रति संलग्न की जाये।"
-              }
-            ]
-          ]
-        },
-        "layout": "noBorders",
-        "margin": [40, 0, 0, -3]
-      },
-      {
-        "text": "6.           यदि पूर्व में अनुमोदित अभिन्यास से हटकर या उसके विपरीत कोई विकास कार्य/निर्माण कार्य किया गया हो, तो उसका विवरण.",
-        "margin": [0, 0, 0, 0]
-      },
-      {
-        "text": "7.           मैने नियम में विहित किये गये शुल्क मुख्य शीर्ष-0217 नगरीय विकास योजना, नगर तथा ग्राम निवेश में चालान से जमा कर उसकी मूल प्रति अथवा अभिप्रमाणित प्रति संलग्न कर दी है।",
-        "margin": [0, 0, 0, 0]
-      },
-      {
-        "text": "8.           संलग्न प्रपत्र-एक में शपथ-पत्र.",
-        "margin": [0, 0, 0, 0]
-      },
-
-      {
-        "columns": [
+        "stack": [
           {
-            "width": "auto",
-            "alignment": "left",
-            "stack": [
+            "text": [
+              { "text": "विषय - ", "bold": true },
               {
-                "text": [
-                  "Date : ",
-                  { "text": "{{otpverifiedtimeowner}}", "bold": true }
-                ]
+                "text": "विकास के लिए अनुज्ञा हेतु आवेदन पत्र ।"
               }
             ]
           },
           {
-            "width": "*",
-            "alignment": "right",
-            "stack": [
+            "text": [
+              { "text": "सन्दर्भ - ", "bold": true },
               {
-                "text": [
-                  "Name of Owner : ",
-                  { "text": "{{ownername}}", "bold": true }
-                ]
+                "text": "आपका आवेदन पत्र क्रमांक "
               },
               {
-                "text": [
-                  "Application Number : ",
-                  { "text": "{{applicationNo}}", "bold": true }
-                ]
+                "text": " {{applicationNo}} ",
+                "decoration": "underline",
+                "decorationStyle": "dotted"
               },
               {
-                "text": [
-                  "Address : ",
-                  { "text": "{{ownerAddress}}", "bold": true }
-                ]
+                "text": "दिनांक "
               },
               {
-                "text": [
-                  "e-Mail : ",
-                  { "text": "{{ownerEmail}}", "bold": true }
-                ]
-              },
-              {
-                "text": [
-                  "Mobile : ",
-                  { "text": "{{mobileNumber}}", "bold": true }
-                ]
-              },
-              {
-                "text": [
-                  "Signature : ",
-                  {
-                    "text": "Verified by OTP at {{otpverifiedtimeowner}} ",
-                    "bold": true
-                  }
-                ]
+                "text": " {{otpverifieddate}}",
+                "decoration": "underline",
+                "decorationStyle": "dotted"
               }
-            ],
-            "margin": [0, 0, 0, 0]
+            ]
+          }
+        ],
+        "margin": [0, 20, 0, 0]
+      },
+
+      {
+        "text": "संदर्भित आपके आवेदन पत्र में यथावर्णित विकास कार्यों को कार्यान्वित करते हुए आपको एतद्द्वारा, छत्तीसगढ़ नगर तथा ग्राम निवेश अधिनियम, 1973 (क्र. 23 सन् 1973) की धारा 30 की उप-धारा (3) के अधीन अनुज्ञा निम्नलिखित शर्तों के अध्यधीन रहते हुए, दी जाती है, अर्थात्-",
+        "margin": [30, 0, 0, 8]
+      },
+
+      {
+        "ol": [
+          "विकास प्रारम्भ करने के पहले भवन निर्माण की अनुज्ञा नगर निगम/नगर पालिका/नगर तथा ग्राम निवेशसे प्राप्त की जाये।",
+          {
+            "text": ".............................. अनुमोदित योजना की प्रति संलग्न है।"
+          }
+        ],
+        "margin": [40, 0, 0, 0]
+      },
+
+      {
+        "stack": [
+          { "text": "संचालक", "bold": true , "margin":[0 ,0 ,30,0]},
+          { "text": "नगर तथा ग्राम निवेश विभाग," , "margin":[0 ,0 ,0,0] },
+          {
+            "text": "छत्तीसगढ़, रायपुर", "margin":[0 ,0 ,10,0]
+          },
+          {
+            "text": [
+              { "text": "दिनांक " },
+              {
+                "text": " {{otpverifieddate}}",
+                "decoration": "underline",
+                "decorationStyle": "dotted"
+              }
+            ]
+          }
+        ],
+        "width": "*",
+        "alignment": "right",
+        "margin": [0,0,30,0]
+      },
+      {
+        "text": [
+          { "text": "क्रमांक ", "bold": true },
+          {
+            "text": "{{applicationNo}}",
+            "decoration": "underline",
+            "decorationStyle": "dotted"
           }
         ]
+      },
+      {
+            "text": "प्रतिलिपि-"
+      },
+      {
+        "ol": [
+          {
+            "text": [
+              { "text": "आयुक्त नगरपालिक निगम " },
+              {
+                "text": "{{logo_header}}",
+                "decoration": "underline",
+                "decorationStyle": "dotted"
+              },
+              {
+                "text": " की ओर अनुमोदित रेखांक की प्रति सहित सूचनार्थ अग्रेषित।"
+              }
+            ],
+            "margin": [40, 0, 0, 0]
+          },
+          {
+            "text": [
+              {
+                "text": "मुख्य कार्यपालन अधिकारी, नगर तथा ग्राम विकास प्राधिकरण की ओर अनुमोदित रेखांक की प्रति सहित सूचनार्थ अग्रेषित। "
+              }
+            ],
+            "margin": [40, 0, 0, 0]
+          },
+          {
+            "text": [
+              { "text": "मुख्य नगर पालिका अधिकारी, नगर पालिका " },
+              {
+                "text": "{{districtName}}",
+                "decoration": "underline",
+                "decorationStyle": "dotted"
+              },
+              { "text": " सरपंच, ग्राम पंचायत " },
+              {
+                "text": "{{villageName}} ",
+                "decoration": "underline",
+                "decorationStyle": "dotted"
+              },
+              {
+                "text": "की ओर अनुमोदित रेखांक की प्रति सहित सूचनार्थ अग्रेषित।"
+              }
+            ],
+            "margin": [40, 0, 0, 0]
+          }
+        ],
+        "margin": [0, 0, 0, 0]
+      },
+      {
+        "stack": [
+          { "text": "संचालक", "bold": true , "margin":[0 ,0 ,30,0]},
+          { "text": "नगर तथा ग्राम निवेश विभाग," , "margin":[0 ,0 ,0,0] },
+          {
+            "text": "छत्तीसगढ़, रायपुर", "margin":[0 ,0 ,10,0]
+          }
+        ],
+        "width": "*",
+        "alignment": "right",
+        "margin": [0,0,30,0]
       }
     ]
   }
