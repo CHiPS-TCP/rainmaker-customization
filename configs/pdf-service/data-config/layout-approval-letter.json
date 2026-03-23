@@ -708,6 +708,20 @@
                     "type": "image"
                   },
                   {
+                    "variable": "address",
+                    "value": "$.MdmsRes.tenant.tenants[0].address"
+                  },
+                  {
+                    "variable": "contactNumber",
+                    "value": "$.MdmsRes.tenant.tenants[0].contactNumber"
+                    
+                  },
+                  {
+                    "variable": "emailId",
+                    "value": "$.MdmsRes.tenant.tenants[0].emailId"
+                  
+                  },
+                  {
                     "variable": "logo_header",
                     "value": "$.MdmsRes.tenant.tenants[0].code",
                     "localisation": {
@@ -715,6 +729,30 @@
                       "prefix": "TENANT_TENANTS",
                       "module": "rainmaker-common"
                     }
+                  },
+                  {
+                    "variable": "name_hindi",
+                    "value": "$.MdmsRes.tenant.tenants[0].city.nameHindi"
+                  },
+                  {
+                    "variable": "municipality_name_hindi",
+                    "value": "$.MdmsRes.tenant.tenants[0].city.municipalityNameHindi"
+                  },
+                  {
+                    "variable": "municipality_name",
+                    "value": "$.MdmsRes.tenant.tenants[0].city.municipalityName"
+                  },
+                  {
+                    "variable": "officer_desig",
+                    "value": "$.MdmsRes.tenant.tenants[0].city.officerDesig"
+                  },
+                  {
+                    "variable": "officer_desig_hindi",
+                    "value": "$.MdmsRes.tenant.tenants[0].city.officerDesigHindi"
+                  },
+                  {
+                    "variable": "ulbGrade",
+                    "value": "$.MdmsRes.tenant.tenants[0].city.ulbGrade"
                   }
                 ]
               }
