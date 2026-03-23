@@ -110,23 +110,6 @@
         "margin": [-40, -10, 0, 0]
       },
       {
-        "columns": [
-          {
-            "width": "*",
-            "text": "छत्तीसगढ़ राजपत्र, दिनांक {{otpverifieddate}}",
-            "alignment": "center",
-            "margin": [0, 0, 0, 0],
-            "bold": true
-          },
-          {
-            "width": "auto",
-            "text": "1332 (23)",
-            "alignment": "right",
-            "bold": true
-          }
-        ]
-      },
-      {
         "canvas": [
           {
             "type": "line",
@@ -140,29 +123,6 @@
         ],
         "margin": [-10, -3, 0, 5]
       },
-
-      {
-        "text": "प्ररूप-सोलह",
-        "alignment": "center",
-        "bold": true,
-        "margin": [0, 0, 0, -2]
-      },
-      {
-        "text": "(नियम 19(क) देखिये)",
-        "alignment": "center",
-        "margin": [0, 0, 0, 2]
-      },
-      {
-        "text": "नगर तथा ग्राम निवेश विभाग, छत्तीसगढ़",
-        "alignment": "center",
-        "margin": [0, 0, 0, 2]
-      },
-      {
-        "text": "आदेश",
-        "alignment": "center",
-        "margin": [0, 0, 0, 2]
-      },
-
       {
         "columns": [
           {
