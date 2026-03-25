@@ -3,7 +3,7 @@
   "config": {
     "defaultStyle": {
       "font": "Cambay",
-      "fontSize": 11,
+      "fontSize": 10,
       "alignment": "justify"
     },
     "content": [
@@ -66,7 +66,7 @@
         "stack": [
           { "text": "प्रेषक" },
           {
-            "text": "{{#var_owners}}{{ownerName}}, {{/var_owners}}",
+            "text": "{{combinedOwnersName}}",
             "decoration": "underline",
             "decorationStyle": "dotted",
             "margin": [20, 0, 0, 0]
@@ -228,7 +228,17 @@
                 ]
               }
             ],
-            [{ "text": "" }, {}]
+            [{  }, { }]
+          ]
+        },
+        "layout": "noBorders",
+        "margin": [0, 0, 0, 0]
+      },
+      {
+        "table": {
+          "widths": ["auto", "*"],
+          "body": [
+            [{ "text": "4." }, { "text": "मैने अधिनियम की धारा 16 की उप-धारा (3) एवं 29 की उप-धारा (2) के अधीन बनाये गये नियम में विहित किये गये मान के अनुसार शुल्क मुख्य शीर्ष-0217 नगरी विकास योजना नगर तथा ग्राम निवेश में चालान सहित जमा कर उसकी मूल प्रति अथवा अभिप्रमाणित प्रति संलग्न कर दी है।"}]
           ]
         },
         "layout": "noBorders",
@@ -269,7 +279,7 @@
               {
                 "text": [
                   "Name of Owner : ",
-                  { "text": "{{ownername}}", "bold": true }
+                  { "text": "{{combinedOwnersName}}", "bold": true }
                 ]
               },
               {

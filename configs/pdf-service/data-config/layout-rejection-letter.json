@@ -18,6 +18,12 @@
                 }
               },
               {
+                "variable": "combinedOwnersName",
+                "value": {
+                  "path": "$.applicationData.combinedOwnersName"
+                }
+              },
+              {
                 "variable": "districtName",
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.district.name"

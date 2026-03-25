@@ -87,7 +87,7 @@
             "text": [
               { "text": "ग्राम का नाम " },
               {
-                "text": "{{villageName}}",
+                "text": "{{#var_villages}}{{villageName}},{{/var_villages}}",
                 "decoration": "underline",
                 "decorationStyle": "dotted"
               },
@@ -105,7 +105,7 @@
               },
               { "text": " तहसील का नाम " },
               {
-                "text": " {{tehsilName}} ",
+                "text": " {{#var_tehsils}}{{tehsil}},{{/var_tehsils}} ",
                 "decoration": "underline",
                 "decorationStyle": "dotted"
               },
@@ -485,7 +485,7 @@
               {
                 "text": [
                   "Name of Owner : ",
-                  { "text": "{{ownername}}", "bold": true }
+                  { "text": "{{combinedOwnersName}}", "bold": true }
                 ]
               },
               {

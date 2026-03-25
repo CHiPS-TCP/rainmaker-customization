@@ -66,6 +66,23 @@
                 }
               },
               {
+                "variable": "firmName",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.applicationDetails.firmName"
+                }
+              },
+              {
+                "variable": "var_villages",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.village[*]"
+                },
+                "type": "array",
+                "format": {
+                  "type": "string",
+                  "scema": [{ "variable": "village", "value": "name" }]
+                }
+              },
+              {
                 "variable": "architectId",
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.applicationDetails.professionalRegId"
@@ -111,6 +128,12 @@
                 "variable": "wardnumber",
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.wardnumber"
+                }
+              },
+              {
+                "variable": "combinedOwnersName",
+                "value": {
+                  "path": "$.applicationData.combinedOwnersName"
                 }
               },
               {

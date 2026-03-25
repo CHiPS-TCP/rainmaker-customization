@@ -25,12 +25,6 @@
                 }
               },
               {
-                "variable": "villageName",
-                "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.village[0].name"
-                }
-              },
-              {
                 "variable": "Ulblisttype",
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.Ulblisttype"
@@ -57,6 +51,12 @@
                 "variable": "stakeHolderName",
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.applicationDetails.professionalName"
+                }
+              },
+              {
+                "variable": "firmName",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.applicationDetails.firmName"
                 }
               },
               {
@@ -146,12 +146,23 @@
               {
                 "variable": "var_owners",
                 "value": {
-                  "path": "$.applicationData.landInfo.owners[*]"
+                  "path": "$.applicationData.owners[*]"
                 },
                 "type": "array",
                 "format": {
                   "type": "string",
                   "scema": [{ "variable": "ownerName", "value": "name" }]
+                }
+              },
+              {
+                "variable": "var_villages",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.village[*]"
+                },
+                "type": "array",
+                "format": {
+                  "type": "string",
+                  "scema": [{ "variable": "villageName", "value": "name" }]
                 }
               },
               {
@@ -190,6 +201,12 @@
                 "variable": "otpverifieddate",
                 "value": {
                   "path": "$.applicationData.otpDate"
+                }
+              },
+              {
+                "variable": "combinedOwnersName",
+                "value": {
+                  "path": "$.applicationData.combinedOwnersName"
                 }
               },
               {

@@ -84,7 +84,12 @@
                   "path": "$.applicationData.layoutDetails.additionalDetails.typeOfArchitect"
                 }
               },
-
+              {
+                "variable": "combinedOwnersName",
+                "value": {
+                  "path": "$.applicationData.combinedOwnersName"
+                }
+              },
               {
                 "variable": "ownerEmail",
                 "value": {
@@ -667,7 +672,35 @@
                   "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.riNo"
                 }
               },
+              {
+                "variable": "firmName",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.applicationDetails.firmName"
+                }
+              },
 
+              {
+                "variable": "var_villages",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.village[*]"
+                },
+                "type": "array",
+                "format": {
+                  "type": "string",
+                  "scema": [{ "variable": "villageName", "value": "name" }]
+                }
+              },
+              {
+                "variable": "var_tehsils",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.tehsil[*]"
+                },
+                "type": "array",
+                "format": {
+                  "type": "string",
+                  "scema": [{ "variable": "tehsil", "value": "name" }]
+                }
+              },
               {
                 "variable": "tehsilName",
                 "value": {
@@ -680,7 +713,7 @@
                   "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.district.name"
                 }
               },
-               {
+              {
                 "variable": "khasraNo",
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.khasraNo"
