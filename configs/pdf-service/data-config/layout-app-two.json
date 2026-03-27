@@ -1,6 +1,6 @@
 
 {
-  "key": "ownerconsent",
+  "key": "layout-app-two",
   "DataConfigs": {
     "serviceName": "rainmaker-bpa",
     "version": "1.0.0",
@@ -19,15 +19,34 @@
                 }
               },
               {
+                "variable": "SubmittedOn",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.SubmittedOn"
+                },
+                "type":"date"
+              },
+              {
                 "variable": "Ulblisttype",
                 "value": {
-                  "path": "$.applicationData.additionalDetails.Ulblisttype"
+                  "path": "$.applicationData.layoutDetails.additionalDetails.Ulblisttype"
+                }
+              },
+              {
+                "variable": "aadhar",
+                "value": {
+                  "path": "$.applicationData.owners[0].aadharNumber"
+                }
+              },
+              {
+                "variable": "pincode",
+                "value": {
+                  "path": "$.applicationData.owners[0].permanentPinCode"
                 }
               },
               {
                 "variable": "designationTitle",
                 "value": {
-                  "path": "$.applicationData.additionalDetails.Ulblisttype"
+                  "path": "$.applicationData.layoutDetails.additionalDetails.Ulblisttype"
                 },
                 "transformation": {
                   "Municipal Corporation": "The Municipal Commissioner",
@@ -44,7 +63,13 @@
               {
                 "variable": "stakeHolderName",
                 "value": {
-                  "path": "$.applicationData.additionalDetails.stakeholderName"
+                  "path": "$.applicationData.layoutDetails.additionalDetails.applicationDetails.professionalName"
+                }
+              },
+              {
+                "variable": "stakeHolderAddress",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.applicationDetails.professionalAddress"
                 }
               },
               {
@@ -62,16 +87,21 @@
               {
                 "variable": "architectId",
                 "value": {
-                  "path": "$.applicationData.additionalDetails.architectId"
+                  "path": "$.applicationData.layoutDetails.additionalDetails.applicationDetails.professionalRegId"
                 }
               },
               {
                 "variable": "proUserType",
                 "value": {
-                  "path": "$.applicationData.additionalDetails.typeOfArchitect"
+                  "path": "$.applicationData.layoutDetails.additionalDetails.typeOfArchitect"
                 }
               },
-
+              {
+                "variable": "combinedOwnersName",
+                "value": {
+                  "path": "$.applicationData.combinedOwnersName"
+                }
+              },
               {
                 "variable": "ownerEmail",
                 "value": {
@@ -98,25 +128,37 @@
               {
                 "variable": "area",
                 "value": {
-                  "path": "$.applicationData.additionalDetails.area"
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.plotAreaAsPerDocument"
+                }
+              },
+              {
+                "variable": "previousSanctionNumber",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.previousSanctionNumber"
+                }
+              },
+              {
+                "variable": "previousSanctionDate",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.previousSanctionDate"
                 }
               },
               {
                 "variable": "wardnumber",
                 "value": {
-                  "path": "$.applicationData.additionalDetails.wardnumber"
+                  "path": "$.applicationData.layoutDetails.additionalDetails.wardnumber"
                 }
               },
               {
                 "variable": "zoneNumber",
                 "value": {
-                  "path": "$.applicationData.additionalDetails.zonenumber"
+                  "path": "$.applicationData.layoutDetails.additionalDetails.zonenumber"
                 }
               },
               {
                 "variable": "ulbname",
                 "value": {
-                  "path": "$.applicationData.additionalDetails.UlbName"
+                  "path": "$.applicationData.layoutDetails.additionalDetails.UlbName"
                 }
               },
               {
@@ -146,19 +188,19 @@
               {
                 "variable": "Ulblisttypeori",
                 "value": {
-                  "path": "$.applicationData.additionalDetails.Ulblisttype"
+                  "path": "$.applicationData.layoutDetails.additionalDetails.Ulblisttype"
                 }
               },
               {
                 "variable": "architectName",
                 "value": {
-                  "path": "$.applicationData.additionalDetails.architectName"
+                  "path": "$.applicationData.layoutDetails.additionalDetails.architectName"
                 }
               },
               {
                 "variable": "architectMobileNumber",
                 "value": {
-                  "path": "$.applicationData.additionalDetails.architectMobileNumber"
+                  "path": "$.applicationData.layoutDetails.additionalDetails.architectMobileNumber"
                 }
               },
               {
@@ -171,9 +213,8 @@
               {
                 "variable": "otpverifieddate",
                 "value": {
-                  "path": "$.applicationData.auditDetails.lastModifiedTime"
-                },
-                "type": "date"
+                  "path": "$.applicationData.otpDate"
+                }
               },
               {
                 "variable": "epoch",
@@ -184,25 +225,25 @@
               {
                 "variable": "architecttype",
                 "value": {
-                  "path": "$.applicationData.additionalDetails.typeOfArchitect"
+                  "path": "$.applicationData.layoutDetails.additionalDetails.typeOfArchitect"
                 }
               },
               {
                 "variable": "proarchitectid",
                 "value": {
-                  "path": "$.applicationData.additionalDetails.architectid"
+                  "path": "$.applicationData.layoutDetails.additionalDetails.architectid"
                 }
               },
               {
                 "variable": "wardnumber",
                 "value": {
-                  "path": "$.applicationData.additionalDetails.wardnumber"
+                  "path": "$.applicationData.layoutDetails.additionalDetails.wardnumber"
                 }
               },
               {
                 "variable": "khasraNumber",
                 "value": {
-                  "path": "$.applicationData.additionalDetails.khasraNumber"
+                  "path": "$.applicationData.layoutDetails.additionalDetails.khasraNumber"
                 }
               },
               {
@@ -635,6 +676,113 @@
                 "variable": "applicantName",
                 "value": {
                   "path": "$.edcrDetail[0].planDetail.planInformation.applicantName"
+                }
+              },
+              {
+                "variable": "villageName",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.village[0].name"
+                }
+              },
+              {
+                "variable": "halkaNo",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.halkaNo"
+                }
+              },
+              {
+                "variable": "riNo",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.riNo"
+                }
+              },
+              {
+                "variable": "firmName",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.applicationDetails.firmName"
+                }
+              },
+
+              {
+                "variable": "var_villages",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.village[*]"
+                },
+                "type": "array",
+                "format": {
+                  "type": "string",
+                  "scema": [{ "variable": "villageName", "value": "name" }]
+                }
+              },
+              {
+                "variable": "var_tehsils",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.tehsil[*]"
+                },
+                "type": "array",
+                "format": {
+                  "type": "string",
+                  "scema": [{ "variable": "tehsil", "value": "name" }]
+                }
+              },
+              {
+                "variable": "tehsilName",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.tehsil[0].name"
+                }
+              },
+               {
+                "variable": "districtName",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.district.name"
+                }
+              },
+              {
+                "variable": "khasraNo",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.khasraNo"
+                }
+              },
+               {
+                "variable": "builtUpArea",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.scrutinyDetails.planDetail.blocks[0].building.floors[0].occupancies[0].builtUpArea"
+                }
+              },
+               {
+                "variable": "openAreaPlantation",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.scrutinyDetails.planDetail.blocks[0].plantationGreenStripes[0].area"
+                }
+              },
+               {
+                "variable": "totalplotArea",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.scrutinyDetails.planDetail.planInformation.plotArea"
+                }
+              },
+              {
+                "variable": "frontSetBack",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.scrutinyDetails.planDetail.blocks[0].setBacks[0].frontYard.minimumDistance"
+                }
+              },
+               {
+                "variable": "rearSetBack",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.scrutinyDetails.planDetail.blocks[0].setBacks[0].rearYard.minimumDistance"
+                }
+              },
+               {
+                "variable": "sideSetBack1",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.scrutinyDetails.planDetail.blocks[0].setBacks[0].sideYard1.minimumDistance"
+                }
+              },
+               {
+                "variable": "sideSetBack2",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.scrutinyDetails.planDetail.blocks[0].setBacks[0].sideYard2.minimumDistance"
                 }
               },
               {

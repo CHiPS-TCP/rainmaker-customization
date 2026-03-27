@@ -3,10 +3,31 @@
     "key": "ownerconsent",
     "config": {
       "defaultStyle": {
-        "font": "Roboto",
+        "font": "Cambay",
         "alignment": "justify"
       },
       "content": [
+        {
+        "style": "noc-head",
+        "table": {
+          "widths": ["*"],
+          "body": [
+            [
+              {
+                "stack": [
+                  {
+                    "text": "भूमि के विकास के लिए धारा 16 की उप-धारा (1) एवं धारा 29 की उप-धारा (1) के अधीन अनुज्ञा आवेदन पत्र का प्ररूप",
+                    "style": "receipt-logo-header"
+                  }
+                ],
+                "alignment": "left",
+                "margin": [0, 10, 0, 0]
+              }
+            ]
+          ]
+        },
+        "layout": "noBorders"
+      },
         {
           "text": "DECLARATION UNDER SELF-CERTIFICATION SCHEME",
           "style": "header",
