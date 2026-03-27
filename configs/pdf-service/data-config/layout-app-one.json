@@ -171,6 +171,18 @@
                   "path": "$.applicationData.landInfo.owners[0].permanentAddress"
                 }
               },
+              {
+                "variable": "aadhar",
+                "value": {
+                  "path": "$.applicationData.owners[0].additionalDetails.aadharNumber"
+                }
+              },
+              {
+                "variable": "pincode",
+                "value": {
+                  "path": "$.applicationData.owners[0].additionalDetails.pincode"
+                }
+              },
 
               {
                 "variable": "Ulblisttypeori",

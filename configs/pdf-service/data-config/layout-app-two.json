@@ -32,6 +32,18 @@
                 }
               },
               {
+                "variable": "aadhar",
+                "value": {
+                  "path": "$.applicationData.owners[0].additionalDetails.aadharNumber"
+                }
+              },
+              {
+                "variable": "pincode",
+                "value": {
+                  "path": "$.applicationData.owners[0].additionalDetails.pincode"
+                }
+              },
+              {
                 "variable": "designationTitle",
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.Ulblisttype"
@@ -117,6 +129,18 @@
                 "variable": "area",
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.plotAreaAsPerDocument"
+                }
+              },
+              {
+                "variable": "previousSanctionNumber",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.previousSanctionNumber"
+                }
+              },
+              {
+                "variable": "previousSanctionDate",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.previousSanctionDate"
                 }
               },
               {

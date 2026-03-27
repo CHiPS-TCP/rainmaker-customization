@@ -296,6 +296,18 @@
               },
               {
                 "text": [
+                  "Aadhar : ",
+                  { "text": "{{aadhar}}", "bold": true }
+                ]
+              },
+              {
+                "text": [
+                  "Pincode : ",
+                  { "text": "{{pincode}}", "bold": true }
+                ]
+              },
+              {
+                "text": [
                   "e-Mail : ",
                   { "text": "{{ownerEmail}}", "bold": true }
                 ]
