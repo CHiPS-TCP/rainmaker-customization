@@ -66,7 +66,7 @@
         "stack": [
           { "text": "प्रेषक" },
           {
-            "text": "{{ownername}}",
+            "text": "{{combinedOwnersName}}",
             "decoration": "underline",
             "decorationStyle": "dotted",
             "margin": [20, 0, 0, 0]
@@ -279,7 +279,7 @@
               {
                 "text": [
                   "Name of Owner : ",
-                  { "text": "{{ownername}}", "bold": true }
+                  { "text": "{{combinedOwnersName}}", "bold": true }
                 ]
               },
               {

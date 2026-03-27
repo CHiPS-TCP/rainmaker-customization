@@ -485,7 +485,7 @@
               {
                 "text": [
                   "Name of Owner : ",
-                  { "text": "{{ownername}}", "bold": true }
+                  { "text": "{{combinedOwnersName}}", "bold": true }
                 ]
               },
               {

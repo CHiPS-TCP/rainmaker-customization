@@ -19,9 +19,39 @@
                 }
               },
               {
+                "variable": "SubmittedOn",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.SubmittedOn"
+                },
+                "type":"date"
+              },
+              {
+                "variable": "aadhar",
+                "value": {
+                  "path": "$.applicationData.owners[0].aadhaarNumber"
+                }
+              },
+              {
+                "variable": "pincode",
+                "value": {
+                  "path": "$.applicationData.owners[0].permanentPinCode"
+                }
+              },
+              {
                 "variable": "Ulblisttype",
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.Ulblisttype"
+                }
+              },
+              {
+                "variable": "var_villages",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.village[*]"
+                },
+                "type": "array",
+                "format": {
+                  "type": "string",
+                  "scema": [{ "variable": "villageName", "value": "name" }]
                 }
               },
               {
@@ -69,17 +99,6 @@
                 "variable": "firmName",
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.applicationDetails.firmName"
-                }
-              },
-              {
-                "variable": "var_villages",
-                "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.village[*]"
-                },
-                "type": "array",
-                "format": {
-                  "type": "string",
-                  "scema": [{ "variable": "village", "value": "name" }]
                 }
               },
               {
@@ -168,13 +187,7 @@
               {
                 "variable": "ownerAddress",
                 "value": {
-                  "path": "$.applicationData.landInfo.owners[0].permanentAddress"
-                }
-              },
-              {
-                "variable": "aadhar",
-                "value": {
-                  "path": "$.applicationData.owners[0].aadharNumber"
+                  "path": "$.applicationData.owners[0].permanentAddress"
                 }
               },
               {
@@ -694,6 +707,12 @@
                 "variable": "khataNo",
                 "value": {
                   "path": "$.edcrDetail[0].planDetail.planInformation.khataNo"
+                }
+              },
+              {
+                "variable": "sitePlotNo",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.scrutinyDetails.planDetail.planInformation.plotNo"
                 }
               },
               {

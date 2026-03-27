@@ -156,7 +156,7 @@
         "stack": [
           { "text": "प्रति," },
           {
-            "text": "श्री/श्रीमती/सुश्री/ {{OwnerName}}",
+            "text": "श्री/श्रीमती/सुश्री/ {{combinedOwnersName}}",
             "margin": [20, 0, 0, 0],
             "decoration": "underline",
             "decorationStyle": "dotted"

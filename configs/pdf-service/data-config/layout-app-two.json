@@ -34,7 +34,7 @@
               {
                 "variable": "aadhar",
                 "value": {
-                  "path": "$.applicationData.owners[0].aadharNumber"
+                  "path": "$.applicationData.owners[0].aadhaarNumber"
                 }
               },
               {
