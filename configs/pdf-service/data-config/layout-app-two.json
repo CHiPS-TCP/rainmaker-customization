@@ -34,13 +34,13 @@
               {
                 "variable": "aadhar",
                 "value": {
-                  "path": "$.applicationData.owners[0].additionalDetails.aadharNumber"
+                  "path": "$.applicationData.owners[0].aadharNumber"
                 }
               },
               {
                 "variable": "pincode",
                 "value": {
-                  "path": "$.applicationData.owners[0].additionalDetails.pincode"
+                  "path": "$.applicationData.owners[0].permanentPinCode"
                 }
               },
               {

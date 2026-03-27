@@ -667,6 +667,12 @@
                 }
               },
               {
+                "variable": "OwnerName",
+                "value": {
+                  "path": "$.applicationData.owners[0].name"
+                }
+              },
+              {
                 "variable": "applicationDate",
                 "value": {
                   "path": "$.applicationDate"
