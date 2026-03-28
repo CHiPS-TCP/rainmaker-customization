@@ -7,7 +7,7 @@ SearchDefinitions:
       query:
         baseQuery: |
           Select row_to_json(result) from (
-            select DISTINCT(layout.applicationno), 
+            select layout.applicationno, 
                    layout.createdtime, 
                    pi.status as status_id, 
                    layout.id,
@@ -18,16 +18,22 @@ SearchDefinitions:
                    layout.layouttype,
                    layout.accountid,
                    layout.applicationstatus,
-                   owner.ownertype,
-                   owner.isprimaryowner,
-                   owner.relationship,
-                   owner.ownershippercentage
+                   jsonb_agg(DISTINCT jsonb_build_object(
+                     'ownertype', owner.ownertype,
+                     'isprimaryowner', owner.isprimaryowner,
+                     'relationship', owner.relationship,
+                     'ownershippercentage', owner.ownershippercentage,
+                     'uuid', owner.uuid
+                   )) FILTER (WHERE owner.uuid IS NOT NULL) AS owners
             from eg_layout as layout
             LEFT JOIN eg_layout_owner owner ON owner.layoutid = layout.id
             INNER JOIN eg_wf_processinstance_v2 pi ON pi.businessid = layout.applicationno
             LEFT JOIN eg_wf_assignee_v2 assg ON pi.id = assg.processinstanceid
             $where 
             AND pi.latest = TRUE
+            GROUP BY layout.applicationno, layout.createdtime, pi.status, layout.id,
+                     layout.tenantid, layout.status, layout.layoutno, layout.applicationType,
+                     layout.layouttype, layout.accountid, layout.applicationstatus
             order by layout.createdtime asc
             $pagination
           ) result
@@ -158,7 +164,7 @@ SearchDefinitions:
       query:
         baseQuery: |
           Select row_to_json(result) from (
-            select DISTINCT(layout.applicationno), 
+            select layout.applicationno, 
                    layout.createdtime, 
                    pi.status as status_id,
                    layout.id,
@@ -169,16 +175,22 @@ SearchDefinitions:
                    layout.layouttype,
                    layout.accountid,
                    layout.applicationstatus,
-                   owner.ownertype,
-                   owner.isprimaryowner,
-                   owner.relationship,
-                   owner.ownershippercentage
+                   jsonb_agg(DISTINCT jsonb_build_object(
+                     'ownertype', owner.ownertype,
+                     'isprimaryowner', owner.isprimaryowner,
+                     'relationship', owner.relationship,
+                     'ownershippercentage', owner.ownershippercentage,
+                     'uuid', owner.uuid
+                   )) FILTER (WHERE owner.uuid IS NOT NULL) AS owners
             from eg_layout as layout
             LEFT JOIN eg_layout_owner owner ON owner.layoutid = layout.id
             INNER JOIN eg_wf_processinstance_v2 pi ON pi.businessid = layout.applicationno
             LEFT JOIN eg_wf_assignee_v2 assg ON pi.id = assg.processinstanceid
             $where
             AND pi.latest = TRUE
+            GROUP BY layout.applicationno, layout.createdtime, pi.status, layout.id,
+                     layout.tenantid, layout.status, layout.layoutno, layout.applicationType,
+                     layout.layouttype, layout.accountid, layout.applicationstatus
             order by layout.createdtime desc
             $pagination
           ) result

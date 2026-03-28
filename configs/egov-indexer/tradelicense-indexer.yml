@@ -1,21 +1,162 @@
 ServiceMaps:
- serviceName: Trade License
- version: 1.0.0
- mappings:
-  - topic: save-tl-tradelicense
-    configKey: INDEX
-    indexes:
-    - name: tl-index
-      type: tradelicenses
-      id: $.id, $.tenantId
-      isBulk: true
-      jsonPath: $.Licenses
-      
-  - topic: update-tl-tradelicense
-    configKey: INDEX
-    indexes:
-    - name: tl-index
-      type: tradelicenses
-      id: $.id, $.tenantId
-      isBulk: true
-      jsonPath: $.Licenses
+  serviceName: egov-tl-services
+  version: 1.0.0
+  mappings:
+    - topic: save-tl-tradelicense
+      configKey: INDEX
+      indexes:
+        - name: tl-application-index
+          type: general
+          isBulk: true
+          jsonPath: $.Licenses
+          id: $.id, $.tenantId
+          timeStampField: $.auditDetails.createdTime
+          customJsonMapping:
+            indexMapping:
+              Data:
+                id: id
+                tenantId: tenantId
+                applicationNumber: applicationNumber
+                licenseNumber: licenseNumber
+                businessService: businessService
+                licenseType: licenseType
+                applicationType: applicationType
+                status: status
+                action: action
+                applicationDate: applicationDate
+                issuedDate: issuedDate
+                validFrom: validFrom
+                validTo: validTo
+                accountId: accountId
+                fileStoreId: fileStoreId
+                createdBy: createdBy
+                lastModifiedBy: lastModifiedBy
+                createdTime: createdTime
+                lastModifiedTime: lastModifiedTime
+                tradeLicenseDetail: {}
+                calculation: {}
+
+            fieldMapping:
+              - inJsonPath: $.id
+                outJsonPath: $.Data.id
+              - inJsonPath: $.tenantId
+                outJsonPath: $.Data.tenantId
+              - inJsonPath: $.applicationNumber
+                outJsonPath: $.Data.applicationNumber
+              - inJsonPath: $.licenseNumber
+                outJsonPath: $.Data.licenseNumber
+              - inJsonPath: $.businessService
+                outJsonPath: $.Data.businessService
+              - inJsonPath: $.licenseType
+                outJsonPath: $.Data.licenseType
+              - inJsonPath: $.applicationType
+                outJsonPath: $.Data.applicationType
+              - inJsonPath: $.status
+                outJsonPath: $.Data.status
+              - inJsonPath: $.action
+                outJsonPath: $.Data.action
+              - inJsonPath: $.applicationDate
+                outJsonPath: $.Data.applicationDate
+              - inJsonPath: $.issuedDate
+                outJsonPath: $.Data.issuedDate
+              - inJsonPath: $.validFrom
+                outJsonPath: $.Data.validFrom
+              - inJsonPath: $.validTo
+                outJsonPath: $.Data.validTo
+              - inJsonPath: $.accountId
+                outJsonPath: $.Data.accountId
+              - inJsonPath: $.fileStoreId
+                outJsonPath: $.Data.fileStoreId
+              - inJsonPath: $.auditDetails.createdBy
+                outJsonPath: $.Data.createdBy
+              - inJsonPath: $.auditDetails.lastModifiedBy
+                outJsonPath: $.Data.lastModifiedBy
+              - inJsonPath: $.auditDetails.createdTime
+                outJsonPath: $.Data.createdTime
+              - inJsonPath: $.auditDetails.lastModifiedTime
+                outJsonPath: $.Data.lastModifiedTime
+              - inJsonPath: $.tradeLicenseDetail
+                outJsonPath: $.Data.tradeLicenseDetail
+              - inJsonPath: $.calculation
+                outJsonPath: $.Data.calculation
+
+    - topic: update-tl-tradelicense
+      configKey: INDEX
+      indexes:
+        - name: tl-application-index
+          type: general
+          isBulk: true
+          jsonPath: $.Licenses
+          id: $.id, $.tenantId
+          timeStampField: $.auditDetails.lastModifiedTime
+          customJsonMapping:
+            indexMapping:
+              Data:
+                id: id
+                tenantId: tenantId
+                applicationNumber: applicationNumber
+                licenseNumber: licenseNumber
+                businessService: businessService
+                licenseType: licenseType
+                applicationType: applicationType
+                status: status
+                action: action
+                applicationDate: applicationDate
+                issuedDate: issuedDate
+                validFrom: validFrom
+                validTo: validTo
+                accountId: accountId
+                fileStoreId: fileStoreId
+                createdBy: createdBy
+                lastModifiedBy: lastModifiedBy
+                createdTime: createdTime
+                lastModifiedTime: lastModifiedTime
+                tradeLicenseDetail: {}
+                calculation: {}
+                applicationDocuments: []
+
+            fieldMapping:
+              - inJsonPath: $.id
+                outJsonPath: $.Data.id
+              - inJsonPath: $.tenantId
+                outJsonPath: $.Data.tenantId
+              - inJsonPath: $.applicationNumber
+                outJsonPath: $.Data.applicationNumber
+              - inJsonPath: $.licenseNumber
+                outJsonPath: $.Data.licenseNumber
+              - inJsonPath: $.businessService
+                outJsonPath: $.Data.businessService
+              - inJsonPath: $.licenseType
+                outJsonPath: $.Data.licenseType
+              - inJsonPath: $.applicationType
+                outJsonPath: $.Data.applicationType
+              - inJsonPath: $.status
+                outJsonPath: $.Data.status
+              - inJsonPath: $.action
+                outJsonPath: $.Data.action
+              - inJsonPath: $.applicationDate
+                outJsonPath: $.Data.applicationDate
+              - inJsonPath: $.issuedDate
+                outJsonPath: $.Data.issuedDate
+              - inJsonPath: $.validFrom
+                outJsonPath: $.Data.validFrom
+              - inJsonPath: $.validTo
+                outJsonPath: $.Data.validTo
+              - inJsonPath: $.accountId
+                outJsonPath: $.Data.accountId
+              - inJsonPath: $.fileStoreId
+                outJsonPath: $.Data.fileStoreId
+              - inJsonPath: $.auditDetails.createdBy
+                outJsonPath: $.Data.createdBy
+              - inJsonPath: $.auditDetails.lastModifiedBy
+                outJsonPath: $.Data.lastModifiedBy
+              - inJsonPath: $.auditDetails.createdTime
+                outJsonPath: $.Data.createdTime
+              - inJsonPath: $.auditDetails.lastModifiedTime
+                outJsonPath: $.Data.lastModifiedTime
+              - inJsonPath: $.tradeLicenseDetail
+                outJsonPath: $.Data.tradeLicenseDetail
+              - inJsonPath: $.calculation
+                outJsonPath: $.Data.calculation
+              - inJsonPath: $.applicationDocuments
+                outJsonPath: $.Data.applicationDocuments
