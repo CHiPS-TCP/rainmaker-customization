@@ -255,7 +255,7 @@
               {
                 "variable": "khasraNumber",
                 "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.khasraNumber"
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.khasraNo"
                 }
               },
               {
