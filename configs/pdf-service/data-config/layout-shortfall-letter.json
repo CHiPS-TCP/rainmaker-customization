@@ -1,0 +1,826 @@
+{
+  "key": "layout-shortfall-letter",
+  "DataConfigs": {
+    "serviceName": "rainmaker-bpa",
+    "version": "1.0.0",
+    "baseKeyPath": "$.Bpa.*",
+    "entityIdPath": "$.applicationNo",
+    "isCommonTableBorderRequired": true,
+    "mappings": [
+      {
+        "mappings": [
+          {
+            "direct": [
+              {
+                "variable": "applicationNo",
+                "value": {
+                  "path": "$.applicationNo"
+                }
+              },
+              {
+                "variable": "combinedOwnersName",
+                "value": {
+                  "path": "$.applicationData.combinedOwnersName"
+                }
+              },
+              {
+                "variable": "districtName",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.district.name"
+                }
+              },
+              {
+                "variable": "rejectionComments",
+                "value": {
+                  "path": "$.applicationData.rejectionComments"
+                }
+              },
+              
+              {
+                "variable": "villageName",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.village[0].name"
+                }
+              },
+              {
+                "variable": "Ulblisttype",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.Ulblisttype"
+                }
+              },
+              {
+                "variable": "designationTitle",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.Ulblisttype"
+                },
+                "transformation": {
+                  "Municipal Corporation": "The Municipal Commissioner",
+                  "*": "The Executive Officer"
+                }
+              },
+
+              {
+                "variable": "planPermissionNo",
+                "value": {
+                  "path": "$.approvalNo"
+                }
+              },
+              {
+                "variable": "stakeHolderName",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.applicationDetails.professionalName"
+                }
+              },
+              {
+                "variable": "stakeHolderAddress",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.applicationDetails.professionalAddress"
+                }
+              },
+              {
+                "variable": "edcrNo",
+                "value": {
+                  "path": "$.edcrNumber"
+                }
+              },
+              {
+                "variable": "siteAddress",
+                "value": {
+                  "path": "$.applicationData.landInfo.address.locality.name"
+                }
+              },
+              {
+                "variable": "architectId",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.applicationDetails.professionalRegId"
+                }
+              },
+              {
+                "variable": "proUserType",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.typeOfArchitect"
+                }
+              },
+               {
+                "variable": "riNo",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.riNo"
+                }
+              },
+              {
+                "variable": "ownerEmail",
+                "value": {
+                  "path": "$.userInfo.emailId"
+                },
+                "type": "selectFromRequestInfo"
+              },
+
+              {
+                "variable": "ownername",
+                "value": {
+                  "path": "$.userInfo.name"
+                },
+                "type": "selectFromRequestInfo"
+              },
+              {
+                "variable": "mobileNumber",
+                "value": {
+                  "path": "$.userInfo.userName"
+                },
+                "type": "selectFromRequestInfo"
+              },
+
+              {
+                "variable": "area",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.plotAreaAsPerDocument"
+                }
+              },
+              {
+                "variable": "wardnumber",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.wardnumber"
+                }
+              },
+              {
+                "variable": "zoneNumber",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.zonenumber"
+                }
+              },
+              {
+                "variable": "ulbname",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.UlbName"
+                }
+              },
+              {
+                "variable": "ulbselection",
+                "value": {
+                  "path": "$.ulbselection"
+                }
+              },
+              {
+                "variable": "var_owners",
+                "value": {
+                  "path": "$.applicationData.landInfo.owners[*]"
+                },
+                "type": "array",
+                "format": {
+                  "type": "string",
+                  "scema": [{ "variable": "ownerName", "value": "name" }]
+                }
+              },
+              {
+                "variable": "ownerAddress",
+                "value": {
+                  "path": "$.applicationData.owners[0].permanentAddress"
+                }
+              },
+
+              {
+                "variable": "Ulblisttypeori",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.Ulblisttype"
+                }
+              },
+              {
+                "variable": "architectName",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.architectName"
+                }
+              },
+              {
+                "variable": "architectMobileNumber",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.architectMobileNumber"
+                }
+              },
+              {
+                "variable": "otpverifiedtimeowner",
+                "value": {
+                  "path": "$.applicationData.TimeStamp"
+                }
+              },
+
+              {
+                "variable": "otpverifieddate",
+                "value": {
+                  "path": "$.applicationData.otpDate"
+                }
+              },
+              {
+                "variable": "epoch",
+                "value": {
+                  "path": "$.applicationData.auditDetails.lastModifiedTime"
+                }
+              },
+              {
+                "variable": "architecttype",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.typeOfArchitect"
+                }
+              },
+              {
+                "variable": "proarchitectid",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.architectid"
+                }
+              },
+              {
+                "variable": "wardnumber",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.wardnumber"
+                }
+              },
+              {
+                "variable": "khasraNumber",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.khasraNo"
+                }
+              },
+              {
+                "variable": "pincode",
+                "value": {
+                  "path": "$.applicationData.owners[0].permanentPinCode"
+                }
+              },
+              {
+                "variable": "sitePlotNo",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.scrutinyDetails.planDetail.planInformation.plotNo"
+                }
+              },
+              {
+                "variable": "WRT_TXT",
+                "value": {
+                  "path": "BOA_PDF_WRT_TXT"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "rainmaker-bpa"
+                }
+              },
+              {
+                "variable": "tenantName",
+                "value": {
+                  "path": "$.tenantId"
+                },
+                "localisation": {
+                  "required": true,
+                  "prefix": "TENANT_TENANTS",
+                  "module": "rainmaker-common"
+                }
+              },
+              {
+                "variable": "GENERATED_ON",
+                "value": {
+                  "path": "BPA_PDF_GENERATED_ON"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "rainmaker-bpa"
+                }
+              },
+              {
+                "variable": "orderGeneratedOn",
+                "value": {
+                  "path": "$.approvalDate"
+                },
+                "type": "date"
+              },
+              {
+                "variable": "Muncipal_Council",
+                "value": {
+                  "path": "BPA_PDF_MUNCIPAL"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "rainmaker-bpa"
+                }
+              },
+              {
+                "variable": "BPA_FORM",
+                "value": {
+                  "path": "BPA_PDF_FORM"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "rainmaker-bpa"
+                }
+              },
+              {
+                "variable": "BPA_FORM_APPROVAL",
+                "value": {
+                  "path": "BPA_PDF_FORM_APPROVAL_TXT"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "rainmaker-bpa"
+                }
+              },
+              {
+                "variable": "BPA_BYELAWS",
+                "value": {
+                  "path": "BPA_PDF_BYELAWS"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "rainmaker-bpa"
+                }
+              },
+              {
+                "variable": "PLAN_PERMISION_NO",
+                "value": {
+                  "path": "BPA_PDF_PLANPERMISSION_NO"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "rainmaker-bpa"
+                }
+              },
+              {
+                "variable": "Dated",
+                "value": {
+                  "path": "BPA_PDF_DATED"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "rainmaker-bpa"
+                }
+              },
+              {
+                "variable": "dated",
+                "value": {
+                  "path": "BPA_PDF_DATED_SMALL"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "rainmaker-bpa"
+                }
+              },
+              {
+                "variable": "PERMISSION_GRANT_TXT",
+                "value": {
+                  "path": "BPA_PDF_PERMISSION_GRANT_TXT"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "rainmaker-bpa"
+                }
+              },
+              {
+                "variable": "SALUTATION",
+                "value": {
+                  "path": "BPA_PDF_SALUTATION"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "rainmaker-bpa"
+                }
+              },
+              {
+                "variable": "FOR",
+                "value": {
+                  "path": "BPA_PDF_FOR"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "rainmaker-bpa"
+                }
+              },
+              {
+                "variable": "DSCR1",
+                "value": {
+                  "path": "BPA_PDF_DSCR"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "rainmaker-bpa"
+                }
+              },
+              {
+                "variable": "PLOT_NO",
+                "value": {
+                  "path": "BPA_PDF_PLOTNO_TXT"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "rainmaker-bpa"
+                }
+              },
+              {
+                "variable": "KHATA_NO",
+                "value": {
+                  "path": "BPA_PDF_KHATANO_TXT"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "rainmaker-bpa"
+                }
+              },
+              {
+                "variable": "HOLDING_NO",
+                "value": {
+                  "path": "BPA_PDF_HOLDINGNO_TXT"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "rainmaker-bpa"
+                }
+              },
+              {
+                "variable": "SERVEY_NO",
+                "value": {
+                  "path": "BPA_PDF_SERVEYNO_TXT"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "rainmaker-bpa"
+                }
+              },
+              {
+                "variable": "TOWNPLANNING_TXT",
+                "value": {
+                  "path": "BPA_PDF_TOWN_PLANNING_TXT"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "rainmaker-bpa"
+                }
+              },
+              {
+                "variable": "PROPOSE_LAND",
+                "value": {
+                  "path": "BPA_PDF_PROPOSE_LAND"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "rainmaker-bpa"
+                }
+              },
+              {
+                "variable": "OF",
+                "value": {
+                  "path": "BPA_PDF_OF"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "rainmaker-bpa"
+                }
+              },
+              {
+                "variable": "CONDNS_TXT",
+                "value": {
+                  "path": "BPA_PDF_CONDNS_TXT"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "rainmaker-bpa"
+                }
+              },
+              {
+                "variable": "PERMIT_DETAILS_TXT",
+                "value": {
+                  "path": "BPA_PDF_PERMITFEE_DETAILS_TXT"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "rainmaker-bpa"
+                }
+              },
+              {
+                "variable": "FEE_DSCR",
+                "value": {
+                  "path": "BPA_PDF_FEE_DSCR"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "rainmaker-bpa"
+                }
+              },
+              {
+                "variable": "AMOUNT",
+                "value": {
+                  "path": "BPA_PDF_AMOUNT_TXT"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "rainmaker-bpa"
+                }
+              },
+              {
+                "variable": "TOTAL",
+                "value": {
+                  "path": "BPA_PDF_TOTAL"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "rainmaker-bpa"
+                }
+              },
+              {
+                "variable": "BY_ORDER",
+                "value": {
+                  "path": "BPA_PDF_BY_ORDER"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "rainmaker-bpa"
+                }
+              },
+              {
+                "variable": "AUTH_OFFICER",
+                "value": {
+                  "path": "BPA_PDF_AUTH_OFFICER"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "rainmaker-bpa"
+                }
+              },
+              {
+                "variable": "VALIDITY_DSCR",
+                "value": {
+                  "path": "BPA_PDF_VALIDITY_DSCR"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "rainmaker-bpa"
+                }
+              },
+              {
+                "variable": "ONLY",
+                "value": {
+                  "path": "BPA_PDF_ONLY"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "rainmaker-bpa"
+                }
+              },
+              {
+                "variable": "NOTE",
+                "value": {
+                  "path": "BPA_PDF_NOTE"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "rainmaker-bpa"
+                }
+              },
+              {
+                "variable": "SubmittedOn",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.SubmittedOn"
+                },
+                "type":"date"
+              },
+              {
+                "variable": "SUMMARY1",
+                "value": {
+                  "path": "BPA_PDF_SUMMARY1"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "rainmaker-bpa"
+                }
+              },
+              {
+                "variable": "SUMMARY2",
+                "value": {
+                  "path": "BPA_PDF_SUMMARY2"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "rainmaker-bpa"
+                }
+              },
+              {
+                "variable": "AUTH_DSCR",
+                "value": {
+                  "path": "BPA_PDF_AUTH_DSCR"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "rainmaker-bpa"
+                }
+              },
+              {
+                "variable": "Bihar_Tenant",
+                "value": {
+                  "path": "BIHAR_TENANT"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "rainmaker-bpa"
+                }
+              },
+              {
+                "variable": "applicantName",
+                "value": {
+                  "path": "$.edcrDetail[0].planDetail.planInformation.applicantName"
+                }
+              },
+              {
+                "variable": "OwnerName",
+                "value": {
+                  "path": "$.applicationData.owners[0].name"
+                }
+              },
+              {
+                "variable": "applicationDate",
+                "value": {
+                  "path": "$.applicationDate"
+                },
+                "type": "date"
+              },
+              {
+                "variable": "plotNo",
+                "value": {
+                  "path": "$.edcrDetail[0].planDetail.planInformation.plotNo"
+                }
+              },
+              {
+                "variable": "khataNo",
+                "value": {
+                  "path": "$.edcrDetail[0].planDetail.planInformation.khataNo"
+                }
+              },
+              {
+                "variable": "reportrunDate",
+                "value": {
+                  "path": "$.runDate"
+                },
+                "type": "date"
+              },
+              {
+                "variable": "REPORT_RUNDATE",
+                "value": {
+                  "path": "BPA_PDF_REPORT_RUNDATE"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "rainmaker-bpa"
+                }
+              }
+            ]
+          },
+         
+          {
+            "externalAPI": [
+              {
+                "path": "http://egov-mdms-service:8080/egov-mdms-service/v1/_get",
+                "queryParam": "moduleName=tenant&masterName=tenants&tenantId=cg&filter=%5B?(@.code=='{$.applicationData.tenantId}')%5D",
+                "apiRequest": null,
+                "responseMapping": [
+                  {
+                    "variable": "logoImage",
+                    "value": "$.MdmsRes.tenant.tenants[0].logoId",
+                    "type": "image"
+                  },
+                  {
+                    "variable": "address",
+                    "value": "$.MdmsRes.tenant.tenants[0].address"
+                  },
+                  {
+                    "variable": "contactNumber",
+                    "value": "$.MdmsRes.tenant.tenants[0].contactNumber"
+                    
+                  },
+                  {
+                    "variable": "emailId",
+                    "value": "$.MdmsRes.tenant.tenants[0].emailId"
+                  
+                  },
+                  {
+                    "variable": "logo_header",
+                    "value": "$.MdmsRes.tenant.tenants[0].code",
+                    "localisation": {
+                      "required": true,
+                      "prefix": "TENANT_TENANTS",
+                      "module": "rainmaker-common"
+                    }
+                  },
+                  {
+                    "variable": "name_hindi",
+                    "value": "$.MdmsRes.tenant.tenants[0].city.nameHindi"
+                  },
+                  {
+                    "variable": "municipality_name_hindi",
+                    "value": "$.MdmsRes.tenant.tenants[0].city.municipalityNameHindi"
+                  },
+                  {
+                    "variable": "municipality_name",
+                    "value": "$.MdmsRes.tenant.tenants[0].city.municipalityName"
+                  },
+                  {
+                    "variable": "officer_desig",
+                    "value": "$.MdmsRes.tenant.tenants[0].city.officerDesig"
+                  },
+                  {
+                    "variable": "officer_desig_hindi",
+                    "value": "$.MdmsRes.tenant.tenants[0].city.officerDesigHindi"
+                  },
+                  {
+                    "variable": "ulbGrade",
+                    "value": "$.MdmsRes.tenant.tenants[0].city.ulbGrade"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "derived": [
+              {
+                "variable": "epochIST",
+                "type": "date",
+                "formula": "{{epoch}}",
+                "timezone": "Asia/Kolkata",
+                "format": "HH:mm"
+              }
+            ]
+          },
+          {
+            "qrcodeConfig": [
+              {
+                "variable": "qrCode",
+                "value": "Applicant Name: {{favourOf}}, Permit Order Number : {{planPermissionNo}}, Permit Order Date : {{orderGeneratedOn}}, eDCR Scrutiny Number: {{edcrNo}}, Approver Name : {{approvedBy}}"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
