@@ -273,7 +273,7 @@
               {
                 "variable": "otpverifieddate",
                 "value": {
-                  "path": "$.applicationData.otpDate"
+                  "path": "$.applicationData.layoutDetails.additionalDetails.observationRemarks[0].date"
                 }
               },
               {
