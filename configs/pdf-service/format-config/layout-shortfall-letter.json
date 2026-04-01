@@ -116,177 +116,114 @@
             "y1": 5,
             "x2": 500,
             "y2": 5,
-            "lineColor": "#810c01",
+            "lineColor": "#000000",
             "lineWidth": 2
           }
         ],
         "margin": [-10, -3, 0, 5]
-      },
-
-      {
-        "text": "परिशिष्ट घ",
-        "alignment": "center",
-        "bold": true,
-        "margin": [0, 0, 0, -2]
-      },
-      {
-        "text": ["(नियम 27)"],
-        "alignment": "center",
-        "bold": true,
-        "margin": [0, 0, 0, 2]
-      },
-
-      {
-        "text": "भवन के विकास/भवन की अनुज्ञा स्वीकृति करने या उसकी स्वीकृति के लिए प्रारूप",
-        "alignment": "center",
-        "bold": true,
-        "margin": [0, 0, 0, 0]
-      },
-      {
-        "stack": [
-          { "text": "प्रति," },
-          {
-            "text": "श्री/श्रीमती/सुश्री/ {{combinedOwnersName}}",
-            "margin": [20, 0, 0, 0],
-            "decoration": "underline",
-            "decorationStyle": "dotted"
-          }
-        ],
-        "margin": [0, 0, 0, 0]
-      },
-      
-      {
-        "text": "महोदय,",
-        "margin": [0, 0, 0, 8]
-      },
-
-      {
-        "text": [
-          { "text": "खसरा क्रमांक" },
-          {
-            "text": " {{khasraNumber}}",
-            "decoration": "underline",
-            "decorationStyle": "dotted"
-          },
-          { "text": " भू-खण्ड क्रमांक" },
-          {
-            "text": " {{sitePlotNo}}",
-            "decoration": "underline",
-            "decorationStyle": "dotted"
-          },
-          {
-            "text": " मोहल्ला/बाजार"
-          },
-          {
-            "text": " {{ownerAddress}}, {{pincode}}",
-            "decoration": "underline",
-            "decorationStyle": "dotted"
-          },
-          {
-            "text": " नगर क्रमांक"
-          },
-          {
-            "text": " {{riNo}}",
-            "decoration": "underline",
-            "decorationStyle": "dotted"
-          },
-          {
-            "text": " में भूमि/भवन के विकास का निर्माण हेतु परमिट की स्वीकृति के लिए आप से आवेदन "
-          },
-          {
-            "text": " {{applicationNo}}",
-            "decoration": "underline",
-            "decorationStyle": "dotted"
-          },
-          {
-            "text": " दिनांक "
-          },
-          {
-            "text": " {{SubmittedOn}}",
-            "decoration": "underline",
-            "decorationStyle": "dotted"
-          },
-          {
-            "text": " के संदर्भ में आपको सूचित करता हूं कि प्राधिकारी द्वारा निम्नलिखित निबन्धनों तथा शर्तों के अध्यधीन रहते हुए स्वीकृति दी गई है। "
-          }
-        ],
-        "margin": [40, 0, 0, 0]
-      },
-      {
-        "ol": [
-          {
-            "text": "{{rejectionComments}}"
-          }
-        ],
-        "margin": [40, 0, 0, 0]
-      },
-      {
-        "stack": [
-          { "text": "कार्यालय स्टाम्प", "bold": true , "margin":[0 ,0 ,35,0]},
-          { "text": "कार्यालय ( पत्र व्यवहार)" , "margin":[0 ,0 ,0,0], "bold": true },
-          { "text": "क्रमांक: {{applicationNo}}" , "margin":[0 ,0 ,0,0], "bold": true },
-          { "text": "दिनांक : {{otpverifieddate}}" , "margin":[0 ,0 ,0,0], "bold": true }
-        ],
-        "width": "*",
-        "margin": [0,0,30,0]
-      },
-      {
-        "stack": [
-          { "text": "संचालक", "bold": true , "margin":[0 ,0 ,35,0]},
-          { "text": "नगर तथा ग्राम निवेश विभाग," , "margin":[0 ,0 ,0,0], "bold": true },
-          {
-            "text": "छत्तीसगढ़, रायपुर", "margin":[0 ,0 ,15,0], "bold": true
-          }
-        ],
-        "width": "*",
-        "margin": [0,0,30,0],
-        "alignment": "right"
       },
       {
         "columns": [
           {
             "width": "auto",
             "alignment": "left",
-            "stack": [
-              {
-                "text": [
-                  "क्रमांक : ",
-                  { "text": "{{applicationNo}}", "bold": true }
-                ]
-              },
-              {
-                "text": [
-                  "दिनांक : ",
-                  { "text": "{{otpverifieddate}}", "bold": true }
-                ]
-              }
+            "text": [
+              "क्रमांक : ",
+              { "text": "{{applicationNo}}", "bold": true }
             ]
           },
+
           {
             "width": "*",
             "alignment": "right",
-            "stack": [
-              {
-                "text": 
-                  "प्राधिकारी के हस्ताक्षर................"
-                
-              },
-              {
-                "text": 
-                  "नाम तथा पदनाम................"
-                
-              },
-              {
-                "text": 
-                  "प्राधिकारी का पता................"
-                
-              }
-            ],
-            "margin": [0, 0, 0, 0]
+            "text": [
+              { "text": " {{districtName}} दिनांक : ", "bold": true },
+              { "text": "{{otpverifieddate}}" }
+            ]
           }
         ]
+      },
+      {
+        "stack": [
+          { "text": "प्रति," },
+          {
+            "text": "{{combinedOwnersName}}",
+            "margin": [20, 0, 0, 0]
+          },
+          {
+            "text": "{{ownerAddress}}",
+            "margin": [20, 0, 0, 0]
+          }
+        ],
+        "margin": [0, 0, 0, 0]
+      },
+      {
+        "stack": [
+          { "text": " विषय  :- विकास अनुज्ञा के संबंध में।", "bold": true },
+          {
+            "text": [
+              {
+                "text": "सन्दर्भ :- ",
+                "bold": true
+              },
+              { "text": "आपका आवेदन पत्र दिनांक " },
+              { "text": "{{SubmittedOn}}", "bold": true }
+            ]
+          }
+        ],
+        "margin": [10, 20, 0, 20]
+      },
+
+      {
+        "text": [
+          { "text": "उपरोक्त संदर्भित आवेदन पत्र में यथावर्णित भूमि " },
+          {
+            "text": " खसरा नं :- {{khasraNumber}}; Village: {{#var_villages}}{{villageName}},{{/var_villages}}; Halka No: {{halkaNo}}; RI No: {{riNo}}; Tehsil(s) {{#var_tehsils}}{{tehsil}},{{/var_tehsils}}; District : {{districtName}} ", "bold":true
+          },
+          {
+            "text": "छ.ग स्थित भूमि पर विकास अनुज्ञा चाही गई थी। उपरोक्त आवेदन का परीक्षण किया गया तत्पश्चात प्रकरण के निराकरण हेतु निम्नलिखित दस्तावेजों की आवश्यकता हैं: - "
+          }
+        ],
+        "margin": [0, 0, 0, 0]
+      },
+      {
+        "text": "ShortFall Raised on documents:",
+        "bold": true,
+        "margin": [0, 0, 0, 10]
+      },
+      {
+        "table": {
+          "widths": ["auto", "auto"],
+          "body": [
+            "{{#var_shortfalldata}}[{ \"text\": \"{{index}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] },{ \"text\": \"{{documentType}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] }]{{/var_shortfalldata}}"
+          ]
+        },
+        "layout": "noBorders",
+        "margin": [0, 0, 0, 10]
+      },
+      {
+        "text": "उपरोक्त दस्तावेज पंद्रह दिवस के भीतर प्रस्तुत करें ताकि प्रकरण पर आवश्यक कार्यवाही की जा सके । ",
+        "margin": [0, 0, 0, 10]
+      },
+      {
+        "text": "Shortfall Remarks: ",
+        "bold": true,
+        "margin": [0, 0, 0, 10]
+      },
+      {
+        "table": {
+          "widths": ["auto", "auto"],
+          "body": [
+            "{{#var_shortfalldata}}[{ \"text\": \"{{index}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] },{ \"text\": \"{{remarks}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] }]{{/var_shortfalldata}}"
+          ]
+        },
+        "layout": "noBorders",
+        "margin": [0, 0, 0, 10]
+      },
+      {
+        "text": "({{no_signature}})",
+        "alignment": "center"
       }
-      
     ]
   }
 }

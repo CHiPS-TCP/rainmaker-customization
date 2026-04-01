@@ -35,11 +35,78 @@
                   "path": "$.applicationData.rejectionComments"
                 }
               },
-              
               {
-                "variable": "villageName",
+                "variable": "var_villages",
                 "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.village[0].name"
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.village[*]"
+                },
+                "type": "array",
+                "format": {
+                  "type": "string",
+                  "scema": [{ "variable": "villageName", "value": "name" }]
+                }
+              },
+              {
+                "variable": "var_tehsils",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.tehsil[*]"
+                },
+                "type": "array",
+                "format": {
+                  "type": "string",
+                  "scema": [{ "variable": "tehsil", "value": "name" }]
+                }
+              },
+              {
+                "variable": "var_shortfalldata",
+                "value": {
+                  "path": "$.applicationData.shortFallData[*]"
+                },
+                "type": "array",
+                "format": {
+                  "type": "string",
+                  "scema": [
+                    { "variable": "documentType", "value": "documentType" },
+                    { "variable": "remarks", "value": "remarks" },
+                    { "variable": "index", "value": "index" }
+                  ]
+                }
+              },
+              {
+                "variable": "var_shortfallremarks",
+                "value": {
+                  "path": "$.applicationData.shortFallData[*]"
+                },
+                "type": "array",
+                "format": {
+                  "type": "array",
+                  "scema": [
+                    { "variable": "remarks", "value": "remarks" }
+                  ]
+                }
+              },
+              {
+                "variable": "halkaNo",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.halkaNo"
+                }
+              },
+              {
+                "variable": "riNo",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.riNo"
+                }
+              },
+              {
+                "variable": "no_signature",
+                "value": {
+                  "path": "PDF_STATIC_LABEL_CONSOLIDATED_RECEIPT_NO_SIGNATURE"
+                },
+                "type": "label",
+                "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "rainmaker-common"
                 }
               },
               {
@@ -101,7 +168,7 @@
                   "path": "$.applicationData.layoutDetails.additionalDetails.typeOfArchitect"
                 }
               },
-               {
+              {
                 "variable": "riNo",
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.riNo"
@@ -634,7 +701,7 @@
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.SubmittedOn"
                 },
-                "type":"date"
+                "type": "date"
               },
               {
                 "variable": "SUMMARY1",

@@ -1,3 +1,4 @@
+
 {
   "key": "bpa-appendix-a",
   "DataConfigs": {
@@ -18,34 +19,39 @@
                 }
               },
               {
-                "variable": "combinedOwnersName",
+                "variable": "SubmittedOn",
                 "value": {
-                  "path": "$.applicationData.combinedOwnersName"
+                  "path": "$.applicationData.layoutDetails.additionalDetails.SubmittedOn"
+                },
+                "type":"date"
+              },
+              {
+                "variable": "aadhar",
+                "value": {
+                  "path": "$.applicationData.applicationData.landInfo.owners[0].aadhaarNumber"
                 }
               },
               {
-                "variable": "districtName",
+                "variable": "pincode",
                 "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.district.name"
-                }
-              },
-              {
-                "variable": "rejectionComments",
-                "value": {
-                  "path": "$.applicationData.rejectionComments"
-                }
-              },
-              
-              {
-                "variable": "villageName",
-                "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.village[0].name"
+                  "path": "$.applicationData.owners[0].permanentPinCode"
                 }
               },
               {
                 "variable": "Ulblisttype",
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.Ulblisttype"
+                }
+              },
+              {
+                "variable": "var_villages",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.village[*]"
+                },
+                "type": "array",
+                "format": {
+                  "type": "string",
+                  "scema": [{ "variable": "villageName", "value": "name" }]
                 }
               },
               {
@@ -68,7 +74,7 @@
               {
                 "variable": "stakeHolderName",
                 "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.applicationDetails.professionalName"
+                  "path": "$.applicationData.applicationData.additionalDetails.stakeholderName"
                 }
               },
               {
@@ -90,9 +96,15 @@
                 }
               },
               {
+                "variable": "firmName",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.applicationDetails.firmName"
+                }
+              },
+              {
                 "variable": "architectId",
                 "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.applicationDetails.professionalRegId"
+                  "path": "$.applicationData.applicationData.additionalDetails.stakeholderRegistrationNumber"
                 }
               },
               {
@@ -101,12 +113,7 @@
                   "path": "$.applicationData.layoutDetails.additionalDetails.typeOfArchitect"
                 }
               },
-               {
-                "variable": "riNo",
-                "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.riNo"
-                }
-              },
+
               {
                 "variable": "ownerEmail",
                 "value": {
@@ -143,6 +150,12 @@
                 }
               },
               {
+                "variable": "combinedOwnersName",
+                "value": {
+                  "path": "$.applicationData.combinedOwnersName"
+                }
+              },
+              {
                 "variable": "zoneNumber",
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.zonenumber"
@@ -174,7 +187,13 @@
               {
                 "variable": "ownerAddress",
                 "value": {
-                  "path": "$.applicationData.owners[0].permanentAddress"
+                  "path": "$.applicationData.applicationData.landInfo.owners[0].permanentAddress"
+                }
+              },
+              {
+                "variable": "pincode",
+                "value": {
+                  "path": "$.applicationData.applicationData.landInfo.owners[0].permanentPinCode"
                 }
               },
 
@@ -237,18 +256,6 @@
                 "variable": "khasraNumber",
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.khasraNo"
-                }
-              },
-              {
-                "variable": "pincode",
-                "value": {
-                  "path": "$.applicationData.owners[0].permanentPinCode"
-                }
-              },
-              {
-                "variable": "sitePlotNo",
-                "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.scrutinyDetails.planDetail.planInformation.plotNo"
                 }
               },
               {
@@ -630,13 +637,6 @@
                 }
               },
               {
-                "variable": "SubmittedOn",
-                "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.SubmittedOn"
-                },
-                "type":"date"
-              },
-              {
                 "variable": "SUMMARY1",
                 "value": {
                   "path": "BPA_PDF_SUMMARY1"
@@ -691,12 +691,6 @@
                 }
               },
               {
-                "variable": "OwnerName",
-                "value": {
-                  "path": "$.applicationData.owners[0].name"
-                }
-              },
-              {
                 "variable": "applicationDate",
                 "value": {
                   "path": "$.applicationDate"
@@ -713,6 +707,12 @@
                 "variable": "khataNo",
                 "value": {
                   "path": "$.edcrDetail[0].planDetail.planInformation.khataNo"
+                }
+              },
+              {
+                "variable": "sitePlotNo",
+                "value": {
+                  "path": "$.applicationData.edcrDetails.planDetail.planInformation.plotNo"
                 }
               },
               {
@@ -741,27 +741,13 @@
             "externalAPI": [
               {
                 "path": "http://egov-mdms-service:8080/egov-mdms-service/v1/_get",
-                "queryParam": "moduleName=tenant&masterName=tenants&tenantId=cg&filter=%5B?(@.code=='{$.applicationData.tenantId}')%5D",
+                "queryParam": "moduleName=tenant&masterName=tenants&tenantId=cg&filter=%5B?(@.code=='{$.tenantId}')%5D",
                 "apiRequest": null,
                 "responseMapping": [
                   {
                     "variable": "logoImage",
                     "value": "$.MdmsRes.tenant.tenants[0].logoId",
                     "type": "image"
-                  },
-                  {
-                    "variable": "address",
-                    "value": "$.MdmsRes.tenant.tenants[0].address"
-                  },
-                  {
-                    "variable": "contactNumber",
-                    "value": "$.MdmsRes.tenant.tenants[0].contactNumber"
-                    
-                  },
-                  {
-                    "variable": "emailId",
-                    "value": "$.MdmsRes.tenant.tenants[0].emailId"
-                  
                   },
                   {
                     "variable": "logo_header",
@@ -771,30 +757,6 @@
                       "prefix": "TENANT_TENANTS",
                       "module": "rainmaker-common"
                     }
-                  },
-                  {
-                    "variable": "name_hindi",
-                    "value": "$.MdmsRes.tenant.tenants[0].city.nameHindi"
-                  },
-                  {
-                    "variable": "municipality_name_hindi",
-                    "value": "$.MdmsRes.tenant.tenants[0].city.municipalityNameHindi"
-                  },
-                  {
-                    "variable": "municipality_name",
-                    "value": "$.MdmsRes.tenant.tenants[0].city.municipalityName"
-                  },
-                  {
-                    "variable": "officer_desig",
-                    "value": "$.MdmsRes.tenant.tenants[0].city.officerDesig"
-                  },
-                  {
-                    "variable": "officer_desig_hindi",
-                    "value": "$.MdmsRes.tenant.tenants[0].city.officerDesigHindi"
-                  },
-                  {
-                    "variable": "ulbGrade",
-                    "value": "$.MdmsRes.tenant.tenants[0].city.ulbGrade"
                   }
                 ]
               }

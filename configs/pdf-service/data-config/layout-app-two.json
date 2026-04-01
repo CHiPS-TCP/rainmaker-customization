@@ -679,12 +679,6 @@
                 }
               },
               {
-                "variable": "villageName",
-                "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.village[0].name"
-                }
-              },
-              {
                 "variable": "halkaNo",
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.halkaNo"
