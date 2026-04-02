@@ -1,5 +1,6 @@
+
 {
-  "key": "layout-shortfall-letter",
+  "key": "layout-notesheet",
   "DataConfigs": {
     "serviceName": "rainmaker-bpa",
     "version": "1.0.0",
@@ -18,95 +19,9 @@
                 }
               },
               {
-                "variable": "combinedOwnersName",
-                "value": {
-                  "path": "$.applicationData.combinedOwnersName"
-                }
-              },
-              {
                 "variable": "districtName",
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.district.name"
-                }
-              },
-              {
-                "variable": "rejectionComments",
-                "value": {
-                  "path": "$.applicationData.rejectionComments"
-                }
-              },
-              {
-                "variable": "var_villages",
-                "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.village[*]"
-                },
-                "type": "array",
-                "format": {
-                  "type": "string",
-                  "scema": [{ "variable": "villageName", "value": "name" }]
-                }
-              },
-              {
-                "variable": "var_tehsils",
-                "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.tehsil[*]"
-                },
-                "type": "array",
-                "format": {
-                  "type": "string",
-                  "scema": [{ "variable": "tehsil", "value": "name" }]
-                }
-              },
-              {
-                "variable": "var_shortfalldata",
-                "value": {
-                  "path": "$.applicationData.shortFallData[*]"
-                },
-                "type": "array",
-                "format": {
-                  "type": "string",
-                  "scema": [
-                    { "variable": "documentType", "value": "documentType" },
-                    { "variable": "remarks", "value": "remarks" },
-                    { "variable": "index", "value": "index" }
-                  ]
-                }
-              },
-              {
-                "variable": "var_shortfallremarks",
-                "value": {
-                  "path": "$.applicationData.shortFallData[*]"
-                },
-                "type": "array",
-                "format": {
-                  "type": "array",
-                  "scema": [
-                    { "variable": "remarks", "value": "remarks" }
-                  ]
-                }
-              },
-              {
-                "variable": "halkaNo",
-                "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.halkaNo"
-                }
-              },
-              {
-                "variable": "riNo",
-                "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.riNo"
-                }
-              },
-              {
-                "variable": "no_signature",
-                "value": {
-                  "path": "PDF_STATIC_LABEL_CONSOLIDATED_RECEIPT_NO_SIGNATURE"
-                },
-                "type": "label",
-                "localisation": {
-                  "required": true,
-                  "prefix": null,
-                  "module": "rainmaker-common"
                 }
               },
               {
@@ -139,6 +54,12 @@
                 }
               },
               {
+                "variable": "firmName",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.applicationDetails.firmName"
+                }
+              },
+              {
                 "variable": "stakeHolderAddress",
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.applicationDetails.professionalAddress"
@@ -168,12 +89,7 @@
                   "path": "$.applicationData.layoutDetails.additionalDetails.typeOfArchitect"
                 }
               },
-              {
-                "variable": "riNo",
-                "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.riNo"
-                }
-              },
+
               {
                 "variable": "ownerEmail",
                 "value": {
@@ -230,12 +146,23 @@
               {
                 "variable": "var_owners",
                 "value": {
-                  "path": "$.applicationData.landInfo.owners[*]"
+                  "path": "$.applicationData.owners[*]"
                 },
                 "type": "array",
                 "format": {
                   "type": "string",
                   "scema": [{ "variable": "ownerName", "value": "name" }]
+                }
+              },
+              {
+                "variable": "var_villages",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.village[*]"
+                },
+                "type": "array",
+                "format": {
+                  "type": "string",
+                  "scema": [{ "variable": "villageName", "value": "name" }]
                 }
               },
               {
@@ -273,7 +200,13 @@
               {
                 "variable": "otpverifieddate",
                 "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.observationRemarks[(@.length-1)].date"
+                  "path": "$.applicationData.otpDate"
+                }
+              },
+              {
+                "variable": "combinedOwnersName",
+                "value": {
+                  "path": "$.applicationData.combinedOwnersName"
                 }
               },
               {
@@ -304,18 +237,6 @@
                 "variable": "khasraNumber",
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.khasraNo"
-                }
-              },
-              {
-                "variable": "pincode",
-                "value": {
-                  "path": "$.applicationData.owners[0].permanentPinCode"
-                }
-              },
-              {
-                "variable": "sitePlotNo",
-                "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.scrutinyDetails.planDetail.planInformation.plotNo"
                 }
               },
               {
@@ -697,13 +618,6 @@
                 }
               },
               {
-                "variable": "SubmittedOn",
-                "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.SubmittedOn"
-                },
-                "type": "date"
-              },
-              {
                 "variable": "SUMMARY1",
                 "value": {
                   "path": "BPA_PDF_SUMMARY1"
@@ -758,12 +672,6 @@
                 }
               },
               {
-                "variable": "OwnerName",
-                "value": {
-                  "path": "$.applicationData.owners[0].name"
-                }
-              },
-              {
                 "variable": "applicationDate",
                 "value": {
                   "path": "$.applicationDate"
@@ -780,6 +688,12 @@
                 "variable": "khataNo",
                 "value": {
                   "path": "$.edcrDetail[0].planDetail.planInformation.khataNo"
+                }
+              },
+              {
+                "variable": "OwnerName",
+                "value": {
+                  "path": "$.applicationData.owners[0].name"
                 }
               },
               {
