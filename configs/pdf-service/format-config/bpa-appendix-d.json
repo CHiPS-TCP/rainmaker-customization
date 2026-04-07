@@ -29,7 +29,7 @@
           {
             "stack": [
               {
-                "text": "{{officer_desig_hindi}} , {{municipality_name_hindi}} ",
+                "text": "{{joint_officer_desig_hindi}} , {{municipality_name_hindi}}, ",
                 "style": "sub-header",
                 "alignment": "center",
                 "margin": [-10, 3, 0, 0],
@@ -38,7 +38,7 @@
                 "color": "#810c01"
               },
               {
-                "text": "{{name_hindi}} ",
+                "text": "{{regional_office_name_hindi}} ",
                 "style": "header",
                 "alignment": "center",
                 "fontSize": 18,
@@ -46,15 +46,7 @@
                 "bold": true
               },
               {
-                "text": "{{officer_desig}} of {{municipality_name}}",
-                "style": "header",
-                "alignment": "center",
-                "fontSize": 12,
-                "bold": true,
-                "color": "black"
-              },
-              {
-                "text": "{{logo_header}} Regional-C.G.",
+                "text": "{{joint_officer_desig}} of {{logo_header}}, Raipur Regional-C.G.",
                 "style": "header",
                 "alignment": "center",
                 "fontSize": 12,
@@ -67,9 +59,9 @@
                     "width": 190,
 
                     "stack": [
-                      "{{name_hindi}}",
+                      "{{regionalOfficeAddressHindi}}",
                       "दूरभाषा - {{contactNumber}},",
-                      "फैक्स - -,",
+                      "फैक्स - {{fax}},",
                       "ईमेल - {{emailId}}"
                     ],
 
@@ -81,9 +73,9 @@
                   {
                     "width": 190,
                     "stack": [
-                      "{{address}}",
+                      "{{regionalOfficeAddress}}",
                       "Tel. - {{contactNumber}},",
-                      "Fax - - ,",
+                      "Fax - {{fax}} ,",
                       "Email -{{emailId}}"
                     ],
                     "alignment": "left",
@@ -146,7 +138,7 @@
         "stack": [
           { "text": "प्रति," },
           {
-            "text": "श्री/श्रीमती/सुश्री/ {{combinedOwnersName}}",
+            "text": "श्री/श्रीमती/सुश्री/ {{#var_owners}} {{ownerName}}, {{/var_owners}}",
             "margin": [20, 0, 0, 0],
             "decoration": "underline",
             "decorationStyle": "dotted"
@@ -170,7 +162,7 @@
           },
           { "text": " भू-खण्ड क्रमांक" },
           {
-            "text": " {{sitePlotNo}}",
+            "text": " {{plotNo}}",
             "decoration": "underline",
             "decorationStyle": "dotted"
           },
@@ -178,15 +170,7 @@
             "text": " मोहल्ला/बाजार"
           },
           {
-            "text": " {{ownerAddress}}, {{pincode}}",
-            "decoration": "underline",
-            "decorationStyle": "dotted"
-          },
-          {
-            "text": " नगर क्रमांक"
-          },
-          {
-            "text": " {{riNo}}",
+            "text": " {{primaryOwnerAddress}}, {{primaryOwnerAddresspincode}}",
             "decoration": "underline",
             "decorationStyle": "dotted"
           },
@@ -202,7 +186,7 @@
             "text": " दिनांक "
           },
           {
-            "text": " {{SubmittedOn}}",
+            "text": " {{applicationDate}}",
             "decoration": "underline",
             "decorationStyle": "dotted"
           },
