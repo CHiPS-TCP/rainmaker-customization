@@ -134,7 +134,7 @@
               {
                 "variable": "epoch",
                 "value": {
-                  "path": "$.additionalDetails.runDate"
+                  "path": "$.approvalDate"
                 }
               },
               {
@@ -215,9 +215,15 @@
                 }
               },
               {
-                "variable": "ownersWithName",
+                "variable": "primaryOwnerAddress",
                 "value": {
                   "path": "$.landInfo.owners[0].permanentAddress"
+                }
+              },
+              {
+                "variable": "primaryOwnerAddresspincode",
+                "value": {
+                  "path": "$.landInfo.owners[0].permanentPinCode"
                 }
               },
               {
@@ -557,7 +563,25 @@
               {
                 "variable": "PLOT_SIZE",
                 "value": {
-                  "path": "$.edcrDetail.planDetail.planInformation[0].plotArea"
+                  "path": "$.edcrDetail[0].planDetail.planInformation.plotArea"
+                }
+              },
+              {
+                "variable": "roadWideningArea",
+                "value": {
+                  "path": "$.edcrDetail[0].planDetail.plot.roadWideningArea"
+                }
+              },
+              {
+                "variable": "roadWidth",
+                "value": {
+                  "path": "$.edcrDetail[0].planDetail.planInformation.roadWidth"
+                }
+              },
+              {
+                "variable": "groundCoverage",
+                "value": {
+                  "path": "$.edcrDetail[0].planDetail.reportOutput.scrutinyDetails[?(@.heading == 'Ground Coverage')].detail[0].Provided"
                 }
               },
               {
@@ -937,6 +961,12 @@
                 "variable": "base64Image",
                 "value": {
                   "path": "$.additionalDetails.signature.base64Signature"
+                }
+              },
+              {
+                "variable": "far",
+                "value": {
+                  "path": "$.additionalDetails.farDetails.providedFar"
                 }
               },
               {
@@ -1381,6 +1411,12 @@
                 }
               },
               {
+                "variable": "proposedSiteAddress",
+                "value": {
+                  "path": "$.additionalDetails.registrationDetails"
+                }
+              },
+              {
                 "variable": "khataNo",
                 "value": {
                   "path": "$.edcrDetail[0].planDetail.planInfoProperties['KHATA _NO']"
@@ -1411,22 +1447,85 @@
             "externalAPI": [
               {
                 "path": "http://egov-mdms-service:8080/egov-mdms-service/v1/_get",
-                "queryParam": "moduleName=tenant&masterName=tenants&tenantId=pb&filter=%5B?(@.code=='{$.tenantId}')%5D",
+                "queryParam": "moduleName=tenant&masterName=tenants&tenantId=cg&filter=%5B?(@.code=='{$.tenantId}')%5D",
                 "apiRequest": null,
                 "responseMapping": [
                   {
-                    "variable": "newlogoImage",
+                    "variable": "logoImage",
                     "value": "$.MdmsRes.tenant.tenants[0].logoId",
                     "type": "image"
                   },
                   {
-                    "variable": "logo-header",
+                    "variable": "address",
+                    "value": "$.MdmsRes.tenant.tenants[0].address"
+                  },
+                  {
+                    "variable": "regionalOfficeAddress",
+                    "value": "$.MdmsRes.tenant.tenants[0].regionalOfficeAddress"
+                  },
+                  {
+                    "variable": "regionalOfficeAddressHindi",
+                    "value": "$.MdmsRes.tenant.tenants[0].regionalOfficeAddressHindi"
+                  },
+                  {
+                    "variable": "contactNumber",
+                    "value": "$.MdmsRes.tenant.tenants[0].contactNumber"
+                    
+                  },
+                  {
+                    "variable": "emailId",
+                    "value": "$.MdmsRes.tenant.tenants[0].emailId"
+                  
+                  },
+                  {
+                    "variable": "fax",
+                    "value": "$.MdmsRes.tenant.tenants[0].fax"
+                  
+                  },
+                  {
+                    "variable": "logo_header",
                     "value": "$.MdmsRes.tenant.tenants[0].code",
                     "localisation": {
                       "required": true,
                       "prefix": "TENANT_TENANTS",
                       "module": "rainmaker-common"
                     }
+                  },
+                  {
+                    "variable": "name_hindi",
+                    "value": "$.MdmsRes.tenant.tenants[0].city.nameHindi"
+                  },
+                  {
+                    "variable": "regional_office_name_hindi",
+                    "value": "$.MdmsRes.tenant.tenants[0].city.regionalOfficeNameHindi"
+                  },
+                  {
+                    "variable": "municipality_name_hindi",
+                    "value": "$.MdmsRes.tenant.tenants[0].city.municipalityNameHindi"
+                  },
+                  {
+                    "variable": "municipality_name",
+                    "value": "$.MdmsRes.tenant.tenants[0].city.municipalityName"
+                  },
+                  {
+                    "variable": "officer_desig",
+                    "value": "$.MdmsRes.tenant.tenants[0].city.officerDesig"
+                  },
+                  {
+                    "variable": "joint_officer_desig",
+                    "value": "$.MdmsRes.tenant.tenants[0].city.jointOfficerDesig"
+                  },
+                  {
+                    "variable": "officer_desig_hindi",
+                    "value": "$.MdmsRes.tenant.tenants[0].city.officerDesigHindi"
+                  },
+                  {
+                    "variable": "joint_officer_desig_hindi",
+                    "value": "$.MdmsRes.tenant.tenants[0].city.jointOfficerDesigHindi"
+                  },
+                  {
+                    "variable": "ulbGrade",
+                    "value": "$.MdmsRes.tenant.tenants[0].city.ulbGrade"
                   }
                 ]
               }
@@ -1436,18 +1535,18 @@
             "derived": [
               
               {
-                "variable": "epochIST",
+                "variable": "approvalDate",
                 "type": "date",
                 "formula": "{{epoch}}",
                 "timezone": "Asia/Kolkata",
-                "format": "HH:mm"
+                "format": "DD MMMM, YYYY"
               },
               {
-                "variable": "submissionDateEpochIST",
+                "variable": "submissionDateFormatted",
                 "type": "date",
                 "formula": "{{submissionDateEpoch}}",
                 "timezone": "Asia/Kolkata",
-                "format": "HH:mm"
+                "format": "DD MMMM, YYYY"
               }
             ]
           },
