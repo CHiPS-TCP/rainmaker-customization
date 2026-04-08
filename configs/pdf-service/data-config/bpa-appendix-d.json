@@ -700,7 +700,7 @@
               {
                 "variable": "applicantName",
                 "value": {
-                  "path": "$.edcrDetails.planDetail.planInformation.applicantName"
+                  "path": "$.edcrDetail[0].planDetail.planInformation.applicantName"
                 }
               },
               {
@@ -712,19 +712,19 @@
               {
                 "variable": "plotNo",
                 "value": {
-                  "path": "$.edcrDetails.planDetail.planInformation.plotNo"
+                  "path": "$.edcrDetail[0].planDetail.planInformation.plotNo"
                 }
               },
               {
                 "variable": "applicationDateepoch",
                 "value": {
-                  "path": "$.edcrDetails.applicationDate"
+                  "path": "$.edcrDetail[0].applicationDate"
                 }
               },
               {
                 "variable": "khataNo",
                 "value": {
-                  "path": "$.edcrDetails.planDetail.planInformation.khataNo"
+                  "path": "$.edcrDetail[0].planDetail.planInformation.khataNo"
                 }
               },
               {
