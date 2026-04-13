@@ -128,7 +128,7 @@
               {
                 "variable": "submissionDateEpoch",
                 "value": {
-                  "path": "$.auditDetails.createdTime"
+                  "path": "$.applicationDate"
                 }
               },
               {

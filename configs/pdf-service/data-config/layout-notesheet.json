@@ -75,6 +75,7 @@
                   "type": "string",
                   "scema": [
                     { "variable": "noteDate", "value": "date" },
+                    { "variable": "index", "value": "index" },
                     { "variable": "name", "value": "name" },
                     { "variable": "remarks", "value": "remarks" },
                     { "variable": "designation", "value": "designation" }

@@ -150,9 +150,15 @@
       {
         "table": {
           "style": "noc-table",
-          "widths": ["25%", "25%", "25%", "25%"],
+          "widths": ["auto", "*", "*", "*", "*"],
           "body": [
             [
+              {
+                "text": "Sr. No.",
+                "style": "receipt-table-value",
+                "fillColor": "#f2f2f2",
+                "bold": true
+              },
               {
                 "text": "Officers Name",
                 "style": "receipt-table-value",
@@ -179,7 +185,7 @@
                 "bold": true
               }
             ],
-            "{{#var_notesheetData}}[{ \"text\": \"{{name}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\",\"border\": [true, true, true,true], \"margin\": [5, 0, 0, 0] },{ \"text\": \"{{designation}}\", \"style\": \"receipt-table-value\",\"border\": [true, true, true,true], \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] }, { \"text\": \"{{remarks}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"border\": [true, true, true,true],\"margin\": [5, 0, 0, 0] }, { \"text\": \"{{noteDate}}\", \"style\": \"receipt-table-value\", \"border\": [true, true, true,true], \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] }]{{/var_notesheetData}}"
+            "{{#var_notesheetData}}[{ \"text\": \"{{index}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\",\"border\": [true, true, true,true], \"margin\": [5, 0, 0, 0] },{ \"text\": \"{{name}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\",\"border\": [true, true, true,true], \"margin\": [5, 0, 0, 0] },{ \"text\": \"{{designation}}\", \"style\": \"receipt-table-value\",\"border\": [true, true, true,true], \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] }, { \"text\": \"{{remarks}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"border\": [true, true, true,true],\"margin\": [5, 0, 0, 0] }, { \"text\": \"{{noteDate}}\", \"style\": \"receipt-table-value\", \"border\": [true, true, true,true], \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] }]{{/var_notesheetData}}"
           ]
         },
         "margin": [0, 0, 0, 10]
