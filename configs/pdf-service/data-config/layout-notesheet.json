@@ -54,9 +54,31 @@
                 }
               },
               {
+                "variable": "stakeHolderMobileNumber",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.applicationDetails.professionalMobileNumber"
+                }
+              },
+              {
                 "variable": "firmName",
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.applicationDetails.firmName"
+                }
+              },
+              {
+                "variable": "var_notesheetData",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.observationRemarks[*]"
+                },
+                "type": "array",
+                "format": {
+                  "type": "string",
+                  "scema": [
+                    { "variable": "noteDate", "value": "date" },
+                    { "variable": "name", "value": "name" },
+                    { "variable": "remarks", "value": "remarks" },
+                    { "variable": "designation", "value": "designation" }
+                  ]
                 }
               },
               {
@@ -616,6 +638,13 @@
                   "prefix": null,
                   "module": "rainmaker-bpa"
                 }
+              },
+              {
+                "variable": "SubmittedOn",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.SubmittedOn"
+                },
+                "type":"date"
               },
               {
                 "variable": "SUMMARY1",
