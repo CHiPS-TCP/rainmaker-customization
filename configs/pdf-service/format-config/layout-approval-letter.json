@@ -205,15 +205,15 @@
       },
 
       {
-        "ol": [
-          "विकास प्रारम्भ करने के पहले भवन निर्माण की अनुज्ञा नगर निगम/नगर पालिका/नगर तथा ग्राम निवेशसे प्राप्त की जाये।",
-          {
-            "text": ".............................. अनुमोदित योजना की प्रति संलग्न है।"
-          }
-        ],
-        "margin": [40, 0, 0, 0]
+        "table": {
+          "widths": ["auto", "auto", "auto"],
+          "body": [
+            "{{#var_approvalConditions}}[{ \"text\": \"{{index}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] },{ \"text\": \"{{question}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] },{ \"text\": \"{{remarks}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] }]{{/var_approvalConditions}}"
+          ]
+        },
+        "layout": "noBorders",
+        "margin": [0, 0, 0, 10]
       },
-
       {
         "stack": [
           { "text": "संचालक", "bold": true, "margin": [0, 0, 30, 0] },
@@ -250,52 +250,16 @@
       {
         "text": "प्रतिलिपि-"
       },
+
       {
-        "ol": [
-          {
-            "text": [
-              { "text": "आयुक्त नगरपालिक निगम " },
-              {
-                "text": "{{logo_header}}",
-                "decoration": "underline",
-                "decorationStyle": "dotted"
-              },
-              {
-                "text": " की ओर अनुमोदित रेखांक की प्रति सहित सूचनार्थ अग्रेषित।"
-              }
-            ],
-            "margin": [40, 0, 0, 0]
-          },
-          {
-            "text": [
-              {
-                "text": "मुख्य कार्यपालन अधिकारी, नगर तथा ग्राम विकास प्राधिकरण की ओर अनुमोदित रेखांक की प्रति सहित सूचनार्थ अग्रेषित। "
-              }
-            ],
-            "margin": [40, 0, 0, 0]
-          },
-          {
-            "text": [
-              { "text": "मुख्य नगर पालिका अधिकारी, नगर पालिका " },
-              {
-                "text": "{{districtName}}",
-                "decoration": "underline",
-                "decorationStyle": "dotted"
-              },
-              { "text": " सरपंच, ग्राम पंचायत " },
-              {
-                "text": "{{#var_villages}}{{villageName}},{{/var_villages}}",
-                "decoration": "underline",
-                "decorationStyle": "dotted"
-              },
-              {
-                "text": "की ओर अनुमोदित रेखांक की प्रति सहित सूचनार्थ अग्रेषित।"
-              }
-            ],
-            "margin": [40, 0, 0, 0]
-          }
-        ],
-        "margin": [0, 0, 0, 0]
+        "table": {
+          "widths": ["auto", "auto"],
+          "body": [
+            "{{#var_pratilipi}}[{ \"text\": \"{{index}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] }, { \"text\": \"{{text}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] }]{{/var_pratilipi}}"
+          ]
+        },
+        "layout": "noBorders",
+        "margin": [0, 0, 0, 10]
       },
       {
         "stack": [

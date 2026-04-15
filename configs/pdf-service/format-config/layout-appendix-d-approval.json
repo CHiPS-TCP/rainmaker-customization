@@ -213,12 +213,14 @@
         "margin": [40, 0, 0, 0]
       },
       {
-        "ol": [
-          {
-            "text": "{{rejectionComments}}"
-          }
-        ],
-        "margin": [40, 0, 0, 0]
+        "table": {
+          "widths": ["auto", "auto", "auto"],
+          "body": [
+            "{{#var_approvalConditions}}[{ \"text\": \"{{index}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] },{ \"text\": \"{{question}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] },{ \"text\": \"{{remarks}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] }]{{/var_approvalConditions}}"
+          ]
+        },
+        "layout": "noBorders",
+        "margin": [0, 0, 0, 10]
       },
       {
         "stack": [
@@ -285,6 +287,43 @@
             "margin": [0, 0, 0, 0]
           }
         ]
+      },
+      {
+        "text": [
+          { "text": "क्रमांक ", "bold": true },
+          {
+            "text": "{{applicationNo}}",
+            "decoration": "underline",
+            "decorationStyle": "dotted"
+          }
+        ]
+      },
+      {
+        "text": "प्रतिलिपि-"
+      },
+
+      {
+        "table": {
+          "widths": ["auto", "auto"],
+          "body": [
+            "{{#var_pratilipi}}[{ \"text\": \"{{index}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] }, { \"text\": \"{{text}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] }]{{/var_pratilipi}}"
+          ]
+        },
+        "layout": "noBorders",
+        "margin": [0, 0, 0, 10]
+      },
+      {
+        "stack": [
+          { "text": "संचालक", "bold": true, "margin": [0, 0, 30, 0] },
+          { "text": "नगर तथा ग्राम निवेश विभाग,", "margin": [0, 0, 0, 0] },
+          {
+            "text": "छत्तीसगढ़, रायपुर",
+            "margin": [0, 0, 10, 0]
+          }
+        ],
+        "width": "*",
+        "alignment": "right",
+        "margin": [0, 0, 30, 0]
       }
       
     ]
