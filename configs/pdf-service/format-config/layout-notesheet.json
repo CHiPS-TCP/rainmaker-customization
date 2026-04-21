@@ -17,7 +17,7 @@
       [
         {"text": "","border": [true, true, false, false]},
         {
-          "text": "Raipur Regional Office",
+          "text": "{{logo_header}} Regional Office",
           "alignment": "center",
           "fontSize": 15, 
           "bold":true,

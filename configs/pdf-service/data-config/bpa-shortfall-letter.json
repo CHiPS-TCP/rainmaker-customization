@@ -26,7 +26,13 @@
               {
                 "variable": "districtName",
                 "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.district.name"
+                  "path": "$.additionalDetails.district.name"
+                }
+              },
+              {
+                "variable": "shortFallDate",
+                "value": {
+                  "path": "$.shortFallDate"
                 }
               },
               {
@@ -38,7 +44,7 @@
               {
                 "variable": "var_villages",
                 "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.village[*]"
+                  "path": "$.additionalDetails.village[*]"
                 },
                 "type": "array",
                 "format": {
@@ -49,7 +55,7 @@
               {
                 "variable": "var_tehsils",
                 "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.tehsil[*]"
+                  "path": "$.additionalDetails.tehsil[*]"
                 },
                 "type": "array",
                 "format": {
@@ -60,41 +66,52 @@
               {
                 "variable": "var_shortfalldata",
                 "value": {
-                  "path": "$.applicationData.shortFallData[*]"
+                  "path": "$.shortFallData[*]"
                 },
                 "type": "array",
                 "format": {
                   "type": "string",
                   "scema": [
                     { "variable": "documentType", "value": "documentType" },
-                    { "variable": "remarks", "value": "remarks" },
+                    { "variable": "remarks", "value": "remString" },
                     { "variable": "index", "value": "index" }
                   ]
                 }
               },
               {
+                "variable": "var_owners",
+                "value": {
+                  "path": "$.landInfo.owners[*]"
+                },
+                "type": "array",
+                "format": {
+                  "type": "string",
+                  "scema": [{ "variable": "ownerName", "value": "name" }]
+                }
+              },
+              {
                 "variable": "var_shortfallremarks",
                 "value": {
-                  "path": "$.applicationData.shortFallData[*]"
+                  "path": "$.shortFallData[*]"
                 },
                 "type": "array",
                 "format": {
                   "type": "array",
                   "scema": [
-                    { "variable": "remarks", "value": "remarks" }
+                    { "variable": "remarks", "value": "remString" }
                   ]
                 }
               },
               {
                 "variable": "halkaNo",
                 "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.halkaNo"
+                  "path": "$.additionalDetails.halkaNo"
                 }
               },
               {
                 "variable": "riNo",
                 "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.riNo"
+                  "path": "$.additionalDetails.riNo"
                 }
               },
               {
@@ -169,12 +186,6 @@
                 }
               },
               {
-                "variable": "riNo",
-                "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.riNo"
-                }
-              },
-              {
                 "variable": "ownerEmail",
                 "value": {
                   "path": "$.userInfo.emailId"
@@ -228,20 +239,9 @@
                 }
               },
               {
-                "variable": "var_owners",
-                "value": {
-                  "path": "$.applicationData.landInfo.owners[*]"
-                },
-                "type": "array",
-                "format": {
-                  "type": "string",
-                  "scema": [{ "variable": "ownerName", "value": "name" }]
-                }
-              },
-              {
                 "variable": "ownerAddress",
                 "value": {
-                  "path": "$.applicationData.owners[0].permanentAddress"
+                  "path": "$.landInfo.owners[0].permanentAddress"
                 }
               },
 
@@ -303,7 +303,7 @@
               {
                 "variable": "khasraNumber",
                 "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.khasraNo"
+                  "path": "$.additionalDetails.khasraNo"
                 }
               },
               {
@@ -699,7 +699,7 @@
               {
                 "variable": "SubmittedOn",
                 "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.SubmittedOn"
+                  "path": "$.applicationDate"
                 },
                 "type": "date"
               },
@@ -808,7 +808,7 @@
             "externalAPI": [
               {
                 "path": "http://egov-mdms-service:8080/egov-mdms-service/v1/_get",
-                "queryParam": "moduleName=tenant&masterName=tenants&tenantId=cg&filter=%5B?(@.code=='{$.applicationData.tenantId}')%5D",
+                "queryParam": "moduleName=tenant&masterName=tenants&tenantId=cg&filter=%5B?(@.code=='{$.tenantId}')%5D",
                 "apiRequest": null,
                 "responseMapping": [
                   {

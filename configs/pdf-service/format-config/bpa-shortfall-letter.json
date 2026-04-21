@@ -138,7 +138,7 @@
             "alignment": "right",
             "text": [
               { "text": " {{districtName}} दिनांक : ", "bold": true },
-              { "text": "{{otpverifieddate}}" }
+              { "text": "{{shortFallDate}}" }
             ]
           }
         ]
@@ -147,7 +147,7 @@
         "stack": [
           { "text": "प्रति," },
           {
-            "text": "{{combinedOwnersName}}",
+            "text": "{{#var_owners}} {{ownerName}}, {{/var_owners}}",
             "margin": [20, 0, 0, 0]
           },
           {
