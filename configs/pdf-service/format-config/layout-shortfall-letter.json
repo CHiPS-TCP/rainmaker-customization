@@ -178,7 +178,8 @@
         "text": [
           { "text": "उपरोक्त संदर्भित आवेदन पत्र में यथावर्णित भूमि " },
           {
-            "text": " खसरा नं :- {{khasraNumber}}; Village: {{#var_villages}}{{villageName}},{{/var_villages}}; Halka No: {{halkaNo}}; RI No: {{riNo}}; Tehsil(s) {{#var_tehsils}}{{tehsil}},{{/var_tehsils}}; District : {{districtName}} ", "bold":true
+            "text": " खसरा नं :- {{#var_khasra}}{{KhasraNo}},{{/var_khasra}}; Village: {{#var_villages}}{{villageName}},{{/var_villages}}; Halka No: {{halkaNo}}; RI No: {{riNo}}; Tehsil(s) {{#var_tehsils}}{{tehsil}},{{/var_tehsils}}; District : {{districtName}} ",
+            "bold": true
           },
           {
             "text": "छ.ग स्थित भूमि पर विकास अनुज्ञा चाही गई थी। उपरोक्त आवेदन का परीक्षण किया गया तत्पश्चात प्रकरण के निराकरण हेतु निम्नलिखित दस्तावेजों की आवश्यकता हैं: - "
@@ -212,9 +213,9 @@
       },
       {
         "table": {
-          "widths": ["auto", "auto"],
+          "widths": ["auto", "*"],
           "body": [
-            "{{#var_shortfalldata}}[{ \"text\": \"{{index}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] },{ \"text\": \"{{remarks}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] }]{{/var_shortfalldata}}"
+            "{{#var_shortfalldata}}[{ \"text\": \"{{index}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] },{ \"text\": \"{{latestRemark}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] }]{{/var_shortfalldata}}"
           ]
         },
         "layout": "noBorders",

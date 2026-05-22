@@ -58,6 +58,17 @@
                 }
               },
               {
+                "variable": "var_khasra",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.khasras[*]"
+                },
+                "type": "array",
+                "format": {
+                  "type": "string",
+                  "scema": [{ "variable": "KhasraNo", "value": "KhasraNo" }]
+                }
+              },
+              {
                 "variable": "var_shortfalldata",
                 "value": {
                   "path": "$.applicationData.shortFallData[*]"
@@ -67,21 +78,31 @@
                   "type": "string",
                   "scema": [
                     { "variable": "documentType", "value": "documentType" },
-                    { "variable": "remarks", "value": "remarks" },
-                    { "variable": "index", "value": "index" }
+                    { "variable": "index", "value": "index" },
+                    {
+                      "variable": "latestRemark",
+                      "value": "latestRemark.remark"
+                    },
+                    { "variable": "latestRole", "value": "latestRemark.role" },
+                    {
+                      "variable": "latestStatus",
+                      "value": "latestRemark.status"
+                    }
                   ]
                 }
               },
               {
                 "variable": "var_shortfallremarks",
                 "value": {
-                  "path": "$.applicationData.shortFallData[*]"
+                  "path": "$.applicationData.shortFallData[*].remarksJson[*]"
                 },
                 "type": "array",
                 "format": {
-                  "type": "array",
+                  "type": "string",
                   "scema": [
-                    { "variable": "remarks", "value": "remarks" }
+                    { "variable": "role", "value": "role" },
+                    { "variable": "remark", "value": "remark" },
+                    { "variable": "status", "value": "status" }
                   ]
                 }
               },
@@ -298,12 +319,6 @@
                 "variable": "wardnumber",
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.wardnumber"
-                }
-              },
-              {
-                "variable": "khasraNumber",
-                "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.khasraNo"
                 }
               },
               {
@@ -803,7 +818,7 @@
               }
             ]
           },
-         
+
           {
             "externalAPI": [
               {
@@ -823,12 +838,10 @@
                   {
                     "variable": "contactNumber",
                     "value": "$.MdmsRes.tenant.tenants[0].contactNumber"
-                    
                   },
                   {
                     "variable": "emailId",
                     "value": "$.MdmsRes.tenant.tenants[0].emailId"
-                  
                   },
                   {
                     "variable": "logo_header",
