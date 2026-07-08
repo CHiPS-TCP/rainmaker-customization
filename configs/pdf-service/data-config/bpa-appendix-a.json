@@ -104,7 +104,7 @@
               {
                 "variable": "architectId",
                 "value": {
-                  "path": "$.applicationData.applicationData.additionalDetails.stakeholderRegistrationNumber"
+                  "path": "$.licenseData.Licenses[0].licenseData.licenseNumber"
                 }
               },
               {
