@@ -7,7 +7,27 @@ serviceMaps:
     isTransaction: true
     queryMaps:
 
-    - query: UPDATE eg_wf_processinstance_v2 SET latest=false where tenantId = ? and businessService = ? and businessId = ? ;
+    - query: UPDATE eg_wf_processinstance_v2 SET latest=false, tenantid = ? where businessService = ? and businessId = ? ;
+      basePath: ProcessInstances.*
+      jsonMaps:
+      - jsonPath: $.ProcessInstances.*.tenantId
+
+      - jsonPath: $.ProcessInstances.*.businessService
+
+      - jsonPath: $.ProcessInstances.*.businessId
+
+
+    - query: UPDATE eg_wf_assignee_v2 SET tenantid = ? WHERE processinstanceid IN (SELECT id FROM eg_wf_processinstance_v2 WHERE businessService = ? AND businessId = ?);
+      basePath: ProcessInstances.*
+      jsonMaps:
+      - jsonPath: $.ProcessInstances.*.tenantId
+
+      - jsonPath: $.ProcessInstances.*.businessService
+
+      - jsonPath: $.ProcessInstances.*.businessId
+
+
+    - query: UPDATE eg_wf_document_v2 SET tenantid = ? WHERE processinstanceid IN (SELECT id FROM eg_wf_processinstance_v2 WHERE businessService = ? AND businessId = ?);
       basePath: ProcessInstances.*
       jsonMaps:
       - jsonPath: $.ProcessInstances.*.tenantId
@@ -269,4 +289,6 @@ serviceMaps:
         - jsonPath: $.BusinessServices.*.states.*.actions.*.auditDetails.createdTime
         - jsonPath: $.BusinessServices.*.states.*.actions.*.auditDetails.lastModifiedBy
         - jsonPath: $.BusinessServices.*.states.*.actions.*.auditDetails.lastModifiedTime
+
+
 
