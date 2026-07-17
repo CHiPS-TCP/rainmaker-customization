@@ -73,7 +73,15 @@
                   "type": "string",
                   "scema": [
                     { "variable": "documentType", "value": "documentType" },
-                    { "variable": "remarks", "value": "remString" },
+                    {
+                      "variable": "latestRemark",
+                      "value": "latestRemark.remark"
+                    },
+                    { "variable": "latestRole", "value": "latestRemark.role" },
+                    {
+                      "variable": "latestStatus",
+                      "value": "latestRemark.status"
+                    },
                     { "variable": "index", "value": "index" }
                   ]
                 }
