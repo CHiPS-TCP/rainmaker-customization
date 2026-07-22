@@ -161,6 +161,29 @@
                 }
               },
               {
+                "variable": "var_approvalConditions",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.otherApprovalConditions[*]"
+                },
+                "type": "array",
+                "format": {
+                  "type": "string",
+                  "scema": [
+                    {
+                      "variable": "question",
+                      "value": "question",
+                      "localisation": {
+                        "required": true,
+                        "prefix": null,
+                        "module": "rainmaker-common"
+                      }
+                    },
+                    { "variable": "remarks", "value": "remarks" },
+                    { "variable": "index", "value": "index" }
+                  ]
+                }
+              },
+              {
                 "variable": "var_owners",
                 "value": {
                   "path": "$.applicationData.landInfo.owners[*]"

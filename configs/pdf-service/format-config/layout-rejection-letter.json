@@ -205,12 +205,14 @@
       },
 
       {
-        "ol": [
-          {
-            "text": "{{rejectionComments}}"
-          }
-        ],
-        "margin": [40, 0, 0, 0]
+        "table": {
+          "widths": ["auto", "auto", "auto"],
+          "body": [
+            "{{#var_approvalConditions}}[{ \"text\": \"{{index}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] },{ \"text\": \"{{question}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] },{ \"text\": \"{{remarks}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] }]{{/var_approvalConditions}}"
+          ]
+        },
+        "layout": "noBorders",
+        "margin": [0, 0, 0, 10]
       },
 
       {
