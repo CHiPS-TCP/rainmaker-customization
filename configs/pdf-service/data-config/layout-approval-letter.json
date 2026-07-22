@@ -19,6 +19,12 @@
                 }
               },
               {
+                "variable": "applicationString",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.applicationString"
+                }
+              },
+              {
                 "variable": "districtName",
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.district.name"

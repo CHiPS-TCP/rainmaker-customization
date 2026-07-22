@@ -18,6 +18,12 @@
                 }
               },
               {
+                "variable": "applicationString",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.applicationString"
+                }
+              },
+              {
                 "variable": "var_pratilipi",
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.pratilipi[*]"

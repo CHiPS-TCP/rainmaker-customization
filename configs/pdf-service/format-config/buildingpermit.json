@@ -185,42 +185,7 @@
       },
 
       {
-        "text": [
-          { "text": "उपरोक्त संदर्भित आवेदन पत्र में यथावर्णित भूमि " },
-          {
-            "text": "Khasra No : {{khasraNumber}} , {{proposedSiteAddress}} Tehsil: Raipur: District: Raipur", "bold": true
-          },
-          {
-            "text": " (छ.ग.) स्थित भूमि पर विकास अनुज्ञा के अनुसार इस कार्यालय के"
-          },
-          {
-            "text": " {{planPermissionNo}} ",
-            "bold": true
-          },
-          {
-            "text": "दिनांक "
-          },
-          {
-            "text": " {{submissionDateFormatted}}",
-            "bold": true
-          },
-          {
-            "text": "अनुसार "
-          },
-          {
-            "text": " प्लाट नं {{plotNo}} रकबा {{PLOT_SIZE}} वर्ग मी.", "bold": true
-          },
-          {
-            "text": " भूखण्ड पर "
-          },
-          {
-            "text": " {{RESIDENTIAL_PLOTTED}} हेतु भवन निर्माण अनुज्ञा ",
-            "bold": true
-          },
-          {
-            "text": " छ.ग.भूमि विकास नियम, 1984 के 27(1) और 2(5)(क) के तहत निम्न शर्तो के अधीन दी जाती है :- "
-          }
-        ],
+        "text": "{{applicationString}}",
         "margin": [30, 0, 0, 8]
       },
 

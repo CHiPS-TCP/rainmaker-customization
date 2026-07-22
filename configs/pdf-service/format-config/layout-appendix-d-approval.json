@@ -161,55 +161,7 @@
       },
 
       {
-        "text": [
-          { "text": "खसरा क्रमांक" },
-          {
-            "text": " {{khasraNumber}}",
-            "decoration": "underline",
-            "decorationStyle": "dotted"
-          },
-          { "text": " भू-खण्ड क्रमांक" },
-          {
-            "text": " {{sitePlotNo}}",
-            "decoration": "underline",
-            "decorationStyle": "dotted"
-          },
-          {
-            "text": " मोहल्ला/बाजार"
-          },
-          {
-            "text": " {{ownerAddress}}, {{pincode}}",
-            "decoration": "underline",
-            "decorationStyle": "dotted"
-          },
-          {
-            "text": " नगर क्रमांक"
-          },
-          {
-            "text": " {{riNo}}",
-            "decoration": "underline",
-            "decorationStyle": "dotted"
-          },
-          {
-            "text": " में भूमि/भवन के विकास का निर्माण हेतु परमिट की स्वीकृति के लिए आप से आवेदन "
-          },
-          {
-            "text": " {{applicationNo}}",
-            "decoration": "underline",
-            "decorationStyle": "dotted"
-          },
-          {
-            "text": " दिनांक "
-          },
-          {
-            "text": " {{SubmittedOn}}",
-            "decoration": "underline",
-            "decorationStyle": "dotted"
-          },
-          {
-            "text": " के संदर्भ में आपको सूचित करता हूं कि प्राधिकारी द्वारा निम्नलिखित निबन्धनों तथा शर्तों के अध्यधीन रहते हुए स्वीकृति दी गई है। "
-          }
-        ],
+        "text": "{{applicationString}}",
         "margin": [40, 0, 0, 0]
       },
       {
