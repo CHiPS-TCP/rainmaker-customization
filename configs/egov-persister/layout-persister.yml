@@ -11,8 +11,8 @@ serviceMaps:
             INSERT INTO eg_layout (
               id, applicationno, tenantid, status, createdby,
               lastmodifiedby, createdtime, lastmodifiedtime, layoutno, applicationtype, layouttype,
-              accountid, applicationstatus, vasikaNumber, vasikaDate, inspectiondate
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?);
+              accountid, applicationstatus, vasikaNumber, vasikaDate
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?);
           basePath: $.Layout
           jsonMaps:
             - jsonPath: $.Layout.id
@@ -30,7 +30,6 @@ serviceMaps:
             - jsonPath: $.Layout.applicationStatus
             - jsonPath: $.Layout.vasikaNumber
             - jsonPath: $.Layout.vasikaDate
-            - jsonPath: $.Layout.inspectionDate
 
         - query: >
             INSERT INTO eg_layout_auditdetails (
@@ -137,7 +136,7 @@ serviceMaps:
              SET status = ?, applicationstatus = ?, layoutno = ?,
              applicationtype = ?, layouttype = ?,
              lastmodifiedby = ?, lastmodifiedtime = ?,
-             tenantid = ?, inspectiondate = ?
+             tenantid = ?
              WHERE id = ?;
 
           basePath: $.Layout
@@ -153,7 +152,6 @@ serviceMaps:
             - jsonPath: $.Layout.auditDetails.lastModifiedTime
 
             - jsonPath: $.Layout.tenantId
-            - jsonPath: $.Layout.inspectionDate
 
             - jsonPath: $.Layout.id
 
