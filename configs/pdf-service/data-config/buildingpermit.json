@@ -94,7 +94,7 @@
                       "value": "question",
                       "localisation": {
                         "required": true,
-                        "prefix": "BPA_",
+                        "prefix": "BPA",
                         "module": "rainmaker-common"
                       }
                     },
