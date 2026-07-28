@@ -29,7 +29,7 @@
           {
             "stack": [
               {
-                "text": "{{officer_desig_hindi}} , {{municipality_name_hindi}} ",
+                "text": "{{headerLine1}}",
                 "style": "sub-header",
                 "alignment": "center",
                 "margin": [-10, 3, 0, 0],
@@ -38,7 +38,7 @@
                 "color": "#810c01"
               },
               {
-                "text": "{{name_hindi}} ",
+                "text": "{{headerLine2}}",
                 "style": "header",
                 "alignment": "center",
                 "fontSize": 18,
@@ -46,7 +46,7 @@
                 "bold": true
               },
               {
-                "text": "{{officer_desig}} of {{municipality_name}}",
+                "text": "{{headerLine3}}",
                 "style": "header",
                 "alignment": "center",
                 "fontSize": 12,
@@ -54,7 +54,7 @@
                 "color": "black"
               },
               {
-                "text": "{{logo_header}} Regional-C.G.",
+                "text": "{{headerLine4}}",
                 "style": "header",
                 "alignment": "center",
                 "fontSize": 12,

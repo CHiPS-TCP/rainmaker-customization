@@ -819,6 +819,22 @@
                   {
                     "variable": "ulbGrade",
                     "value": "$.MdmsRes.tenant.tenants[0].city.ulbGrade"
+                  },
+                  {
+                    "variable": "headerLine1",
+                    "value": "$.MdmsRes.tenant.tenants[0].city.headerLine1"
+                  },
+                  {
+                    "variable": "headerLine2",
+                    "value": "$.MdmsRes.tenant.tenants[0].city.headerLine2"
+                  },
+                  {
+                    "variable": "headerLine3",
+                    "value": "$.MdmsRes.tenant.tenants[0].city.headerLine3"
+                  },
+                  {
+                    "variable": "headerLine4",
+                    "value": "$.MdmsRes.tenant.tenants[0].city.headerLine4"
                   }
                 ]
               }
