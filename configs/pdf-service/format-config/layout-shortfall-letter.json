@@ -215,7 +215,7 @@
         "table": {
           "widths": ["auto", "*"],
           "body": [
-            "{{#var_shortfalldata}}[{ \"text\": \"{{index}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] },{ \"text\": \"{{latestRemark}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] }]{{/var_shortfalldata}}"
+            "{{#var_shortfallremarks}}[{ \"text\": \"{{index}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] },{ \"text\": \"{{remarks}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] }]{{/var_shortfallremarks}}"
           ]
         },
         "layout": "noBorders",

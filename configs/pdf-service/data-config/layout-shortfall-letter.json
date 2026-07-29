@@ -94,15 +94,14 @@
               {
                 "variable": "var_shortfallremarks",
                 "value": {
-                  "path": "$.applicationData.shortFallData[*].remarksJson[*]"
+                  "path": "$.applicationData.layoutDetails.additionalDetails.observationRemarks[*]"
                 },
                 "type": "array",
                 "format": {
                   "type": "string",
                   "scema": [
-                    { "variable": "role", "value": "role" },
-                    { "variable": "remark", "value": "remark" },
-                    { "variable": "status", "value": "status" }
+                    { "variable": "index", "value": "index" },
+                    { "variable": "remarks", "value": "remarks" }
                   ]
                 }
               },
