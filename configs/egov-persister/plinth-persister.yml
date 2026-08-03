@@ -1,0 +1,257 @@
+serviceMaps:
+  serviceName: plinth-services
+  mappings:
+    - version: "1.0"
+      description: Persists Plinth details in eg_plinth table
+      fromTopic: save-plinth-topic
+      isTransaction: true
+      queryMaps:
+        - query: INSERT INTO eg_plinth (id, applicationno, plinthno, tenantid, sanctionno, sanctiondate, permissionvaliditydate, commencementdate, buildingno, plinthcompletiondate, status, applicationstatus, accountid, createdby, lastmodifiedby, createdtime, lastmodifiedtime, applicationtype) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: Plinth
+          jsonMaps:
+            - jsonPath: $.Plinth.id
+            - jsonPath: $.Plinth.applicationNo
+            - jsonPath: $.Plinth.plinthNo
+            - jsonPath: $.Plinth.tenantId
+            - jsonPath: $.Plinth.sanctionNo
+            - jsonPath: $.Plinth.sanctionDate
+            - jsonPath: $.Plinth.permissionValidityDate
+            - jsonPath: $.Plinth.commencementDate
+            - jsonPath: $.Plinth.buildingNo
+            - jsonPath: $.Plinth.plinthCompletionDate
+            - jsonPath: $.Plinth.status
+            - jsonPath: $.Plinth.applicationStatus
+            - jsonPath: $.Plinth.accountId
+            - jsonPath: $.Plinth.auditDetails.createdBy
+            - jsonPath: $.Plinth.auditDetails.lastModifiedBy
+            - jsonPath: $.Plinth.auditDetails.createdTime
+            - jsonPath: $.Plinth.auditDetails.lastModifiedTime
+            - jsonPath: $.Plinth.applicationType
+
+        - query: INSERT INTO eg_plinth_auditdetails (id, applicationno, plinthno, tenantid, sanctionno, sanctiondate, permissionvaliditydate, commencementdate, buildingno, plinthcompletiondate, status, applicationstatus, accountid, createdby, lastmodifiedby, createdtime, lastmodifiedtime, applicationtype) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: Plinth
+          jsonMaps:
+            - jsonPath: $.Plinth.id
+            - jsonPath: $.Plinth.applicationNo
+            - jsonPath: $.Plinth.plinthNo
+            - jsonPath: $.Plinth.tenantId
+            - jsonPath: $.Plinth.sanctionNo
+            - jsonPath: $.Plinth.sanctionDate
+            - jsonPath: $.Plinth.permissionValidityDate
+            - jsonPath: $.Plinth.commencementDate
+            - jsonPath: $.Plinth.buildingNo
+            - jsonPath: $.Plinth.plinthCompletionDate
+            - jsonPath: $.Plinth.status
+            - jsonPath: $.Plinth.applicationStatus
+            - jsonPath: $.Plinth.accountId
+            - jsonPath: $.Plinth.auditDetails.createdBy
+            - jsonPath: $.Plinth.auditDetails.lastModifiedBy
+            - jsonPath: $.Plinth.auditDetails.createdTime
+            - jsonPath: $.Plinth.auditDetails.lastModifiedTime
+            - jsonPath: $.Plinth.applicationType
+
+        - query: INSERT INTO eg_plinth_details (id, plinthid, additionaldetails, tenantid) VALUES (?, ?, ?, ?);
+          basePath: Plinth
+          jsonMaps:
+            - jsonPath: $.Plinth.plinthDetails.id
+            - jsonPath: $.Plinth.id
+            - jsonPath: $.Plinth.plinthDetails.additionalDetails
+              type: JSON
+              dbType: JSONB
+            - jsonPath: $.Plinth.tenantId
+
+        - query: INSERT INTO eg_plinth_owner (uuid, plinthid, status, additionaldetails) VALUES (?, ?, ?, ?);
+          basePath: Plinth.owners.*
+          jsonMaps:
+            - jsonPath: $.Plinth.owners.*.uuid
+            - jsonPath: $.Plinth.id
+            - jsonPath: $.Plinth.owners.*.status
+            - jsonPath: $.Plinth.owners.*.additionalDetails
+              type: JSON
+              dbType: JSONB
+
+        - query: INSERT INTO eg_plinth_document (uuid, documenttype, documentattachment, documentuid, plinthid, createdby, lastmodifiedby, createdtime, lastmodifiedtime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: Plinth.documents.*
+          jsonMaps:
+            - jsonPath: $.Plinth.documents.*.uuid
+            - jsonPath: $.Plinth.documents.*.documentType
+            - jsonPath: $.Plinth.documents.*.documentAttachment
+            - jsonPath: $.Plinth.documents.*.documentUid
+            - jsonPath: $.Plinth.id
+            - jsonPath: $.Plinth.auditDetails.createdBy
+            - jsonPath: $.Plinth.auditDetails.lastModifiedBy
+            - jsonPath: $.Plinth.auditDetails.createdTime
+            - jsonPath: $.Plinth.auditDetails.lastModifiedTime
+
+    - version: "1.0"
+      description: Updates Plinth details in eg_plinth table
+      fromTopic: update-plinth-topic
+      isTransaction: true
+      queryMaps:
+        - query: UPDATE eg_plinth SET applicationno=?, plinthno=?, tenantid=?, sanctionno=?, sanctiondate=?, permissionvaliditydate=?, commencementdate=?, buildingno=?, plinthcompletiondate=?, status=?, applicationstatus=?, accountid=?, applicationtype=?, createdby=?, lastmodifiedby=?, createdtime=?, lastmodifiedtime=? WHERE id=?;
+          basePath: Plinth
+          jsonMaps:
+            - jsonPath: $.Plinth.applicationNo
+            - jsonPath: $.Plinth.plinthNo
+            - jsonPath: $.Plinth.tenantId
+            - jsonPath: $.Plinth.sanctionNo
+            - jsonPath: $.Plinth.sanctionDate
+            - jsonPath: $.Plinth.permissionValidityDate
+            - jsonPath: $.Plinth.commencementDate
+            - jsonPath: $.Plinth.buildingNo
+            - jsonPath: $.Plinth.plinthCompletionDate
+            - jsonPath: $.Plinth.status
+            - jsonPath: $.Plinth.applicationStatus
+            - jsonPath: $.Plinth.accountId
+            - jsonPath: $.Plinth.auditDetails.createdBy
+            - jsonPath: $.Plinth.auditDetails.lastModifiedBy
+            - jsonPath: $.Plinth.auditDetails.createdTime
+            - jsonPath: $.Plinth.auditDetails.lastModifiedTime
+            - jsonPath: $.Plinth.applicationType
+            - jsonPath: $.Plinth.id
+
+        - query: INSERT INTO eg_plinth_auditdetails (id, applicationno, plinthno, tenantid, sanctionno, sanctiondate, permissionvaliditydate, commencementdate, buildingno, plinthcompletiondate, status, applicationstatus, accountid, createdby, lastmodifiedby, createdtime, lastmodifiedtime, applicationtype) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: Plinth
+          jsonMaps:
+            - jsonPath: $.Plinth.id
+            - jsonPath: $.Plinth.applicationNo
+            - jsonPath: $.Plinth.plinthNo
+            - jsonPath: $.Plinth.tenantId
+            - jsonPath: $.Plinth.sanctionNo
+            - jsonPath: $.Plinth.sanctionDate
+            - jsonPath: $.Plinth.permissionValidityDate
+            - jsonPath: $.Plinth.commencementDate
+            - jsonPath: $.Plinth.buildingNo
+            - jsonPath: $.Plinth.plinthCompletionDate
+            - jsonPath: $.Plinth.status
+            - jsonPath: $.Plinth.applicationStatus
+            - jsonPath: $.Plinth.accountId
+            - jsonPath: $.Plinth.auditDetails.createdBy
+            - jsonPath: $.Plinth.auditDetails.lastModifiedBy
+            - jsonPath: $.Plinth.auditDetails.createdTime
+            - jsonPath: $.Plinth.auditDetails.lastModifiedTime
+            - jsonPath: $.Plinth.applicationType
+
+        - query: UPDATE eg_plinth_details SET plinthid=?, additionaldetails=?, tenantid=? WHERE id=?;
+          basePath: Plinth
+          jsonMaps:
+            - jsonPath: $.Plinth.id
+            - jsonPath: $.Plinth.plinthDetails.additionalDetails
+              type: JSON
+              dbType: JSONB
+            - jsonPath: $.Plinth.tenantId
+            - jsonPath: $.Plinth.plinthDetails.id
+
+        - query: INSERT INTO eg_plinth_owner (uuid, plinthid, status, additionaldetails) VALUES (?, ?, ?, ?) ON CONFLICT (uuid) DO UPDATE SET status=?, additionaldetails=?;
+          basePath: Plinth.owners.*
+          jsonMaps:
+            - jsonPath: $.Plinth.owners.*.uuid
+            - jsonPath: $.Plinth.id
+            - jsonPath: $.Plinth.owners.*.status
+            - jsonPath: $.Plinth.owners.*.additionalDetails
+              type: JSON
+              dbType: JSONB
+            - jsonPath: $.Plinth.owners.*.status
+            - jsonPath: $.Plinth.owners.*.additionalDetails
+              type: JSON
+              dbType: JSONB
+
+        - query: INSERT INTO eg_plinth_document (uuid, documenttype, documentattachment, documentuid, plinthid, createdby, lastmodifiedby, createdtime, lastmodifiedtime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) ON CONFLICT (uuid) DO UPDATE SET documenttype=?, documentattachment=?, lastmodifiedby=?, lastmodifiedtime=?;
+          basePath: Plinth.documents.*
+          jsonMaps:
+            - jsonPath: $.Plinth.documents.*.uuid
+            - jsonPath: $.Plinth.documents.*.documentType
+            - jsonPath: $.Plinth.documents.*.documentAttachment
+            - jsonPath: $.Plinth.documents.*.documentUid
+            - jsonPath: $.Plinth.id
+            - jsonPath: $.Plinth.auditDetails.createdBy
+            - jsonPath: $.Plinth.auditDetails.lastModifiedBy
+            - jsonPath: $.Plinth.auditDetails.createdTime
+            - jsonPath: $.Plinth.auditDetails.lastModifiedTime
+
+
+    - version: "1.0"
+      description: Inserts Plinth commencement details in eg_plinth_commencement table
+      fromTopic: save-commencement-topic
+      isTransaction: true
+      queryMaps:
+        - query: INSERT INTO eg_plinth_commencement (id, tenantid, applicationno, sanctionno, sanctiondate, permissionvaliditydate, requiredtype, commencementdate, buildingno, mobilenumber, status, createdby, lastmodifiedby, createdtime, lastmodifiedtime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: Commencement
+          jsonMaps:
+            - jsonPath: $.Commencement.id
+            - jsonPath: $.Commencement.tenantId
+            - jsonPath: $.Commencement.applicationNo
+            - jsonPath: $.Commencement.sanctionNo
+            - jsonPath: $.Commencement.sanctionDate
+            - jsonPath: $.Commencement.permissionValidityDate
+            - jsonPath: $.Commencement.requiredType
+            - jsonPath: $.Commencement.commencementDate
+            - jsonPath: $.Commencement.buildingNo
+            - jsonPath: $.Commencement.mobileNumber
+            - jsonPath: $.Commencement.status
+            - jsonPath: $.Commencement.auditDetails.createdBy
+            - jsonPath: $.Commencement.auditDetails.lastModifiedBy
+            - jsonPath: $.Commencement.auditDetails.createdTime
+            - jsonPath: $.Commencement.auditDetails.lastModifiedTime
+
+        - query: INSERT INTO eg_plinth_commencement_auditdetails (id, tenantid, applicationno, sanctionno, sanctiondate, permissionvaliditydate, requiredtype, commencementdate, buildingno, mobilenumber, status, createdby, lastmodifiedby, createdtime, lastmodifiedtime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: Commencement
+          jsonMaps:
+            - jsonPath: $.Commencement.id
+            - jsonPath: $.Commencement.tenantId
+            - jsonPath: $.Commencement.applicationNo
+            - jsonPath: $.Commencement.sanctionNo
+            - jsonPath: $.Commencement.sanctionDate
+            - jsonPath: $.Commencement.permissionValidityDate
+            - jsonPath: $.Commencement.requiredType
+            - jsonPath: $.Commencement.commencementDate
+            - jsonPath: $.Commencement.buildingNo
+            - jsonPath: $.Commencement.mobileNumber
+            - jsonPath: $.Commencement.status
+            - jsonPath: $.Commencement.auditDetails.createdBy
+            - jsonPath: $.Commencement.auditDetails.lastModifiedBy
+            - jsonPath: $.Commencement.auditDetails.createdTime
+            - jsonPath: $.Commencement.auditDetails.lastModifiedTime
+
+    - version: "1.0"
+      description: Updates Plinth commencement details in eg_plinth_commencement table
+      fromTopic: update-commencement-topic
+      isTransaction: true
+      queryMaps:
+        - query: UPDATE eg_plinth_commencement SET tenantid=?, applicationno=?, sanctionno=?, sanctiondate=?, permissionvaliditydate=?, requiredtype=?, commencementdate=?, buildingno=?, mobilenumber=?, status=?, createdby=?, lastmodifiedby=?, createdtime=?, lastmodifiedtime=? WHERE id=?;
+          basePath: Commencement
+          jsonMaps:
+            - jsonPath: $.Commencement.tenantId
+            - jsonPath: $.Commencement.applicationNo
+            - jsonPath: $.Commencement.sanctionNo
+            - jsonPath: $.Commencement.sanctionDate
+            - jsonPath: $.Commencement.permissionValidityDate
+            - jsonPath: $.Commencement.requiredType
+            - jsonPath: $.Commencement.commencementDate
+            - jsonPath: $.Commencement.buildingNo
+            - jsonPath: $.Commencement.mobileNumber
+            - jsonPath: $.Commencement.status
+            - jsonPath: $.Commencement.auditDetails.createdBy
+            - jsonPath: $.Commencement.auditDetails.lastModifiedBy
+            - jsonPath: $.Commencement.auditDetails.createdTime
+            - jsonPath: $.Commencement.auditDetails.lastModifiedTime
+            - jsonPath: $.Commencement.id
+
+        - query: INSERT INTO eg_plinth_commencement_auditdetails (id, tenantid, applicationno, sanctionno, sanctiondate, permissionvaliditydate, requiredtype, commencementdate, buildingno, mobilenumber, status, createdby, lastmodifiedby, createdtime, lastmodifiedtime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: Commencement
+          jsonMaps:
+            - jsonPath: $.Commencement.id
+            - jsonPath: $.Commencement.tenantId
+            - jsonPath: $.Commencement.applicationNo
+            - jsonPath: $.Commencement.sanctionNo
+            - jsonPath: $.Commencement.sanctionDate
+            - jsonPath: $.Commencement.permissionValidityDate
+            - jsonPath: $.Commencement.requiredType
+            - jsonPath: $.Commencement.commencementDate
+            - jsonPath: $.Commencement.buildingNo
+            - jsonPath: $.Commencement.mobileNumber
+            - jsonPath: $.Commencement.status
+            - jsonPath: $.Commencement.auditDetails.createdBy
+            - jsonPath: $.Commencement.auditDetails.lastModifiedBy
+            - jsonPath: $.Commencement.auditDetails.createdTime
+            - jsonPath: $.Commencement.auditDetails.lastModifiedTime
