@@ -1,0 +1,159 @@
+SearchDefinitions:
+  moduleName: plinth-service
+  summary: Plinth Services Inbox API
+  version: 1.0.0
+  definitions:
+    - name: inboxplinthsearch
+      query:
+        baseQuery: |
+          Select row_to_json(result) from (
+            select DISTINCT(plinth.applicationno) as applicationnumber, 
+                   pi.createdtime, 
+                   pi.status as status_id, 
+                   plinth.id,
+                   plinth.tenantid,
+                   plinth.status,
+                   plinth.createdby,
+                   plinth.lastmodifiedby,
+                   plinth.createdtime as application_date,
+                   plinth.lastmodifiedtime,
+                   plinth.applicationtype,
+                   plinth.accountid
+            from eg_plinth as plinth
+            INNER JOIN eg_wf_processinstance_v2 pi ON pi.businessid = plinth.applicationno
+            LEFT JOIN eg_wf_assignee_v2 assg ON pi.id = assg.processinstanceid
+            $where 
+            AND pi.latest = TRUE
+            order by plinth.createdtime asc
+            $pagination
+          ) result
+        groupBy:
+        orderBy:
+      searchParams:
+        condition: AND
+        params:
+          - name: plinth.tenantid
+            isMandatory: true
+            jsonPath: $.searchCriteria.tenantId
+          - name: plinth.applicationno
+            isMandatory: false
+            jsonPath: $.searchCriteria.applicationNumber
+          - name: assg.assignee
+            isMandatory: false
+            jsonPath: $.searchCriteria.assignee
+          - name: pi.status
+            isMandatory: false
+            jsonPath: $.searchCriteria.status
+          - name: pi.businessservice
+            isMandatory: false
+            jsonPath: $.searchCriteria.businessservice
+          - name: plinth.accountid
+            isMandatory: false
+            jsonPath: $.searchCriteria.userid
+        pagination:
+          noOfRecords: $.searchCriteria.noOfRecords
+          offset: $.searchCriteria.offset
+      output:
+        jsonFormat: {"ResponseInfo": {},"Plinths": []}
+        outJsonPath: $.Plinths
+        responseInfoPath: $.ResponseInfo
+
+    - name: inboxplinthsearchcount
+      query:
+        baseQuery: |
+          SELECT row_to_json(TotalCount) from (
+            SELECT COUNT(result) from (
+              select DISTINCT(plinth.applicationno) as applicationnumber, 
+                     pi.createdtime
+              from eg_plinth as plinth
+              INNER JOIN eg_wf_processinstance_v2 pi ON pi.businessid = plinth.applicationno
+              LEFT JOIN eg_wf_assignee_v2 assg ON pi.id = assg.processinstanceid
+              $where 
+              AND pi.latest = TRUE
+            ) result
+          ) TotalCount
+        groupBy:
+        orderBy:
+      searchParams:
+        condition: AND
+        params:
+          - name: plinth.tenantid
+            isMandatory: true
+            jsonPath: $.searchCriteria.tenantId
+          - name: plinth.applicationno
+            isMandatory: false
+            jsonPath: $.searchCriteria.applicationNumber
+          - name: assg.assignee
+            isMandatory: false
+            jsonPath: $.searchCriteria.assignee
+          - name: pi.status
+            isMandatory: false
+            jsonPath: $.searchCriteria.status
+          - name: pi.businessservice
+            isMandatory: false
+            jsonPath: $.searchCriteria.businessservice
+          - name: plinth.accountid
+            isMandatory: false
+            jsonPath: $.searchCriteria.userid
+        pagination:
+          noOfRecords: $.searchCriteria.noOfRecords
+          offset: $.searchCriteria.offset
+      output:
+        jsonFormat: {"ResponseInfo": {},"TotalCount": {}}
+        outJsonPath: $.TotalCount
+        responseInfoPath: $.ResponseInfo
+
+    - name: inboxplinthsearchdesc
+      query:
+        baseQuery: |
+          Select row_to_json(result) from (
+            select DISTINCT(plinth.applicationno) as applicationnumber, 
+                   pi.createdtime, 
+                   pi.status as status_id, 
+                   plinth.id,
+                   plinth.tenantid,
+                   plinth.status,
+                   plinth.createdby,
+                   plinth.lastmodifiedby,
+                   plinth.createdtime as application_date,
+                   plinth.lastmodifiedtime,
+                   plinth.applicationtype,
+                   plinth.accountid
+            from eg_plinth as plinth
+            INNER JOIN eg_wf_processinstance_v2 pi ON pi.businessid = plinth.applicationno
+            LEFT JOIN eg_wf_assignee_v2 assg ON pi.id = assg.processinstanceid
+            $where 
+            AND pi.latest = TRUE
+            order by plinth.createdtime desc
+            $pagination
+          ) result
+        groupBy:
+        orderBy:
+      searchParams:
+        condition: AND
+        params:
+          - name: plinth.tenantid
+            isMandatory: true
+            jsonPath: $.searchCriteria.tenantId
+          - name: plinth.applicationno
+            isMandatory: false
+            jsonPath: $.searchCriteria.applicationNumber
+          - name: assg.assignee
+            isMandatory: false
+            jsonPath: $.searchCriteria.assignee
+          - name: pi.status
+            isMandatory: false
+            jsonPath: $.searchCriteria.status
+          - name: pi.businessservice
+            isMandatory: false
+            jsonPath: $.searchCriteria.businessservice
+          - name: plinth.accountid
+            isMandatory: false
+            jsonPath: $.searchCriteria.userid
+        pagination:
+          noOfRecords: $.searchCriteria.noOfRecords
+          offset: $.searchCriteria.offset
+      output:
+        jsonFormat: {"ResponseInfo": {},"Plinths": []}
+        outJsonPath: $.Plinths
+        responseInfoPath: $.ResponseInfo
