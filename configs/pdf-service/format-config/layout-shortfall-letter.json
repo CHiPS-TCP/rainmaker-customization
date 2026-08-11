@@ -196,7 +196,7 @@
         "table": {
           "widths": ["auto", "auto"],
           "body": [
-            "{{#var_drawingshortfalldata}}[{ \"text\": \"{{index}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] },{ \"text\": \"{{documentType}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] }]{{/var_drawingshortfalldata}}"
+            "{{#var_drawingshortfalldata}}[{ \"text\": \"1.\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] },{ \"text\": \"{{documentType}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] }]{{/var_drawingshortfalldata}}"
           ]
         },
         "layout": "noBorders",

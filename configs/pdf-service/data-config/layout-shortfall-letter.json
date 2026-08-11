@@ -92,6 +92,56 @@
                 }
               },
               {
+                "variable": "var_drawingshortfalldata",
+                "value": {
+                  "path": "$.applicationData.drawingShortFallData[*]"
+                },
+                "type": "array",
+                "format": {
+                  "type": "string",
+                  "scema": [
+                    { "variable": "documentType", "value": "documentType" , "localisation": {
+                  "required": true,
+                  "prefix": null,
+                  "module": "rainmaker-common"
+                }},
+                    { "variable": "index", "value": "index" },
+                    {
+                      "variable": "latestRemark",
+                      "value": "latestRemark.remark"
+                    },
+                    { "variable": "latestRole", "value": "latestRemark.role" },
+                    {
+                      "variable": "latestStatus",
+                      "value": "latestRemark.status"
+                    }
+                  ]
+                }
+              },
+              {
+                "variable": "var_documentshortfalldata",
+                "value": {
+                  "path": "$.applicationData.documentShortFallData[*]"
+                },
+                "type": "array",
+                "format": {
+                  "type": "string",
+                  "scema": [
+                    { "variable": "documentType", "value": "documentType" },
+                    { "variable": "index", "value": "index" },
+                    {
+                      "variable": "latestRemark",
+                      "value": "latestRemark.remark"
+                    },
+                    { "variable": "latestRole", "value": "latestRemark.role" },
+                    {
+                      "variable": "latestStatus",
+                      "value": "latestRemark.status"
+                    }
+                  ]
+                }
+              },
+              {
                 "variable": "var_shortfallremarks",
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.observationRemarks[*]"
@@ -109,6 +159,18 @@
                 "variable": "halkaNo",
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.halkaNo"
+                }
+              },
+              {
+                "variable": "documentShortfallHeading",
+                "value": {
+                  "path": "$.applicationData.documentShortfallHeading"
+                }
+              },
+              {
+                "variable": "drawingShortfallHeading",
+                "value": {
+                  "path": "$.applicationData.drawingShortfallHeading"
                 }
               },
               {
