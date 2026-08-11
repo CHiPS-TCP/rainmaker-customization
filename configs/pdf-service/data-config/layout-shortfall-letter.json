@@ -118,6 +118,12 @@
                 }
               },
               {
+                "variable": "shortfallComment",
+                "value": {
+                  "path": "$.applicationData.shortfallComment"
+                }
+              },
+              {
                 "variable": "no_signature",
                 "value": {
                   "path": "PDF_STATIC_LABEL_CONSOLIDATED_RECEIPT_NO_SIGNATURE"

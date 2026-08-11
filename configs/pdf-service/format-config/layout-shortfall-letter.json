@@ -188,7 +188,7 @@
         "margin": [0, 0, 0, 0]
       },
       {
-        "text": "ShortFall Raised on documents:",
+        "text": "{{drawingShortfallHeading}}",
         "bold": true,
         "margin": [0, 0, 0, 10]
       },
@@ -196,7 +196,22 @@
         "table": {
           "widths": ["auto", "auto"],
           "body": [
-            "{{#var_shortfalldata}}[{ \"text\": \"{{index}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] },{ \"text\": \"{{documentType}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] }]{{/var_shortfalldata}}"
+            "{{#var_drawingshortfalldata}}[{ \"text\": \"{{index}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] },{ \"text\": \"{{documentType}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] }]{{/var_drawingshortfalldata}}"
+          ]
+        },
+        "layout": "noBorders",
+        "margin": [0, 0, 0, 10]
+      },
+      {
+        "text": "{{documentShortfallHeading}}",
+        "bold": true,
+        "margin": [0, 0, 0, 10]
+      },
+      {
+        "table": {
+          "widths": ["auto", "auto"],
+          "body": [
+            "{{#var_documentshortfalldata}}[{ \"text\": \"{{index}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] },{ \"text\": \"{{documentType}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] }]{{/var_documentshortfalldata}}"
           ]
         },
         "layout": "noBorders",
@@ -212,13 +227,7 @@
         "margin": [0, 0, 0, 10]
       },
       {
-        "table": {
-          "widths": ["auto", "*"],
-          "body": [
-            "{{#var_shortfallremarks}}[{ \"text\": \"{{index}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] },{ \"text\": \"{{remarks}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] }]{{/var_shortfallremarks}}"
-          ]
-        },
-        "layout": "noBorders",
+        "text": "{{shortfallComment}}",
         "margin": [0, 0, 0, 10]
       },
       {
