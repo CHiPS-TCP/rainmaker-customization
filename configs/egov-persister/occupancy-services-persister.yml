@@ -1,0 +1,207 @@
+﻿serviceMaps:
+  serviceName: occupancy-services
+  version: 1.0.0
+  mappings:
+
+    - version: 1.0
+      description: Create occupancy application
+      fromTopic: save-occupancy-application
+      isTransaction: true
+      queryMaps:
+
+        - query: >
+            INSERT INTO eg_occupancy (
+              id, tenantid, applicationno, sanctionno, sanctiondate,
+              permissionvalidtilldate, required, commencementdate, buildingno,
+              plinthnumber, plinthcompletiondate, occupancycompletiondate, deviation,
+              applicationtype, status, applicationstatus, accountid,
+              createdby, lastmodifiedby, createdtime, lastmodifiedtime
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: $.Occupancy
+          jsonMaps:
+            - jsonPath: $.Occupancy.id
+            - jsonPath: $.Occupancy.tenantId
+            - jsonPath: $.Occupancy.applicationNo
+            - jsonPath: $.Occupancy.sanctionNo
+            - jsonPath: $.Occupancy.sanctionDate
+            - jsonPath: $.Occupancy.permissionValidTillDate
+            - jsonPath: $.Occupancy.required
+            - jsonPath: $.Occupancy.commencementDate
+            - jsonPath: $.Occupancy.buildingNo
+            - jsonPath: $.Occupancy.plinthNumber
+            - jsonPath: $.Occupancy.plinthCompletionDate
+            - jsonPath: $.Occupancy.occupancyCompletionDate
+            - jsonPath: $.Occupancy.deviation
+            - jsonPath: $.Occupancy.applicationType
+            - jsonPath: $.Occupancy.status
+            - jsonPath: $.Occupancy.applicationStatus
+            - jsonPath: $.Occupancy.accountId
+            - jsonPath: $.Occupancy.auditDetails.createdBy
+            - jsonPath: $.Occupancy.auditDetails.lastModifiedBy
+            - jsonPath: $.Occupancy.auditDetails.createdTime
+            - jsonPath: $.Occupancy.auditDetails.lastModifiedTime
+
+        - query: >
+            INSERT INTO eg_occupancy_auditdetails (
+              id, tenantid, applicationno, sanctionno, sanctiondate,
+              permissionvalidtilldate, required, commencementdate, buildingno,
+              plinthnumber, plinthcompletiondate, occupancycompletiondate, deviation,
+              applicationtype, status, applicationstatus, accountid,
+              createdby, lastmodifiedby, createdtime, lastmodifiedtime
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: $.Occupancy
+          jsonMaps:
+            - jsonPath: $.Occupancy.id
+            - jsonPath: $.Occupancy.tenantId
+            - jsonPath: $.Occupancy.applicationNo
+            - jsonPath: $.Occupancy.sanctionNo
+            - jsonPath: $.Occupancy.sanctionDate
+            - jsonPath: $.Occupancy.permissionValidTillDate
+            - jsonPath: $.Occupancy.required
+            - jsonPath: $.Occupancy.commencementDate
+            - jsonPath: $.Occupancy.buildingNo
+            - jsonPath: $.Occupancy.plinthNumber
+            - jsonPath: $.Occupancy.plinthCompletionDate
+            - jsonPath: $.Occupancy.occupancyCompletionDate
+            - jsonPath: $.Occupancy.deviation
+            - jsonPath: $.Occupancy.applicationType
+            - jsonPath: $.Occupancy.status
+            - jsonPath: $.Occupancy.applicationStatus
+            - jsonPath: $.Occupancy.accountId
+            - jsonPath: $.Occupancy.auditDetails.createdBy
+            - jsonPath: $.Occupancy.auditDetails.lastModifiedBy
+            - jsonPath: $.Occupancy.auditDetails.createdTime
+            - jsonPath: $.Occupancy.auditDetails.lastModifiedTime
+
+        - query: >
+            INSERT INTO eg_occupancy_details (
+              id, occupancyid, tenantid, additionaldetails,
+              createdby, lastmodifiedby, createdtime, lastmodifiedtime
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: $.Occupancy
+          jsonMaps:
+            - jsonPath: $.Occupancy.occupancyDetails.id
+            - jsonPath: $.Occupancy.id
+            - jsonPath: $.Occupancy.tenantId
+            - jsonPath: $.Occupancy.occupancyDetails.additionalDetails
+              type: JSON
+              dbType: JSONB
+            - jsonPath: $.Occupancy.auditDetails.createdBy
+            - jsonPath: $.Occupancy.auditDetails.lastModifiedBy
+            - jsonPath: $.Occupancy.auditDetails.createdTime
+            - jsonPath: $.Occupancy.auditDetails.lastModifiedTime
+
+        - query: >
+            INSERT INTO eg_occupancy_owner (
+              uuid, occupancyid, status, additionaldetails,
+              createdby, lastmodifiedby, createdtime, lastmodifiedtime
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: $.Occupancy.owners.*
+          jsonMaps:
+            - jsonPath: $.Occupancy.owners.*.uuid
+            - jsonPath: $.Occupancy.id
+            - jsonPath: $.Occupancy.owners.*.status
+            - jsonPath: $.Occupancy.owners.*.additionalDetails
+              type: JSON
+              dbType: JSONB
+            - jsonPath: $.Occupancy.auditDetails.createdBy
+            - jsonPath: $.Occupancy.auditDetails.lastModifiedBy
+            - jsonPath: $.Occupancy.auditDetails.createdTime
+            - jsonPath: $.Occupancy.auditDetails.lastModifiedTime
+
+        - query: >
+            INSERT INTO eg_occupancy_document (
+              uuid, documenttype, documentattachment, documentuid, occupancyid,
+              createdby, lastmodifiedby, createdtime, lastmodifiedtime
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: $.Occupancy.documents.*
+          jsonMaps:
+            - jsonPath: $.Occupancy.documents.*.uuid
+            - jsonPath: $.Occupancy.documents.*.documentType
+            - jsonPath: $.Occupancy.documents.*.documentAttachment
+            - jsonPath: $.Occupancy.documents.*.documentUid
+            - jsonPath: $.Occupancy.documents.*.occupancyId
+            - jsonPath: $.Occupancy.auditDetails.createdBy
+            - jsonPath: $.Occupancy.auditDetails.lastModifiedBy
+            - jsonPath: $.Occupancy.auditDetails.createdTime
+            - jsonPath: $.Occupancy.auditDetails.lastModifiedTime
+
+    - version: 1.0
+      description: Update occupancy application
+      fromTopic: update-occupancy-application
+      isTransaction: true
+      queryMaps:
+
+        - query: >
+            UPDATE eg_occupancy SET
+              sanctionno = ?, sanctiondate = ?, permissionvalidtilldate = ?,
+              required = ?, commencementdate = ?, buildingno = ?, plinthnumber = ?,
+              plinthcompletiondate = ?, occupancycompletiondate = ?, deviation = ?,
+              applicationtype = ?, status = ?, applicationstatus = ?, accountid = ?,
+              lastmodifiedby = ?, lastmodifiedtime = ?
+            WHERE id = ? AND tenantid = ?;
+          basePath: $.Occupancy
+          jsonMaps:
+            - jsonPath: $.Occupancy.sanctionNo
+            - jsonPath: $.Occupancy.sanctionDate
+            - jsonPath: $.Occupancy.permissionValidTillDate
+            - jsonPath: $.Occupancy.required
+            - jsonPath: $.Occupancy.commencementDate
+            - jsonPath: $.Occupancy.buildingNo
+            - jsonPath: $.Occupancy.plinthNumber
+            - jsonPath: $.Occupancy.plinthCompletionDate
+            - jsonPath: $.Occupancy.occupancyCompletionDate
+            - jsonPath: $.Occupancy.deviation
+            - jsonPath: $.Occupancy.applicationType
+            - jsonPath: $.Occupancy.status
+            - jsonPath: $.Occupancy.applicationStatus
+            - jsonPath: $.Occupancy.accountId
+            - jsonPath: $.Occupancy.auditDetails.lastModifiedBy
+            - jsonPath: $.Occupancy.auditDetails.lastModifiedTime
+            - jsonPath: $.Occupancy.id
+            - jsonPath: $.Occupancy.tenantId
+
+        - query: >
+            INSERT INTO eg_occupancy_auditdetails (
+              id, tenantid, applicationno, sanctionno, sanctiondate,
+              permissionvalidtilldate, required, commencementdate, buildingno,
+              plinthnumber, plinthcompletiondate, occupancycompletiondate, deviation,
+              applicationtype, status, applicationstatus, accountid,
+              createdby, lastmodifiedby, createdtime, lastmodifiedtime
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: $.Occupancy
+          jsonMaps:
+            - jsonPath: $.Occupancy.id
+            - jsonPath: $.Occupancy.tenantId
+            - jsonPath: $.Occupancy.applicationNo
+            - jsonPath: $.Occupancy.sanctionNo
+            - jsonPath: $.Occupancy.sanctionDate
+            - jsonPath: $.Occupancy.permissionValidTillDate
+            - jsonPath: $.Occupancy.required
+            - jsonPath: $.Occupancy.commencementDate
+            - jsonPath: $.Occupancy.buildingNo
+            - jsonPath: $.Occupancy.plinthNumber
+            - jsonPath: $.Occupancy.plinthCompletionDate
+            - jsonPath: $.Occupancy.occupancyCompletionDate
+            - jsonPath: $.Occupancy.deviation
+            - jsonPath: $.Occupancy.applicationType
+            - jsonPath: $.Occupancy.status
+            - jsonPath: $.Occupancy.applicationStatus
+            - jsonPath: $.Occupancy.accountId
+            - jsonPath: $.Occupancy.auditDetails.createdBy
+            - jsonPath: $.Occupancy.auditDetails.lastModifiedBy
+            - jsonPath: $.Occupancy.auditDetails.createdTime
+            - jsonPath: $.Occupancy.auditDetails.lastModifiedTime
+
+        - query: >
+            UPDATE eg_occupancy_details SET
+              additionaldetails = ?, lastmodifiedby = ?, lastmodifiedtime = ?
+            WHERE id = ? AND occupancyid = ?;
+          basePath: $.Occupancy
+          jsonMaps:
+            - jsonPath: $.Occupancy.occupancyDetails.additionalDetails
+              type: JSON
+            - jsonPath: $.Occupancy.auditDetails.lastModifiedBy
+            - jsonPath: $.Occupancy.auditDetails.lastModifiedTime
+            - jsonPath: $.Occupancy.occupancyDetails.id
+            - jsonPath: $.Occupancy.id
