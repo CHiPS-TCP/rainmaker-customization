@@ -17,9 +17,9 @@
           "body": [
             [
               {
-                "text": "FORM FOR NOTICE OF COMMENCEMENT",
+                "text": "FORM OF NOTICE FOR INSPECTION OF BUILDING AT PLINTH LEVEL",
                 "fontSize": 13,
-                "bold":true,
+                "bold": true,
                 "fillColor": "#f2f2f2",
                 "alignment": "center"
               }
@@ -29,81 +29,86 @@
         "layout": "noBorders"
       },
       {
-  "stack": [
-    {
-      "text": [
-        { "text": "I, hereby certify that the development of land, erection re-erection or material alteration in/ of building No. " },
-        { "text": "{{buildingNo}}", "style": "dotted-line" },
-        { "text": " on / in plot No " },
-        { "text": "{{plotNo}}", "style": "dotted-line" },
-        { "text": " District " },
-        { "text": "{{district}}", "style": "dotted-line" },
-        { "text": " Tehsil " },
-        { "text": "{{tehsil}}", "style": "dotted-line" },
-        { "text": " Village " },
-        { "text": "{{village}}", "style": "dotted-line" },
-        { "text": " Colony " },
-        { "text": "{{colony}}", "style": "dotted-line" },
-        { "text": " Land Mark " },
-        { "text": "{{landMark}}", "style": "dotted-line" },
-        { "text": " shall be commenced on " },
-        { "text": "{{commencementDate}}", "style": "dotted-line" },
-        { "text": " as per your permission vide No " },
-        { "text": "{{permissionNo}}", "style": "dotted-line" },
-        { "text": " dated " },
-        { "text": "{{permissionDate}}", "style": "dotted-line" },
-        { "text": " under the supervision of " },
-        { "text": "{{supervisorName}}", "style": "dotted-line" },
-        { "text": " licensed Architect/ Structural Engineer/ Engineer/ Supervision/ Town Planner's, Licensed No " },
-        { "text": "{{licenseNo}}", "style": "dotted-line" },
-        { "text": " and in accordance with the plans sanctioned vide No " },
-        { "text": "{{sanctionNo}}", "style": "dotted-line" },
-        { "text": " dated " },
-        { "text": "{{sanctionDate}}", "style": "dotted-line" },
-        { "text": "." }
-      ],
-      "margin": [0, 0, 0, 10]
-    },
-    {
-      "text": [
-        { "text": "Dated " },
-        { "text": "{{noticeDate}}", "style": "dotted-line" }
-      ],
-      "margin": [0, 0, 0, 20]
-    },
-    {
-      "text": "{{combinedOwnersName}}",
-      "style": "dotted-line",
-      "margin": [0, 0, 0, 2]
-    },
-    {
-      "text": "Name of Owner.",
-      "margin": [0, 0, 0, 0]
-    },
-    {
-      "text": "{{ownerAddress}}",
-      "style": "dotted-line",
-      "margin": [0, 0, 0, 2]
-    },
-    {
-      "text": "Address of Owner",
-      "margin": [0, 0, 0, 16]
-    },
-    {
-      "text": "Note: This is an electronically generated notice, hence does not require signature.",
-      "italics": true,
-      "fontSize": 9,
-      "color": "#484848",
-      "margin": [0, 0, 0, 2]
-    },
-    {
-      "text": "Verified by OTP authentication using owner's contact number.",
-      "italics": true,
-      "fontSize": 9,
-      "color": "#484848"
-    }
-  ]
-}
+        "stack": [
+          {
+            "text": [
+              { "text": "I hereby notify that the erection, re-erection or material alteration in/ of building No " },
+              { "text": "{{buildingNo}}", "style": "dotted-line" },
+              { "text": " on/ in plot No " },
+              { "text": "{{plotNo}}", "style": "dotted-line" },
+              { "text": " in district " },
+              { "text": "{{district}}", "style": "dotted-line" },
+              { "text": " Tehsil " },
+              { "text": "{{tehsil}}", "style": "dotted-line" },
+              { "text": " Village " },
+              { "text": "{{village}}", "style": "dotted-line" },
+              { "text": " colony name " },
+              { "text": "{{colonyName}}", "style": "dotted-line" },
+              { "text": " land mark " },
+              { "text": "{{landMark}}", "style": "dotted-line" },
+              { "text": " for which a notice of commencement was given on " },
+              { "text": "{{commencementNoticeNo}}", "style": "dotted-line" },
+              { "text": " has reached plinth level. You are therefore, requested to inspect the work within seven days from the date of this notice where after I shall commence erection above plinth level." }
+            ],
+            "margin": [0, 0, 0, 10]
+          },
+          {
+            "text": [
+              { "text": "The said work is covered by your permission given vide No " },
+              { "text": "{{permissionNo}}", "style": "dotted-line" },
+              { "text": " dated " },
+              { "text": "{{permissionDate}}", "style": "dotted-line" },
+              { "text": " and is being done under the supervision of " },
+              { "text": "{{supervisorName}}", "style": "dotted-line" },
+              { "text": " Architect/ Structural Engineer/ Engineer/ Supervision/ Town Planner's, license No " },
+              { "text": "{{licenseNo}}", "style": "dotted-line" },
+              { "text": " and in accordance with the plans sanctioned vide No " },
+              { "text": "{{sanctionNo}}", "style": "dotted-line" },
+              { "text": " dated " },
+              { "text": "{{sanctionDate}}", "style": "dotted-line" }
+            ],
+            "margin": [0, 0, 0, 10]
+          },
+          {
+            "text": [
+              { "text": "Dated " },
+              { "text": "{{noticeDate}}", "style": "dotted-line" }
+            ],
+            "margin": [0, 0, 0, 20]
+          },
+          {
+            "text": "{{combinedOwnersName}}",
+            "style": "dotted-line",
+            "margin": [0, 0, 0, 2]
+          },
+          {
+            "text": "Name of Owner.",
+            "margin": [0, 0, 0, 0]
+          },
+          {
+            "text": "{{ownerAddress}}",
+            "style": "dotted-line",
+            "margin": [0, 0, 0, 2]
+          },
+          {
+            "text": "Address of Owner",
+            "margin": [0, 0, 0, 16]
+          },
+          {
+            "text": "Note: This is an electronically generated notice, hence does not require signature.",
+            "italics": true,
+            "fontSize": 9,
+            "color": "#484848",
+            "margin": [0, 0, 0, 2]
+          },
+          {
+            "text": "Verified by OTP authentication using owner's contact number.",
+            "italics": true,
+            "fontSize": 9,
+            "color": "#484848"
+          }
+        ]
+      }
     ],
     "styles": {
       "noc-head": {
@@ -121,7 +126,7 @@
         "fontSize": 9,
         "letterSpacing": 0.6
       },
-      "dotted-line":{
+      "dotted-line": {
         "decoration": "underline",
         "decorationStyle": "dotted"
       },

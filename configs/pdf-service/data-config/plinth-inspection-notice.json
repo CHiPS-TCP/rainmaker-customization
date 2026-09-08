@@ -1,10 +1,9 @@
-
 {
   "key": "plinth-inspection-notice",
   "DataConfigs": {
     "serviceName": "rainmaker-bpa",
     "version": "1.0.0",
-    "baseKeyPath": "$.Bpa.*",
+    "baseKeyPath": "$.PlinthForm.*",
     "entityIdPath": "$.applicationNo",
     "isCommonTableBorderRequired": true,
     "mappings": [
@@ -16,6 +15,12 @@
                 "variable": "applicationNo",
                 "value": {
                   "path": "$.applicationNo"
+                }
+              },
+              {
+                "variable": "buildingNo",
+                "value": {
+                  "path": "$.Plinth.buildingNo"
                 }
               },
               {
@@ -40,7 +45,6 @@
                   "*": "The Executive Officer"
                 }
               },
-
               {
                 "variable": "planPermissionNo",
                 "value": {
@@ -74,11 +78,26 @@
                 "format": {
                   "type": "string",
                   "scema": [
-                    { "variable": "noteDate", "value": "date" },
-                    { "variable": "index", "value": "index" },
-                    { "variable": "name", "value": "name" },
-                    { "variable": "remarks", "value": "remarks" },
-                    { "variable": "designation", "value": "designation" }
+                    {
+                      "variable": "noteDate",
+                      "value": "date"
+                    },
+                    {
+                      "variable": "index",
+                      "value": "index"
+                    },
+                    {
+                      "variable": "name",
+                      "value": "name"
+                    },
+                    {
+                      "variable": "remarks",
+                      "value": "remarks"
+                    },
+                    {
+                      "variable": "designation",
+                      "value": "designation"
+                    }
                   ]
                 }
               },
@@ -112,7 +131,6 @@
                   "path": "$.applicationData.layoutDetails.additionalDetails.typeOfArchitect"
                 }
               },
-
               {
                 "variable": "ownerEmail",
                 "value": {
@@ -120,7 +138,6 @@
                 },
                 "type": "selectFromRequestInfo"
               },
-
               {
                 "variable": "ownername",
                 "value": {
@@ -135,7 +152,6 @@
                 },
                 "type": "selectFromRequestInfo"
               },
-
               {
                 "variable": "area",
                 "value": {
@@ -174,7 +190,12 @@
                 "type": "array",
                 "format": {
                   "type": "string",
-                  "scema": [{ "variable": "ownerName", "value": "name" }]
+                  "scema": [
+                    {
+                      "variable": "ownerName",
+                      "value": "name"
+                    }
+                  ]
                 }
               },
               {
@@ -185,16 +206,20 @@
                 "type": "array",
                 "format": {
                   "type": "string",
-                  "scema": [{ "variable": "villageName", "value": "name" }]
+                  "scema": [
+                    {
+                      "variable": "villageName",
+                      "value": "name"
+                    }
+                  ]
                 }
               },
               {
                 "variable": "ownerAddress",
                 "value": {
-                  "path": "$.applicationData.owners[0].permanentAddress"
+                  "path": "$.ownerAddress"
                 }
               },
-
               {
                 "variable": "Ulblisttypeori",
                 "value": {
@@ -219,7 +244,6 @@
                   "path": "$.applicationData.TimeStamp"
                 }
               },
-
               {
                 "variable": "otpverifieddate",
                 "value": {
@@ -229,7 +253,7 @@
               {
                 "variable": "combinedOwnersName",
                 "value": {
-                  "path": "$.applicationData.combinedOwnersName"
+                  "path": "$.combinedOwnersName"
                 }
               },
               {
@@ -645,7 +669,7 @@
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.SubmittedOn"
                 },
-                "type":"date"
+                "type": "date"
               },
               {
                 "variable": "SUMMARY1",
@@ -711,7 +735,13 @@
               {
                 "variable": "plotNo",
                 "value": {
-                  "path": "$.edcrDetail[0].planDetail.planInformation.plotNo"
+                  "path": "$.plotNo"
+                }
+              },
+              {
+                "variable": "licenseNo",
+                "value": {
+                  "path": "$.licenseNo"
                 }
               },
               {
@@ -744,10 +774,97 @@
                   "prefix": null,
                   "module": "rainmaker-bpa"
                 }
+              },
+              {
+                "variable": "district",
+                "value": {
+                  "path": "$.district"
+                }
+              },
+              {
+                "variable": "tehsil",
+                "value": {
+                  "path": "$.tehsil"
+                }
+              },
+              {
+                "variable": "village",
+                "value": {
+                  "path": "$.village"
+                }
+              },
+              {
+                "variable": "colony",
+                "value": {
+                  "path": "$.colony"
+                }
+              },
+              {
+                "variable": "landMark",
+                "value": {
+                  "path": "$.landMark"
+                }
+              },
+              {
+                "variable": "commencementDate",
+                "value": {
+                  "path": "$.Commencement.commencementDate"
+                },
+                "type": "date"
+              },
+              {
+                "variable": "permissionNo",
+                "value": {
+                  "path": "$.Plinth.sanctionNo"
+                }
+              },
+              {
+                "variable": "permissionDate",
+                "value": {
+                  "path": "$.Plinth.sanctionDate"
+                },
+                "type": "date"
+              },
+              {
+                "variable": "supervisorName",
+                "value": {
+                  "path": "$.applicationData.additionalDetails.architectName"
+                }
+              },
+              {
+                "variable": "sanctionNo",
+                "value": {
+                  "path": "$.Plinth.sanctionNo"
+                }
+              },
+              {
+                "variable": "sanctionDate",
+                "value": {
+                  "path": "$.Plinth.sanctionDate"
+                },
+                "type": "date"
+              },
+              {
+                "variable": "noticeDate",
+                "value": {
+                  "path": "$.Plinth.plinthCompletionDate"
+                },
+                "type": "date"
+              },
+              {
+                "variable": "colonyName",
+                "value": {
+                  "path": "$.colonyName"
+                }
+              },
+              {
+                "variable": "commencementNoticeNo",
+                "value": {
+                  "path": "$.commencementNoticeNo"
+                }
               }
             ]
           },
-         
           {
             "externalAPI": [
               {
@@ -767,12 +884,10 @@
                   {
                     "variable": "contactNumber",
                     "value": "$.MdmsRes.tenant.tenants[0].contactNumber"
-                    
                   },
                   {
                     "variable": "emailId",
                     "value": "$.MdmsRes.tenant.tenants[0].emailId"
-                  
                   },
                   {
                     "variable": "logo_header",
