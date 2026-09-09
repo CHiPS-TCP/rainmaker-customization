@@ -19,6 +19,49 @@
                 }
               },
               {
+                "variable": "paymentDate",
+                "value": {
+                  "path": "$.applicationDate"
+                },
+                "type": "date"
+              },
+              {
+                "variable": "payerName",
+                "value": {
+                  "path": "$.tradeLicenseDetail.owners[0].name"
+                }
+              },
+              {
+                "variable": "consumerID",
+                "value": {
+                  "path": "$.applicationNumber"
+                }
+              },
+              {
+                "variable": "serviceType",
+                "value": {
+                  "path": "$.tradeLicenseDetail.tradeUnits[0].tradeType"
+                }
+              },
+              {
+                "variable": "totalAmount",
+                "value": {
+                  "path": "$.totalAmount"
+                }
+              },
+              {
+                "variable": "dueAmount",
+                "value": {
+                  "path": "$.dueAmount"
+                }
+              },
+              {
+                "variable": "Amountinwords",
+                "value": {
+                  "path": "$.amountInWords"
+                }
+              },
+              {
                 "variable": "districtName",
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.district.name"
