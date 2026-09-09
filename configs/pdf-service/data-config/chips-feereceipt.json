@@ -19,6 +19,55 @@
                 }
               },
               {
+                "variable": "receiptNo",
+                "value": {
+                  "path": "$.paymentDetails[0].receiptNumber"
+                }
+              },
+              {
+                "variable": "paymentDate",
+                "value": {
+                  "path": "$.transactionDate"
+                },
+                "type": "date"
+              },
+              {
+                "variable": "payerName",
+                "value": {
+                  "path": "$.payerName"
+                }
+              },
+              {
+                "variable": "consumerID",
+                "value": {
+                  "path": "$.paymentDetails[0].bill.consumerCode"
+                }
+              },
+              {
+                "variable": "paidAmount",
+                "value": {
+                  "path": "$.totalAmountPaid"
+                }
+              },
+              {
+                "variable": "Amountinwords",
+                "value": {
+                  "path": "$.amountinwords"
+                }
+              },
+              {
+                "variable": "paymentMode",
+                "value": {
+                  "path": "$.paymentMode"
+                }
+              },
+              {
+                "variable": "transactionID",
+                "value": {
+                  "path": "$.transactionNumber"
+                }
+              },
+              {
                 "variable": "districtName",
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.district.name"

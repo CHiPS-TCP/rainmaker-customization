@@ -21,38 +21,38 @@
               {
                 "variable": "paymentDate",
                 "value": {
-                  "path": "$.applicationDate"
+                  "path": "$.bill.billDate"
                 },
                 "type": "date"
               },
               {
                 "variable": "payerName",
                 "value": {
-                  "path": "$.tradeLicenseDetail.owners[0].name"
+                  "path": "$.bill.payerName"
                 }
               },
               {
                 "variable": "consumerID",
                 "value": {
-                  "path": "$.applicationNumber"
+                  "path": "$.bill.consumerCode"
                 }
               },
               {
                 "variable": "serviceType",
                 "value": {
-                  "path": "$.tradeLicenseDetail.tradeUnits[0].tradeType"
+                  "path": "$.bill.businessService"
                 }
               },
               {
                 "variable": "totalAmount",
                 "value": {
-                  "path": "$.totalAmount"
+                  "path": "$.payableAmount"
                 }
               },
               {
                 "variable": "dueAmount",
                 "value": {
-                  "path": "$.dueAmount"
+                  "path": "$.payableAmount"
                 }
               },
               {
