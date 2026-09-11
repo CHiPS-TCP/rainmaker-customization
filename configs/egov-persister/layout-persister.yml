@@ -136,8 +136,7 @@ serviceMaps:
              SET status = ?, applicationstatus = ?, layoutno = ?,
              applicationtype = ?, layouttype = ?,
              lastmodifiedby = ?, lastmodifiedtime = ?,
-             tenantid = ?, inspectiondate = ?
-             WHERE id = ?;
+             tenantid = ?, inspectiondate = ?, approvalno = ? WHERE id = ?;
 
           basePath: $.Layout
           jsonMaps:
@@ -155,11 +154,8 @@ serviceMaps:
             - jsonPath: $.Layout.inspectionDate
               type: LONG
 
+            - jsonPath: $.Layout.approvalNo
             - jsonPath: $.Layout.id
-
-
-
-
 
         - query: >
             INSERT INTO eg_layout_auditdetails (

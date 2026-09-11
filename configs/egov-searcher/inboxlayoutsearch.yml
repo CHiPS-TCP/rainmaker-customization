@@ -14,6 +14,7 @@ SearchDefinitions:
                    layout.tenantid,
                    layout.status,
                    layout.layoutno,
+                   layout.approvalno,
                    layout.applicationType,
                    layout.layouttype,
                    layout.accountid,
@@ -32,7 +33,7 @@ SearchDefinitions:
             $where 
             AND pi.latest = TRUE
             GROUP BY layout.applicationno, layout.createdtime, pi.status, layout.id,
-                     layout.tenantid, layout.status, layout.layoutno, layout.applicationType,
+                     layout.tenantid, layout.status, layout.layoutno, layout.approvalno, layout.applicationType,
                      layout.layouttype, layout.accountid, layout.applicationstatus
             order by layout.createdtime asc
             $pagination
@@ -58,6 +59,9 @@ SearchDefinitions:
           - name: layout.layoutno
             isMandatory: false
             jsonPath: $.searchCriteria.layoutNumber
+          - name: layout.approvalno
+            isMandatory: false
+            jsonPath: $.searchCriteria.approvalNumber
           - name: pi.businessservice
             isMandatory: false
             jsonPath: $.searchCriteria.businessservice
@@ -131,6 +135,9 @@ SearchDefinitions:
           - name: layout.layoutno
             isMandatory: false
             jsonPath: $.searchCriteria.layoutNumber
+          - name: layout.approvalno
+            isMandatory: false
+            jsonPath: $.searchCriteria.approvalNumber
           - name: pi.businessservice
             isMandatory: false
             jsonPath: $.searchCriteria.businessservice
@@ -171,6 +178,7 @@ SearchDefinitions:
                    layout.tenantid,
                    layout.status,
                    layout.layoutno,
+                   layout.approvalno,
                    layout.applicationType,
                    layout.layouttype,
                    layout.accountid,
@@ -189,7 +197,7 @@ SearchDefinitions:
             $where
             AND pi.latest = TRUE
             GROUP BY layout.applicationno, layout.createdtime, pi.status, layout.id,
-                     layout.tenantid, layout.status, layout.layoutno, layout.applicationType,
+                     layout.tenantid, layout.status, layout.layoutno, layout.approvalno, layout.applicationType,
                      layout.layouttype, layout.accountid, layout.applicationstatus
             order by layout.createdtime desc
             $pagination
@@ -215,6 +223,9 @@ SearchDefinitions:
           - name: layout.layoutno
             isMandatory: false
             jsonPath: $.searchCriteria.layoutNumber
+          - name: layout.approvalno
+            isMandatory: false
+            jsonPath: $.searchCriteria.approvalNumber
           - name: pi.businessservice
             isMandatory: false
             jsonPath: $.searchCriteria.businessservice
