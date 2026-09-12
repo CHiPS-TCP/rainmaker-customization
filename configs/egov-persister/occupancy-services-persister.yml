@@ -1,4 +1,4 @@
-﻿serviceMaps:
+serviceMaps:
   serviceName: occupancy-services
   version: 1.0.0
   mappings:
@@ -113,7 +113,16 @@
             INSERT INTO eg_occupancy_document (
               uuid, documenttype, documentattachment, documentuid, occupancyid,
               createdby, lastmodifiedby, createdtime, lastmodifiedtime
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT (uuid) DO UPDATE SET
+              documenttype = EXCLUDED.documenttype,
+              documentattachment = EXCLUDED.documentattachment,
+              documentuid = EXCLUDED.documentuid,
+              occupancyid = EXCLUDED.occupancyid,
+              createdby = EXCLUDED.createdby,
+              lastmodifiedby = EXCLUDED.lastmodifiedby,
+              createdtime = EXCLUDED.createdtime,
+              lastmodifiedtime = EXCLUDED.lastmodifiedtime;
           basePath: $.Occupancy.documents.*
           jsonMaps:
             - jsonPath: $.Occupancy.documents.*.uuid
@@ -201,7 +210,87 @@
           jsonMaps:
             - jsonPath: $.Occupancy.occupancyDetails.additionalDetails
               type: JSON
+              dbType: JSONB
             - jsonPath: $.Occupancy.auditDetails.lastModifiedBy
             - jsonPath: $.Occupancy.auditDetails.lastModifiedTime
             - jsonPath: $.Occupancy.occupancyDetails.id
             - jsonPath: $.Occupancy.id
+
+        - query: >
+            INSERT INTO eg_occupancy_document (
+              uuid, documenttype, documentattachment, documentuid, occupancyid,
+              createdby, lastmodifiedby, createdtime, lastmodifiedtime
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT (uuid) DO UPDATE SET
+              documenttype = EXCLUDED.documenttype,
+              documentattachment = EXCLUDED.documentattachment,
+              documentuid = EXCLUDED.documentuid,
+              occupancyid = EXCLUDED.occupancyid,
+              createdby = EXCLUDED.createdby,
+              lastmodifiedby = EXCLUDED.lastmodifiedby,
+              createdtime = EXCLUDED.createdtime,
+              lastmodifiedtime = EXCLUDED.lastmodifiedtime;
+          basePath: $.Occupancy.documents.*
+          jsonMaps:
+            - jsonPath: $.Occupancy.documents.*.uuid
+            - jsonPath: $.Occupancy.documents.*.documentType
+            - jsonPath: $.Occupancy.documents.*.documentAttachment
+            - jsonPath: $.Occupancy.documents.*.documentUid
+            - jsonPath: $.Occupancy.documents.*.occupancyId
+            - jsonPath: $.Occupancy.auditDetails.createdBy
+            - jsonPath: $.Occupancy.auditDetails.lastModifiedBy
+            - jsonPath: $.Occupancy.auditDetails.createdTime
+            - jsonPath: $.Occupancy.auditDetails.lastModifiedTime    
+    - version: 1.0
+      description: Save Document Checklist for Occupancy
+      fromTopic: save-occupancy-checklist
+      isTransaction: true
+      queryMaps:
+        - query: >
+            INSERT INTO eg_occupancy_document_check_list (
+              id, documentuid, applicationno, tenantid, action, remarks,
+              createdby, lastmodifiedby, createdtime, lastmodifiedtime
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT (id) DO UPDATE SET
+              documentuid = EXCLUDED.documentuid,
+              applicationno = EXCLUDED.applicationno,
+              tenantid = EXCLUDED.tenantid,
+              action = EXCLUDED.action,
+              remarks = EXCLUDED.remarks,
+              createdby = EXCLUDED.createdby,
+              lastmodifiedby = EXCLUDED.lastmodifiedby,
+              createdtime = EXCLUDED.createdtime,
+              lastmodifiedtime = EXCLUDED.lastmodifiedtime;
+          basePath: $.checkList.*
+          jsonMaps:
+            - jsonPath: $.checkList.*.id
+            - jsonPath: $.checkList.*.documentuid
+            - jsonPath: $.checkList.*.applicationNo
+            - jsonPath: $.checkList.*.tenantId
+            - jsonPath: $.checkList.*.action
+            - jsonPath: $.checkList.*.remarks
+            - jsonPath: $.checkList.*.createdby
+            - jsonPath: $.checkList.*.lastmodifiedby
+            - jsonPath: $.checkList.*.createdtime
+            - jsonPath: $.checkList.*.lastmodifiedtime
+
+    - version: 1.0
+      description: Update Document Checklist for Occupancy
+      fromTopic: update-occupancy-checklist
+      isTransaction: true
+      queryMaps:
+        - query: >
+            UPDATE eg_occupancy_document_check_list SET
+              documentuid = ?, applicationno = ?, tenantid = ?, action = ?, remarks = ?,
+              lastmodifiedby = ?, lastmodifiedtime = ?
+            WHERE id = ?;
+          basePath: $.checkList.*
+          jsonMaps:
+            - jsonPath: $.checkList.*.documentuid
+            - jsonPath: $.checkList.*.applicationNo
+            - jsonPath: $.checkList.*.tenantId
+            - jsonPath: $.checkList.*.action
+            - jsonPath: $.checkList.*.remarks
+            - jsonPath: $.checkList.*.lastmodifiedby
+            - jsonPath: $.checkList.*.lastmodifiedtime
+            - jsonPath: $.checkList.*.id
