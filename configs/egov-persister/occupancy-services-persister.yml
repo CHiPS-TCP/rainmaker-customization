@@ -146,7 +146,7 @@ serviceMaps:
               sanctionno = ?, sanctiondate = ?, permissionvalidtilldate = ?,
               required = ?, commencementdate = ?, buildingno = ?, plinthnumber = ?,
               plinthcompletiondate = ?, occupancycompletiondate = ?, deviation = ?,
-              applicationtype = ?, status = ?, applicationstatus = ?, accountid = ?,
+              applicationtype = ?, status = ?, applicationstatus = ?,
               lastmodifiedby = ?, lastmodifiedtime = ?
             WHERE id = ? AND tenantid = ?;
           basePath: $.Occupancy
@@ -164,7 +164,6 @@ serviceMaps:
             - jsonPath: $.Occupancy.applicationType
             - jsonPath: $.Occupancy.status
             - jsonPath: $.Occupancy.applicationStatus
-            - jsonPath: $.Occupancy.accountId
             - jsonPath: $.Occupancy.auditDetails.lastModifiedBy
             - jsonPath: $.Occupancy.auditDetails.lastModifiedTime
             - jsonPath: $.Occupancy.id

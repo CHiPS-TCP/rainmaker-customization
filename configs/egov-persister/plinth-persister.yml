@@ -102,7 +102,7 @@ serviceMaps:
       fromTopic: update-plinth-topic
       isTransaction: true
       queryMaps:
-        - query: UPDATE eg_plinth SET applicationno=?, plinthno=?, tenantid=?, sanctionno=?, sanctiondate=?, permissionvaliditydate=?, commencementdate=?, buildingno=?, plinthcompletiondate=?, status=?, applicationstatus=?, accountid=?, createdby=?, lastmodifiedby=?, createdtime=?, lastmodifiedtime=?, applicationtype=? WHERE id=?;
+        - query: UPDATE eg_plinth SET applicationno=?, plinthno=?, tenantid=?, sanctionno=?, sanctiondate=?, permissionvaliditydate=?, commencementdate=?, buildingno=?, plinthcompletiondate=?, status=?, applicationstatus=?, createdby=?, lastmodifiedby=?, createdtime=?, lastmodifiedtime=?, applicationtype=? WHERE id=?;
           basePath: Plinth
           jsonMaps:
             - jsonPath: $.Plinth.applicationNo
@@ -120,7 +120,6 @@ serviceMaps:
               type: LONG
             - jsonPath: $.Plinth.status
             - jsonPath: $.Plinth.applicationStatus
-            - jsonPath: $.Plinth.accountId
             - jsonPath: $.Plinth.auditDetails.createdBy
             - jsonPath: $.Plinth.auditDetails.lastModifiedBy
             - jsonPath: $.Plinth.auditDetails.createdTime
