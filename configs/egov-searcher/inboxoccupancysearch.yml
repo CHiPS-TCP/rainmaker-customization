@@ -1,0 +1,162 @@
+SearchDefinitions:
+  moduleName: occupancy-service
+  summary: Occupancy Services Inbox API
+  version: 1.0.0
+  definitions:
+    - name: inboxoccupancysearch
+      query:
+        baseQuery: |
+          Select row_to_json(result) from (
+            select DISTINCT(occupancy.applicationno) as applicationnumber, 
+                   pi.createdtime, 
+                   pi.status as status_id, 
+                   occupancy.id,
+                   occupancy.tenantid,
+                   occupancy.status,
+                   occupancy.createdby,
+                   occupancy.lastmodifiedby,
+                   occupancy.createdtime as application_date,
+                   occupancy.lastmodifiedtime,
+                   occupancy.applicationtype,
+                   occupancy.accountid
+            from eg_occupancy as occupancy
+            INNER JOIN eg_wf_processinstance_v2 pi ON pi.businessid = occupancy.applicationno
+            LEFT JOIN eg_wf_assignee_v2 assg ON pi.id = assg.processinstanceid
+            $where 
+            AND pi.latest = TRUE
+            order by occupancy.createdtime asc
+            $pagination
+          ) result
+        groupBy:
+        orderBy:
+      searchParams:
+        condition: AND
+        params:
+          - name: occupancy.tenantid
+            isMandatory: true
+            jsonPath: $.searchCriteria.tenantId
+            operator: LIKE
+          - name: occupancy.applicationno
+            isMandatory: false
+            jsonPath: $.searchCriteria.applicationNumber
+          - name: assg.assignee
+            isMandatory: false
+            jsonPath: $.searchCriteria.assignee
+          - name: pi.status
+            isMandatory: false
+            jsonPath: $.searchCriteria.status
+          - name: pi.businessservice
+            isMandatory: false
+            jsonPath: $.searchCriteria.businessservice
+          - name: occupancy.accountid
+            isMandatory: false
+            jsonPath: $.searchCriteria.userid
+        pagination:
+          noOfRecords: $.searchCriteria.noOfRecords
+          offset: $.searchCriteria.offset
+      output:
+        jsonFormat: {"ResponseInfo": {},"Occupancies": []}
+        outJsonPath: $.Occupancies
+        responseInfoPath: $.ResponseInfo
+
+    - name: inboxoccupancysearchcount
+      query:
+        baseQuery: |
+          SELECT row_to_json(TotalCount) from (
+            SELECT COUNT(result) from (
+              select DISTINCT(occupancy.applicationno) as applicationnumber, 
+                     pi.createdtime
+              from eg_occupancy as occupancy
+              INNER JOIN eg_wf_processinstance_v2 pi ON pi.businessid = occupancy.applicationno
+              LEFT JOIN eg_wf_assignee_v2 assg ON pi.id = assg.processinstanceid
+              $where 
+              AND pi.latest = TRUE
+            ) result
+          ) TotalCount
+        groupBy:
+        orderBy:
+      searchParams:
+        condition: AND
+        params:
+          - name: occupancy.tenantid
+            isMandatory: true
+            jsonPath: $.searchCriteria.tenantId
+            operator: LIKE
+          - name: occupancy.applicationno
+            isMandatory: false
+            jsonPath: $.searchCriteria.applicationNumber
+          - name: assg.assignee
+            isMandatory: false
+            jsonPath: $.searchCriteria.assignee
+          - name: pi.status
+            isMandatory: false
+            jsonPath: $.searchCriteria.status
+          - name: pi.businessservice
+            isMandatory: false
+            jsonPath: $.searchCriteria.businessservice
+          - name: occupancy.accountid
+            isMandatory: false
+            jsonPath: $.searchCriteria.userid
+        pagination:
+          noOfRecords: $.searchCriteria.noOfRecords
+          offset: $.searchCriteria.offset
+      output:
+        jsonFormat: {"ResponseInfo": {},"TotalCount": {}}
+        outJsonPath: $.TotalCount
+        responseInfoPath: $.ResponseInfo
+
+    - name: inboxoccupancysearchdesc
+      query:
+        baseQuery: |
+          Select row_to_json(result) from (
+            select DISTINCT(occupancy.applicationno) as applicationnumber, 
+                   pi.createdtime, 
+                   pi.status as status_id, 
+                   occupancy.id,
+                   occupancy.tenantid,
+                   occupancy.status,
+                   occupancy.createdby,
+                   occupancy.lastmodifiedby,
+                   occupancy.createdtime as application_date,
+                   occupancy.lastmodifiedtime,
+                   occupancy.applicationtype,
+                   occupancy.accountid
+            from eg_occupancy as occupancy
+            INNER JOIN eg_wf_processinstance_v2 pi ON pi.businessid = occupancy.applicationno
+            LEFT JOIN eg_wf_assignee_v2 assg ON pi.id = assg.processinstanceid
+            $where 
+            AND pi.latest = TRUE
+            order by occupancy.createdtime desc
+            $pagination
+          ) result
+        groupBy:
+        orderBy:
+      searchParams:
+        condition: AND
+        params:
+          - name: occupancy.tenantid
+            isMandatory: true
+            jsonPath: $.searchCriteria.tenantId
+            operator: LIKE
+          - name: occupancy.applicationno
+            isMandatory: false
+            jsonPath: $.searchCriteria.applicationNumber
+          - name: assg.assignee
+            isMandatory: false
+            jsonPath: $.searchCriteria.assignee
+          - name: pi.status
+            isMandatory: false
+            jsonPath: $.searchCriteria.status
+          - name: pi.businessservice
+            isMandatory: false
+            jsonPath: $.searchCriteria.businessservice
+          - name: occupancy.accountid
+            isMandatory: false
+            jsonPath: $.searchCriteria.userid
+        pagination:
+          noOfRecords: $.searchCriteria.noOfRecords
+          offset: $.searchCriteria.offset
+      output:
+        jsonFormat: {"ResponseInfo": {},"Occupancies": []}
+        outJsonPath: $.Occupancies
+        responseInfoPath: $.ResponseInfo
