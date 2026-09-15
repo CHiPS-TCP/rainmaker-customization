@@ -143,7 +143,7 @@ serviceMaps:
 
         - query: >
             UPDATE eg_occupancy SET
-              sanctionno = ?, sanctiondate = ?, permissionvalidtilldate = ?,
+              approvalno = ?, sanctionno = ?, sanctiondate = ?, permissionvalidtilldate = ?,
               required = ?, commencementdate = ?, buildingno = ?, plinthnumber = ?,
               plinthcompletiondate = ?, occupancycompletiondate = ?, deviation = ?,
               applicationtype = ?, status = ?, applicationstatus = ?,
@@ -151,6 +151,7 @@ serviceMaps:
             WHERE id = ? AND tenantid = ?;
           basePath: $.Occupancy
           jsonMaps:
+            - jsonPath: $.Occupancy.approvalNo
             - jsonPath: $.Occupancy.sanctionNo
             - jsonPath: $.Occupancy.sanctionDate
             - jsonPath: $.Occupancy.permissionValidTillDate
@@ -171,17 +172,18 @@ serviceMaps:
 
         - query: >
             INSERT INTO eg_occupancy_auditdetails (
-              id, tenantid, applicationno, sanctionno, sanctiondate,
+              id, tenantid, applicationno, approvalno, sanctionno, sanctiondate,
               permissionvalidtilldate, required, commencementdate, buildingno,
               plinthnumber, plinthcompletiondate, occupancycompletiondate, deviation,
               applicationtype, status, applicationstatus, accountid,
               createdby, lastmodifiedby, createdtime, lastmodifiedtime
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $.Occupancy
           jsonMaps:
             - jsonPath: $.Occupancy.id
             - jsonPath: $.Occupancy.tenantId
             - jsonPath: $.Occupancy.applicationNo
+            - jsonPath: $.Occupancy.approvalNo
             - jsonPath: $.Occupancy.sanctionNo
             - jsonPath: $.Occupancy.sanctionDate
             - jsonPath: $.Occupancy.permissionValidTillDate
