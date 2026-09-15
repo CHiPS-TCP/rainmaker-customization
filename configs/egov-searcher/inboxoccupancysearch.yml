@@ -18,7 +18,8 @@ SearchDefinitions:
                    occupancy.createdtime as application_date,
                    occupancy.lastmodifiedtime,
                    occupancy.applicationtype,
-                   occupancy.accountid
+                   occupancy.accountid,
+                   occupancy.approvalno
             from eg_occupancy as occupancy
             INNER JOIN eg_wf_processinstance_v2 pi ON pi.businessid = occupancy.applicationno
             LEFT JOIN eg_wf_assignee_v2 assg ON pi.id = assg.processinstanceid
@@ -39,6 +40,9 @@ SearchDefinitions:
           - name: occupancy.applicationno
             isMandatory: false
             jsonPath: $.searchCriteria.applicationNumber
+          - name: occupancy.approvalno
+            isMandatory: false
+            jsonPath: $.searchCriteria.approvalNo
           - name: assg.assignee
             isMandatory: false
             jsonPath: $.searchCriteria.assignee
@@ -85,6 +89,9 @@ SearchDefinitions:
           - name: occupancy.applicationno
             isMandatory: false
             jsonPath: $.searchCriteria.applicationNumber
+          - name: occupancy.approvalno
+            isMandatory: false
+            jsonPath: $.searchCriteria.approvalNo
           - name: assg.assignee
             isMandatory: false
             jsonPath: $.searchCriteria.assignee
@@ -120,7 +127,8 @@ SearchDefinitions:
                    occupancy.createdtime as application_date,
                    occupancy.lastmodifiedtime,
                    occupancy.applicationtype,
-                   occupancy.accountid
+                   occupancy.accountid,
+                   occupancy.approvalno
             from eg_occupancy as occupancy
             INNER JOIN eg_wf_processinstance_v2 pi ON pi.businessid = occupancy.applicationno
             LEFT JOIN eg_wf_assignee_v2 assg ON pi.id = assg.processinstanceid
@@ -141,6 +149,9 @@ SearchDefinitions:
           - name: occupancy.applicationno
             isMandatory: false
             jsonPath: $.searchCriteria.applicationNumber
+          - name: occupancy.approvalno
+            isMandatory: false
+            jsonPath: $.searchCriteria.approvalNo
           - name: assg.assignee
             isMandatory: false
             jsonPath: $.searchCriteria.assignee
