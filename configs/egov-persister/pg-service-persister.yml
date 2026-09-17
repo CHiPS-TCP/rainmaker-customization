@@ -145,3 +145,16 @@ serviceMaps:
       - jsonPath: $.TransactionDump.auditDetails.lastModifiedTime
 
       - jsonPath: $.TransactionDump.txnId
+
+  - version: 1.0
+    description: Update bill expiry date
+    fromTopic: update-bill-expiry
+    queryMaps:
+
+    - query: UPDATE public.egbs_billdetail_v1 SET expirydate = expirydate + 1296000000 where billid=? and consumercode=? ;
+      basePath: Transaction
+      jsonMaps:
+
+      - jsonPath: $.Transaction.billId
+
+      - jsonPath: $.Transaction.consumerCode
