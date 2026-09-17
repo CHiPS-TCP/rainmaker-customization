@@ -1,10 +1,10 @@
 
 {
-  "key": "layout-approval-letter",
+  "key": "chips-feereceipt",
   "DataConfigs": {
     "serviceName": "rainmaker-bpa",
     "version": "1.0.0",
-    "baseKeyPath": "$.Bpa.*",
+    "baseKeyPath": "$.Payments.*",
     "entityIdPath": "$.applicationNo",
     "isCommonTableBorderRequired": true,
     "mappings": [
@@ -19,9 +19,52 @@
                 }
               },
               {
-                "variable": "applicationString",
+                "variable": "receiptNo",
                 "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.applicationString"
+                  "path": "$.paymentDetails[0].receiptNumber"
+                }
+              },
+              {
+                "variable": "paymentDate",
+                "value": {
+                  "path": "$.transactionDate"
+                },
+                "type": "date"
+              },
+              {
+                "variable": "payerName",
+                "value": {
+                  "path": "$.payerName"
+                }
+              },
+              {
+                "variable": "consumerID",
+                "value": {
+                  "path": "$.paymentDetails[0].bill.consumerCode"
+                }
+              },
+              {
+                "variable": "paidAmount",
+                "value": {
+                  "path": "$.totalAmountPaid"
+                }
+              },
+              {
+                "variable": "Amountinwords",
+                "value": {
+                  "path": "$.amountinwords"
+                }
+              },
+              {
+                "variable": "paymentMode",
+                "value": {
+                  "path": "$.paymentMode"
+                }
+              },
+              {
+                "variable": "transactionID",
+                "value": {
+                  "path": "$.transactionNumber"
                 }
               },
               {
@@ -60,9 +103,32 @@
                 }
               },
               {
+                "variable": "stakeHolderMobileNumber",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.applicationDetails.professionalMobileNumber"
+                }
+              },
+              {
                 "variable": "firmName",
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.applicationDetails.firmName"
+                }
+              },
+              {
+                "variable": "var_notesheetData",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.observationRemarks[*]"
+                },
+                "type": "array",
+                "format": {
+                  "type": "string",
+                  "scema": [
+                    { "variable": "noteDate", "value": "date" },
+                    { "variable": "index", "value": "index" },
+                    { "variable": "name", "value": "name" },
+                    { "variable": "remarks", "value": "remarks" },
+                    { "variable": "designation", "value": "designation" }
+                  ]
                 }
               },
               {
@@ -161,43 +227,6 @@
                 }
               },
               {
-                "variable": "var_approvalConditions",
-                "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.otherApprovalConditions[*]"
-                },
-                "type": "array",
-                "format": {
-                  "type": "string",
-                  "scema": [
-                    {
-                      "variable": "question",
-                      "value": "question",
-                      "localisation": {
-                        "required": true,
-                        "prefix": null,
-                        "module": "rainmaker-common"
-                      }
-                    },
-                    { "variable": "remarks", "value": "remarks" },
-                    { "variable": "index", "value": "index" }
-                  ]
-                }
-              },
-              {
-                "variable": "var_pratilipi",
-                "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.pratilipi[*]"
-                },
-                "type": "array",
-                "format": {
-                  "type": "string",
-                  "scema": [
-                    { "variable": "text", "value": "text" },
-                    { "variable": "index", "value": "index" }
-                  ]
-                }
-              },
-              {
                 "variable": "var_villages",
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.village[*]"
@@ -280,24 +309,6 @@
                 "variable": "khasraNumber",
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.khasraNo"
-                }
-              },
-              {
-                "variable": "tehsilName",
-                "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.tehsil[0].name"
-                }
-              },
-              {
-                "variable": "villageName",
-                "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.village[0].name"
-                }
-              },
-              {
-                "variable": "permissionType",
-                "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.serviceType"
                 }
               },
               {
@@ -679,6 +690,13 @@
                 }
               },
               {
+                "variable": "SubmittedOn",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.SubmittedOn"
+                },
+                "type":"date"
+              },
+              {
                 "variable": "SUMMARY1",
                 "value": {
                   "path": "BPA_PDF_SUMMARY1"
@@ -798,12 +816,10 @@
                   {
                     "variable": "contactNumber",
                     "value": "$.MdmsRes.tenant.tenants[0].contactNumber"
-                    
                   },
                   {
                     "variable": "emailId",
                     "value": "$.MdmsRes.tenant.tenants[0].emailId"
-                  
                   },
                   {
                     "variable": "logo_header",
@@ -821,6 +837,10 @@
                   {
                     "variable": "municipality_name_hindi",
                     "value": "$.MdmsRes.tenant.tenants[0].city.municipalityNameHindi"
+                  },
+                  {
+                    "variable": "district",
+                    "value": "$.MdmsRes.tenant.tenants[0].city.districtName"
                   },
                   {
                     "variable": "municipality_name",
@@ -873,7 +893,7 @@
             "qrcodeConfig": [
               {
                 "variable": "qrCode",
-                "value": "Sanction No: {{planPermissionNo}} Sanction Date: {{orderGeneratedOn}} Owner Name: {{combinedOwnersName}} Issuing Authority: {{municipality_name}} Permission Type: {{permissionType}} Khasra No: {{khasraNumber}} District: {{districtName}} Tehsil: {{tehsilName}} Block/Village: {{villageName}}"
+                "value": "Applicant Name: {{favourOf}}, Permit Order Number : {{planPermissionNo}}, Permit Order Date : {{orderGeneratedOn}}, eDCR Scrutiny Number: {{edcrNo}}, Approver Name : {{approvedBy}}"
               }
             ]
           }

@@ -1,0 +1,88 @@
+{
+  "key": "plinth-approval-letter",
+  "DataConfigs": {
+    "serviceName": "rainmaker-bpa",
+    "version": "1.0.0",
+    "baseKeyPath": "$.Plinth.*",
+    "entityIdPath": "$.applicationNo",
+    "isCommonTableBorderRequired": true,
+    "mappings": [
+      {
+        "mappings": [
+          {
+            "direct": [
+              {
+                "variable": "applicationNo",
+                "value": { "path": "$.applicationNo" }
+              },
+              {
+                "variable": "applicationDate",
+                "value": { "path": "$.applicationDate" },
+                "type": "date"
+              },
+              {
+                "variable": "approvalNo",
+                "value": { "path": "$.approvalNo" }
+              },
+              {
+                "variable": "approvalDate",
+                "value": { "path": "$.approvalDate" },
+                "type": "date"
+              },
+              {
+                "variable": "proposalNo",
+                "value": { "path": "$.plinthNo" }
+              },
+              {
+                "variable": "plinthInspectionDate",
+                "value": { "path": "$.plinthInspectionDate" },
+                "type": "date"
+              },
+              {
+                "variable": "letterDate",
+                "value": { "path": "$.letterDate" },
+                "type": "date"
+              },
+              {
+                "variable": "combinedOwnersName",
+                "value": { "path": "$.combinedOwnersName" }
+              },
+              {
+                "variable": "var_approvalConditions",
+                "value": { "path": "$.approvalConditions[*]" },
+                "type": "array",
+                "format": {
+                  "type": "string",
+                  "scema": [
+                    { "variable": "index", "value": "index" },
+                    { "variable": "question", "value": "question" },
+                    { "variable": "remarks", "value": "remarks" }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "externalAPI": [
+              {
+                "path": "http://egov-mdms-service:8080/egov-mdms-service/v1/_get",
+                "queryParam": "moduleName=tenant&masterName=tenants&tenantId=cg&filter=%5B?(@.code=='{$.tenantId}')%5D",
+                "apiRequest": null,
+                "responseMapping": [
+                  { "variable": "address", "value": "$.MdmsRes.tenant.tenants[0].address" },
+                  { "variable": "contactNumber", "value": "$.MdmsRes.tenant.tenants[0].contactNumber" },
+                  { "variable": "emailId", "value": "$.MdmsRes.tenant.tenants[0].emailId" },
+                  { "variable": "name_hindi", "value": "$.MdmsRes.tenant.tenants[0].city.nameHindi" },
+                  { "variable": "headerLine1", "value": "$.MdmsRes.tenant.tenants[0].city.headerLine1" },
+                  { "variable": "headerLine2", "value": "$.MdmsRes.tenant.tenants[0].city.headerLine2" },
+                  { "variable": "headerLine3", "value": "$.MdmsRes.tenant.tenants[0].city.headerLine3" },
+                  { "variable": "headerLine4", "value": "$.MdmsRes.tenant.tenants[0].city.headerLine4" }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

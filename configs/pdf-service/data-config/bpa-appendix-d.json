@@ -275,6 +275,18 @@
                 }
               },
               {
+                "variable": "tehsilName",
+                "value": {
+                  "path": "$.layoutDetails.additionalDetails.siteDetails.tehsil[0].name"
+                }
+              },
+              {
+                "variable": "permissionType",
+                "value": {
+                  "path": "$.additionalDetails.serviceType"
+                }
+              },
+              {
                 "variable": "WRT_TXT",
                 "value": {
                   "path": "BOA_PDF_WRT_TXT"
@@ -888,7 +900,7 @@
             "qrcodeConfig": [
               {
                 "variable": "qrCode",
-                "value": "Applicant Name: {{favourOf}}, Permit Order Number : {{planPermissionNo}}, Permit Order Date : {{orderGeneratedOn}}, eDCR Scrutiny Number: {{edcrNo}}, Approver Name : {{approvedBy}}"
+                "value": "Sanction No: {{planPermissionNo}} Sanction Date: {{orderGeneratedOn}} Owner Name: {{combinedOwnersName}} Issuing Authority: {{municipality_name}} Permission Type: {{permissionType}} Khasra No: {{khasraNumber}} District: {{districtName}} Tehsil: {{tehsilName}} Block/Village: {{villageName}}"
               }
             ]
           }

@@ -1,0 +1,72 @@
+{
+  "key": "fee-challan",
+  "config": {
+    "pageMargins": [45, 45, 45, 45],
+    "defaultStyle": { "font": "Cambay", "fontSize": 8, "color": "#111111" },
+    "content": [
+      { "text": "{{logo_header}} Regional Office", "style": "officeName", "alignment": "center", "margin": [0, 0, 0, 28] },
+      {
+        "table": {
+          "widths": ["*"],
+          "body": [[{ "text": "Demand Note (Challan / Memo)", "style": "title", "alignment": "center" }]]
+        },
+        "margin": [0, 0, 0, 4]
+      },
+      {
+        "table": {
+          "widths": [58, "*", 64, "*"],
+          "body": [
+            [
+              { "text": "Challan No.", "style": "label" }, { "text": ": {{applicationNo}}", "style": "value" },
+              { "text": "Challan Date", "style": "label" }, { "text": ": {{paymentDate}}", "style": "value" }
+            ],
+            [
+              { "text": "Name", "style": "label" }, { "text": ": {{payerName}}", "style": "value" },
+              { "text": "File No.", "style": "label" }, { "text": ": {{consumerID}}", "style": "value" }
+            ]
+          ]
+        },
+        "layout": "noBorders",
+        "margin": [0, 0, 0, 8]
+      },
+      {
+        "table": {
+          "widths": [30, "*", 72, 70, 72],
+          "body": [
+            [
+              { "text": "Sr.No.", "style": "tableHeader", "alignment": "center" },
+              { "text": "Particulars", "style": "tableHeader", "alignment": "center" },
+              { "text": "Total Fees", "style": "tableHeader", "alignment": "center" },
+              { "text": "Previous Paid", "style": "tableHeader", "alignment": "center" },
+              { "text": "Balance", "style": "tableHeader", "alignment": "center" }
+            ],
+            [
+              { "text": "1", "alignment": "center" },
+              { "text": "{{serviceType}}" },
+              { "text": "{{totalAmount}}", "alignment": "right" },
+              { "text": "0.00", "alignment": "right" },
+              { "text": "{{dueAmount}}", "alignment": "right" }
+            ]
+          ]
+        },
+        "margin": [0, 0, 0, 5]
+      },
+      {
+        "columns": [
+          { "width": "*", "text": "" },
+          { "width": 150, "text": "Total Amount to be Paid (INR): {{dueAmount}}", "style": "label", "alignment": "right" }
+        ],
+        "margin": [0, 0, 0, 10]
+      },
+      { "text": "Amount In Words: {{Amountinwords}}", "style": "label", "margin": [4, 0, 0, 68] },
+      { "text": "{{logo_header}} Regional Office", "style": "label", "alignment": "right" }
+    ],
+    "styles": {
+      "officeName": { "fontSize": 12, "bold": true },
+      "title": { "fontSize": 9, "bold": true, "fillColor": "#b8b8b8", "margin": [0, 2, 0, 2] },
+      "label": { "fontSize": 8, "bold": true },
+      "value": { "fontSize": 8, "bold": true },
+      "tableHeader": { "fontSize": 8, "bold": true, "fillColor": "#b8b8b8", "margin": [0, 1, 0, 1] }
+    }
+  }
+}

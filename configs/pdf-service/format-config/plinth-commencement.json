@@ -1,0 +1,187 @@
+{
+  "key": "plinth-commencement",
+  "config": {
+    "defaultStyle": {
+      "font": "Cambay",
+      "fontSize": 11,
+      "alignment": "justify"
+    },
+
+    "footer": "function(currentPage, pageCount) { return { stack: [ { canvas: [ { type: 'line', x1: 40, y1: 0, x2: 555, y2: 0, lineWidth: 0.5, lineColor: 'black' } ], margin: [0, 0, 0, 10] }, { columns: [ { width: '*', text: '' }, { width: 'auto', text: 'Page ' + currentPage + ' of ' + pageCount, alignment: 'right', fontSize: 9 } ], margin: [40, 0, 40, 10] } ] }; }",
+
+    "content": [
+      {
+        "style": "noc-table",
+        "table": {
+          "widths": ["100%"],
+          "body": [
+            [
+              {
+                "text": "FORM FOR NOTICE OF COMMENCEMENT",
+                "fontSize": 13,
+                "bold":true,
+                "fillColor": "#f2f2f2",
+                "alignment": "center"
+              }
+            ]
+          ]
+        },
+        "layout": "noBorders"
+      },
+      {
+  "stack": [
+    {
+      "text": [
+        { "text": "I, hereby certify that the development of land, erection re-erection or material alteration in/ of building No. " },
+        { "text": "{{buildingNo}}", "style": "dotted-line" },
+        { "text": " on / in plot No " },
+        { "text": "{{plotNo}}", "style": "dotted-line" },
+        { "text": " District " },
+        { "text": "{{district}}", "style": "dotted-line" },
+        { "text": " Tehsil " },
+        { "text": "{{tehsil}}", "style": "dotted-line" },
+        { "text": " Village " },
+        { "text": "{{village}}", "style": "dotted-line" },
+        { "text": " Colony " },
+        { "text": "{{colony}}", "style": "dotted-line" },
+        { "text": " Land Mark " },
+        { "text": "{{landMark}}", "style": "dotted-line" },
+        { "text": " shall be commenced on " },
+        { "text": "{{commencementDate}}", "style": "dotted-line" },
+        { "text": " as per your permission vide No " },
+        { "text": "{{permissionNo}}", "style": "dotted-line" },
+        { "text": " dated " },
+        { "text": "{{permissionDate}}", "style": "dotted-line" },
+        { "text": " under the supervision of " },
+        { "text": "{{supervisorName}}", "style": "dotted-line" },
+        { "text": " licensed Architect/ Structural Engineer/ Engineer/ Supervision/ Town Planner's, Licensed No " },
+        { "text": "{{licenseNo}}", "style": "dotted-line" },
+        { "text": " and in accordance with the plans sanctioned vide No " },
+        { "text": "{{sanctionNo}}", "style": "dotted-line" },
+        { "text": " dated " },
+        { "text": "{{sanctionDate}}", "style": "dotted-line" },
+        { "text": "." }
+      ],
+      "margin": [0, 0, 0, 10]
+    },
+    {
+      "text": [
+        { "text": "Dated " },
+        { "text": "{{noticeDate}}", "style": "dotted-line" }
+      ],
+      "margin": [0, 0, 0, 20]
+    },
+    {
+      "text": "{{combinedOwnersName}}",
+      "style": "dotted-line",
+      "margin": [0, 0, 0, 2]
+    },
+    {
+      "text": "Name of Owner.",
+      "margin": [0, 0, 0, 0]
+    },
+    {
+      "text": "{{ownerAddress}}",
+      "style": "dotted-line",
+      "margin": [0, 0, 0, 2]
+    },
+    {
+      "text": "Address of Owner",
+      "margin": [0, 0, 0, 16]
+    },
+    {
+      "text": "Note: This is an electronically generated notice, hence does not require signature.",
+      "italics": true,
+      "fontSize": 9,
+      "color": "#484848",
+      "margin": [0, 0, 0, 2]
+    },
+    {
+      "text": "Verified by OTP authentication using owner's contact number.",
+      "italics": true,
+      "fontSize": 9,
+      "color": "#484848"
+    }
+  ]
+}
+    ],
+    "styles": {
+      "noc-head": {
+        "margin": [0, 0, 0, 1]
+      },
+      "receipt-logo-header": {
+        "color": "#000000",
+        "fontSize": 14,
+        "bold": true,
+        "letterSpacing": 0.74,
+        "margin": [0, 0, 0, 5]
+      },
+      "receipt-logo-sub-header": {
+        "color": "#000000",
+        "fontSize": 9,
+        "letterSpacing": 0.6
+      },
+      "dotted-line":{
+        "decoration": "underline",
+        "decorationStyle": "dotted"
+      },
+      "noc-table": {
+        "fontSize": 9,
+        "color": "#000000",
+        "margin": [0, 10, 0, 8]
+      },
+      "receipt-table-value-total-Qr": {
+        "alignment": "right",
+        "margin": [0, 3, 10, 0]
+      },
+      "receipt-table-value-down": {
+        "color": "#000000",
+        "bold": false,
+        "fontSize": 9,
+        "fontWeight": 500,
+        "alignment": "left",
+        "margin": [3, 5, 0, 5]
+      },
+      "next-noc-table": {
+        "fontSize": 9,
+        "color": "#000000",
+        "margin": [0, 18, 0, 8]
+      },
+      "receipt-table-value": {
+        "color": "#000000",
+        "bold": true,
+        "fontSize": 9,
+        "fontWeight": 500,
+        "margin": [2, 2, 0, 2]
+      },
+      "receipt-table": {
+        "color": "#000000",
+        "bold": true,
+        "fontSize": 9,
+        "fontWeight": 500,
+        "margin": [0, 2, 0, 2]
+      },
+      "receipt-approver": {
+        "fontSize": 9,
+        "bold": true,
+        "margin": [0, 12, 0, 0],
+        "color": "#484848"
+      },
+      "no-signature": {
+        "fontSize": 9,
+        "margin": [0, 6, 0, 0],
+        "color": "#484848"
+      },
+      "pt-disclaimer": {
+        "fontSize": 9,
+        "margin": [0, 6, 0, 0],
+        "color": "#484848"
+      },
+      "pt-disclaimer-value": {
+        "fontSize": 9,
+        "margin": [2, 3, 0, 0],
+        "color": "#484848"
+      }
+    }
+  }
+}

@@ -1483,6 +1483,43 @@
                   "prefix": null,
                   "module": "rainmaker-bpa"
                 }
+              },
+              {
+                "variable": "combinedOwnersName",
+                "value": {
+                  "path": "$.landInfo.owners.*.name"
+                }
+              },
+              {
+                "variable": "orderGeneratedOn",
+                "value": {
+                  "path": "$.approvalDate"
+                },
+                "type": "date"
+              },
+              {
+                "variable": "permissionType",
+                "value": {
+                  "path": "$.additionalDetails.serviceType"
+                }
+              },
+              {
+                "variable": "districtName",
+                "value": {
+                  "path": "$.additionalDetails.district.name"
+                }
+              },
+              {
+                "variable": "tehsilName",
+                "value": {
+                  "path": "$.additionalDetails.tehsil[0].name"
+                }
+              },
+              {
+                "variable": "villageName",
+                "value": {
+                  "path": "$.additionalDetails.village[0].name"
+                }
               }
             ]
           },
@@ -1597,7 +1634,7 @@
             "qrcodeConfig": [
               {
                 "variable": "qrCode",
-                "value": "Applicant Name: {{favourOf}}, Permit Order Number : {{planPermissionNo}}, Permit Order Date : {{orderGeneratedOn}}, eDCR Scrutiny Number: {{edcrNo}}"
+                "value": "Sanction No: {{planPermissionNo}} Sanction Date: {{orderGeneratedOn}} Owner Name: {{combinedOwnersName}} Issuing Authority: {{municipality_name}} Permission Type: {{permissionType}} Khasra No: {{khasraNumber}} District: {{districtName}} Tehsil: {{tehsilName}} Block/Village: {{villageName}}"
               }
             ]
           }

@@ -26,6 +26,7 @@ serviceMaps:
             - jsonPath: $.BPA.auditDetails.createdTime
             - jsonPath: $.BPA.auditDetails.lastModifiedTime
 
+
         - query: INSERT INTO eg_bpa_document(id, documenttype, fileStoreId, buildingplanid, documentuid, additionalDetails, createdby, lastmodifiedby, createdtime, lastmodifiedtime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: BPA.documents.*
           jsonMaps:
@@ -52,7 +53,7 @@ serviceMaps:
       fromTopic: update-bpa-buildingplan
       isTransaction: true
       queryMaps:
-        - query: UPDATE eg_bpa_buildingplan SET applicationno=?, approvalNo=?, applicationDate=?, status=?, additionaldetails=?, lastmodifiedby=?, lastmodifiedtime=?, approvalDate=?, landId=?, edcrNumber=? WHERE id=?;
+        - query: UPDATE eg_bpa_buildingplan SET applicationno=?, approvalNo=?, applicationDate=?, status=?, additionaldetails=?, lastmodifiedby=?, lastmodifiedtime=?, approvalDate=?, landId=?, edcrNumber=?, inspectiondate=? WHERE id=?;
           basePath: BPA
           jsonMaps:
             - jsonPath: $.BPA.applicationNo
@@ -67,6 +68,7 @@ serviceMaps:
             - jsonPath: $.BPA.approvalDate
             - jsonPath: $.BPA.landId
             - jsonPath: $.BPA.edcrNumber
+            - jsonPath: $.BPA.inspectionDate
             - jsonPath: $.BPA.id
 
         - query: INSERT INTO eg_bpa_auditdetails SELECT * FROM eg_bpa_buildingplan WHERE id = ?;
@@ -130,7 +132,7 @@ serviceMaps:
           jsonMaps:
             - jsonPath: $.BPA.id
 
-        - query: UPDATE eg_bpa_buildingplan SET applicationno=?, approvalNo=?, applicationDate=?, status=?, additionaldetails=?, lastmodifiedby=?, lastmodifiedtime=?, approvalDate=?, landId=? WHERE id=?;
+        - query: UPDATE eg_bpa_buildingplan SET applicationno=?, approvalNo=?, applicationDate=?, status=?, additionaldetails=?, lastmodifiedby=?, lastmodifiedtime=?, approvalDate=?, landId=?, inspectiondate=? WHERE id=?;
           basePath: BPA
           jsonMaps:
             - jsonPath: $.BPA.applicationNo
@@ -144,6 +146,7 @@ serviceMaps:
             - jsonPath: $.BPA.auditDetails.lastModifiedTime
             - jsonPath: $.BPA.approvalDate
             - jsonPath: $.BPA.landId
+            - jsonPath: $.BPA.inspectionDate
             - jsonPath: $.BPA.id
 
     - version: 1.0

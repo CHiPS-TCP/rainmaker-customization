@@ -1,10 +1,9 @@
-
 {
-  "key": "layout-approval-letter",
+  "key": "plinth-inspection-notice",
   "DataConfigs": {
     "serviceName": "rainmaker-bpa",
     "version": "1.0.0",
-    "baseKeyPath": "$.Bpa.*",
+    "baseKeyPath": "$.PlinthForm.*",
     "entityIdPath": "$.applicationNo",
     "isCommonTableBorderRequired": true,
     "mappings": [
@@ -19,9 +18,9 @@
                 }
               },
               {
-                "variable": "applicationString",
+                "variable": "buildingNo",
                 "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.applicationString"
+                  "path": "$.Plinth.buildingNo"
                 }
               },
               {
@@ -46,7 +45,6 @@
                   "*": "The Executive Officer"
                 }
               },
-
               {
                 "variable": "planPermissionNo",
                 "value": {
@@ -60,9 +58,47 @@
                 }
               },
               {
+                "variable": "stakeHolderMobileNumber",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.applicationDetails.professionalMobileNumber"
+                }
+              },
+              {
                 "variable": "firmName",
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.applicationDetails.firmName"
+                }
+              },
+              {
+                "variable": "var_notesheetData",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.observationRemarks[*]"
+                },
+                "type": "array",
+                "format": {
+                  "type": "string",
+                  "scema": [
+                    {
+                      "variable": "noteDate",
+                      "value": "date"
+                    },
+                    {
+                      "variable": "index",
+                      "value": "index"
+                    },
+                    {
+                      "variable": "name",
+                      "value": "name"
+                    },
+                    {
+                      "variable": "remarks",
+                      "value": "remarks"
+                    },
+                    {
+                      "variable": "designation",
+                      "value": "designation"
+                    }
+                  ]
                 }
               },
               {
@@ -95,7 +131,6 @@
                   "path": "$.applicationData.layoutDetails.additionalDetails.typeOfArchitect"
                 }
               },
-
               {
                 "variable": "ownerEmail",
                 "value": {
@@ -103,7 +138,6 @@
                 },
                 "type": "selectFromRequestInfo"
               },
-
               {
                 "variable": "ownername",
                 "value": {
@@ -118,7 +152,6 @@
                 },
                 "type": "selectFromRequestInfo"
               },
-
               {
                 "variable": "area",
                 "value": {
@@ -157,43 +190,11 @@
                 "type": "array",
                 "format": {
                   "type": "string",
-                  "scema": [{ "variable": "ownerName", "value": "name" }]
-                }
-              },
-              {
-                "variable": "var_approvalConditions",
-                "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.otherApprovalConditions[*]"
-                },
-                "type": "array",
-                "format": {
-                  "type": "string",
                   "scema": [
                     {
-                      "variable": "question",
-                      "value": "question",
-                      "localisation": {
-                        "required": true,
-                        "prefix": null,
-                        "module": "rainmaker-common"
-                      }
-                    },
-                    { "variable": "remarks", "value": "remarks" },
-                    { "variable": "index", "value": "index" }
-                  ]
-                }
-              },
-              {
-                "variable": "var_pratilipi",
-                "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.pratilipi[*]"
-                },
-                "type": "array",
-                "format": {
-                  "type": "string",
-                  "scema": [
-                    { "variable": "text", "value": "text" },
-                    { "variable": "index", "value": "index" }
+                      "variable": "ownerName",
+                      "value": "name"
+                    }
                   ]
                 }
               },
@@ -205,16 +206,20 @@
                 "type": "array",
                 "format": {
                   "type": "string",
-                  "scema": [{ "variable": "villageName", "value": "name" }]
+                  "scema": [
+                    {
+                      "variable": "villageName",
+                      "value": "name"
+                    }
+                  ]
                 }
               },
               {
                 "variable": "ownerAddress",
                 "value": {
-                  "path": "$.applicationData.owners[0].permanentAddress"
+                  "path": "$.ownerAddress"
                 }
               },
-
               {
                 "variable": "Ulblisttypeori",
                 "value": {
@@ -239,7 +244,6 @@
                   "path": "$.applicationData.TimeStamp"
                 }
               },
-
               {
                 "variable": "otpverifieddate",
                 "value": {
@@ -249,7 +253,7 @@
               {
                 "variable": "combinedOwnersName",
                 "value": {
-                  "path": "$.applicationData.combinedOwnersName"
+                  "path": "$.combinedOwnersName"
                 }
               },
               {
@@ -280,24 +284,6 @@
                 "variable": "khasraNumber",
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.khasraNo"
-                }
-              },
-              {
-                "variable": "tehsilName",
-                "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.tehsil[0].name"
-                }
-              },
-              {
-                "variable": "villageName",
-                "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.village[0].name"
-                }
-              },
-              {
-                "variable": "permissionType",
-                "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.serviceType"
                 }
               },
               {
@@ -679,6 +665,13 @@
                 }
               },
               {
+                "variable": "SubmittedOn",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.SubmittedOn"
+                },
+                "type": "date"
+              },
+              {
                 "variable": "SUMMARY1",
                 "value": {
                   "path": "BPA_PDF_SUMMARY1"
@@ -742,7 +735,13 @@
               {
                 "variable": "plotNo",
                 "value": {
-                  "path": "$.edcrDetail[0].planDetail.planInformation.plotNo"
+                  "path": "$.plotNo"
+                }
+              },
+              {
+                "variable": "licenseNo",
+                "value": {
+                  "path": "$.licenseNo"
                 }
               },
               {
@@ -775,10 +774,97 @@
                   "prefix": null,
                   "module": "rainmaker-bpa"
                 }
+              },
+              {
+                "variable": "district",
+                "value": {
+                  "path": "$.district"
+                }
+              },
+              {
+                "variable": "tehsil",
+                "value": {
+                  "path": "$.tehsil"
+                }
+              },
+              {
+                "variable": "village",
+                "value": {
+                  "path": "$.village"
+                }
+              },
+              {
+                "variable": "colony",
+                "value": {
+                  "path": "$.colony"
+                }
+              },
+              {
+                "variable": "landMark",
+                "value": {
+                  "path": "$.landMark"
+                }
+              },
+              {
+                "variable": "commencementDate",
+                "value": {
+                  "path": "$.Commencement.commencementDate"
+                },
+                "type": "date"
+              },
+              {
+                "variable": "permissionNo",
+                "value": {
+                  "path": "$.Plinth.sanctionNo"
+                }
+              },
+              {
+                "variable": "permissionDate",
+                "value": {
+                  "path": "$.Plinth.sanctionDate"
+                },
+                "type": "date"
+              },
+              {
+                "variable": "supervisorName",
+                "value": {
+                  "path": "$.applicationData.additionalDetails.architectName"
+                }
+              },
+              {
+                "variable": "sanctionNo",
+                "value": {
+                  "path": "$.Plinth.sanctionNo"
+                }
+              },
+              {
+                "variable": "sanctionDate",
+                "value": {
+                  "path": "$.Plinth.sanctionDate"
+                },
+                "type": "date"
+              },
+              {
+                "variable": "noticeDate",
+                "value": {
+                  "path": "$.Plinth.plinthCompletionDate"
+                },
+                "type": "date"
+              },
+              {
+                "variable": "colonyName",
+                "value": {
+                  "path": "$.colonyName"
+                }
+              },
+              {
+                "variable": "commencementNoticeNo",
+                "value": {
+                  "path": "$.commencementNoticeNo"
+                }
               }
             ]
           },
-         
           {
             "externalAPI": [
               {
@@ -798,12 +884,10 @@
                   {
                     "variable": "contactNumber",
                     "value": "$.MdmsRes.tenant.tenants[0].contactNumber"
-                    
                   },
                   {
                     "variable": "emailId",
                     "value": "$.MdmsRes.tenant.tenants[0].emailId"
-                  
                   },
                   {
                     "variable": "logo_header",
@@ -837,22 +921,6 @@
                   {
                     "variable": "ulbGrade",
                     "value": "$.MdmsRes.tenant.tenants[0].city.ulbGrade"
-                  },
-                  {
-                    "variable": "headerLine1",
-                    "value": "$.MdmsRes.tenant.tenants[0].city.headerLine1"
-                  },
-                  {
-                    "variable": "headerLine2",
-                    "value": "$.MdmsRes.tenant.tenants[0].city.headerLine2"
-                  },
-                  {
-                    "variable": "headerLine3",
-                    "value": "$.MdmsRes.tenant.tenants[0].city.headerLine3"
-                  },
-                  {
-                    "variable": "headerLine4",
-                    "value": "$.MdmsRes.tenant.tenants[0].city.headerLine4"
                   }
                 ]
               }
@@ -873,7 +941,7 @@
             "qrcodeConfig": [
               {
                 "variable": "qrCode",
-                "value": "Sanction No: {{planPermissionNo}} Sanction Date: {{orderGeneratedOn}} Owner Name: {{combinedOwnersName}} Issuing Authority: {{municipality_name}} Permission Type: {{permissionType}} Khasra No: {{khasraNumber}} District: {{districtName}} Tehsil: {{tehsilName}} Block/Village: {{villageName}}"
+                "value": "Applicant Name: {{favourOf}}, Permit Order Number : {{planPermissionNo}}, Permit Order Date : {{orderGeneratedOn}}, eDCR Scrutiny Number: {{edcrNo}}, Approver Name : {{approvedBy}}"
               }
             ]
           }
