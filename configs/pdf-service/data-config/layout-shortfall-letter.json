@@ -104,8 +104,9 @@
                   "required": true,
                   "prefix": null,
                   "module": "rainmaker-common"
-                }},
-                    { "variable": "index", "value": "index" },
+                }, "defaultValue": " "
+              },
+                    { "variable": "index", "value": "index", "defaultValue": " " },
                     {
                       "variable": "latestRemark",
                       "value": "latestRemark.remark"
@@ -127,8 +128,8 @@
                 "format": {
                   "type": "string",
                   "scema": [
-                    { "variable": "documentType", "value": "documentType" },
-                    { "variable": "index", "value": "index" },
+                    { "variable": "documentType", "value": "documentType","defaultValue": " " },
+                    { "variable": "index", "value": "index", "defaultValue": " " },
                     {
                       "variable": "latestRemark",
                       "value": "latestRemark.remark"
