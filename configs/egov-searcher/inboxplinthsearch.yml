@@ -38,6 +38,9 @@ SearchDefinitions:
           - name: plinth.applicationno
             isMandatory: false
             jsonPath: $.searchCriteria.applicationNumber
+          - name: plinth.approvalno
+            isMandatory: false
+            jsonPath: $.searchCriteria.approvalNo
           - name: assg.assignee
             isMandatory: false
             jsonPath: $.searchCriteria.assignee
@@ -83,6 +86,9 @@ SearchDefinitions:
           - name: plinth.applicationno
             isMandatory: false
             jsonPath: $.searchCriteria.applicationNumber
+          - name: plinth.approvalno
+            isMandatory: false
+            jsonPath: $.searchCriteria.approvalNo
           - name: assg.assignee
             isMandatory: false
             jsonPath: $.searchCriteria.assignee
@@ -138,6 +144,9 @@ SearchDefinitions:
           - name: plinth.applicationno
             isMandatory: false
             jsonPath: $.searchCriteria.applicationNumber
+          - name: plinth.approvalno
+            isMandatory: false
+            jsonPath: $.searchCriteria.approvalNo
           - name: assg.assignee
             isMandatory: false
             jsonPath: $.searchCriteria.assignee
