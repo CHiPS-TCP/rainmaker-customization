@@ -970,7 +970,7 @@
                 "type": "date",
                 "formula": "{{epoch}}",
                 "timezone": "Asia/Kolkata",
-                "format": "HH:mm"
+                "format": "DD MMMM, YYYY"
               }
             ]
           },
