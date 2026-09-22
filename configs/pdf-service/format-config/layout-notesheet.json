@@ -17,7 +17,7 @@
       [
         {"text": "","border": [true, true, false, false]},
         {
-          "text": "{{logo_header}} Regional Office",
+          "text": "{{municipality_name}}",
           "alignment": "center",
           "fontSize": 15, 
           "bold":true,
