@@ -18,6 +18,8 @@ ServiceMaps:
                 id: id
                 tenantId: tenantId
                 applicationNo: applicationNo
+                approvalNo: approvalNo
+                approvalDate: approvalDate
                 applicationType: applicationType
                 layoutNo: layoutNo
                 layoutType: layoutType
@@ -44,6 +46,12 @@ ServiceMaps:
 
               - inJsonPath: $.Layout.applicationNo
                 outJsonPath: $.Data.applicationNo
+
+              - inJsonPath: $.Layout.approvalNo
+                outJsonPath: $.Data.approvalNo
+
+              - inJsonPath: $.Layout.approvalDate
+                outJsonPath: $.Data.approvalDate
 
               - inJsonPath: $.Layout.applicationType
                 outJsonPath: $.Data.applicationType
@@ -109,6 +117,8 @@ ServiceMaps:
                 id: id
                 tenantId: tenantId
                 applicationNo: applicationNo
+                approvalNo: approvalNo
+                approvalDate: approvalDate
                 applicationType: applicationType
                 layoutNo: layoutNo
                 layoutType: layoutType
@@ -135,6 +145,12 @@ ServiceMaps:
 
               - inJsonPath: $.Layout.applicationNo
                 outJsonPath: $.Data.applicationNo
+
+              - inJsonPath: $.Layout.approvalNo
+                outJsonPath: $.Data.approvalNo
+
+              - inJsonPath: $.Layout.approvalDate
+                outJsonPath: $.Data.approvalDate
 
               - inJsonPath: $.Layout.applicationType
                 outJsonPath: $.Data.applicationType
