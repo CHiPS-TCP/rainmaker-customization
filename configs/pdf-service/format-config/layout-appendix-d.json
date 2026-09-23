@@ -67,7 +67,7 @@
                     "width": 190,
 
                     "stack": [
-                      "{{name_hindi}}",
+                      "{{addressHindi}}",
                       "दूरभाषा - {{contactNumber}},",
                       "फैक्स - -,",
                       "ईमेल - {{emailId}}"

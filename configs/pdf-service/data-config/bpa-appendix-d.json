@@ -800,6 +800,10 @@
                     "value": "$.MdmsRes.tenant.tenants[0].address"
                   },
                   {
+                    "variable": "addressHindi",
+                    "value": "$.MdmsRes.tenant.tenants[0].addressHindi"
+                  },
+                  {
                     "variable": "regionalOfficeAddress",
                     "value": "$.MdmsRes.tenant.tenants[0].regionalOfficeAddress"
                   },

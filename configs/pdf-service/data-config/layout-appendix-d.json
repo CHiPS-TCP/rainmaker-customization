@@ -789,6 +789,10 @@
                     "value": "$.MdmsRes.tenant.tenants[0].address"
                   },
                   {
+                    "variable": "addressHindi",
+                    "value": "$.MdmsRes.tenant.tenants[0].addressHindi"
+                  },
+                  {
                     "variable": "contactNumber",
                     "value": "$.MdmsRes.tenant.tenants[0].contactNumber"
                     

@@ -829,9 +829,21 @@
                     "value": "$.MdmsRes.tenant.tenants[0].address"
                   },
                   {
+                    "variable": "addressHindi",
+                    "value": "$.MdmsRes.tenant.tenants[0].addressHindi"
+                  },
+                  {
                     "variable": "contactNumber",
                     "value": "$.MdmsRes.tenant.tenants[0].contactNumber"
                     
+                  },
+                  {
+                    "variable": "regionalOfficeAddressHindi",
+                    "value": "$.MdmsRes.tenant.tenants[0].regionalOfficeAddressHindi"
+                  },
+                  {
+                    "variable": "regionalOfficeAddress",
+                    "value": "$.MdmsRes.tenant.tenants[0].regionalOfficeAddress"
                   },
                   {
                     "variable": "emailId",

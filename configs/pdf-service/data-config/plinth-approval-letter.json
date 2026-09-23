@@ -70,6 +70,7 @@
                 "apiRequest": null,
                 "responseMapping": [
                   { "variable": "address", "value": "$.MdmsRes.tenant.tenants[0].address" },
+                  { "variable": "addressHindi", "value": "$.MdmsRes.tenant.tenants[0].addressHindi" },
                   { "variable": "contactNumber", "value": "$.MdmsRes.tenant.tenants[0].contactNumber" },
                   { "variable": "emailId", "value": "$.MdmsRes.tenant.tenants[0].emailId" },
                   { "variable": "name_hindi", "value": "$.MdmsRes.tenant.tenants[0].city.nameHindi" },

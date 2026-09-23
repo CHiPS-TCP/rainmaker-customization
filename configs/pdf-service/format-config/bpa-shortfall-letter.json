@@ -67,7 +67,7 @@
                     "width": 190,
 
                     "stack": [
-                      "{{name_hindi}}",
+                      "{{regionalOfficeAddressHindi}}",
                       "दूरभाषा - {{contactNumber}},",
                       "फैक्स - -,",
                       "ईमेल - {{emailId}}"
@@ -81,7 +81,7 @@
                   {
                     "width": 190,
                     "stack": [
-                      "{{address}}",
+                      "{{regionalOfficeAddress}}",
                       "Tel. - {{contactNumber}},",
                       "Fax - - ,",
                       "Email -{{emailId}}"
