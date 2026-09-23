@@ -233,6 +233,12 @@
                 }
               },
               {
+                "variable": "currentDate",
+                "value": {
+                  "path": "$.applicationData.currentDate"
+                }
+              },
+              {
                 "variable": "epoch",
                 "value": {
                   "path": "$.applicationData.auditDetails.lastModifiedTime"

@@ -247,6 +247,12 @@
                 }
               },
               {
+                "variable": "currentDate",
+                "value": {
+                  "path": "$.applicationData.currentDate"
+                }
+              },
+              {
                 "variable": "combinedOwnersName",
                 "value": {
                   "path": "$.applicationData.combinedOwnersName"

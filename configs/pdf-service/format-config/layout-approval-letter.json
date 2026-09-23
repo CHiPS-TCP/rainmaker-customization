@@ -143,7 +143,7 @@
             "text": [
               { "text": "दिनांक ", "bold": true },
               {
-                "text": "{{otpverifieddate}}",
+                "text": "{{currentDate}}",
                 "decoration": "underline",
                 "decorationStyle": "dotted"
               }
@@ -190,7 +190,7 @@
                 "text": "दिनांक "
               },
               {
-                "text": " {{otpverifieddate}}",
+                "text": " {{currentDate}}",
                 "decoration": "underline",
                 "decorationStyle": "dotted"
               }
@@ -207,9 +207,9 @@
 
       {
         "table": {
-          "widths": ["auto", "auto", "auto"],
+          "widths": [30, "*"],
           "body": [
-            "{{#var_approvalConditions}}[{ \"text\": \"{{index}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] },{ \"text\": \"{{question}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] },{ \"text\": \"{{remarks}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] }]{{/var_approvalConditions}}"
+            "{{#var_approvalConditions}}[{ \"text\": \"{{index}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] },{ \"text\": \"{{question}}{{#remarks}} - {{remarks}}{{/remarks}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] }]{{/var_approvalConditions}}"
           ]
         },
         "layout": "noBorders",
@@ -227,7 +227,7 @@
             "text": [
               { "text": "दिनांक " },
               {
-                "text": " {{otpverifieddate}}",
+                "text": " {{currentDate}}",
                 "decoration": "underline",
                 "decorationStyle": "dotted"
               }

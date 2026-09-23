@@ -257,7 +257,7 @@
               {
                 "text": [
                   "दिनांक : ",
-                  { "text": "{{otpverifieddate}}", "bold": true }
+                  { "text": "{{currentDate}}", "bold": true }
                 ]
               }
             ]
