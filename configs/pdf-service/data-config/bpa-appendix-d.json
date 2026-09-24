@@ -145,6 +145,12 @@
                 "type": "selectFromRequestInfo"
               },
               {
+                "variable": "appTenant",
+                "value": {
+                  "path": "$.tenantId"
+                }
+              },
+              {
                 "variable": "mobileNumber",
                 "value": {
                   "path": "$.userInfo.userName"
@@ -904,7 +910,7 @@
             "qrcodeConfig": [
               {
                 "variable": "qrCode",
-                "value": "/digit-ui/citizen/obps/verify-document?module=BPA&applicationNo={{#encodeURIComponent}}{{applicationNo}}{{/encodeURIComponent}}"
+                "value": "/digit-ui/citizen/obps/verify-document?module=BPA&applicationNo={{#encodeURIComponent}}{{applicationNo}}{{/encodeURIComponent}}&tenantId={{appTenant}}"
               }
             ]
           }

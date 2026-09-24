@@ -246,6 +246,12 @@
                 }
               },
               {
+                "variable": "appTenantId",
+                "value": {
+                  "path": "$.applicationData.tenantId"
+                }
+              },
+              {
                 "variable": "wardnumber",
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.wardnumber"
@@ -695,6 +701,7 @@
                   "module": "rainmaker-bpa"
                 }
               },
+
               {
                 "variable": "applicantName",
                 "value": {
@@ -846,7 +853,7 @@
             "qrcodeConfig": [
               {
                 "variable": "qrCode",
-                "value": "/digit-ui/citizen/obps/verify-document?module=LAYOUT&applicationNo={{#encodeURIComponent}}{{applicationNo}}{{/encodeURIComponent}}"
+                "value": "/digit-ui/citizen/obps/verify-document?module=LAYOUT&applicationNo={{#encodeURIComponent}}{{applicationNo}}{{/encodeURIComponent}}&tenantId={{appTenantId}}"
               }
             ]
           }

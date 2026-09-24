@@ -115,6 +115,12 @@
                 }
               },
               {
+                "variable": "appTenantId",
+                "value": {
+                  "path": "$.applicationData.tenantId"
+                }
+              },
+              {
                 "variable": "var_notesheetData",
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.observationRemarks[*]"
@@ -897,7 +903,7 @@
             "qrcodeConfig": [
               {
                 "variable": "qrCode",
-                "value": "/digit-ui/citizen/obps/verify-document?module=LAYOUT&applicationNo={{#encodeURIComponent}}{{applicationNo}}{{/encodeURIComponent}}"
+                "value": "/digit-ui/citizen/obps/verify-document?module=LAYOUT&applicationNo={{#encodeURIComponent}}{{applicationNo}}{{/encodeURIComponent}}&tenantId={{appTenantId}}"
               }
             ]
           }

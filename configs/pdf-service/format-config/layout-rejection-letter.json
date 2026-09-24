@@ -154,15 +154,27 @@
         ]
       },
       {
-        "stack": [
-          { "text": "प्रति," },
+        "columns": [
           {
-            "text": "श्री/श्रीमती/सुश्री/ {{combinedOwnersName}}",
-            "margin": [20, 0, 0, 0],
-            "decoration": "underline",
-            "decorationStyle": "dotted"
+            "stack": [
+              { "text": "प्रति" },
+              {
+                "text": "श्री/श्रीमती/सुश्री/ {{combinedOwnersName}}",
+                "margin": [20, 0, 0, 0],
+                "decoration": "underline",
+                "decorationStyle": "dotted"
+              }
+            ]
+          },
+          {
+            "image": "{{qrCode}}",
+            "alignment": "left",
+            "width": 60,
+            "height": 60,
+            "margin": [0, 0, 0, 0]
           }
         ],
+
         "margin": [0, 0, 0, 0]
       },
       {
