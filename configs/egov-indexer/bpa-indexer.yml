@@ -123,6 +123,10 @@ ServiceMaps:
             fieldMapping:
               - inJsonPath: $.status
                 outJsonPath: $.Data.status
+              - inJsonPath: $.approvalNo
+                outJsonPath: $.Data.approvalNo
+              - inJsonPath: $.approvalDate
+                outJsonPath: $.Data.approvalDate
               - inJsonPath: $.auditDetails.lastModifiedBy
                 outJsonPath: $.Data.lastModifiedBy
               - inJsonPath: $.auditDetails.lastModifiedTime
