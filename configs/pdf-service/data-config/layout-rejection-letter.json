@@ -846,7 +846,7 @@
             "qrcodeConfig": [
               {
                 "variable": "qrCode",
-                "value": "Sanction No: {{planPermissionNo}} Sanction Date: {{orderGeneratedOn}} Owner Name: {{combinedOwnersName}} Issuing Authority: {{municipality_name}} Permission Type: {{permissionType}} Khasra No: {{khasraNumber}} District: {{districtName}} Tehsil: {{tehsilName}} Block/Village: {{villageName}}"
+                "value": "/digit-ui/citizen/obps/verify-document"
               }
             ]
           }

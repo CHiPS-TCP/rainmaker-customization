@@ -933,7 +933,7 @@
             "qrcodeConfig": [
               {
                 "variable": "qrCode",
-                "value": "Applicant Name: {{favourOf}}, Permit Order Number : {{planPermissionNo}}, Permit Order Date : {{orderGeneratedOn}}, eDCR Scrutiny Number: {{edcrNo}}, Approver Name : {{approvedBy}}"
+                "value": "/digit-ui/citizen/obps/verify-document"
               }
             ]
           }
