@@ -26,13 +26,13 @@
           {
             "stack": [
               {
-                "text": "{{municipality_name}}",
+                "text": "{{regionalOfficeName}}",
                 "style": "sub-header",
                 "alignment": "center",
                 "margin": [-10, 3, 0, 0],
                 "fontSize": 18,
                 "bold": true,
-                "color": "#810c01"
+                "color": "#111111"
               },
               {
                 "table": {
@@ -40,15 +40,19 @@
                   "body": [
                     [
                       {
-                        "text": "Payment Receipt",
+                        "text": "Site Visit Report",
                         "style": "header",
                         "alignment": "center",
-                        "fontSize": 12
+                        "fontSize": 12,
+                        "bold": true,
+                        "decoration": "underline",
+                        "color": "#1a4fa0",
+                        "border": [true, true, true, true]
                       }
                     ]
                   ]
                 },
-                "margin": [0, 0, 0, 0]
+                "margin": [0, 4, 0, 0]
               }
             ],
             "margin": [0, -10, 0, 0],
@@ -65,161 +69,112 @@
         "margin": [0, 0, 0, 16]
       },
       {
+        "text": "Proposal Details",
+        "style": "section",
+        "margin": [0, 0, 0, 6]
+      },
+      {
         "table": {
-          "widths": [68, "*", 74, "*"],
+          "widths": [95, 150, 70, "*"],
           "body": [
             [
-              { "text": "Receipt No.", "style": "label" },
-              { "text": ": {{receiptNo}}", "style": "value" },
-              { "text": "Receipt Date", "style": "label" },
-              { "text": ": {{paymentDate}}", "style": "value" }
-            ],
-            [
-              { "text": "Challan No.", "style": "label" },
-              { "text": ": {{applicationNo}}", "style": "value" },
-              { "text": "Application No.", "style": "label" },
-              { "text": ": {{consumerID}}", "style": "value" }
+              { "text": "File No.", "style": "label" },
+              { "text": ": {{fileNo}}", "style": "value" },
+              { "text": "Inspected on", "style": "label" },
+              { "text": ": {{inspectedOn}}", "style": "value" }
             ]
           ]
         },
         "layout": "noBorders",
-        "margin": [0, 0, 0, 5]
-      },
-      {
-        "canvas": [
-          {
-            "type": "line",
-            "x1": 0,
-            "y1": 0,
-            "x2": 505,
-            "y2": 0,
-            "lineWidth": 0.8,
-            "lineColor": "#333333"
-          }
-        ],
-        "margin": [0, 0, 0, 7]
+        "margin": [0, 0, 0, 2]
       },
       {
         "columns": [
-          { "width": 88, "text": "Applicant Name", "style": "label" },
-          { "width": 12, "text": ":", "style": "label" },
-          { "width": "*", "text": "{{payerName}}", "style": "value" }
+          { "width": 130, "text": "Purpose of construction", "style": "label" },
+          { "width": 10, "text": ":", "style": "label" },
+          { "width": "*", "text": "{{purposeOfConstruction}}", "style": "value" }
         ],
-        "margin": [0, 0, 0, 8]
+        "margin": [0, 2, 0, 2]
+      },
+      {
+        "columns": [
+          { "width": 130, "text": "Survey No.", "style": "label" },
+          { "width": 10, "text": ":", "style": "label" },
+          { "width": "*", "text": "{{surveyNo}}", "style": "value" }
+        ],
+        "margin": [0, 2, 0, 2]
+      },
+      {
+        "columns": [
+          { "width": 130, "text": "Location", "style": "label" },
+          { "width": 10, "text": ":", "style": "label" },
+          { "width": "*", "text": "{{location}}", "style": "value" }
+        ],
+        "margin": [0, 2, 0, 2]
+      },
+      {
+        "columns": [
+          { "width": 130, "text": "Type of construction", "style": "label" },
+          { "width": 10, "text": ":", "style": "label" },
+          { "width": "*", "text": "{{typeOfConstruction}}", "style": "value" }
+        ],
+        "margin": [0, 2, 0, 2]
+      },
+      {
+        "columns": [
+          { "width": 130, "text": "Plot Area", "style": "label" },
+          { "width": 10, "text": ":", "style": "label" },
+          { "width": "*", "text": "{{plotArea}}", "style": "value" }
+        ],
+        "margin": [0, 2, 0, 10]
+      },
+      {
+        "text": "Inspection CheckList",
+        "style": "section",
+        "margin": [0, 0, 0, 4]
       },
       {
         "table": {
-          "widths": [135, "*", 55, 90],
+          "headerRows": 1,
+          "widths": [20, 235, 85, 70, "*"],
           "body": [
             [
-              {
-                "text": "Amount (INR)",
-                "style": "label",
-                "border": [true, true, false, false]
-              },
-              {
-                "text": ": ₹{{paidAmount}}",
-                "style": "value",
-                "border": [false, true, false, false]
-              },
-              { "text": " ","border": [false, true, false, false] },
-              { "text": " ","border": [false, true, true, false] }
+              { "text": "#", "style": "checklist-header" },
+              { "text": "Description", "style": "checklist-header" },
+              { "text": "As On Site", "style": "checklist-header" },
+              { "text": "Observation", "style": "checklist-header" },
+              { "text": "Remarks", "style": "checklist-header" }
             ],
-            [
-              {
-                "text": "Amount (In Words)",
-                "style": "label",
-                "border": [true, false, false, false]
-              },
-              {
-                "text": ": {{Amountinwords}} only",
-                "style": "value",
-                "border": [false, false, false, false]
-              },
-              { "text": " ","border": [false, false, false, false] },
-              { "text": " ","border": [false, false, true, false] }
-            ],
-            [
-              {
-                "text": "Transaction Type",
-                "style": "label",
-                "border": [true, false, false, false]
-              },
-              {
-                "text": ": {{paymentMode}}",
-                "style": "value",
-                "border": [false, false, false, false]
-              },
-              { "text": " ","border": [false, false, false, false] },
-              { "text": " ","border": [false, false, true, false] }
-            ],
-            [
-              {
-                "text": "Payment Made At",
-                "style": "label",
-                "border": [true, false, false, false]
-              },
-              {
-                "text": ": Online",
-                "style": "value",
-                "border": [false, false, false, false]
-              },
-              { "text": " ","border": [false, false, false, false] },
-              { "text": " ","border": [false, false, true, false] }
-            ],
-            [
-              {
-                "text": "Payment Details",
-                "style": "section",
-                "colSpan": 4,
-                "border": [true, false, true, false]
-              },
-              { "text": " ","border": [false, false, false, false] },
-              { "text": " ","border": [false, false, false, false] },
-              { "text": " ","border": [false, false, false, false] }
-            ],
-            [
-              {
-                "text": "Transaction No.",
-                "style": "label",
-                "border": [true, false, false, true]
-              },
-              {
-                "text": ": {{transactionID}}",
-                "style": "value",
-                "border": [false, false, false, true]
-              },
-              {
-                "text": "Date",
-                "style": "label",
-                "border": [false, false, false, true]
-              },
-              {
-                "text": ": {{paymentDate}}",
-                "style": "value",
-                "border": [false, false, true, true]
-              }
-            ]
+            "{{#var_checklist}}[{\"text\":\"{{srNo}}\",\"style\":\"checklist-cell\"},{\"text\":\"{{description}}\",\"style\":\"checklist-cell\"},{\"text\":\"{{asOnSite}}\",\"style\":\"checklist-cell\"},{\"text\":\"{{observation}}\",\"style\":\"checklist-cell\"},{\"text\":\"{{remarks}}\",\"style\":\"checklist-cell\"}]{{/var_checklist}}"
           ]
         },
-        "margin": [0, 0, 0, 9]
+        "margin": [0, 0, 0, 10]
+      },
+      {
+        "columns": [
+          { "width": 150, "text": "Inspection Recommendation", "style": "label" },
+          { "width": 10, "text": ":", "style": "label" },
+          { "width": "*", "text": "{{inspectionRecommendation}}", "style": "value" }
+        ],
+        "margin": [0, 4, 0, 4]
+      },
+      {
+        "columns": [
+          { "width": 150, "text": "Inspection Remarks", "style": "label" },
+          { "width": 10, "text": ":", "style": "label" },
+          { "width": "*", "text": "{{inspectionRemarks}}", "style": "value" }
+        ],
+        "margin": [0, 0, 0, 20]
       },
       {
         "stack": [
-          { "text": "Disclaimer", "style": "label", "margin": [0, 0, 0, 4] },
-          {
-            "text": "1. Application fee is Non-refundable.",
-            "margin": [0, 0, 0, 4]
-          },
-          {
-            "text": "2. Application fee is taken as per point-7 of Bhoomi Vikas Niyam - 1984 Amendment dated - 29-04-2020.",
-            "margin": [0, 0, 0, 4]
-          },
-          {
-            "text": "3. This is an electronically generated receipt, no signature is required."
-          }
+          { "text": "{{regionalOfficeName}}", "bold": true, "margin": [0, 0, 0, 2] },
+          { "text": "{{signatoryDesignation}}", "margin": [0, 0, 0, 14] },
+          { "text": "Yours Faithfully", "margin": [0, 0, 0, 2] },
+          { "text": "{{signatoryName}}", "bold": true }
         ],
-        "margin": [10, 0, 0, 0]
+        "alignment": "right",
+        "margin": [0, 0, 0, 0]
       }
     ],
     "styles": {
@@ -227,7 +182,9 @@
       "title": { "fontSize": 11, "bold": true, "border": [true, true, true, true], "margin": [5, 3, 5, 3] },
       "label": { "fontSize": 9, "bold": true },
       "value": { "fontSize": 9, "bold": true },
-      "section": { "fontSize": 9, "bold": true, "fillColor": "#f2f2f2", "margin": [0, 2, 0, 2] }
+      "section": { "fontSize": 9, "bold": true, "fillColor": "#f2f2f2", "margin": [0, 2, 0, 2] },
+      "checklist-header": { "fontSize": 8.5, "bold": true, "fillColor": "#f2f2f2", "margin": [2, 2, 2, 2] },
+      "checklist-cell": { "fontSize": 8.5, "margin": [2, 2, 2, 2] }
     }
   }
 }

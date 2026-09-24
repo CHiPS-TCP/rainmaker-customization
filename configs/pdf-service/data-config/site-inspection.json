@@ -787,6 +787,23 @@
                   "prefix": null,
                   "module": "rainmaker-bpa"
                 }
+              },
+              {
+                "variable": "var_checklist",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteInspectionChecklist[*]"
+                },
+                "type": "array",
+                "format": {
+                  "type": "string",
+                  "scema": [
+                    { "variable": "srNo", "value": "srNo" },
+                    { "variable": "description", "value": "description" },
+                    { "variable": "asOnSite", "value": "asOnSite" },
+                    { "variable": "observation", "value": "observation" },
+                    { "variable": "remarks", "value": "remarks" }
+                  ]
+                }
               }
             ]
           },
