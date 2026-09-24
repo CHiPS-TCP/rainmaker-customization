@@ -1,10 +1,10 @@
 
 {
-  "key": "chips-feereceipt",
+  "key": "site-inspection",
   "DataConfigs": {
     "serviceName": "rainmaker-bpa",
     "version": "1.0.0",
-    "baseKeyPath": "$.Payments.*",
+    "baseKeyPath": "$.Bpa.*",
     "entityIdPath": "$.applicationNo",
     "isCommonTableBorderRequired": true,
     "mappings": [
@@ -19,52 +19,46 @@
                 }
               },
               {
-                "variable": "receiptNo",
-                "value": {
-                  "path": "$.paymentDetails[0].receiptNumber"
-                }
-              },
-              {
                 "variable": "paymentDate",
                 "value": {
-                  "path": "$.transactionDate"
+                  "path": "$.bill.billDate"
                 },
                 "type": "date"
               },
               {
                 "variable": "payerName",
                 "value": {
-                  "path": "$.payerName"
+                  "path": "$.bill.payerName"
                 }
               },
               {
                 "variable": "consumerID",
                 "value": {
-                  "path": "$.paymentDetails[0].bill.consumerCode"
+                  "path": "$.bill.consumerCode"
                 }
               },
               {
-                "variable": "paidAmount",
+                "variable": "serviceType",
                 "value": {
-                  "path": "$.totalAmountPaid"
+                  "path": "$.bill.businessService"
+                }
+              },
+              {
+                "variable": "totalAmount",
+                "value": {
+                  "path": "$.payableAmount"
+                }
+              },
+              {
+                "variable": "dueAmount",
+                "value": {
+                  "path": "$.payableAmount"
                 }
               },
               {
                 "variable": "Amountinwords",
                 "value": {
-                  "path": "$.amountinwords"
-                }
-              },
-              {
-                "variable": "paymentMode",
-                "value": {
-                  "path": "$.paymentMode"
-                }
-              },
-              {
-                "variable": "transactionID",
-                "value": {
-                  "path": "$.transactionNumber"
+                  "path": "$.amountInWords"
                 }
               },
               {
@@ -820,10 +814,12 @@
                   {
                     "variable": "contactNumber",
                     "value": "$.MdmsRes.tenant.tenants[0].contactNumber"
+                    
                   },
                   {
                     "variable": "emailId",
                     "value": "$.MdmsRes.tenant.tenants[0].emailId"
+                  
                   },
                   {
                     "variable": "logo_header",
@@ -843,10 +839,6 @@
                     "value": "$.MdmsRes.tenant.tenants[0].city.municipalityNameHindi"
                   },
                   {
-                    "variable": "district",
-                    "value": "$.MdmsRes.tenant.tenants[0].city.districtName"
-                  },
-                  {
                     "variable": "municipality_name",
                     "value": "$.MdmsRes.tenant.tenants[0].city.municipalityName"
                   },
@@ -861,22 +853,6 @@
                   {
                     "variable": "ulbGrade",
                     "value": "$.MdmsRes.tenant.tenants[0].city.ulbGrade"
-                  },
-                  {
-                    "variable": "headerLine1",
-                    "value": "$.MdmsRes.tenant.tenants[0].city.headerLine1"
-                  },
-                  {
-                    "variable": "headerLine2",
-                    "value": "$.MdmsRes.tenant.tenants[0].city.headerLine2"
-                  },
-                  {
-                    "variable": "headerLine3",
-                    "value": "$.MdmsRes.tenant.tenants[0].city.headerLine3"
-                  },
-                  {
-                    "variable": "headerLine4",
-                    "value": "$.MdmsRes.tenant.tenants[0].city.headerLine4"
                   }
                 ]
               }
@@ -897,7 +873,7 @@
             "qrcodeConfig": [
               {
                 "variable": "qrCode",
-                "value": "/digit-ui/citizen/obps/verify-document?module=LAYOUT&applicationNo={{#encodeURIComponent}}{{applicationNo}}{{/encodeURIComponent}}"
+                "value": "Applicant Name: {{favourOf}}, Permit Order Number : {{planPermissionNo}}, Permit Order Date : {{orderGeneratedOn}}, eDCR Scrutiny Number: {{edcrNo}}, Approver Name : {{approvedBy}}"
               }
             ]
           }
