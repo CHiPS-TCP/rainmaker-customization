@@ -26,7 +26,7 @@
           {
             "stack": [
               {
-                "text": "{{regionalOfficeName}}",
+                "text": "{{regionalOfficeName}} Regional Office",
                 "style": "sub-header",
                 "alignment": "center",
                 "margin": [-10, 3, 0, 0],
