@@ -19,6 +19,49 @@
                 }
               },
               {
+                "variable": "fileNo",
+                "value": {
+                  "path": "$.applicationData.applicationNo"
+                }
+              },
+              {
+                "variable": "inspectedOn",
+                "value": {
+                  "path": "$.applicationData.inspectionDate"
+                },
+                "type": "date"
+              },
+              {
+                "variable": "purposeOfConstruction",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.layoutPlotUse.name"
+                }
+              },
+              {
+                "variable": "surveyNo",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.khasraNo"
+                }
+              },
+              {
+                "variable": "location",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.village[0].name"
+                }
+              },
+              {
+                "variable": "typeOfConstruction",
+                "value": {
+                  "path": "$.applicationData.applicationType"
+                }
+              },
+              {
+                "variable": "plotArea",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.plotAreaAsPerDocument"
+                }
+              },
+              {
                 "variable": "paymentDate",
                 "value": {
                   "path": "$.bill.billDate"
