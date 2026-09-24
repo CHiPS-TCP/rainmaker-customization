@@ -62,6 +62,30 @@
                 }
               },
               {
+                "variable": "inspectionRecommendation",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.observationRemarks[0].action"
+                }
+              },
+              {
+                "variable": "inspectionRemarks",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.observationRemarks[0].remarks"
+                }
+              },
+              {
+                "variable": "signatoryName",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.observationRemarks[0].name"
+                }
+              },
+              {
+                "variable": "regionalOfficeName",
+                "value": {
+                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.regionOffice.name"
+                }
+              },
+              {
                 "variable": "paymentDate",
                 "value": {
                   "path": "$.bill.billDate"

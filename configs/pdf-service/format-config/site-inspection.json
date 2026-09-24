@@ -151,27 +151,30 @@
         "margin": [0, 0, 0, 10]
       },
       {
-        "columns": [
-          { "width": 150, "text": "Inspection Recommendation", "style": "label" },
-          { "width": 10, "text": ":", "style": "label" },
-          { "width": "*", "text": "{{inspectionRecommendation}}", "style": "value" }
-        ],
-        "margin": [0, 4, 0, 4]
+        "table": {
+          "widths": ["*"],
+          "body": [
+            [{ "text": "Inspection Recommendation", "style": "section" }],
+            [{ "text": "{{inspectionRecommendation}}", "style": "value", "margin": [2, 4, 2, 4] }]
+          ]
+        },
+        "margin": [0, 0, 0, 0]
       },
       {
-        "columns": [
-          { "width": 150, "text": "Inspection Remarks", "style": "label" },
-          { "width": 10, "text": ":", "style": "label" },
-          { "width": "*", "text": "{{inspectionRemarks}}", "style": "value" }
-        ],
+        "table": {
+          "widths": ["*"],
+          "body": [
+            [{ "text": "Inspection Remarks", "style": "section" }],
+            [{ "text": "{{inspectionRemarks}}", "style": "value", "margin": [2, 4, 2, 4] }]
+          ]
+        },
         "margin": [0, 0, 0, 20]
       },
       {
         "stack": [
-          { "text": "{{regionalOfficeName}}", "bold": true, "margin": [0, 0, 0, 2] },
-          { "text": "{{signatoryDesignation}}", "margin": [0, 0, 0, 14] },
-          { "text": "Yours Faithfully", "margin": [0, 0, 0, 2] },
-          { "text": "{{signatoryName}}", "bold": true }
+          { "text": "Yours Faithfully", "bold": true, "margin": [0, 0, 0, 22] },
+          { "text": "{{signatoryName}}", "bold": true, "margin": [0, 0, 0, 14] },
+          { "text": "{{regionalOfficeName}} Regional Office", "bold": true }
         ],
         "alignment": "right",
         "margin": [0, 0, 0, 0]
