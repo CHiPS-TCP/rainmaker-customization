@@ -2,7 +2,6 @@ ServiceMaps:
   serviceName: egov-layout-services
   version: 1.0.0
   mappings:
-
     - topic: save-layout-application
       configKey: INDEX
       indexes:
@@ -36,71 +35,114 @@ ServiceMaps:
                 layoutDetails: layoutDetails
                 siteDetails: {}
                 additionalDetails: {}
-
             fieldMapping:
               - inJsonPath: $.Layout.id
                 outJsonPath: $.Data.id
-
               - inJsonPath: $.Layout.tenantId
                 outJsonPath: $.Data.tenantId
-
               - inJsonPath: $.Layout.applicationNo
                 outJsonPath: $.Data.applicationNo
-
               - inJsonPath: $.Layout.approvalNo
                 outJsonPath: $.Data.approvalNo
-
               - inJsonPath: $.Layout.approvalDate
                 outJsonPath: $.Data.approvalDate
-
               - inJsonPath: $.Layout.applicationType
                 outJsonPath: $.Data.applicationType
-
               - inJsonPath: $.Layout.layoutNo
                 outJsonPath: $.Data.layoutNo
-
               - inJsonPath: $.Layout.layoutType
                 outJsonPath: $.Data.layoutType
-
               - inJsonPath: $.Layout.status
                 outJsonPath: $.Data.status
-
               - inJsonPath: $.Layout.applicationStatus
                 outJsonPath: $.Data.applicationStatus
-
               - inJsonPath: $.Layout.accountId
                 outJsonPath: $.Data.accountId
-
               - inJsonPath: $.Layout.workflow.action
                 outJsonPath: $.Data.workflowAction
-
               - inJsonPath: $.Layout.auditDetails.createdBy
                 outJsonPath: $.Data.createdBy
-
               - inJsonPath: $.Layout.auditDetails.lastModifiedBy
                 outJsonPath: $.Data.lastModifiedBy
-
               - inJsonPath: $.Layout.auditDetails.createdTime
                 outJsonPath: $.Data.createdTime
-
               - inJsonPath: $.Layout.auditDetails.lastModifiedTime
                 outJsonPath: $.Data.lastModifiedTime
-
               - inJsonPath: $.Layout.documents
                 outJsonPath: $.Data.documents
-
               - inJsonPath: $.Layout.owners
                 outJsonPath: $.Data.owners
-
               - inJsonPath: $.Layout.layoutDetails
                 outJsonPath: $.Data.layoutDetails
-
               - inJsonPath: $.Layout.layoutDetails.additionalDetails.siteDetails
                 outJsonPath: $.Data.siteDetails
-
               - inJsonPath: $.Layout.layoutDetails.additionalDetails
                 outJsonPath: $.Data.additionalDetails
 
+    # ===============================
+    # LEGACY INDEX (DB -> ES BACKFILL)
+    # ===============================
+    - topic: layout-application-legacyIndex
+      configKey: LEGACYINDEX
+      indexes:
+        - name: layout-application-index
+          type: general
+          id: $.id, $.tenantId
+          isBulk: true
+          timeStampField: $.auditDetails.createdTime
+          jsonPath: $.Layout
+          customJsonMapping:
+            indexMapping:
+              Data:
+                id: id
+                tenantId: tenantId
+                applicationNo: applicationNo
+                status: status
+                layoutNo: layoutNo
+                applicationType: applicationType
+                layoutType: layoutType
+                accountId: accountId
+                applicationStatus: applicationStatus
+                createdBy: createdBy
+                lastModifiedBy: lastModifiedBy
+                createdTime: createdTime
+                lastModifiedTime: lastModifiedTime
+                documents: documents
+                layoutDetails: layoutDetails
+                owners: owners
+            fieldMapping:
+              - inJsonPath: $.id
+                outJsonPath: $.Data.id
+              - inJsonPath: $.tenantId
+                outJsonPath: $.Data.tenantId
+              - inJsonPath: $.applicationNo
+                outJsonPath: $.Data.applicationNo
+              - inJsonPath: $.status
+                outJsonPath: $.Data.status
+              - inJsonPath: $.layoutNo
+                outJsonPath: $.Data.layoutNo
+              - inJsonPath: $.applicationType
+                outJsonPath: $.Data.applicationType
+              - inJsonPath: $.layoutType
+                outJsonPath: $.Data.layoutType
+              - inJsonPath: $.accountId
+                outJsonPath: $.Data.accountId
+              - inJsonPath: $.applicationStatus
+                outJsonPath: $.Data.applicationStatus
+              - inJsonPath: $.auditDetails.createdBy
+                outJsonPath: $.Data.createdBy
+              - inJsonPath: $.auditDetails.lastModifiedBy
+                outJsonPath: $.Data.lastModifiedBy
+              - inJsonPath: $.auditDetails.createdTime
+                outJsonPath: $.Data.createdTime
+              - inJsonPath: $.auditDetails.lastModifiedTime
+                outJsonPath: $.Data.lastModifiedTime
+              - inJsonPath: $.documents
+                outJsonPath: $.Data.documents
+              - inJsonPath: $.layoutDetails
+                outJsonPath: $.Data.layoutDetails
+              - inJsonPath: $.owners
+                outJsonPath: $.Data.owners
 
     - topic: update-layout-application
       configKey: INDEX
@@ -135,67 +177,46 @@ ServiceMaps:
                 layoutDetails: layoutDetails
                 siteDetails: {}
                 additionalDetails: {}
-
             fieldMapping:
               - inJsonPath: $.Layout.id
                 outJsonPath: $.Data.id
-
               - inJsonPath: $.Layout.tenantId
                 outJsonPath: $.Data.tenantId
-
               - inJsonPath: $.Layout.applicationNo
                 outJsonPath: $.Data.applicationNo
-
               - inJsonPath: $.Layout.approvalNo
                 outJsonPath: $.Data.approvalNo
-
               - inJsonPath: $.Layout.approvalDate
                 outJsonPath: $.Data.approvalDate
-
               - inJsonPath: $.Layout.applicationType
                 outJsonPath: $.Data.applicationType
-
               - inJsonPath: $.Layout.layoutNo
                 outJsonPath: $.Data.layoutNo
-
               - inJsonPath: $.Layout.layoutType
                 outJsonPath: $.Data.layoutType
-
               - inJsonPath: $.Layout.status
                 outJsonPath: $.Data.status
-
               - inJsonPath: $.Layout.applicationStatus
                 outJsonPath: $.Data.applicationStatus
-
               - inJsonPath: $.Layout.accountId
                 outJsonPath: $.Data.accountId
-
               - inJsonPath: $.Layout.workflow.action
                 outJsonPath: $.Data.workflowAction
-
               - inJsonPath: $.Layout.auditDetails.createdBy
                 outJsonPath: $.Data.createdBy
-
               - inJsonPath: $.Layout.auditDetails.lastModifiedBy
                 outJsonPath: $.Data.lastModifiedBy
-
               - inJsonPath: $.Layout.auditDetails.createdTime
                 outJsonPath: $.Data.createdTime
-
               - inJsonPath: $.Layout.auditDetails.lastModifiedTime
                 outJsonPath: $.Data.lastModifiedTime
-
               - inJsonPath: $.Layout.documents
                 outJsonPath: $.Data.documents
-
               - inJsonPath: $.Layout.owners
                 outJsonPath: $.Data.owners
-
               - inJsonPath: $.Layout.layoutDetails
                 outJsonPath: $.Data.layoutDetails
-
               - inJsonPath: $.Layout.layoutDetails.additionalDetails.siteDetails
                 outJsonPath: $.Data.siteDetails
-
               - inJsonPath: $.Layout.layoutDetails.additionalDetails
                 outJsonPath: $.Data.additionalDetails
