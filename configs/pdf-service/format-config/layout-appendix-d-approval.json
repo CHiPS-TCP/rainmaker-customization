@@ -198,6 +198,7 @@
         "margin": [0,0,30,0]
       },
       {
+        "id": "dsc-seal-joint-director",
         "stack": [
           { "text": "{{officer_desig_hindi}}", "bold": true, "margin": [0, 0, 30, 0] },
           { "text": "नगर तथा ग्राम निवेश विभाग,", "margin": [0, 0, 0, 0] },
@@ -279,6 +280,7 @@
         "margin": [0, 0, 0, 10]
       },
       {
+        "id": "dsc-seal-director",
         "stack": [
           { "text": "{{officer_desig_hindi}}", "bold": true, "margin": [0, 0, 30, 0] },
           { "text": "नगर तथा ग्राम निवेश विभाग,", "margin": [0, 0, 0, 0] },

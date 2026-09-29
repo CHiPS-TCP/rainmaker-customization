@@ -274,6 +274,7 @@
             ]
           },
           {
+            "id": "dsc-seal-director",
             "stack": [
               { "text": "संयुक संचालक", "bold": true, "margin": [0, 0, 30, 0] },
               { "text": "नगर तथा ग्राम निवेश विभाग,", "margin": [0, 0, 0, 0] },
@@ -307,6 +308,7 @@
         "bold": true
       },
       {
+        "id": "dsc-seal-joint-director",
         "stack": [
           { "text": "{{officer_desig_hindi}}", "bold": true, "margin": [0, 0, 30, 0] },
           { "text": "नगर तथा ग्राम निवेश विभाग,", "margin": [0, 0, 0, 0] },
