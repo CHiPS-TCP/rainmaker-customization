@@ -50,6 +50,12 @@
                 }
               },
               {
+                "variable": "instrumentNumber",
+                "value": {
+                  "path": "$.instrumentNumber"
+                }
+              },
+              {
                 "variable": "Amountinwords",
                 "value": {
                   "path": "$.amountinwords"

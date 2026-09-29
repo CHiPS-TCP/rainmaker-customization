@@ -75,10 +75,10 @@
               { "text": ": {{paymentDate}}", "style": "value" }
             ],
             [
-              { "text": "Challan No.", "style": "label" },
-              { "text": ": {{applicationNo}}", "style": "value" },
               { "text": "Application No.", "style": "label" },
-              { "text": ": {{consumerID}}", "style": "value" }
+              { "text": ": {{consumerID}}", "style": "value" },
+              { "text": " ", "style": "label" },
+              { "text": " ", "style": "value" }
             ]
           ]
         },
@@ -185,7 +185,7 @@
                 "border": [true, false, false, true]
               },
               {
-                "text": ": {{transactionID}}",
+                "text": ": {{instrumentNumber}}",
                 "style": "value",
                 "border": [false, false, false, true]
               },

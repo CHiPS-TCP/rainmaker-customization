@@ -17,12 +17,12 @@
           "widths": [58, "*", 64, "*"],
           "body": [
             [
-              { "text": "Challan No.", "style": "label" }, { "text": ": {{applicationNo}}", "style": "value" },
-              { "text": "Challan Date", "style": "label" }, { "text": ": {{paymentDate}}", "style": "value" }
+              { "text": "Challan Date", "style": "label" }, { "text": ": {{paymentDate}}", "style": "value" },
+              { "text": "Name", "style": "label" }, { "text": ": {{payerName}}", "style": "value" }
             ],
             [
-              { "text": "Name", "style": "label" }, { "text": ": {{payerName}}", "style": "value" },
-              { "text": "File No.", "style": "label" }, { "text": ": {{consumerID}}", "style": "value" }
+              { "text": "File No.", "style": "label" }, { "text": ": {{consumerID}}", "style": "value" },
+              { "text": " ", "style": "label" }, { "text": " ", "style": "value" }
             ]
           ]
         },
