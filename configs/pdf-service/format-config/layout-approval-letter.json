@@ -228,6 +228,7 @@
         "margin": [0, 0, 0, 10]
       },
       {
+        "id": "dsc-seal-joint-director",
         "stack": [
           {
             "text": "{{officer_desig_hindi}}",
@@ -252,7 +253,7 @@
         ],
         "width": "*",
         "alignment": "right",
-        "margin": [0, 0, 30, 0]
+        "margin": [0, 0, 30, 65]
       },
       {
         "text": [
@@ -279,6 +280,7 @@
         "margin": [0, 0, 0, 10]
       },
       {
+        "id": "dsc-seal-director",
         "stack": [
           {
             "text": "{{officer_desig_hindi}}",
