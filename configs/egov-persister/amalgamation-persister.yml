@@ -1,0 +1,367 @@
+serviceMaps:
+  serviceName: amalgamation-services
+  version: 1.0.0
+  mappings:
+    - version: 1.0
+      description: Create Amalgamation entry
+      fromTopic: save-amalgamation-application
+      isTransaction: true
+      queryMaps:
+        - query: >
+            INSERT INTO eg_amalgamation (
+              id, applicationno, tenantid, status, createdby,
+              lastmodifiedby, createdtime, lastmodifiedtime, amalgamationno, applicationtype, amalgamationtype,
+              accountid, applicationstatus, approvalno, vasikanumber, vasikadate, inspectiondate
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: $.Amalgamation
+          jsonMaps:
+            - jsonPath: $.Amalgamation.id
+            - jsonPath: $.Amalgamation.applicationNo
+            - jsonPath: $.Amalgamation.tenantId
+            - jsonPath: $.Amalgamation.status
+            - jsonPath: $.Amalgamation.auditDetails.createdBy
+            - jsonPath: $.Amalgamation.auditDetails.lastModifiedBy
+            - jsonPath: $.Amalgamation.auditDetails.createdTime
+            - jsonPath: $.Amalgamation.auditDetails.lastModifiedTime
+            - jsonPath: $.Amalgamation.amalgamationNo
+            - jsonPath: $.Amalgamation.applicationType
+            - jsonPath: $.Amalgamation.amalgamationType
+            - jsonPath: $.Amalgamation.accountId
+            - jsonPath: $.Amalgamation.applicationStatus
+            - jsonPath: $.Amalgamation.approvalNo
+            - jsonPath: $.Amalgamation.vasikaNumber
+            - jsonPath: $.Amalgamation.vasikaDate
+            - jsonPath: $.Amalgamation.inspectionDate
+              type: LONG
+
+        - query: >
+            INSERT INTO eg_amalgamation_auditdetails (
+              id, applicationno, tenantid, status, createdby,
+              lastmodifiedby, createdtime, lastmodifiedtime, amalgamationno, applicationtype, amalgamationtype,
+              accountid, applicationstatus, approvalno, vasikanumber, vasikadate, inspectiondate
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: $.Amalgamation
+          jsonMaps:
+            - jsonPath: $.Amalgamation.id
+            - jsonPath: $.Amalgamation.applicationNo
+            - jsonPath: $.Amalgamation.tenantId
+            - jsonPath: $.Amalgamation.status
+            - jsonPath: $.Amalgamation.auditDetails.createdBy
+            - jsonPath: $.Amalgamation.auditDetails.lastModifiedBy
+            - jsonPath: $.Amalgamation.auditDetails.createdTime
+            - jsonPath: $.Amalgamation.auditDetails.lastModifiedTime
+            - jsonPath: $.Amalgamation.amalgamationNo
+            - jsonPath: $.Amalgamation.applicationType
+            - jsonPath: $.Amalgamation.amalgamationType
+            - jsonPath: $.Amalgamation.accountId
+            - jsonPath: $.Amalgamation.applicationStatus
+            - jsonPath: $.Amalgamation.approvalNo
+            - jsonPath: $.Amalgamation.vasikaNumber
+            - jsonPath: $.Amalgamation.vasikaDate
+            - jsonPath: $.Amalgamation.inspectionDate
+              type: LONG
+
+        - query: >
+            INSERT INTO eg_amalgamation_document (
+              uuid, documenttype, documentattachment, documentuid, amalgamationid, doc_order, createdby,
+              lastmodifiedby, createdtime, lastmodifiedtime
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: $.Amalgamation.documents.*
+          jsonMaps:
+            - jsonPath: $.Amalgamation.documents.*.uuid
+            - jsonPath: $.Amalgamation.documents.*.documentType
+            - jsonPath: $.Amalgamation.documents.*.documentAttachment
+            - jsonPath: $.Amalgamation.documents.*.documentUid
+            - jsonPath: $.Amalgamation.id
+            - jsonPath: $.Amalgamation.documents.*.order
+            - jsonPath: $.Amalgamation.documents.*.auditDetails.createdBy
+            - jsonPath: $.Amalgamation.documents.*.auditDetails.lastModifiedBy
+            - jsonPath: $.Amalgamation.documents.*.auditDetails.createdTime
+            - jsonPath: $.Amalgamation.documents.*.auditDetails.lastModifiedTime
+
+        - query: >
+            INSERT INTO eg_amalgamation_details (
+              id, amalgamationid, additionaldetails, createdby, lastmodifiedby, createdtime, lastmodifiedtime, tenantid
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: $.Amalgamation.amalgamationDetails
+          jsonMaps:
+            - jsonPath: $.Amalgamation.amalgamationDetails.id
+            - jsonPath: $.Amalgamation.id
+            - jsonPath: $.Amalgamation.amalgamationDetails.additionalDetails
+              type: JSON
+              dbType: JSONB
+            - jsonPath: $.Amalgamation.amalgamationDetails.auditDetails.createdBy
+            - jsonPath: $.Amalgamation.amalgamationDetails.auditDetails.lastModifiedBy
+            - jsonPath: $.Amalgamation.amalgamationDetails.auditDetails.createdTime
+            - jsonPath: $.Amalgamation.amalgamationDetails.auditDetails.lastModifiedTime
+            - jsonPath: $.Amalgamation.amalgamationDetails.tenantId
+
+        - query: >
+            INSERT INTO eg_amalgamation_owner (
+              id, tenantid, amalgamationid, status, isprimaryowner,
+              ownertype, ownershippercentage, institutionid, relationship,
+              createdby, createdtime, lastmodifiedby, lastmodifiedtime, additionaldetails, uuid
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: $.Amalgamation.owners.*
+          jsonMaps:
+            - jsonPath: $.Amalgamation.owners.*.id
+            - jsonPath: $.Amalgamation.owners.*.tenantId
+            - jsonPath: $.Amalgamation.id
+            - jsonPath: $.Amalgamation.owners.*.status
+            - jsonPath: $.Amalgamation.owners.*.isPrimaryOwner
+            - jsonPath: $.Amalgamation.owners.*.type
+            - jsonPath: $.Amalgamation.owners.*.ownershipPercentage
+            - jsonPath: $.Amalgamation.owners.*.institutionId
+            - jsonPath: $.Amalgamation.owners.*.relationship
+            - jsonPath: $.Amalgamation.owners.*.createdBy
+            - jsonPath: $.Amalgamation.owners.*.createdDate
+            - jsonPath: $.Amalgamation.owners.*.lastModifiedBy
+            - jsonPath: $.Amalgamation.owners.*.lastModifiedDate
+            - jsonPath: $.Amalgamation.owners.*.additionalDetails
+              type: JSON
+              dbType: JSONB
+            - jsonPath: $.Amalgamation.owners.*.uuid
+
+    - version: 1.0
+      description: Update Amalgamation entry
+      fromTopic: update-amalgamation-application
+      isTransaction: true
+      queryMaps:
+        - query: >
+            UPDATE eg_amalgamation
+             SET status = ?, applicationstatus = ?, amalgamationno = ?,
+                 applicationtype = ?, amalgamationtype = ?,
+                 lastmodifiedby = ?, lastmodifiedtime = ?,
+                 tenantid = ?, inspectiondate = ?, approvalno = ?,
+                 vasikanumber = ?, vasikadate = ?
+             WHERE id = ?;
+          basePath: $.Amalgamation
+          jsonMaps:
+            - jsonPath: $.Amalgamation.status
+            - jsonPath: $.Amalgamation.applicationStatus
+            - jsonPath: $.Amalgamation.amalgamationNo
+            - jsonPath: $.Amalgamation.applicationType
+            - jsonPath: $.Amalgamation.amalgamationType
+            - jsonPath: $.Amalgamation.auditDetails.lastModifiedBy
+            - jsonPath: $.Amalgamation.auditDetails.lastModifiedTime
+            - jsonPath: $.Amalgamation.tenantId
+            - jsonPath: $.Amalgamation.inspectionDate
+              type: LONG
+            - jsonPath: $.Amalgamation.approvalNo
+            - jsonPath: $.Amalgamation.vasikaNumber
+            - jsonPath: $.Amalgamation.vasikaDate
+            - jsonPath: $.Amalgamation.id
+
+        - query: >
+            INSERT INTO eg_amalgamation_auditdetails (
+              id, applicationno, tenantid, status, createdby,
+              lastmodifiedby, createdtime, lastmodifiedtime, amalgamationno, applicationtype, amalgamationtype,
+              accountid, applicationstatus, approvalno, vasikanumber, vasikadate, inspectiondate
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: $.Amalgamation
+          jsonMaps:
+            - jsonPath: $.Amalgamation.id
+            - jsonPath: $.Amalgamation.applicationNo
+            - jsonPath: $.Amalgamation.tenantId
+            - jsonPath: $.Amalgamation.status
+            - jsonPath: $.Amalgamation.auditDetails.createdBy
+            - jsonPath: $.Amalgamation.auditDetails.lastModifiedBy
+            - jsonPath: $.Amalgamation.auditDetails.createdTime
+            - jsonPath: $.Amalgamation.auditDetails.lastModifiedTime
+            - jsonPath: $.Amalgamation.amalgamationNo
+            - jsonPath: $.Amalgamation.applicationType
+            - jsonPath: $.Amalgamation.amalgamationType
+            - jsonPath: $.Amalgamation.accountId
+            - jsonPath: $.Amalgamation.applicationStatus
+            - jsonPath: $.Amalgamation.approvalNo
+            - jsonPath: $.Amalgamation.vasikaNumber
+            - jsonPath: $.Amalgamation.vasikaDate
+            - jsonPath: $.Amalgamation.inspectionDate
+              type: LONG
+
+        - query: >
+            INSERT INTO eg_amalgamation_document (
+              uuid, documenttype, documentattachment, documentuid, amalgamationid, doc_order, createdby,
+              lastmodifiedby, createdtime, lastmodifiedtime
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT (uuid) DO UPDATE SET
+              documenttype = EXCLUDED.documenttype,
+              documentattachment = EXCLUDED.documentattachment,
+              documentuid = EXCLUDED.documentuid,
+              amalgamationid = EXCLUDED.amalgamationid,
+              doc_order = EXCLUDED.doc_order,
+              createdby = EXCLUDED.createdby,
+              lastmodifiedby = EXCLUDED.lastmodifiedby,
+              createdtime = EXCLUDED.createdtime,
+              lastmodifiedtime = EXCLUDED.lastmodifiedtime;
+          basePath: $.Amalgamation.documents.*
+          jsonMaps:
+            - jsonPath: $.Amalgamation.documents.*.uuid
+            - jsonPath: $.Amalgamation.documents.*.documentType
+            - jsonPath: $.Amalgamation.documents.*.documentAttachment
+            - jsonPath: $.Amalgamation.documents.*.documentUid
+            - jsonPath: $.Amalgamation.id
+            - jsonPath: $.Amalgamation.documents.*.order
+            - jsonPath: $.Amalgamation.documents.*.auditDetails.createdBy
+            - jsonPath: $.Amalgamation.documents.*.auditDetails.lastModifiedBy
+            - jsonPath: $.Amalgamation.documents.*.auditDetails.createdTime
+            - jsonPath: $.Amalgamation.documents.*.auditDetails.lastModifiedTime
+
+        - query: >
+            UPDATE eg_amalgamation_details
+            SET additionaldetails = ?, tenantid = ?,
+                lastmodifiedby = ?, lastmodifiedtime = ?
+            WHERE id = ?;
+          basePath: $.Amalgamation.amalgamationDetails
+          jsonMaps:
+            - jsonPath: $.Amalgamation.amalgamationDetails.additionalDetails
+              type: JSON
+              dbType: JSONB
+            - jsonPath: $.Amalgamation.amalgamationDetails.tenantId
+            - jsonPath: $.Amalgamation.amalgamationDetails.auditDetails.lastModifiedBy
+            - jsonPath: $.Amalgamation.amalgamationDetails.auditDetails.lastModifiedTime
+            - jsonPath: $.Amalgamation.amalgamationDetails.id
+
+        - query: >
+            UPDATE eg_amalgamation_owner
+            SET tenantid = ?
+            WHERE amalgamationid = ?;
+          basePath: $.Amalgamation
+          jsonMaps:
+            - jsonPath: $.Amalgamation.tenantId
+            - jsonPath: $.Amalgamation.id
+
+        - query: >
+            UPDATE eg_amalgamation_document_check_list
+            SET tenantid = ?
+            WHERE applicationno = ?;
+          basePath: $.Amalgamation
+          jsonMaps:
+            - jsonPath: $.Amalgamation.tenantId
+            - jsonPath: $.Amalgamation.applicationNo
+
+    - version: 1.0
+      description: Update Amalgamation workflow entry
+      fromTopic: update-amalgamation-workflow
+      isTransaction: true
+      queryMaps:
+        - query: >
+            UPDATE eg_amalgamation
+             SET status = ?, applicationstatus = ?, amalgamationno = ?,
+                 applicationtype = ?, amalgamationtype = ?,
+                 lastmodifiedby = ?, lastmodifiedtime = ?,
+                 tenantid = ?, inspectiondate = ?, approvalno = ?,
+                 vasikanumber = ?, vasikadate = ?
+             WHERE id = ?;
+          basePath: $.Amalgamation
+          jsonMaps:
+            - jsonPath: $.Amalgamation.status
+            - jsonPath: $.Amalgamation.applicationStatus
+            - jsonPath: $.Amalgamation.amalgamationNo
+            - jsonPath: $.Amalgamation.applicationType
+            - jsonPath: $.Amalgamation.amalgamationType
+            - jsonPath: $.Amalgamation.auditDetails.lastModifiedBy
+            - jsonPath: $.Amalgamation.auditDetails.lastModifiedTime
+            - jsonPath: $.Amalgamation.tenantId
+            - jsonPath: $.Amalgamation.inspectionDate
+              type: LONG
+            - jsonPath: $.Amalgamation.approvalNo
+            - jsonPath: $.Amalgamation.vasikaNumber
+            - jsonPath: $.Amalgamation.vasikaDate
+            - jsonPath: $.Amalgamation.id
+
+        - query: >
+            INSERT INTO eg_amalgamation_auditdetails (
+              id, applicationno, tenantid, status, createdby,
+              lastmodifiedby, createdtime, lastmodifiedtime, amalgamationno, applicationtype, amalgamationtype,
+              accountid, applicationstatus, approvalno, vasikanumber, vasikadate, inspectiondate
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: $.Amalgamation
+          jsonMaps:
+            - jsonPath: $.Amalgamation.id
+            - jsonPath: $.Amalgamation.applicationNo
+            - jsonPath: $.Amalgamation.tenantId
+            - jsonPath: $.Amalgamation.status
+            - jsonPath: $.Amalgamation.auditDetails.createdBy
+            - jsonPath: $.Amalgamation.auditDetails.lastModifiedBy
+            - jsonPath: $.Amalgamation.auditDetails.createdTime
+            - jsonPath: $.Amalgamation.auditDetails.lastModifiedTime
+            - jsonPath: $.Amalgamation.amalgamationNo
+            - jsonPath: $.Amalgamation.applicationType
+            - jsonPath: $.Amalgamation.amalgamationType
+            - jsonPath: $.Amalgamation.accountId
+            - jsonPath: $.Amalgamation.applicationStatus
+            - jsonPath: $.Amalgamation.approvalNo
+            - jsonPath: $.Amalgamation.vasikaNumber
+            - jsonPath: $.Amalgamation.vasikaDate
+            - jsonPath: $.Amalgamation.inspectionDate
+              type: LONG
+
+        - query: >
+            INSERT INTO eg_amalgamation_document (
+              uuid, documenttype, documentattachment, documentuid, amalgamationid, doc_order, createdby,
+              lastmodifiedby, createdtime, lastmodifiedtime
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT (uuid) DO UPDATE SET
+              documenttype = EXCLUDED.documenttype,
+              documentattachment = EXCLUDED.documentattachment,
+              documentuid = EXCLUDED.documentuid,
+              amalgamationid = EXCLUDED.amalgamationid,
+              doc_order = EXCLUDED.doc_order,
+              createdby = EXCLUDED.createdby,
+              lastmodifiedby = EXCLUDED.lastmodifiedby,
+              createdtime = EXCLUDED.createdtime,
+              lastmodifiedtime = EXCLUDED.lastmodifiedtime;
+          basePath: $.Amalgamation.documents.*
+          jsonMaps:
+            - jsonPath: $.Amalgamation.documents.*.uuid
+            - jsonPath: $.Amalgamation.documents.*.documentType
+            - jsonPath: $.Amalgamation.documents.*.documentAttachment
+            - jsonPath: $.Amalgamation.documents.*.documentUid
+            - jsonPath: $.Amalgamation.id
+            - jsonPath: $.Amalgamation.documents.*.order
+            - jsonPath: $.Amalgamation.documents.*.auditDetails.createdBy
+            - jsonPath: $.Amalgamation.documents.*.auditDetails.lastModifiedBy
+            - jsonPath: $.Amalgamation.documents.*.auditDetails.createdTime
+            - jsonPath: $.Amalgamation.documents.*.auditDetails.lastModifiedTime
+
+    - version: 1.0
+      description: Save Amalgamation Document Check List
+      fromTopic: save-amalgamation-document-checklist
+      isTransaction: true
+      queryMaps:
+        - query: >
+            INSERT INTO eg_amalgamation_document_check_list (
+              id, documentuid, applicationno, tenantid, action, remarks,
+              createdby, lastmodifiedby, createdtime, lastmodifiedtime
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: checkList.*
+          jsonMaps:
+            - jsonPath: $.checkList.*.id
+            - jsonPath: $.checkList.*.documentuid
+            - jsonPath: $.checkList.*.applicationNo
+            - jsonPath: $.checkList.*.tenantId
+            - jsonPath: $.checkList.*.action
+            - jsonPath: $.checkList.*.remarks
+            - jsonPath: $.checkList.*.createdby
+            - jsonPath: $.checkList.*.lastmodifiedby
+            - jsonPath: $.checkList.*.createdtime
+            - jsonPath: $.checkList.*.lastmodifiedtime
+
+    - version: 1.0
+      description: Update Amalgamation Document Check List
+      fromTopic: update-amalgamation-document-checklist
+      isTransaction: true
+      queryMaps:
+        - query: >
+            UPDATE eg_amalgamation_document_check_list
+            SET action = ?, remarks = ?, lastmodifiedby = ?, lastmodifiedtime = ?
+            WHERE id = ? AND tenantid = ?;
+          basePath: checkList.*
+          jsonMaps:
+            - jsonPath: $.checkList.*.action
+            - jsonPath: $.checkList.*.remarks
+            - jsonPath: $.checkList.*.lastmodifiedby
+            - jsonPath: $.checkList.*.lastmodifiedtime
+            - jsonPath: $.checkList.*.id
+            - jsonPath: $.checkList.*.tenantId
