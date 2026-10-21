@@ -851,6 +851,10 @@
                     "value": "$.MdmsRes.tenant.tenants[0].city.nameHindi"
                   },
                   {
+                    "variable": "cityName",
+                    "value": "$.MdmsRes.tenant.tenants[0].city.name"
+                  },
+                  {
                     "variable": "municipality_name_hindi",
                     "value": "$.MdmsRes.tenant.tenants[0].city.municipalityNameHindi"
                   },
