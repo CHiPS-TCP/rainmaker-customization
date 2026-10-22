@@ -1,0 +1,262 @@
+SearchDefinitions:
+  moduleName: amalgamation-services
+  summary: Amalgamation Services Inbox API
+  version: 1.0.0
+  definitions:
+    - name: inboxamalgamationsearch
+      query:
+        baseQuery: |
+          Select row_to_json(result) from (
+            select amal.applicationno, 
+                   amal.createdtime, 
+                   pi.status as status_id, 
+                   amal.id,
+                   amal.tenantid,
+                   amal.status,
+                   amal.amalgamationno,
+                   amal.approvalno,
+                   amal.applicationtype,
+                   amal.amalgamationtype,
+                   amal.accountid,
+                   amal.applicationstatus,
+                   jsonb_agg(DISTINCT jsonb_build_object(
+                     'ownertype', owner.ownertype,
+                     'isprimaryowner', owner.isprimaryowner,
+                     'relationship', owner.relationship,
+                     'ownershippercentage', owner.ownershippercentage,
+                     'uuid', owner.uuid
+                   )) FILTER (WHERE owner.uuid IS NOT NULL) AS owners
+            from eg_amalgamation as amal
+            LEFT JOIN eg_amalgamation_owner owner ON owner.amalgamationid = amal.id
+            INNER JOIN eg_wf_processinstance_v2 pi ON pi.businessid = amal.applicationno
+            LEFT JOIN eg_wf_assignee_v2 assg ON pi.id = assg.processinstanceid
+            $where 
+            AND pi.latest = TRUE
+            GROUP BY amal.applicationno, amal.createdtime, pi.status, amal.id,
+                     amal.tenantid, amal.status, amal.amalgamationno, amal.approvalno, amal.applicationtype,
+                     amal.amalgamationtype, amal.accountid, amal.applicationstatus
+            order by amal.createdtime asc
+            $pagination
+          ) result
+        groupBy:
+        orderBy:
+      searchParams:
+        condition: AND
+        params:
+          - name: amal.tenantid
+            isMandatory: true
+            jsonPath: $.searchCriteria.tenantId
+          - name: amal.id
+            isMandatory: false
+            jsonPath: $.searchCriteria.id
+          - name: pi.status
+            isMandatory: false
+            jsonPath: $.searchCriteria.status
+            operator: IN
+          - name: amal.applicationno
+            isMandatory: false
+            jsonPath: $.searchCriteria.applicationNumber
+          - name: amal.amalgamationno
+            isMandatory: false
+            jsonPath: $.searchCriteria.amalgamationNumber
+          - name: amal.approvalno
+            isMandatory: false
+            jsonPath: $.searchCriteria.approvalNumber
+          - name: pi.businessservice
+            isMandatory: false
+            jsonPath: $.searchCriteria.businessservice
+            operator: IN
+          - name: assg.assignee
+            isMandatory: false
+            jsonPath: $.searchCriteria.assignee
+          - name: amal.applicationstatus
+            isMandatory: false
+            jsonPath: $.searchCriteria.applicationStatus
+          - name: amal.applicationtype
+            isMandatory: false
+            jsonPath: $.searchCriteria.applicationType
+          - name: amal.amalgamationtype
+            isMandatory: false
+            jsonPath: $.searchCriteria.amalgamationType
+          - name: amal.accountid
+            isMandatory: false
+            jsonPath: $.searchCriteria.accountId
+          - name: owner.ownertype
+            isMandatory: false
+            jsonPath: $.searchCriteria.ownerType
+          - name: owner.uuid
+            isMandatory: false
+            jsonPath: $.searchCriteria.userid
+        pagination:
+          noOfRecords: $.searchCriteria.noOfRecords
+          offset: $.searchCriteria.offset
+      output:
+        jsonFormat: {"ResponseInfo": {},"amalgamationApplication": []}
+        outJsonPath: $.amalgamationApplication
+        responseInfoPath: $.ResponseInfo
+
+    - name: inboxamalgamationsearchcount
+      query:
+        baseQuery: |
+          Select row_to_json(result) from (
+            select COUNT(DISTINCT(amal.applicationno)) as totalCount
+            from eg_amalgamation as amal
+            LEFT JOIN eg_amalgamation_details details ON details.amalgamationid = amal.id
+            LEFT JOIN eg_amalgamation_owner owner ON owner.amalgamationid = amal.id AND owner.isprimaryowner = true
+            INNER JOIN eg_wf_processinstance_v2 pi ON pi.businessid = amal.applicationno
+            LEFT JOIN eg_wf_state_v2 ws ON ws.uuid = pi.status
+            LEFT JOIN eg_wf_assignee_v2 assg ON pi.id = assg.processinstanceid
+            $where
+            AND pi.createdtime IN (
+              select max(createdtime) 
+              from eg_wf_processinstance_v2 wf 
+              where wf.businessid = amal.applicationno 
+              GROUP BY wf.businessid
+            )
+            $pagination
+          ) result
+        groupBy:
+        orderBy:
+      searchParams:
+        condition: AND
+        params:
+          - name: amal.tenantid
+            isMandatory: true
+            jsonPath: $.searchCriteria.tenantId
+          - name: amal.id
+            isMandatory: false
+            jsonPath: $.searchCriteria.id
+          - name: pi.status
+            isMandatory: false
+            jsonPath: $.searchCriteria.status
+            operator: IN
+          - name: amal.applicationno
+            isMandatory: false
+            jsonPath: $.searchCriteria.applicationNumber
+          - name: amal.amalgamationno
+            isMandatory: false
+            jsonPath: $.searchCriteria.amalgamationNumber
+          - name: amal.approvalno
+            isMandatory: false
+            jsonPath: $.searchCriteria.approvalNumber
+          - name: pi.businessservice
+            isMandatory: false
+            jsonPath: $.searchCriteria.businessservice
+            operator: IN
+          - name: assg.assignee
+            isMandatory: false
+            jsonPath: $.searchCriteria.assignee
+          - name: amal.applicationstatus
+            isMandatory: false
+            jsonPath: $.searchCriteria.applicationStatus
+          - name: amal.applicationtype
+            isMandatory: false
+            jsonPath: $.searchCriteria.applicationType
+          - name: amal.amalgamationtype
+            isMandatory: false
+            jsonPath: $.searchCriteria.amalgamationType
+          - name: amal.accountid
+            isMandatory: false
+            jsonPath: $.searchCriteria.accountId
+          - name: owner.ownertype
+            isMandatory: false
+            jsonPath: $.searchCriteria.ownerType
+        pagination:
+          noOfRecords: $.searchCriteria.noOfRecords
+          offset: $.searchCriteria.offset
+      output:
+        jsonFormat: {"ResponseInfo": {},"totalCount": []}
+        outJsonPath: $.totalCount
+        responseInfoPath: $.ResponseInfo
+
+    - name: inboxamalgamationsearchdesc
+      query:
+        baseQuery: |
+          Select row_to_json(result) from (
+            select amal.applicationno, 
+                   amal.createdtime, 
+                   pi.status as status_id,
+                   amal.id,
+                   amal.tenantid,
+                   amal.status,
+                   amal.amalgamationno,
+                   amal.approvalno,
+                   amal.applicationtype,
+                   amal.amalgamationtype,
+                   amal.accountid,
+                   amal.applicationstatus,
+                   jsonb_agg(DISTINCT jsonb_build_object(
+                     'ownertype', owner.ownertype,
+                     'isprimaryowner', owner.isprimaryowner,
+                     'relationship', owner.relationship,
+                     'ownershippercentage', owner.ownershippercentage,
+                     'uuid', owner.uuid
+                   )) FILTER (WHERE owner.uuid IS NOT NULL) AS owners
+            from eg_amalgamation as amal
+            LEFT JOIN eg_amalgamation_owner owner ON owner.amalgamationid = amal.id
+            INNER JOIN eg_wf_processinstance_v2 pi ON pi.businessid = amal.applicationno
+            LEFT JOIN eg_wf_assignee_v2 assg ON pi.id = assg.processinstanceid
+            $where
+            AND pi.latest = TRUE
+            GROUP BY amal.applicationno, amal.createdtime, pi.status, amal.id,
+                     amal.tenantid, amal.status, amal.amalgamationno, amal.approvalno, amal.applicationtype,
+                     amal.amalgamationtype, amal.accountid, amal.applicationstatus
+            order by amal.createdtime desc
+            $pagination
+          ) result
+        groupBy:
+        orderBy:
+      searchParams:
+        condition: AND
+        params:
+          - name: amal.tenantid
+            isMandatory: true
+            jsonPath: $.searchCriteria.tenantId
+          - name: amal.id
+            isMandatory: false
+            jsonPath: $.searchCriteria.id
+          - name: pi.status
+            isMandatory: false
+            jsonPath: $.searchCriteria.status
+            operator: IN
+          - name: amal.applicationno
+            isMandatory: false
+            jsonPath: $.searchCriteria.applicationNumber
+          - name: amal.amalgamationno
+            isMandatory: false
+            jsonPath: $.searchCriteria.amalgamationNumber
+          - name: amal.approvalno
+            isMandatory: false
+            jsonPath: $.searchCriteria.approvalNumber
+          - name: pi.businessservice
+            isMandatory: false
+            jsonPath: $.searchCriteria.businessservice
+            operator: IN
+          - name: assg.assignee
+            isMandatory: false
+            jsonPath: $.searchCriteria.assignee
+          - name: amal.applicationstatus
+            isMandatory: false
+            jsonPath: $.searchCriteria.applicationStatus
+          - name: amal.applicationtype
+            isMandatory: false
+            jsonPath: $.searchCriteria.applicationType
+          - name: amal.amalgamationtype
+            isMandatory: false
+            jsonPath: $.searchCriteria.amalgamationType
+          - name: amal.accountid
+            isMandatory: false
+            jsonPath: $.searchCriteria.accountId
+          - name: owner.ownertype
+            isMandatory: false
+            jsonPath: $.searchCriteria.ownerType
+          - name: owner.uuid
+            isMandatory: false
+            jsonPath: $.searchCriteria.userid
+        pagination:
+          noOfRecords: $.searchCriteria.noOfRecords
+          offset: $.searchCriteria.offset
+      output:
+        jsonFormat: {"ResponseInfo": {},"amalgamationApplication": []}
+        outJsonPath: $.amalgamationApplication
+        responseInfoPath: $.ResponseInfo
