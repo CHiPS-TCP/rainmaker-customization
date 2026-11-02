@@ -15,6 +15,7 @@ SearchDefinitions:
                    layout.status,
                    layout.layoutno,
                    layout.approvalno,
+                   layout.edcrnumber,
                    layout.applicationType,
                    layout.layouttype,
                    layout.accountid,
@@ -33,7 +34,7 @@ SearchDefinitions:
             $where 
             AND pi.latest = TRUE
             GROUP BY layout.applicationno, layout.createdtime, pi.status, layout.id,
-                     layout.tenantid, layout.status, layout.layoutno, layout.approvalno, layout.applicationType,
+                     layout.tenantid, layout.status, layout.layoutno, layout.approvalno, layout.edcrnumber, layout.applicationType,
                      layout.layouttype, layout.accountid, layout.applicationstatus
             order by layout.createdtime asc
             $pagination
