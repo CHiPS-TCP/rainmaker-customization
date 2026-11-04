@@ -11,8 +11,8 @@ serviceMaps:
             INSERT INTO eg_amalgamation (
               id, applicationno, tenantid, status, createdby,
               lastmodifiedby, createdtime, lastmodifiedtime, amalgamationno, applicationtype, amalgamationtype,
-              accountid, applicationstatus, approvalno, vasikanumber, vasikadate, inspectiondate
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+              accountid, applicationstatus, approvalno, vasikanumber, vasikadate, inspectiondate, edcrnumber
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $.Amalgamation
           jsonMaps:
             - jsonPath: $.Amalgamation.id
@@ -33,13 +33,14 @@ serviceMaps:
             - jsonPath: $.Amalgamation.vasikaDate
             - jsonPath: $.Amalgamation.inspectionDate
               type: LONG
+            - jsonPath: $.Amalgamation.edcrNumber
 
         - query: >
             INSERT INTO eg_amalgamation_auditdetails (
               id, applicationno, tenantid, status, createdby,
               lastmodifiedby, createdtime, lastmodifiedtime, amalgamationno, applicationtype, amalgamationtype,
-              accountid, applicationstatus, approvalno, vasikanumber, vasikadate, inspectiondate
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+              accountid, applicationstatus, approvalno, vasikanumber, vasikadate, inspectiondate, edcrnumber
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $.Amalgamation
           jsonMaps:
             - jsonPath: $.Amalgamation.id
@@ -60,6 +61,7 @@ serviceMaps:
             - jsonPath: $.Amalgamation.vasikaDate
             - jsonPath: $.Amalgamation.inspectionDate
               type: LONG
+            - jsonPath: $.Amalgamation.edcrNumber
 
         - query: >
             INSERT INTO eg_amalgamation_document (
@@ -133,7 +135,7 @@ serviceMaps:
                  applicationtype = ?, amalgamationtype = ?,
                  lastmodifiedby = ?, lastmodifiedtime = ?,
                  tenantid = ?, inspectiondate = ?, approvalno = ?,
-                 vasikanumber = ?, vasikadate = ?
+                 vasikanumber = ?, vasikadate = ?, edcrnumber = ?
              WHERE id = ?;
           basePath: $.Amalgamation
           jsonMaps:
@@ -150,14 +152,15 @@ serviceMaps:
             - jsonPath: $.Amalgamation.approvalNo
             - jsonPath: $.Amalgamation.vasikaNumber
             - jsonPath: $.Amalgamation.vasikaDate
+            - jsonPath: $.Amalgamation.edcrNumber
             - jsonPath: $.Amalgamation.id
 
         - query: >
             INSERT INTO eg_amalgamation_auditdetails (
               id, applicationno, tenantid, status, createdby,
               lastmodifiedby, createdtime, lastmodifiedtime, amalgamationno, applicationtype, amalgamationtype,
-              accountid, applicationstatus, approvalno, vasikanumber, vasikadate, inspectiondate
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+              accountid, applicationstatus, approvalno, vasikanumber, vasikadate, inspectiondate, edcrnumber
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $.Amalgamation
           jsonMaps:
             - jsonPath: $.Amalgamation.id
@@ -178,6 +181,7 @@ serviceMaps:
             - jsonPath: $.Amalgamation.vasikaDate
             - jsonPath: $.Amalgamation.inspectionDate
               type: LONG
+            - jsonPath: $.Amalgamation.edcrNumber
 
         - query: >
             INSERT INTO eg_amalgamation_document (
