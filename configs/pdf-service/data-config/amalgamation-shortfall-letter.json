@@ -26,7 +26,7 @@
               {
                 "variable": "districtName",
                 "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.district.name"
+                  "path": "$.applicationData.amalgamationDetails.additionalDetails.siteDetails.district.name"
                 }
               },
               {
@@ -38,7 +38,7 @@
               {
                 "variable": "var_villages",
                 "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.village[*]"
+                  "path": "$.applicationData.amalgamationDetails.additionalDetails.siteDetails.village[*]"
                 },
                 "type": "array",
                 "format": {
@@ -49,7 +49,7 @@
               {
                 "variable": "var_tehsils",
                 "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.tehsil[*]"
+                  "path": "$.applicationData.amalgamationDetails.additionalDetails.siteDetails.tehsil[*]"
                 },
                 "type": "array",
                 "format": {
@@ -60,12 +60,12 @@
               {
                 "variable": "var_khasra",
                 "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.khasras[*]"
+                  "path": "$.applicationData.amalgamationDetails.additionalDetails.siteDetails.khasraDetails[*]"
                 },
                 "type": "array",
                 "format": {
                   "type": "string",
-                  "scema": [{ "variable": "KhasraNo", "value": "KhasraNo" }]
+                  "scema": [{ "variable": "KhasraNo", "value": "khasraNo" }]
                 }
               },
               {
@@ -159,7 +159,7 @@
               {
                 "variable": "halkaNo",
                 "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.halkaNo"
+                  "path": "$.applicationData.amalgamationDetails.additionalDetails.siteDetails.halkaNo"
                 }
               },
               {
@@ -177,7 +177,7 @@
               {
                 "variable": "riNo",
                 "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.riNo"
+                  "path": "$.applicationData.amalgamationDetails.additionalDetails.siteDetails.riNo"
                 }
               },
               {
@@ -260,7 +260,7 @@
               {
                 "variable": "riNo",
                 "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.siteDetails.riNo"
+                  "path": "$.applicationData.amalgamationDetails.additionalDetails.siteDetails.riNo"
                 }
               },
               {
@@ -782,7 +782,7 @@
               {
                 "variable": "SubmittedOn",
                 "value": {
-                  "path": "$.applicationData.layoutDetails.additionalDetails.SubmittedOn"
+                  "path": "$.applicationData.amalgamationDetails.additionalDetails.SubmittedOn"
                 },
                 "type": "date"
               },
