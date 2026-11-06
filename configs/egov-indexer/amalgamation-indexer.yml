@@ -1,0 +1,341 @@
+ServiceMaps:
+  serviceName: egov-amalgamation-services
+  version: 1.0.0
+  mappings:
+    - topic: save-amalgamation-application
+      configKey: INDEX
+      indexes:
+        - name: amalgamation-application-index
+          type: general
+          id: $.Amalgamation.id, $.Amalgamation.tenantId
+          isBulk: false
+          timeStampField: $.Amalgamation.auditDetails.createdTime
+          jsonPath: $
+          customJsonMapping:
+            indexMapping:
+              Data:
+                id: id
+                tenantId: tenantId
+                applicationNo: applicationNo
+                approvalNo: approvalNo
+                edcrNumber: edcrNumber
+                inspectionDate: inspectionDate
+                vasikaNumber: vasikaNumber
+                vasikaDate: vasikaDate
+                applicationType: applicationType
+                amalgamationNo: amalgamationNo
+                amalgamationType: amalgamationType
+                status: status
+                applicationStatus: applicationStatus
+                accountId: accountId
+                workflowAction: workflowAction
+                createdBy: createdBy
+                lastModifiedBy: lastModifiedBy
+                createdTime: createdTime
+                lastModifiedTime: lastModifiedTime
+                documents: documents
+                owners: owners
+                amalgamationDetails: amalgamationDetails
+                siteDetails: {}
+                additionalDetails: {}
+            fieldMapping:
+              - inJsonPath: $.Amalgamation.id
+                outJsonPath: $.Data.id
+              - inJsonPath: $.Amalgamation.tenantId
+                outJsonPath: $.Data.tenantId
+              - inJsonPath: $.Amalgamation.applicationNo
+                outJsonPath: $.Data.applicationNo
+              - inJsonPath: $.Amalgamation.approvalNo
+                outJsonPath: $.Data.approvalNo
+              - inJsonPath: $.Amalgamation.edcrNumber
+                outJsonPath: $.Data.edcrNumber
+              - inJsonPath: $.Amalgamation.inspectionDate
+                outJsonPath: $.Data.inspectionDate
+              - inJsonPath: $.Amalgamation.vasikaNumber
+                outJsonPath: $.Data.vasikaNumber
+              - inJsonPath: $.Amalgamation.vasikaDate
+                outJsonPath: $.Data.vasikaDate
+              - inJsonPath: $.Amalgamation.applicationType
+                outJsonPath: $.Data.applicationType
+              - inJsonPath: $.Amalgamation.amalgamationNo
+                outJsonPath: $.Data.amalgamationNo
+              - inJsonPath: $.Amalgamation.amalgamationType
+                outJsonPath: $.Data.amalgamationType
+              - inJsonPath: $.Amalgamation.status
+                outJsonPath: $.Data.status
+              - inJsonPath: $.Amalgamation.applicationStatus
+                outJsonPath: $.Data.applicationStatus
+              - inJsonPath: $.Amalgamation.accountId
+                outJsonPath: $.Data.accountId
+              - inJsonPath: $.Amalgamation.workflow.action
+                outJsonPath: $.Data.workflowAction
+              - inJsonPath: $.Amalgamation.auditDetails.createdBy
+                outJsonPath: $.Data.createdBy
+              - inJsonPath: $.Amalgamation.auditDetails.lastModifiedBy
+                outJsonPath: $.Data.lastModifiedBy
+              - inJsonPath: $.Amalgamation.auditDetails.createdTime
+                outJsonPath: $.Data.createdTime
+              - inJsonPath: $.Amalgamation.auditDetails.lastModifiedTime
+                outJsonPath: $.Data.lastModifiedTime
+              - inJsonPath: $.Amalgamation.documents
+                outJsonPath: $.Data.documents
+              - inJsonPath: $.Amalgamation.owners
+                outJsonPath: $.Data.owners
+              - inJsonPath: $.Amalgamation.amalgamationDetails
+                outJsonPath: $.Data.amalgamationDetails
+              - inJsonPath: $.Amalgamation.amalgamationDetails.additionalDetails.siteDetails
+                outJsonPath: $.Data.siteDetails
+              - inJsonPath: $.Amalgamation.amalgamationDetails.additionalDetails
+                outJsonPath: $.Data.additionalDetails
+
+    # ===============================
+    # LEGACY INDEX (DB -> ES BACKFILL)
+    # ===============================
+    - topic: amalgamation-application-legacyIndex
+      configKey: LEGACYINDEX
+      indexes:
+        - name: amalgamation-application-index
+          type: general
+          id: $.id, $.tenantId
+          isBulk: true
+          timeStampField: $.auditDetails.createdTime
+          jsonPath: $.Amalgamation
+          customJsonMapping:
+            indexMapping:
+              Data:
+                id: id
+                tenantId: tenantId
+                applicationNo: applicationNo
+                approvalNo: approvalNo
+                edcrNumber: edcrNumber
+                inspectionDate: inspectionDate
+                vasikaNumber: vasikaNumber
+                vasikaDate: vasikaDate
+                status: status
+                amalgamationNo: amalgamationNo
+                applicationType: applicationType
+                amalgamationType: amalgamationType
+                accountId: accountId
+                applicationStatus: applicationStatus
+                createdBy: createdBy
+                lastModifiedBy: lastModifiedBy
+                createdTime: createdTime
+                lastModifiedTime: lastModifiedTime
+                documents: documents
+                amalgamationDetails: amalgamationDetails
+                owners: owners
+            fieldMapping:
+              - inJsonPath: $.id
+                outJsonPath: $.Data.id
+              - inJsonPath: $.tenantId
+                outJsonPath: $.Data.tenantId
+              - inJsonPath: $.applicationNo
+                outJsonPath: $.Data.applicationNo
+              - inJsonPath: $.approvalNo
+                outJsonPath: $.Data.approvalNo
+              - inJsonPath: $.edcrNumber
+                outJsonPath: $.Data.edcrNumber
+              - inJsonPath: $.inspectionDate
+                outJsonPath: $.Data.inspectionDate
+              - inJsonPath: $.vasikaNumber
+                outJsonPath: $.Data.vasikaNumber
+              - inJsonPath: $.vasikaDate
+                outJsonPath: $.Data.vasikaDate
+              - inJsonPath: $.status
+                outJsonPath: $.Data.status
+              - inJsonPath: $.amalgamationNo
+                outJsonPath: $.Data.amalgamationNo
+              - inJsonPath: $.applicationType
+                outJsonPath: $.Data.applicationType
+              - inJsonPath: $.amalgamationType
+                outJsonPath: $.Data.amalgamationType
+              - inJsonPath: $.accountId
+                outJsonPath: $.Data.accountId
+              - inJsonPath: $.applicationStatus
+                outJsonPath: $.Data.applicationStatus
+              - inJsonPath: $.auditDetails.createdBy
+                outJsonPath: $.Data.createdBy
+              - inJsonPath: $.auditDetails.lastModifiedBy
+                outJsonPath: $.Data.lastModifiedBy
+              - inJsonPath: $.auditDetails.createdTime
+                outJsonPath: $.Data.createdTime
+              - inJsonPath: $.auditDetails.lastModifiedTime
+                outJsonPath: $.Data.lastModifiedTime
+              - inJsonPath: $.documents
+                outJsonPath: $.Data.documents
+              - inJsonPath: $.amalgamationDetails
+                outJsonPath: $.Data.amalgamationDetails
+              - inJsonPath: $.owners
+                outJsonPath: $.Data.owners
+
+    - topic: update-amalgamation-application
+      configKey: INDEX
+      indexes:
+        - name: amalgamation-application-index
+          type: general
+          id: $.Amalgamation.id, $.Amalgamation.tenantId
+          isBulk: false
+          timeStampField: $.Amalgamation.auditDetails.lastModifiedTime
+          jsonPath: $
+          customJsonMapping:
+            indexMapping:
+              Data:
+                id: id
+                tenantId: tenantId
+                applicationNo: applicationNo
+                approvalNo: approvalNo
+                edcrNumber: edcrNumber
+                inspectionDate: inspectionDate
+                vasikaNumber: vasikaNumber
+                vasikaDate: vasikaDate
+                applicationType: applicationType
+                amalgamationNo: amalgamationNo
+                amalgamationType: amalgamationType
+                status: status
+                applicationStatus: applicationStatus
+                accountId: accountId
+                workflowAction: workflowAction
+                createdBy: createdBy
+                lastModifiedBy: lastModifiedBy
+                createdTime: createdTime
+                lastModifiedTime: lastModifiedTime
+                documents: documents
+                owners: owners
+                amalgamationDetails: amalgamationDetails
+                siteDetails: {}
+                additionalDetails: {}
+            fieldMapping:
+              - inJsonPath: $.Amalgamation.id
+                outJsonPath: $.Data.id
+              - inJsonPath: $.Amalgamation.tenantId
+                outJsonPath: $.Data.tenantId
+              - inJsonPath: $.Amalgamation.applicationNo
+                outJsonPath: $.Data.applicationNo
+              - inJsonPath: $.Amalgamation.approvalNo
+                outJsonPath: $.Data.approvalNo
+              - inJsonPath: $.Amalgamation.edcrNumber
+                outJsonPath: $.Data.edcrNumber
+              - inJsonPath: $.Amalgamation.inspectionDate
+                outJsonPath: $.Data.inspectionDate
+              - inJsonPath: $.Amalgamation.vasikaNumber
+                outJsonPath: $.Data.vasikaNumber
+              - inJsonPath: $.Amalgamation.vasikaDate
+                outJsonPath: $.Data.vasikaDate
+              - inJsonPath: $.Amalgamation.applicationType
+                outJsonPath: $.Data.applicationType
+              - inJsonPath: $.Amalgamation.amalgamationNo
+                outJsonPath: $.Data.amalgamationNo
+              - inJsonPath: $.Amalgamation.amalgamationType
+                outJsonPath: $.Data.amalgamationType
+              - inJsonPath: $.Amalgamation.status
+                outJsonPath: $.Data.status
+              - inJsonPath: $.Amalgamation.applicationStatus
+                outJsonPath: $.Data.applicationStatus
+              - inJsonPath: $.Amalgamation.accountId
+                outJsonPath: $.Data.accountId
+              - inJsonPath: $.Amalgamation.workflow.action
+                outJsonPath: $.Data.workflowAction
+              - inJsonPath: $.Amalgamation.auditDetails.createdBy
+                outJsonPath: $.Data.createdBy
+              - inJsonPath: $.Amalgamation.auditDetails.lastModifiedBy
+                outJsonPath: $.Data.lastModifiedBy
+              - inJsonPath: $.Amalgamation.auditDetails.createdTime
+                outJsonPath: $.Data.createdTime
+              - inJsonPath: $.Amalgamation.auditDetails.lastModifiedTime
+                outJsonPath: $.Data.lastModifiedTime
+              - inJsonPath: $.Amalgamation.documents
+                outJsonPath: $.Data.documents
+              - inJsonPath: $.Amalgamation.owners
+                outJsonPath: $.Data.owners
+              - inJsonPath: $.Amalgamation.amalgamationDetails
+                outJsonPath: $.Data.amalgamationDetails
+              - inJsonPath: $.Amalgamation.amalgamationDetails.additionalDetails.siteDetails
+                outJsonPath: $.Data.siteDetails
+              - inJsonPath: $.Amalgamation.amalgamationDetails.additionalDetails
+                outJsonPath: $.Data.additionalDetails
+
+    - topic: update-amalgamation-workflow
+      configKey: INDEX
+      indexes:
+        - name: amalgamation-application-index
+          type: general
+          id: $.Amalgamation.id, $.Amalgamation.tenantId
+          isBulk: false
+          timeStampField: $.Amalgamation.auditDetails.lastModifiedTime
+          jsonPath: $
+          customJsonMapping:
+            indexMapping:
+              Data:
+                id: id
+                tenantId: tenantId
+                applicationNo: applicationNo
+                approvalNo: approvalNo
+                edcrNumber: edcrNumber
+                inspectionDate: inspectionDate
+                vasikaNumber: vasikaNumber
+                vasikaDate: vasikaDate
+                applicationType: applicationType
+                amalgamationNo: amalgamationNo
+                amalgamationType: amalgamationType
+                status: status
+                applicationStatus: applicationStatus
+                accountId: accountId
+                workflowAction: workflowAction
+                createdBy: createdBy
+                lastModifiedBy: lastModifiedBy
+                createdTime: createdTime
+                lastModifiedTime: lastModifiedTime
+                documents: documents
+                owners: owners
+                amalgamationDetails: amalgamationDetails
+                siteDetails: {}
+                additionalDetails: {}
+            fieldMapping:
+              - inJsonPath: $.Amalgamation.id
+                outJsonPath: $.Data.id
+              - inJsonPath: $.Amalgamation.tenantId
+                outJsonPath: $.Data.tenantId
+              - inJsonPath: $.Amalgamation.applicationNo
+                outJsonPath: $.Data.applicationNo
+              - inJsonPath: $.Amalgamation.approvalNo
+                outJsonPath: $.Data.approvalNo
+              - inJsonPath: $.Amalgamation.edcrNumber
+                outJsonPath: $.Data.edcrNumber
+              - inJsonPath: $.Amalgamation.inspectionDate
+                outJsonPath: $.Data.inspectionDate
+              - inJsonPath: $.Amalgamation.vasikaNumber
+                outJsonPath: $.Data.vasikaNumber
+              - inJsonPath: $.Amalgamation.vasikaDate
+                outJsonPath: $.Data.vasikaDate
+              - inJsonPath: $.Amalgamation.applicationType
+                outJsonPath: $.Data.applicationType
+              - inJsonPath: $.Amalgamation.amalgamationNo
+                outJsonPath: $.Data.amalgamationNo
+              - inJsonPath: $.Amalgamation.amalgamationType
+                outJsonPath: $.Data.amalgamationType
+              - inJsonPath: $.Amalgamation.status
+                outJsonPath: $.Data.status
+              - inJsonPath: $.Amalgamation.applicationStatus
+                outJsonPath: $.Data.applicationStatus
+              - inJsonPath: $.Amalgamation.accountId
+                outJsonPath: $.Data.accountId
+              - inJsonPath: $.Amalgamation.workflow.action
+                outJsonPath: $.Data.workflowAction
+              - inJsonPath: $.Amalgamation.auditDetails.createdBy
+                outJsonPath: $.Data.createdBy
+              - inJsonPath: $.Amalgamation.auditDetails.lastModifiedBy
+                outJsonPath: $.Data.lastModifiedBy
+              - inJsonPath: $.Amalgamation.auditDetails.createdTime
+                outJsonPath: $.Data.createdTime
+              - inJsonPath: $.Amalgamation.auditDetails.lastModifiedTime
+                outJsonPath: $.Data.lastModifiedTime
+              - inJsonPath: $.Amalgamation.documents
+                outJsonPath: $.Data.documents
+              - inJsonPath: $.Amalgamation.owners
+                outJsonPath: $.Data.owners
+              - inJsonPath: $.Amalgamation.amalgamationDetails
+                outJsonPath: $.Data.amalgamationDetails
+              - inJsonPath: $.Amalgamation.amalgamationDetails.additionalDetails.siteDetails
+                outJsonPath: $.Data.siteDetails
+              - inJsonPath: $.Amalgamation.amalgamationDetails.additionalDetails
+                outJsonPath: $.Data.additionalDetails
