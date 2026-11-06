@@ -1,0 +1,245 @@
+{
+  "key": "amalgamation-consent",
+  "config": {
+    "defaultStyle": {
+      "font": "Cambay",
+      "fontSize": 10,
+      "alignment": "justify"
+    },
+    "content": [
+      {
+        "columns": [
+          {
+            "width": "auto",
+            "text": "1742 (2)",
+            "alignment": "left",
+            "bold": true
+          },
+          {
+            "width": "*",
+            "text": "छत्तीसगढ़ राजपत्र, दिनांक {{otpverifieddate}}",
+            "alignment": "center",
+            "margin": [0, 0, 0, 0],
+            "bold": true
+          }
+        ]
+      },
+      {
+        "canvas": [
+          {
+            "type": "line",
+            "x1": 20,
+            "y1": 5,
+            "x2": 500,
+            "y2": 5
+          },
+          {
+            "type": "line",
+            "x1": 20,
+            "y1": 9,
+            "x2": 500,
+            "y2": 9
+          }
+        ],
+        "margin": [-10, -3, 0, 5]
+      },
+
+      {
+        "text": "परिशिष्ट-क",
+        "alignment": "center",
+        "bold": true,
+        "margin": [0, 0, 0, -2]
+      },
+      {
+        "text": ["(नियम 16 एवं 17 (1) एवं 35)"],
+        "alignment": "center",
+        "bold": true,
+        "margin": [0, 0, 0, 2]
+      },
+
+      {
+        "text": "भूमि के विकास के लिए धारा 16 की उप-धारा (1) एवं धारा 29 की उप-धारा (1) के अधीन अनुज्ञा आवेदन पत्र",
+        "alignment": "center",
+        "bold": true,
+        "margin": [0, 0, 0, 0]
+      },
+
+      {
+        "stack": [
+          { "text": "प्रति" },
+          { "text": "संचालक", "margin": [20, 0, 0, 0] },
+          { "text": "नगर तथा ग्राम निवेश, छत्तीसगढ़।", "margin": [20, 0, 0, 0] }
+        ],
+        "margin": [0, 0, 0, 0]
+      },
+
+      {
+        "text": "महोदय,",
+        "margin": [0, 0, 0, 8]
+      },
+
+      {
+        "text": [
+          { "text": "मैं एतद्द्वारा यह सूचना देता हूं कि मैं" },
+          {
+            "text": " {{ownerAddress}}, {{pincode}}",
+            "decoration": "underline",
+            "decorationStyle": "dotted"
+          },
+          { "text": " में भवन क्रमांक अथवा प्लाट क्रमांक" },
+          {
+            "text": " {{sitePlotNo}}",
+            "decoration": "underline",
+            "decorationStyle": "dotted"
+          },
+          {
+            "text": " में, पर छत्तीसगढ़ भूमि विकास नियम, 1984 के नियम 17 के अनुसार विकास, निर्माण, पुनर्निर्माण, परिवर्तन अथवा पुराना भवन गिराना/ हटाना चाहता हूँ, अतः कृपया मुझे नियम 35 के अधीन भवन गिराने के पश्चात भवन को हटाने एवं पुनर्निर्माण की अनुज्ञा प्रदान करें। मैं, इसके साथ मेरे तथा"
+          },
+          {
+            "text": " {{stakeHolderName}}",
+            "decoration": "underline",
+            "decorationStyle": "dotted"
+          },
+          {
+            "text": " वास्तुविद्/इंजीनियर / पर्यवेक्षक/नगरनिवेशक, अनुज्ञप्ति क्रमांक"
+          },
+          {
+            "text": " {{architectId}}",
+            "decoration": "underline",
+            "decorationStyle": "dotted"
+          },
+          {
+            "text": " जो उस निर्माण कार्य का पर्यवेक्षण करेगा, द्वारा समुचित रूप से हस्ताक्षरित निम्नलिखित रेखांक और विशिष्ट विवरण चार प्रतियों में अग्रेषित करता हूँ "
+          }
+        ],
+        "margin": [40, 0, 0, 0]
+      },
+
+
+      {
+        "ol": [
+          {
+            "text": "(1) मुख्य रेखांक",
+            "listType": "none",
+            "margin": [30, 0, 0, 0]
+          },
+          {
+            "text": "(2) स्थल रेखांक",
+            "listType": "none",
+            "margin": [30, 0, 0, 0]
+          },
+          {
+            "text": "(3) उप-विभाग/अभिन्यास योजना",
+            "listType": "none",
+            "margin": [30, 0, 0, 0]
+          },
+          {
+            "text": "(4) भवन नक्शे",
+            "listType": "none",
+            "margin": [30, 0, 0, 0]
+          },
+          {
+            "text": "(5) सेवा आयोजन",
+            "listType": "none",
+            "margin": [30, 0, 0, 0]
+          },
+          {
+            "text": "(6) विशिष्टियां, सामान्य तथा विस्तृत",
+            "listType": "none",
+            "margin": [30, 0, 0, 0]
+          },
+          {
+            "text": "(7) स्वामित्व संबंधी हक",
+            "listType": "none",
+            "margin": [30, 0, 0, 0]
+          },
+          {
+            "text": "मैं निवेदन करता हूँ कि विकास निर्माण का अनुमोदित किया जाए और मुझे कार्य निष्पादित करने की अनुमति प्रदान की जाए।",
+            "listType": "none",
+            "margin": [30, 0, 0, 0]
+          }
+        ],
+        "margin": [0, 0, 0, 0]
+      },
+      {
+        "columns": [
+          {
+            "width": "auto",
+            "alignment": "left",
+            "stack": [
+              {
+                "text": [
+                  "Date : ",
+                  { "text": "{{otpverifiedtimeowner}}", "bold": true }
+                ]
+              }
+            ]
+          },
+          {
+            "width": "*",
+            "alignment": "right",
+            "stack": [
+              {
+                "text": [
+                  "Name of Owner : ",
+                  { "text": "{{combinedOwnersName}}", "bold": true }
+                ]
+              },
+              {
+                "text": [
+                  "Application Number : ",
+                  { "text": "{{applicationNo}}", "bold": true }
+                ]
+              },
+              {
+                "text": [
+                  "Address : ",
+                  { "text": "{{ownerAddress}}", "bold": true }
+                ]
+              },
+              {
+                "text": [
+                  "Aadhar : ",
+                  { "text": "{{aadhar}}", "bold": true }
+                ]
+              },
+              {
+                "text": [
+                  "Pincode : ",
+                  { "text": "{{pincode}}", "bold": true }
+                ]
+              },
+              {
+                "text": [
+                  "e-Mail : ",
+                  { "text": "{{ownerEmail}}", "bold": true }
+                ]
+              },
+              {
+                "text": [
+                  "Mobile : ",
+                  { "text": "{{mobileNumber}}", "bold": true }
+                ]
+              },
+              {
+                "text": [
+                  "Signature : ",
+                  {
+                    "text": "Verified by OTP at {{otpverifiedtimeowner}} ",
+                    "bold": true
+                  }
+                ]
+              }
+            ],
+            "margin": [0, 0, 0, 0]
+          }
+        ]
+      },
+
+      {
+        "text": "मैं निवेदन करता हूँ कि विकास निर्माण का अनुमोदित किया जाए और मुझे कार्य निष्पादित करने की अनुमति प्रदान की जाए।",
+        "margin": [40, 0, 0, 0]
+      }
+    ]
+  }
+}
