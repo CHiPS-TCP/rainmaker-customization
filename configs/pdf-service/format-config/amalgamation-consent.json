@@ -6,7 +6,7 @@
     "content": [
       { "text": "छत्तीसगढ़ राजपत्र", "style": "gazette", "alignment": "center", "margin": [0, 0, 0, 2] },
       { "canvas": [{ "type": "line", "x1": 0, "y1": 0, "x2": 498, "y2": 0, "lineWidth": 0.7 }, { "type": "line", "x1": 0, "y1": 3, "x2": 498, "y2": 3, "lineWidth": 0.7 }], "margin": [0, 0, 0, 12] },
-      { "text": "प्ररूप-एम", "style": "formTitle", "alignment": "center" },
+      { "text": "प्ररूप-उन्नीस", "style": "formTitle", "alignment": "center" },
       { "text": "(नियम 20(क)(अ) देखिये)", "style": "formRule", "alignment": "center", "margin": [0, 0, 0, 5] },
       { "text": "भू-खण्डों के विलय हेतु आवेदन प्रपत्र", "style": "heading", "alignment": "center", "margin": [0, 0, 0, 15] },
       {
