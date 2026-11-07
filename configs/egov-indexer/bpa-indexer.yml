@@ -50,7 +50,7 @@ ServiceMaps:
                 outJsonPath: $.Data.approvalNo
               - inJsonPath: $.BPA.edcrNumber
                 outJsonPath: $.Data.edcrNumber
-              - inJsonPath: $.BPA.applicationType
+              - inJsonPath: $.BPA.additionalDetails.applicationType
                 outJsonPath: $.Data.applicationType
               - inJsonPath: $.BPA.riskType
                 outJsonPath: $.Data.riskType
@@ -130,7 +130,7 @@ ServiceMaps:
                 outJsonPath: $.Data.approvalNo
               - inJsonPath: $.BPA.edcrNumber
                 outJsonPath: $.Data.edcrNumber
-              - inJsonPath: $.BPA.applicationType
+              - inJsonPath: $.BPA.additionalDetails.applicationType
                 outJsonPath: $.Data.applicationType
               - inJsonPath: $.BPA.riskType
                 outJsonPath: $.Data.riskType
@@ -279,7 +279,7 @@ ServiceMaps:
                 outJsonPath: $.Data.approvalNo
               - inJsonPath: $.edcrNumber
                 outJsonPath: $.Data.edcrNumber
-              - inJsonPath: $.applicationType
+              - inJsonPath: $.additionalDetails.applicationType
                 outJsonPath: $.Data.applicationType
               - inJsonPath: $.riskType
                 outJsonPath: $.Data.riskType
