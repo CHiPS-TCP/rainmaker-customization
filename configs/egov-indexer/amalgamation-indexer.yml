@@ -1,7 +1,12 @@
+
 ServiceMaps:
   serviceName: egov-amalgamation-services
   version: 1.0.0
   mappings:
+
+    # ===============================
+    # SAVE AMALGAMATION APPLICATION
+    # ===============================
     - topic: save-amalgamation-application
       configKey: INDEX
       indexes:
@@ -36,8 +41,7 @@ ServiceMaps:
                 documents: documents
                 owners: owners
                 amalgamationDetails: amalgamationDetails
-                siteDetails: {}
-                additionalDetails: {}
+
             fieldMapping:
               - inJsonPath: $.Amalgamation.id
                 outJsonPath: $.Data.id
@@ -83,10 +87,6 @@ ServiceMaps:
                 outJsonPath: $.Data.owners
               - inJsonPath: $.Amalgamation.amalgamationDetails
                 outJsonPath: $.Data.amalgamationDetails
-              - inJsonPath: $.Amalgamation.amalgamationDetails.additionalDetails.siteDetails
-                outJsonPath: $.Data.siteDetails
-              - inJsonPath: $.Amalgamation.amalgamationDetails.additionalDetails
-                outJsonPath: $.Data.additionalDetails
 
     # ===============================
     # LEGACY INDEX (DB -> ES BACKFILL)
@@ -124,6 +124,7 @@ ServiceMaps:
                 documents: documents
                 amalgamationDetails: amalgamationDetails
                 owners: owners
+
             fieldMapping:
               - inJsonPath: $.id
                 outJsonPath: $.Data.id
@@ -168,6 +169,9 @@ ServiceMaps:
               - inJsonPath: $.owners
                 outJsonPath: $.Data.owners
 
+    # ===============================
+    # UPDATE AMALGAMATION APPLICATION
+    # ===============================
     - topic: update-amalgamation-application
       configKey: INDEX
       indexes:
@@ -202,8 +206,7 @@ ServiceMaps:
                 documents: documents
                 owners: owners
                 amalgamationDetails: amalgamationDetails
-                siteDetails: {}
-                additionalDetails: {}
+
             fieldMapping:
               - inJsonPath: $.Amalgamation.id
                 outJsonPath: $.Data.id
@@ -249,11 +252,10 @@ ServiceMaps:
                 outJsonPath: $.Data.owners
               - inJsonPath: $.Amalgamation.amalgamationDetails
                 outJsonPath: $.Data.amalgamationDetails
-              - inJsonPath: $.Amalgamation.amalgamationDetails.additionalDetails.siteDetails
-                outJsonPath: $.Data.siteDetails
-              - inJsonPath: $.Amalgamation.amalgamationDetails.additionalDetails
-                outJsonPath: $.Data.additionalDetails
 
+    # ===============================
+    # UPDATE AMALGAMATION WORKFLOW
+    # ===============================
     - topic: update-amalgamation-workflow
       configKey: INDEX
       indexes:
@@ -288,8 +290,7 @@ ServiceMaps:
                 documents: documents
                 owners: owners
                 amalgamationDetails: amalgamationDetails
-                siteDetails: {}
-                additionalDetails: {}
+
             fieldMapping:
               - inJsonPath: $.Amalgamation.id
                 outJsonPath: $.Data.id
@@ -335,7 +336,3 @@ ServiceMaps:
                 outJsonPath: $.Data.owners
               - inJsonPath: $.Amalgamation.amalgamationDetails
                 outJsonPath: $.Data.amalgamationDetails
-              - inJsonPath: $.Amalgamation.amalgamationDetails.additionalDetails.siteDetails
-                outJsonPath: $.Data.siteDetails
-              - inJsonPath: $.Amalgamation.amalgamationDetails.additionalDetails
-                outJsonPath: $.Data.additionalDetails
