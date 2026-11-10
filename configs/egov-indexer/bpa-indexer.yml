@@ -164,7 +164,7 @@ ServiceMaps:
                 outJsonPath: $.Data.additionalDetails
 
     # ===============================
-    # WORKFLOW UPDATE
+    # WORKFLOW UPDATE (full document, same as update-bpa-buildingplan)
     # ===============================
     - topic: update-bpa-workflow
       configKey: INDEX
@@ -178,25 +178,70 @@ ServiceMaps:
           customJsonMapping:
             indexMapping:
               Data:
-                status: status
+                id: id
+                tenantId: tenantId
+                applicationNo: applicationNo
                 approvalNo: approvalNo
+                edcrNumber: edcrNumber
+                applicationType: applicationType
+                riskType: riskType
+                businessService: businessService
+                landId: landId
+                accountId: accountId
+                applicationDate: applicationDate
                 approvalDate: approvalDate
+                status: status
                 workflowAction: workflowAction
+                createdBy: createdBy
                 lastModifiedBy: lastModifiedBy
+                createdTime: createdTime
                 lastModifiedTime: lastModifiedTime
+                documents: documents
+                landInfo: {}
+                additionalDetails: {}
             fieldMapping:
-              - inJsonPath: $.BPA.status
-                outJsonPath: $.Data.status
+              - inJsonPath: $.BPA.id
+                outJsonPath: $.Data.id
+              - inJsonPath: $.BPA.tenantId
+                outJsonPath: $.Data.tenantId
+              - inJsonPath: $.BPA.applicationNo
+                outJsonPath: $.Data.applicationNo
               - inJsonPath: $.BPA.approvalNo
                 outJsonPath: $.Data.approvalNo
+              - inJsonPath: $.BPA.edcrNumber
+                outJsonPath: $.Data.edcrNumber
+              - inJsonPath: $.BPA.additionalDetails.applicationType
+                outJsonPath: $.Data.applicationType
+              - inJsonPath: $.BPA.riskType
+                outJsonPath: $.Data.riskType
+              - inJsonPath: $.BPA.businessService
+                outJsonPath: $.Data.businessService
+              - inJsonPath: $.BPA.landId
+                outJsonPath: $.Data.landId
+              - inJsonPath: $.BPA.accountId
+                outJsonPath: $.Data.accountId
+              - inJsonPath: $.BPA.applicationDate
+                outJsonPath: $.Data.applicationDate
               - inJsonPath: $.BPA.approvalDate
                 outJsonPath: $.Data.approvalDate
+              - inJsonPath: $.BPA.status
+                outJsonPath: $.Data.status
               - inJsonPath: $.BPA.workflow.action
                 outJsonPath: $.Data.workflowAction
+              - inJsonPath: $.BPA.auditDetails.createdBy
+                outJsonPath: $.Data.createdBy
               - inJsonPath: $.BPA.auditDetails.lastModifiedBy
                 outJsonPath: $.Data.lastModifiedBy
+              - inJsonPath: $.BPA.auditDetails.createdTime
+                outJsonPath: $.Data.createdTime
               - inJsonPath: $.BPA.auditDetails.lastModifiedTime
                 outJsonPath: $.Data.lastModifiedTime
+              - inJsonPath: $.BPA.documents
+                outJsonPath: $.Data.documents
+              - inJsonPath: $.BPA.landInfo
+                outJsonPath: $.Data.landInfo
+              - inJsonPath: $.BPA.additionalDetails
+                outJsonPath: $.Data.additionalDetails
 
     # ===============================
     # AUTO ESCALATION INDEX
