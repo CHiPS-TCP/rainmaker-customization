@@ -57,9 +57,9 @@ serviceMaps:
 
         - query: >
             INSERT INTO eg_layout_document (
-              uuid, documenttype, documentAttachment, documentuid, layoutid,doc_order, additionaldetails, createdby,
+              uuid, documenttype, documentAttachment, documentuid, layoutid, doc_order, status, additionaldetails, createdby,
               lastmodifiedby, createdtime, lastmodifiedtime
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?);
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $.Layout.documents.*
           jsonMaps:
             - jsonPath: $.Layout.documents.*.uuid
@@ -68,6 +68,7 @@ serviceMaps:
             - jsonPath: $.Layout.documents.*.documentUid
             - jsonPath: $.Layout.documents.*.layoutId
             - jsonPath: $.Layout.documents.*.order
+            - jsonPath: $.Layout.documents.*.status
             - jsonPath: $.Layout.documents.*.additionalDetails
               type: JSON
               dbType: JSONB
@@ -188,18 +189,19 @@ serviceMaps:
 
         - query: >
             INSERT INTO eg_layout_document (
-            uuid, documenttype,documentAttachment, documentuid, layoutId,doc_order,createdby,
+            uuid, documenttype, documentAttachment, documentuid, layoutId, doc_order, status, createdby,
             lastmodifiedby, createdtime, lastmodifiedtime
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?)
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
              ON CONFLICT (uuid) DO UPDATE SET
               documenttype = EXCLUDED.documenttype,
               documentAttachment = EXCLUDED.documentAttachment,
               documentuid = EXCLUDED.documentuid,
               layoutid = EXCLUDED.layoutid,
               doc_order = EXCLUDED.doc_order,
-              createdby = EXCLUDED.createdby,
+              status = EXCLUDED.status,
+              createdby = COALESCE(eg_layout_document.createdby, EXCLUDED.createdby),
               lastmodifiedby = EXCLUDED.lastmodifiedby,
-              createdtime = EXCLUDED.createdtime,
+              createdtime = COALESCE(eg_layout_document.createdtime, EXCLUDED.createdtime),
               lastmodifiedtime = EXCLUDED.lastmodifiedtime;
           basePath: $.Layout.documents.*
           jsonMaps:
@@ -209,6 +211,7 @@ serviceMaps:
             - jsonPath: $.Layout.documents.*.documentUid
             - jsonPath: $.Layout.documents.*.layoutId
             - jsonPath: $.Layout.documents.*.order
+            - jsonPath: $.Layout.documents.*.status
             - jsonPath: $.Layout.documents.*.auditDetails.createdBy
             - jsonPath: $.Layout.documents.*.auditDetails.lastModifiedBy
             - jsonPath: $.Layout.documents.*.auditDetails.createdTime
