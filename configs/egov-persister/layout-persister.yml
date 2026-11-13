@@ -234,13 +234,41 @@ serviceMaps:
             - jsonPath: $.Layout.layoutDetails.id
 
         - query: >
-            UPDATE eg_layout_owner
-            SET tenantid = ?
-            WHERE layoutid = ?;
-          basePath: $.Layout
+            INSERT INTO eg_layout_owner (
+              id, tenantid, layoutid, status, isprimaryowner,
+              ownertype, ownershippercentage, institutionid, relationship,
+              createdby, createdtime, lastmodifiedby, lastmodifiedtime, additionaldetails, uuid
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT (uuid, layoutid) DO UPDATE SET
+              tenantid = EXCLUDED.tenantid,
+              status = EXCLUDED.status,
+              isprimaryowner = EXCLUDED.isprimaryowner,
+              ownertype = EXCLUDED.ownertype,
+              ownershippercentage = EXCLUDED.ownershippercentage,
+              institutionid = EXCLUDED.institutionid,
+              relationship = EXCLUDED.relationship,
+              lastmodifiedby = EXCLUDED.lastmodifiedby,
+              lastmodifiedtime = EXCLUDED.lastmodifiedtime,
+              additionaldetails = EXCLUDED.additionaldetails;
+          basePath: $.Layout.owners.*
           jsonMaps:
-            - jsonPath: $.Layout.tenantId
+            - jsonPath: $.Layout.owners.*.id
+            - jsonPath: $.Layout.owners.*.tenantId
             - jsonPath: $.Layout.id
+            - jsonPath: $.Layout.owners.*.status
+            - jsonPath: $.Layout.owners.*.isPrimaryOwner
+            - jsonPath: $.Layout.owners.*.type
+            - jsonPath: $.Layout.owners.*.ownershipPercentage
+            - jsonPath: $.Layout.owners.*.institutionId
+            - jsonPath: $.Layout.owners.*.relationship
+            - jsonPath: $.Layout.owners.*.createdBy
+            - jsonPath: $.Layout.owners.*.createdDate
+            - jsonPath: $.Layout.owners.*.lastModifiedBy
+            - jsonPath: $.Layout.owners.*.lastModifiedDate
+            - jsonPath: $.Layout.owners.*.additionalDetails
+              type: JSON
+              dbType: JSONB
+            - jsonPath: $.Layout.owners.*.uuid
 
         - query: >
             UPDATE public.eg_layout_document_check_list
