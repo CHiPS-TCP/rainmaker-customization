@@ -19,6 +19,12 @@
                 }
               },
               {
+                "variable": "approvalNo",
+                "value": {
+                  "path": "$.approvalNo"
+                }
+              },
+              {
                 "variable": "applicationString",
                 "value": {
                   "path": "$.applicationData.layoutDetails.additionalDetails.applicationString"

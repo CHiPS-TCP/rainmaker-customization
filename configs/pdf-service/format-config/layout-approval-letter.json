@@ -131,7 +131,7 @@
             "text": [
               { "text": "क्रमांक ", "bold": true },
               {
-                "text": "{{applicationNo}}",
+                "text": "{{approvalNo}}",
                 "decoration": "underline",
                 "decorationStyle": "dotted"
               }
@@ -255,7 +255,7 @@
         "text": [
           { "text": "क्रमांक ", "bold": true },
           {
-            "text": "{{applicationNo}}",
+            "text": "{{approvalNo}}",
             "decoration": "underline",
             "decorationStyle": "dotted"
           }
