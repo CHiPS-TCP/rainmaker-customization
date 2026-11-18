@@ -65,9 +65,9 @@ serviceMaps:
 
         - query: >
             INSERT INTO eg_amalgamation_document (
-              uuid, documenttype, documentattachment, documentuid, amalgamationid, doc_order, createdby,
+              uuid, documenttype, documentattachment, documentuid, amalgamationid, doc_order, status, createdby,
               lastmodifiedby, createdtime, lastmodifiedtime
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $.Amalgamation.documents.*
           jsonMaps:
             - jsonPath: $.Amalgamation.documents.*.uuid
@@ -76,6 +76,7 @@ serviceMaps:
             - jsonPath: $.Amalgamation.documents.*.documentUid
             - jsonPath: $.Amalgamation.id
             - jsonPath: $.Amalgamation.documents.*.order
+            - jsonPath: $.Amalgamation.documents.*.status
             - jsonPath: $.Amalgamation.documents.*.auditDetails.createdBy
             - jsonPath: $.Amalgamation.documents.*.auditDetails.lastModifiedBy
             - jsonPath: $.Amalgamation.documents.*.auditDetails.createdTime
@@ -185,18 +186,19 @@ serviceMaps:
 
         - query: >
             INSERT INTO eg_amalgamation_document (
-              uuid, documenttype, documentattachment, documentuid, amalgamationid, doc_order, createdby,
+              uuid, documenttype, documentattachment, documentuid, amalgamationid, doc_order, status, createdby,
               lastmodifiedby, createdtime, lastmodifiedtime
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ON CONFLICT (uuid) DO UPDATE SET
               documenttype = EXCLUDED.documenttype,
               documentattachment = EXCLUDED.documentattachment,
               documentuid = EXCLUDED.documentuid,
               amalgamationid = EXCLUDED.amalgamationid,
               doc_order = EXCLUDED.doc_order,
-              createdby = EXCLUDED.createdby,
+              status = EXCLUDED.status,
+              createdby = COALESCE(eg_amalgamation_document.createdby, EXCLUDED.createdby),
               lastmodifiedby = EXCLUDED.lastmodifiedby,
-              createdtime = EXCLUDED.createdtime,
+              createdtime = COALESCE(eg_amalgamation_document.createdtime, EXCLUDED.createdtime),
               lastmodifiedtime = EXCLUDED.lastmodifiedtime;
           basePath: $.Amalgamation.documents.*
           jsonMaps:
@@ -206,6 +208,7 @@ serviceMaps:
             - jsonPath: $.Amalgamation.documents.*.documentUid
             - jsonPath: $.Amalgamation.id
             - jsonPath: $.Amalgamation.documents.*.order
+            - jsonPath: $.Amalgamation.documents.*.status
             - jsonPath: $.Amalgamation.documents.*.auditDetails.createdBy
             - jsonPath: $.Amalgamation.documents.*.auditDetails.lastModifiedBy
             - jsonPath: $.Amalgamation.documents.*.auditDetails.createdTime
@@ -227,13 +230,41 @@ serviceMaps:
             - jsonPath: $.Amalgamation.amalgamationDetails.id
 
         - query: >
-            UPDATE eg_amalgamation_owner
-            SET tenantid = ?
-            WHERE amalgamationid = ?;
-          basePath: $.Amalgamation
+            INSERT INTO eg_amalgamation_owner (
+              id, tenantid, amalgamationid, status, isprimaryowner,
+              ownertype, ownershippercentage, institutionid, relationship,
+              createdby, createdtime, lastmodifiedby, lastmodifiedtime, additionaldetails, uuid
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT (uuid, amalgamationid) DO UPDATE SET
+              tenantid = EXCLUDED.tenantid,
+              status = EXCLUDED.status,
+              isprimaryowner = EXCLUDED.isprimaryowner,
+              ownertype = EXCLUDED.ownertype,
+              ownershippercentage = EXCLUDED.ownershippercentage,
+              institutionid = EXCLUDED.institutionid,
+              relationship = EXCLUDED.relationship,
+              lastmodifiedby = EXCLUDED.lastmodifiedby,
+              lastmodifiedtime = EXCLUDED.lastmodifiedtime,
+              additionaldetails = EXCLUDED.additionaldetails;
+          basePath: $.Amalgamation.owners.*
           jsonMaps:
-            - jsonPath: $.Amalgamation.tenantId
+            - jsonPath: $.Amalgamation.owners.*.id
+            - jsonPath: $.Amalgamation.owners.*.tenantId
             - jsonPath: $.Amalgamation.id
+            - jsonPath: $.Amalgamation.owners.*.status
+            - jsonPath: $.Amalgamation.owners.*.isPrimaryOwner
+            - jsonPath: $.Amalgamation.owners.*.type
+            - jsonPath: $.Amalgamation.owners.*.ownershipPercentage
+            - jsonPath: $.Amalgamation.owners.*.institutionId
+            - jsonPath: $.Amalgamation.owners.*.relationship
+            - jsonPath: $.Amalgamation.owners.*.createdBy
+            - jsonPath: $.Amalgamation.owners.*.createdDate
+            - jsonPath: $.Amalgamation.owners.*.lastModifiedBy
+            - jsonPath: $.Amalgamation.owners.*.lastModifiedDate
+            - jsonPath: $.Amalgamation.owners.*.additionalDetails
+              type: JSON
+              dbType: JSONB
+            - jsonPath: $.Amalgamation.owners.*.uuid
 
         - query: >
             UPDATE eg_amalgamation_document_check_list
@@ -303,18 +334,19 @@ serviceMaps:
 
         - query: >
             INSERT INTO eg_amalgamation_document (
-              uuid, documenttype, documentattachment, documentuid, amalgamationid, doc_order, createdby,
+              uuid, documenttype, documentattachment, documentuid, amalgamationid, doc_order, status, createdby,
               lastmodifiedby, createdtime, lastmodifiedtime
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ON CONFLICT (uuid) DO UPDATE SET
               documenttype = EXCLUDED.documenttype,
               documentattachment = EXCLUDED.documentattachment,
               documentuid = EXCLUDED.documentuid,
               amalgamationid = EXCLUDED.amalgamationid,
               doc_order = EXCLUDED.doc_order,
-              createdby = EXCLUDED.createdby,
+              status = EXCLUDED.status,
+              createdby = COALESCE(eg_amalgamation_document.createdby, EXCLUDED.createdby),
               lastmodifiedby = EXCLUDED.lastmodifiedby,
-              createdtime = EXCLUDED.createdtime,
+              createdtime = COALESCE(eg_amalgamation_document.createdtime, EXCLUDED.createdtime),
               lastmodifiedtime = EXCLUDED.lastmodifiedtime;
           basePath: $.Amalgamation.documents.*
           jsonMaps:
@@ -324,6 +356,7 @@ serviceMaps:
             - jsonPath: $.Amalgamation.documents.*.documentUid
             - jsonPath: $.Amalgamation.id
             - jsonPath: $.Amalgamation.documents.*.order
+            - jsonPath: $.Amalgamation.documents.*.status
             - jsonPath: $.Amalgamation.documents.*.auditDetails.createdBy
             - jsonPath: $.Amalgamation.documents.*.auditDetails.lastModifiedBy
             - jsonPath: $.Amalgamation.documents.*.auditDetails.createdTime
