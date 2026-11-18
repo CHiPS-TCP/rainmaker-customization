@@ -6,7 +6,7 @@ serviceMaps:
       fromTopic: save-plinth-topic
       isTransaction: true
       queryMaps:
-        - query: INSERT INTO eg_plinth (id, applicationno, plinthno, tenantid, sanctionno, sanctiondate, permissionvaliditydate, commencementdate, buildingno, plinthcompletiondate, status, applicationstatus, accountid, createdby, lastmodifiedby, createdtime, lastmodifiedtime, applicationtype) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+        - query: INSERT INTO eg_plinth (id, applicationno, plinthno, tenantid, sanctionno, sanctiondate, permissionvaliditydate, commencementdate, buildingno, plinthcompletiondate, status, applicationstatus, accountid, createdby, lastmodifiedby, createdtime, lastmodifiedtime, applicationtype, inspectiondate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: Plinth
           jsonMaps:
             - jsonPath: $.Plinth.id
@@ -33,8 +33,10 @@ serviceMaps:
             - jsonPath: $.Plinth.auditDetails.lastModifiedTime
               type: LONG
             - jsonPath: $.Plinth.applicationType
+            - jsonPath: $.Plinth.inspectionDate
+              type: LONG
 
-        - query: INSERT INTO eg_plinth_auditdetails (id, applicationno, plinthno, tenantid, sanctionno, sanctiondate, permissionvaliditydate, commencementdate, buildingno, plinthcompletiondate, status, applicationstatus, accountid, createdby, lastmodifiedby, createdtime, lastmodifiedtime, applicationtype, approvalno) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+        - query: INSERT INTO eg_plinth_auditdetails (id, applicationno, plinthno, tenantid, sanctionno, sanctiondate, permissionvaliditydate, commencementdate, buildingno, plinthcompletiondate, status, applicationstatus, accountid, createdby, lastmodifiedby, createdtime, lastmodifiedtime, applicationtype, approvalno, inspectiondate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: Plinth
           jsonMaps:
             - jsonPath: $.Plinth.id
@@ -62,6 +64,8 @@ serviceMaps:
               type: LONG
             - jsonPath: $.Plinth.applicationType
             - jsonPath: $.Plinth.approvalNo
+            - jsonPath: $.Plinth.inspectionDate
+              type: LONG
 
         - query: INSERT INTO eg_plinth_details (id, plinthid, additionaldetails, tenantid) VALUES (?, ?, ?, ?);
           basePath: Plinth
@@ -103,7 +107,7 @@ serviceMaps:
       fromTopic: update-plinth-topic
       isTransaction: true
       queryMaps:
-        - query: UPDATE eg_plinth SET approvalno=?, plinthno=?, tenantid=?, sanctionno=?, sanctiondate=?, permissionvaliditydate=?, commencementdate=?, buildingno=?, plinthcompletiondate=?, status=?, applicationstatus=?, createdby=?, lastmodifiedby=?, createdtime=?, lastmodifiedtime=?, applicationtype=? WHERE id=?;
+        - query: UPDATE eg_plinth SET approvalno=?, plinthno=?, tenantid=?, sanctionno=?, sanctiondate=?, permissionvaliditydate=?, commencementdate=?, buildingno=?, plinthcompletiondate=?, status=?, applicationstatus=?, createdby=?, lastmodifiedby=?, createdtime=?, lastmodifiedtime=?, applicationtype=?, inspectiondate=? WHERE id=?;
           basePath: Plinth
           jsonMaps:
             - jsonPath: $.Plinth.approvalNo
@@ -128,9 +132,11 @@ serviceMaps:
             - jsonPath: $.Plinth.auditDetails.lastModifiedTime
               type: LONG
             - jsonPath: $.Plinth.applicationType
+            - jsonPath: $.Plinth.inspectionDate
+              type: LONG
             - jsonPath: $.Plinth.id
 
-        - query: INSERT INTO eg_plinth_auditdetails (id, applicationno, plinthno, tenantid, sanctionno, sanctiondate, permissionvaliditydate, commencementdate, buildingno, plinthcompletiondate, status, applicationstatus, accountid, createdby, lastmodifiedby, createdtime, lastmodifiedtime, applicationtype, approvalno) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+        - query: INSERT INTO eg_plinth_auditdetails (id, applicationno, plinthno, tenantid, sanctionno, sanctiondate, permissionvaliditydate, commencementdate, buildingno, plinthcompletiondate, status, applicationstatus, accountid, createdby, lastmodifiedby, createdtime, lastmodifiedtime, applicationtype, approvalno, inspectiondate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: Plinth
           jsonMaps:
             - jsonPath: $.Plinth.id
@@ -158,6 +164,8 @@ serviceMaps:
               type: LONG
             - jsonPath: $.Plinth.applicationType
             - jsonPath: $.Plinth.approvalNo
+            - jsonPath: $.Plinth.inspectionDate
+              type: LONG
 
         - query: UPDATE eg_plinth_details SET plinthid=?, additionaldetails=?, tenantid=? WHERE id=?;
           basePath: Plinth
