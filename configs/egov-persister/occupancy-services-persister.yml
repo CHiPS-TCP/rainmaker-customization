@@ -15,8 +15,8 @@ serviceMaps:
               permissionvalidtilldate, required, commencementdate, buildingno,
               plinthnumber, plinthcompletiondate, occupancycompletiondate, deviation,
               applicationtype, status, applicationstatus, accountid,
-              createdby, lastmodifiedby, createdtime, lastmodifiedtime
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+              createdby, lastmodifiedby, createdtime, lastmodifiedtime, inspectiondate
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $.Occupancy
           jsonMaps:
             - jsonPath: $.Occupancy.id
@@ -40,6 +40,8 @@ serviceMaps:
             - jsonPath: $.Occupancy.auditDetails.lastModifiedBy
             - jsonPath: $.Occupancy.auditDetails.createdTime
             - jsonPath: $.Occupancy.auditDetails.lastModifiedTime
+            - jsonPath: $.Occupancy.inspectionDate
+              type: LONG
 
         - query: >
             INSERT INTO eg_occupancy_auditdetails (
@@ -47,8 +49,8 @@ serviceMaps:
               permissionvalidtilldate, required, commencementdate, buildingno,
               plinthnumber, plinthcompletiondate, occupancycompletiondate, deviation,
               applicationtype, status, applicationstatus, accountid,
-              createdby, lastmodifiedby, createdtime, lastmodifiedtime
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+              createdby, lastmodifiedby, createdtime, lastmodifiedtime, inspectiondate
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $.Occupancy
           jsonMaps:
             - jsonPath: $.Occupancy.id
@@ -72,6 +74,8 @@ serviceMaps:
             - jsonPath: $.Occupancy.auditDetails.lastModifiedBy
             - jsonPath: $.Occupancy.auditDetails.createdTime
             - jsonPath: $.Occupancy.auditDetails.lastModifiedTime
+            - jsonPath: $.Occupancy.inspectionDate
+              type: LONG
 
         - query: >
             INSERT INTO eg_occupancy_details (
@@ -147,7 +151,7 @@ serviceMaps:
               required = ?, commencementdate = ?, buildingno = ?, plinthnumber = ?,
               plinthcompletiondate = ?, occupancycompletiondate = ?, deviation = ?,
               applicationtype = ?, status = ?, applicationstatus = ?,
-              lastmodifiedby = ?, lastmodifiedtime = ?
+              lastmodifiedby = ?, lastmodifiedtime = ?, inspectiondate = ?
             WHERE id = ? AND tenantid = ?;
           basePath: $.Occupancy
           jsonMaps:
@@ -167,6 +171,8 @@ serviceMaps:
             - jsonPath: $.Occupancy.applicationStatus
             - jsonPath: $.Occupancy.auditDetails.lastModifiedBy
             - jsonPath: $.Occupancy.auditDetails.lastModifiedTime
+            - jsonPath: $.Occupancy.inspectionDate
+              type: LONG
             - jsonPath: $.Occupancy.id
             - jsonPath: $.Occupancy.tenantId
 
@@ -176,8 +182,8 @@ serviceMaps:
               permissionvalidtilldate, required, commencementdate, buildingno,
               plinthnumber, plinthcompletiondate, occupancycompletiondate, deviation,
               applicationtype, status, applicationstatus, accountid,
-              createdby, lastmodifiedby, createdtime, lastmodifiedtime
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+              createdby, lastmodifiedby, createdtime, lastmodifiedtime, inspectiondate
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
           basePath: $.Occupancy
           jsonMaps:
             - jsonPath: $.Occupancy.id
@@ -202,6 +208,8 @@ serviceMaps:
             - jsonPath: $.Occupancy.auditDetails.lastModifiedBy
             - jsonPath: $.Occupancy.auditDetails.createdTime
             - jsonPath: $.Occupancy.auditDetails.lastModifiedTime
+            - jsonPath: $.Occupancy.inspectionDate
+              type: LONG
 
         - query: >
             UPDATE eg_occupancy_details SET
