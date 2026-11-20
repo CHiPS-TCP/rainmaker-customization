@@ -1,0 +1,646 @@
+ServiceMaps:
+  serviceName: occupancy-services
+  version: 1.0.0
+  mappings:
+
+    # ===============================
+    # SAVE OCCUPANCY APPLICATION
+    # ===============================
+    - topic: save-occupancy-application
+      configKey: INDEX
+      indexes:
+        - name: occupancy-application-index
+          type: general
+          id: $.Occupancy.id, $.Occupancy.tenantId
+          isBulk: false
+          timeStampField: $.Occupancy.auditDetails.createdTime
+          jsonPath: $
+          customJsonMapping:
+            indexMapping:
+              Data:
+                id: id
+                tenantId: tenantId
+                applicationNo: applicationNo
+                approvalNo: approvalNo
+                sanctionNo: sanctionNo
+                sanctionDate: sanctionDate
+                permissionValidTillDate: permissionValidTillDate
+                required: required
+                commencementDate: commencementDate
+                buildingNo: buildingNo
+                plinthNumber: plinthNumber
+                plinthCompletionDate: plinthCompletionDate
+                occupancyCompletionDate: occupancyCompletionDate
+                deviation: deviation
+                applicationType: applicationType
+                occupancyType: occupancyType
+                status: status
+                applicationStatus: applicationStatus
+                accountId: accountId
+                inspectionDate: inspectionDate
+                workflowAction: workflowAction
+                createdBy: createdBy
+                lastModifiedBy: lastModifiedBy
+                createdTime: createdTime
+                lastModifiedTime: lastModifiedTime
+                documents: documents
+                owners: owners
+                occupancyDetails: occupancyDetails
+                additionalDetails: {}
+                workflow: {}
+
+            fieldMapping:
+              - inJsonPath: $.Occupancy.id
+                outJsonPath: $.Data.id
+              - inJsonPath: $.Occupancy.tenantId
+                outJsonPath: $.Data.tenantId
+              - inJsonPath: $.Occupancy.applicationNo
+                outJsonPath: $.Data.applicationNo
+              - inJsonPath: $.Occupancy.approvalNo
+                outJsonPath: $.Data.approvalNo
+              - inJsonPath: $.Occupancy.sanctionNo
+                outJsonPath: $.Data.sanctionNo
+              - inJsonPath: $.Occupancy.sanctionDate
+                outJsonPath: $.Data.sanctionDate
+              - inJsonPath: $.Occupancy.permissionValidTillDate
+                outJsonPath: $.Data.permissionValidTillDate
+              - inJsonPath: $.Occupancy.required
+                outJsonPath: $.Data.required
+              - inJsonPath: $.Occupancy.commencementDate
+                outJsonPath: $.Data.commencementDate
+              - inJsonPath: $.Occupancy.buildingNo
+                outJsonPath: $.Data.buildingNo
+              - inJsonPath: $.Occupancy.plinthNumber
+                outJsonPath: $.Data.plinthNumber
+              - inJsonPath: $.Occupancy.plinthCompletionDate
+                outJsonPath: $.Data.plinthCompletionDate
+              - inJsonPath: $.Occupancy.occupancyCompletionDate
+                outJsonPath: $.Data.occupancyCompletionDate
+              - inJsonPath: $.Occupancy.deviation
+                outJsonPath: $.Data.deviation
+              - inJsonPath: $.Occupancy.applicationType
+                outJsonPath: $.Data.applicationType
+              - inJsonPath: $.Occupancy.occupancyType
+                outJsonPath: $.Data.occupancyType
+              - inJsonPath: $.Occupancy.status
+                outJsonPath: $.Data.status
+              - inJsonPath: $.Occupancy.applicationStatus
+                outJsonPath: $.Data.applicationStatus
+              - inJsonPath: $.Occupancy.accountId
+                outJsonPath: $.Data.accountId
+              - inJsonPath: $.Occupancy.inspectionDate
+                outJsonPath: $.Data.inspectionDate
+              - inJsonPath: $.Occupancy.workflow.action
+                outJsonPath: $.Data.workflowAction
+              - inJsonPath: $.Occupancy.auditDetails.createdBy
+                outJsonPath: $.Data.createdBy
+              - inJsonPath: $.Occupancy.auditDetails.lastModifiedBy
+                outJsonPath: $.Data.lastModifiedBy
+              - inJsonPath: $.Occupancy.auditDetails.createdTime
+                outJsonPath: $.Data.createdTime
+              - inJsonPath: $.Occupancy.auditDetails.lastModifiedTime
+                outJsonPath: $.Data.lastModifiedTime
+              - inJsonPath: $.Occupancy.documents
+                outJsonPath: $.Data.documents
+              - inJsonPath: $.Occupancy.owners
+                outJsonPath: $.Data.owners
+              - inJsonPath: $.Occupancy.occupancyDetails
+                outJsonPath: $.Data.occupancyDetails
+              - inJsonPath: $.Occupancy.occupancyDetails.additionalDetails
+                outJsonPath: $.Data.additionalDetails
+              - inJsonPath: $.Occupancy.workflow
+                outJsonPath: $.Data.workflow
+
+    # ===============================
+    # SAVE OCCUPANCY TOPIC (FALLBACK / DIRECT PERSISTER TOPIC)
+    # ===============================
+    - topic: save-occupancy-topic
+      configKey: INDEX
+      indexes:
+        - name: occupancy-application-index
+          type: general
+          id: $.Occupancy.id, $.Occupancy.tenantId
+          isBulk: false
+          timeStampField: $.Occupancy.auditDetails.createdTime
+          jsonPath: $
+          customJsonMapping:
+            indexMapping:
+              Data:
+                id: id
+                tenantId: tenantId
+                applicationNo: applicationNo
+                approvalNo: approvalNo
+                sanctionNo: sanctionNo
+                sanctionDate: sanctionDate
+                permissionValidTillDate: permissionValidTillDate
+                required: required
+                commencementDate: commencementDate
+                buildingNo: buildingNo
+                plinthNumber: plinthNumber
+                plinthCompletionDate: plinthCompletionDate
+                occupancyCompletionDate: occupancyCompletionDate
+                deviation: deviation
+                applicationType: applicationType
+                occupancyType: occupancyType
+                status: status
+                applicationStatus: applicationStatus
+                accountId: accountId
+                inspectionDate: inspectionDate
+                workflowAction: workflowAction
+                createdBy: createdBy
+                lastModifiedBy: lastModifiedBy
+                createdTime: createdTime
+                lastModifiedTime: lastModifiedTime
+                documents: documents
+                owners: owners
+                occupancyDetails: occupancyDetails
+                additionalDetails: {}
+                workflow: {}
+
+            fieldMapping:
+              - inJsonPath: $.Occupancy.id
+                outJsonPath: $.Data.id
+              - inJsonPath: $.Occupancy.tenantId
+                outJsonPath: $.Data.tenantId
+              - inJsonPath: $.Occupancy.applicationNo
+                outJsonPath: $.Data.applicationNo
+              - inJsonPath: $.Occupancy.approvalNo
+                outJsonPath: $.Data.approvalNo
+              - inJsonPath: $.Occupancy.sanctionNo
+                outJsonPath: $.Data.sanctionNo
+              - inJsonPath: $.Occupancy.sanctionDate
+                outJsonPath: $.Data.sanctionDate
+              - inJsonPath: $.Occupancy.permissionValidTillDate
+                outJsonPath: $.Data.permissionValidTillDate
+              - inJsonPath: $.Occupancy.required
+                outJsonPath: $.Data.required
+              - inJsonPath: $.Occupancy.commencementDate
+                outJsonPath: $.Data.commencementDate
+              - inJsonPath: $.Occupancy.buildingNo
+                outJsonPath: $.Data.buildingNo
+              - inJsonPath: $.Occupancy.plinthNumber
+                outJsonPath: $.Data.plinthNumber
+              - inJsonPath: $.Occupancy.plinthCompletionDate
+                outJsonPath: $.Data.plinthCompletionDate
+              - inJsonPath: $.Occupancy.occupancyCompletionDate
+                outJsonPath: $.Data.occupancyCompletionDate
+              - inJsonPath: $.Occupancy.deviation
+                outJsonPath: $.Data.deviation
+              - inJsonPath: $.Occupancy.applicationType
+                outJsonPath: $.Data.applicationType
+              - inJsonPath: $.Occupancy.occupancyType
+                outJsonPath: $.Data.occupancyType
+              - inJsonPath: $.Occupancy.status
+                outJsonPath: $.Data.status
+              - inJsonPath: $.Occupancy.applicationStatus
+                outJsonPath: $.Data.applicationStatus
+              - inJsonPath: $.Occupancy.accountId
+                outJsonPath: $.Data.accountId
+              - inJsonPath: $.Occupancy.inspectionDate
+                outJsonPath: $.Data.inspectionDate
+              - inJsonPath: $.Occupancy.workflow.action
+                outJsonPath: $.Data.workflowAction
+              - inJsonPath: $.Occupancy.auditDetails.createdBy
+                outJsonPath: $.Data.createdBy
+              - inJsonPath: $.Occupancy.auditDetails.lastModifiedBy
+                outJsonPath: $.Data.lastModifiedBy
+              - inJsonPath: $.Occupancy.auditDetails.createdTime
+                outJsonPath: $.Data.createdTime
+              - inJsonPath: $.Occupancy.auditDetails.lastModifiedTime
+                outJsonPath: $.Data.lastModifiedTime
+              - inJsonPath: $.Occupancy.documents
+                outJsonPath: $.Data.documents
+              - inJsonPath: $.Occupancy.owners
+                outJsonPath: $.Data.owners
+              - inJsonPath: $.Occupancy.occupancyDetails
+                outJsonPath: $.Data.occupancyDetails
+              - inJsonPath: $.Occupancy.occupancyDetails.additionalDetails
+                outJsonPath: $.Data.additionalDetails
+              - inJsonPath: $.Occupancy.workflow
+                outJsonPath: $.Data.workflow
+
+    # ===============================
+    # UPDATE OCCUPANCY APPLICATION
+    # ===============================
+    - topic: update-occupancy-application
+      configKey: INDEX
+      indexes:
+        - name: occupancy-application-index
+          type: general
+          id: $.Occupancy.id, $.Occupancy.tenantId
+          isBulk: false
+          timeStampField: $.Occupancy.auditDetails.lastModifiedTime
+          jsonPath: $
+          customJsonMapping:
+            indexMapping:
+              Data:
+                id: id
+                tenantId: tenantId
+                applicationNo: applicationNo
+                approvalNo: approvalNo
+                sanctionNo: sanctionNo
+                sanctionDate: sanctionDate
+                permissionValidTillDate: permissionValidTillDate
+                required: required
+                commencementDate: commencementDate
+                buildingNo: buildingNo
+                plinthNumber: plinthNumber
+                plinthCompletionDate: plinthCompletionDate
+                occupancyCompletionDate: occupancyCompletionDate
+                deviation: deviation
+                applicationType: applicationType
+                occupancyType: occupancyType
+                status: status
+                applicationStatus: applicationStatus
+                accountId: accountId
+                inspectionDate: inspectionDate
+                workflowAction: workflowAction
+                createdBy: createdBy
+                lastModifiedBy: lastModifiedBy
+                createdTime: createdTime
+                lastModifiedTime: lastModifiedTime
+                documents: documents
+                owners: owners
+                occupancyDetails: occupancyDetails
+                additionalDetails: {}
+                workflow: {}
+
+            fieldMapping:
+              - inJsonPath: $.Occupancy.id
+                outJsonPath: $.Data.id
+              - inJsonPath: $.Occupancy.tenantId
+                outJsonPath: $.Data.tenantId
+              - inJsonPath: $.Occupancy.applicationNo
+                outJsonPath: $.Data.applicationNo
+              - inJsonPath: $.Occupancy.approvalNo
+                outJsonPath: $.Data.approvalNo
+              - inJsonPath: $.Occupancy.sanctionNo
+                outJsonPath: $.Data.sanctionNo
+              - inJsonPath: $.Occupancy.sanctionDate
+                outJsonPath: $.Data.sanctionDate
+              - inJsonPath: $.Occupancy.permissionValidTillDate
+                outJsonPath: $.Data.permissionValidTillDate
+              - inJsonPath: $.Occupancy.required
+                outJsonPath: $.Data.required
+              - inJsonPath: $.Occupancy.commencementDate
+                outJsonPath: $.Data.commencementDate
+              - inJsonPath: $.Occupancy.buildingNo
+                outJsonPath: $.Data.buildingNo
+              - inJsonPath: $.Occupancy.plinthNumber
+                outJsonPath: $.Data.plinthNumber
+              - inJsonPath: $.Occupancy.plinthCompletionDate
+                outJsonPath: $.Data.plinthCompletionDate
+              - inJsonPath: $.Occupancy.occupancyCompletionDate
+                outJsonPath: $.Data.occupancyCompletionDate
+              - inJsonPath: $.Occupancy.deviation
+                outJsonPath: $.Data.deviation
+              - inJsonPath: $.Occupancy.applicationType
+                outJsonPath: $.Data.applicationType
+              - inJsonPath: $.Occupancy.occupancyType
+                outJsonPath: $.Data.occupancyType
+              - inJsonPath: $.Occupancy.status
+                outJsonPath: $.Data.status
+              - inJsonPath: $.Occupancy.applicationStatus
+                outJsonPath: $.Data.applicationStatus
+              - inJsonPath: $.Occupancy.accountId
+                outJsonPath: $.Data.accountId
+              - inJsonPath: $.Occupancy.inspectionDate
+                outJsonPath: $.Data.inspectionDate
+              - inJsonPath: $.Occupancy.workflow.action
+                outJsonPath: $.Data.workflowAction
+              - inJsonPath: $.Occupancy.auditDetails.createdBy
+                outJsonPath: $.Data.createdBy
+              - inJsonPath: $.Occupancy.auditDetails.lastModifiedBy
+                outJsonPath: $.Data.lastModifiedBy
+              - inJsonPath: $.Occupancy.auditDetails.createdTime
+                outJsonPath: $.Data.createdTime
+              - inJsonPath: $.Occupancy.auditDetails.lastModifiedTime
+                outJsonPath: $.Data.lastModifiedTime
+              - inJsonPath: $.Occupancy.documents
+                outJsonPath: $.Data.documents
+              - inJsonPath: $.Occupancy.owners
+                outJsonPath: $.Data.owners
+              - inJsonPath: $.Occupancy.occupancyDetails
+                outJsonPath: $.Data.occupancyDetails
+              - inJsonPath: $.Occupancy.occupancyDetails.additionalDetails
+                outJsonPath: $.Data.additionalDetails
+              - inJsonPath: $.Occupancy.workflow
+                outJsonPath: $.Data.workflow
+
+    # ===============================
+    # UPDATE OCCUPANCY TOPIC (FALLBACK / DIRECT PERSISTER TOPIC)
+    # ===============================
+    - topic: update-occupancy-topic
+      configKey: INDEX
+      indexes:
+        - name: occupancy-application-index
+          type: general
+          id: $.Occupancy.id, $.Occupancy.tenantId
+          isBulk: false
+          timeStampField: $.Occupancy.auditDetails.lastModifiedTime
+          jsonPath: $
+          customJsonMapping:
+            indexMapping:
+              Data:
+                id: id
+                tenantId: tenantId
+                applicationNo: applicationNo
+                approvalNo: approvalNo
+                sanctionNo: sanctionNo
+                sanctionDate: sanctionDate
+                permissionValidTillDate: permissionValidTillDate
+                required: required
+                commencementDate: commencementDate
+                buildingNo: buildingNo
+                plinthNumber: plinthNumber
+                plinthCompletionDate: plinthCompletionDate
+                occupancyCompletionDate: occupancyCompletionDate
+                deviation: deviation
+                applicationType: applicationType
+                occupancyType: occupancyType
+                status: status
+                applicationStatus: applicationStatus
+                accountId: accountId
+                inspectionDate: inspectionDate
+                workflowAction: workflowAction
+                createdBy: createdBy
+                lastModifiedBy: lastModifiedBy
+                createdTime: createdTime
+                lastModifiedTime: lastModifiedTime
+                documents: documents
+                owners: owners
+                occupancyDetails: occupancyDetails
+                additionalDetails: {}
+                workflow: {}
+
+            fieldMapping:
+              - inJsonPath: $.Occupancy.id
+                outJsonPath: $.Data.id
+              - inJsonPath: $.Occupancy.tenantId
+                outJsonPath: $.Data.tenantId
+              - inJsonPath: $.Occupancy.applicationNo
+                outJsonPath: $.Data.applicationNo
+              - inJsonPath: $.Occupancy.approvalNo
+                outJsonPath: $.Data.approvalNo
+              - inJsonPath: $.Occupancy.sanctionNo
+                outJsonPath: $.Data.sanctionNo
+              - inJsonPath: $.Occupancy.sanctionDate
+                outJsonPath: $.Data.sanctionDate
+              - inJsonPath: $.Occupancy.permissionValidTillDate
+                outJsonPath: $.Data.permissionValidTillDate
+              - inJsonPath: $.Occupancy.required
+                outJsonPath: $.Data.required
+              - inJsonPath: $.Occupancy.commencementDate
+                outJsonPath: $.Data.commencementDate
+              - inJsonPath: $.Occupancy.buildingNo
+                outJsonPath: $.Data.buildingNo
+              - inJsonPath: $.Occupancy.plinthNumber
+                outJsonPath: $.Data.plinthNumber
+              - inJsonPath: $.Occupancy.plinthCompletionDate
+                outJsonPath: $.Data.plinthCompletionDate
+              - inJsonPath: $.Occupancy.occupancyCompletionDate
+                outJsonPath: $.Data.occupancyCompletionDate
+              - inJsonPath: $.Occupancy.deviation
+                outJsonPath: $.Data.deviation
+              - inJsonPath: $.Occupancy.applicationType
+                outJsonPath: $.Data.applicationType
+              - inJsonPath: $.Occupancy.occupancyType
+                outJsonPath: $.Data.occupancyType
+              - inJsonPath: $.Occupancy.status
+                outJsonPath: $.Data.status
+              - inJsonPath: $.Occupancy.applicationStatus
+                outJsonPath: $.Data.applicationStatus
+              - inJsonPath: $.Occupancy.accountId
+                outJsonPath: $.Data.accountId
+              - inJsonPath: $.Occupancy.inspectionDate
+                outJsonPath: $.Data.inspectionDate
+              - inJsonPath: $.Occupancy.workflow.action
+                outJsonPath: $.Data.workflowAction
+              - inJsonPath: $.Occupancy.auditDetails.createdBy
+                outJsonPath: $.Data.createdBy
+              - inJsonPath: $.Occupancy.auditDetails.lastModifiedBy
+                outJsonPath: $.Data.lastModifiedBy
+              - inJsonPath: $.Occupancy.auditDetails.createdTime
+                outJsonPath: $.Data.createdTime
+              - inJsonPath: $.Occupancy.auditDetails.lastModifiedTime
+                outJsonPath: $.Data.lastModifiedTime
+              - inJsonPath: $.Occupancy.documents
+                outJsonPath: $.Data.documents
+              - inJsonPath: $.Occupancy.owners
+                outJsonPath: $.Data.owners
+              - inJsonPath: $.Occupancy.occupancyDetails
+                outJsonPath: $.Data.occupancyDetails
+              - inJsonPath: $.Occupancy.occupancyDetails.additionalDetails
+                outJsonPath: $.Data.additionalDetails
+              - inJsonPath: $.Occupancy.workflow
+                outJsonPath: $.Data.workflow
+
+    # ===============================
+    # UPDATE OCCUPANCY WORKFLOW
+    # ===============================
+    - topic: update-occupancy-workflow
+      configKey: INDEX
+      indexes:
+        - name: occupancy-application-index
+          type: general
+          id: $.Occupancy.id, $.Occupancy.tenantId
+          isBulk: false
+          timeStampField: $.Occupancy.auditDetails.lastModifiedTime
+          jsonPath: $
+          customJsonMapping:
+            indexMapping:
+              Data:
+                id: id
+                tenantId: tenantId
+                applicationNo: applicationNo
+                approvalNo: approvalNo
+                sanctionNo: sanctionNo
+                sanctionDate: sanctionDate
+                permissionValidTillDate: permissionValidTillDate
+                required: required
+                commencementDate: commencementDate
+                buildingNo: buildingNo
+                plinthNumber: plinthNumber
+                plinthCompletionDate: plinthCompletionDate
+                occupancyCompletionDate: occupancyCompletionDate
+                deviation: deviation
+                applicationType: applicationType
+                occupancyType: occupancyType
+                status: status
+                applicationStatus: applicationStatus
+                accountId: accountId
+                inspectionDate: inspectionDate
+                workflowAction: workflowAction
+                createdBy: createdBy
+                lastModifiedBy: lastModifiedBy
+                createdTime: createdTime
+                lastModifiedTime: lastModifiedTime
+                documents: documents
+                owners: owners
+                occupancyDetails: occupancyDetails
+                additionalDetails: {}
+                workflow: {}
+
+            fieldMapping:
+              - inJsonPath: $.Occupancy.id
+                outJsonPath: $.Data.id
+              - inJsonPath: $.Occupancy.tenantId
+                outJsonPath: $.Data.tenantId
+              - inJsonPath: $.Occupancy.applicationNo
+                outJsonPath: $.Data.applicationNo
+              - inJsonPath: $.Occupancy.approvalNo
+                outJsonPath: $.Data.approvalNo
+              - inJsonPath: $.Occupancy.sanctionNo
+                outJsonPath: $.Data.sanctionNo
+              - inJsonPath: $.Occupancy.sanctionDate
+                outJsonPath: $.Data.sanctionDate
+              - inJsonPath: $.Occupancy.permissionValidTillDate
+                outJsonPath: $.Data.permissionValidTillDate
+              - inJsonPath: $.Occupancy.required
+                outJsonPath: $.Data.required
+              - inJsonPath: $.Occupancy.commencementDate
+                outJsonPath: $.Data.commencementDate
+              - inJsonPath: $.Occupancy.buildingNo
+                outJsonPath: $.Data.buildingNo
+              - inJsonPath: $.Occupancy.plinthNumber
+                outJsonPath: $.Data.plinthNumber
+              - inJsonPath: $.Occupancy.plinthCompletionDate
+                outJsonPath: $.Data.plinthCompletionDate
+              - inJsonPath: $.Occupancy.occupancyCompletionDate
+                outJsonPath: $.Data.occupancyCompletionDate
+              - inJsonPath: $.Occupancy.deviation
+                outJsonPath: $.Data.deviation
+              - inJsonPath: $.Occupancy.applicationType
+                outJsonPath: $.Data.applicationType
+              - inJsonPath: $.Occupancy.occupancyType
+                outJsonPath: $.Data.occupancyType
+              - inJsonPath: $.Occupancy.status
+                outJsonPath: $.Data.status
+              - inJsonPath: $.Occupancy.applicationStatus
+                outJsonPath: $.Data.applicationStatus
+              - inJsonPath: $.Occupancy.accountId
+                outJsonPath: $.Data.accountId
+              - inJsonPath: $.Occupancy.inspectionDate
+                outJsonPath: $.Data.inspectionDate
+              - inJsonPath: $.Occupancy.workflow.action
+                outJsonPath: $.Data.workflowAction
+              - inJsonPath: $.Occupancy.auditDetails.createdBy
+                outJsonPath: $.Data.createdBy
+              - inJsonPath: $.Occupancy.auditDetails.lastModifiedBy
+                outJsonPath: $.Data.lastModifiedBy
+              - inJsonPath: $.Occupancy.auditDetails.createdTime
+                outJsonPath: $.Data.createdTime
+              - inJsonPath: $.Occupancy.auditDetails.lastModifiedTime
+                outJsonPath: $.Data.lastModifiedTime
+              - inJsonPath: $.Occupancy.documents
+                outJsonPath: $.Data.documents
+              - inJsonPath: $.Occupancy.owners
+                outJsonPath: $.Data.owners
+              - inJsonPath: $.Occupancy.occupancyDetails
+                outJsonPath: $.Data.occupancyDetails
+              - inJsonPath: $.Occupancy.occupancyDetails.additionalDetails
+                outJsonPath: $.Data.additionalDetails
+              - inJsonPath: $.Occupancy.workflow
+                outJsonPath: $.Data.workflow
+
+    # ===============================
+    # LEGACY INDEX (DB -> ES BACKFILL)
+    # ===============================
+    - topic: occupancy-application-legacyIndex
+      configKey: LEGACYINDEX
+      indexes:
+        - name: occupancy-application-index
+          type: general
+          id: $.id, $.tenantId
+          isBulk: true
+          timeStampField: $.auditDetails.createdTime
+          jsonPath: $.Occupancy
+          customJsonMapping:
+            indexMapping:
+              Data:
+                id: id
+                tenantId: tenantId
+                applicationNo: applicationNo
+                approvalNo: approvalNo
+                sanctionNo: sanctionNo
+                sanctionDate: sanctionDate
+                permissionValidTillDate: permissionValidTillDate
+                required: required
+                commencementDate: commencementDate
+                buildingNo: buildingNo
+                plinthNumber: plinthNumber
+                plinthCompletionDate: plinthCompletionDate
+                occupancyCompletionDate: occupancyCompletionDate
+                deviation: deviation
+                applicationType: applicationType
+                occupancyType: occupancyType
+                status: status
+                applicationStatus: applicationStatus
+                accountId: accountId
+                inspectionDate: inspectionDate
+                createdBy: createdBy
+                lastModifiedBy: lastModifiedBy
+                createdTime: createdTime
+                lastModifiedTime: lastModifiedTime
+                documents: documents
+                owners: owners
+                occupancyDetails: occupancyDetails
+                additionalDetails: {}
+
+            fieldMapping:
+              - inJsonPath: $.id
+                outJsonPath: $.Data.id
+              - inJsonPath: $.tenantId
+                outJsonPath: $.Data.tenantId
+              - inJsonPath: $.applicationNo
+                outJsonPath: $.Data.applicationNo
+              - inJsonPath: $.approvalNo
+                outJsonPath: $.Data.approvalNo
+              - inJsonPath: $.sanctionNo
+                outJsonPath: $.Data.sanctionNo
+              - inJsonPath: $.sanctionDate
+                outJsonPath: $.Data.sanctionDate
+              - inJsonPath: $.permissionValidTillDate
+                outJsonPath: $.Data.permissionValidTillDate
+              - inJsonPath: $.required
+                outJsonPath: $.Data.required
+              - inJsonPath: $.commencementDate
+                outJsonPath: $.Data.commencementDate
+              - inJsonPath: $.buildingNo
+                outJsonPath: $.Data.buildingNo
+              - inJsonPath: $.plinthNumber
+                outJsonPath: $.Data.plinthNumber
+              - inJsonPath: $.plinthCompletionDate
+                outJsonPath: $.Data.plinthCompletionDate
+              - inJsonPath: $.occupancyCompletionDate
+                outJsonPath: $.Data.occupancyCompletionDate
+              - inJsonPath: $.deviation
+                outJsonPath: $.Data.deviation
+              - inJsonPath: $.applicationType
+                outJsonPath: $.Data.applicationType
+              - inJsonPath: $.occupancyType
+                outJsonPath: $.Data.occupancyType
+              - inJsonPath: $.status
+                outJsonPath: $.Data.status
+              - inJsonPath: $.applicationStatus
+                outJsonPath: $.Data.applicationStatus
+              - inJsonPath: $.accountId
+                outJsonPath: $.Data.accountId
+              - inJsonPath: $.inspectionDate
+                outJsonPath: $.Data.inspectionDate
+              - inJsonPath: $.auditDetails.createdBy
+                outJsonPath: $.Data.createdBy
+              - inJsonPath: $.auditDetails.lastModifiedBy
+                outJsonPath: $.Data.lastModifiedBy
+              - inJsonPath: $.auditDetails.createdTime
+                outJsonPath: $.Data.createdTime
+              - inJsonPath: $.auditDetails.lastModifiedTime
+                outJsonPath: $.Data.lastModifiedTime
+              - inJsonPath: $.documents
+                outJsonPath: $.Data.documents
+              - inJsonPath: $.owners
+                outJsonPath: $.Data.owners
+              - inJsonPath: $.occupancyDetails
+                outJsonPath: $.Data.occupancyDetails
+              - inJsonPath: $.occupancyDetails.additionalDetails
+                outJsonPath: $.Data.additionalDetails
