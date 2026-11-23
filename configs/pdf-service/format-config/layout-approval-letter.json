@@ -228,6 +228,16 @@
         "margin": [0, 0, 0, 10]
       },
       {
+        "table": {
+          "widths": [30, "*"],
+          "body": [
+            "{{#var_additionalConditions}}[{ \"text\": \"{{index}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [20, 0, 0, 0] }, { \"text\": \"{{text}}\", \"style\": \"receipt-table-value\", \"alignment\": \"left\", \"margin\": [5, 0, 0, 0] }]{{/var_additionalConditions}}"
+          ]
+        },
+        "layout": "noBorders",
+        "margin": [0, -8, 0, 10]
+      },
+      {
         "id": "dsc-seal-joint-director",
         "stack": [
           {
