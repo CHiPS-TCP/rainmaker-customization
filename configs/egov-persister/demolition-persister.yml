@@ -1,0 +1,458 @@
+serviceMaps:
+  serviceName: demolition-services
+  version: 1.0.0
+  mappings:
+    - version: 1.0
+      description: Create Demolition entry
+      fromTopic: save-demolition-application
+      isTransaction: true
+      queryMaps:
+        - query: >
+            INSERT INTO eg_demolition (
+              id, applicationno, tenantid, status, createdby,
+              lastmodifiedby, createdtime, lastmodifiedtime, demolitionno, applicationtype, demolitiontype,
+              accountid, applicationstatus, approvalno, inspectiondate
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: $.Demolition
+          jsonMaps:
+            - jsonPath: $.Demolition.id
+            - jsonPath: $.Demolition.applicationNo
+            - jsonPath: $.Demolition.tenantId
+            - jsonPath: $.Demolition.status
+            - jsonPath: $.Demolition.auditDetails.createdBy
+            - jsonPath: $.Demolition.auditDetails.lastModifiedBy
+            - jsonPath: $.Demolition.auditDetails.createdTime
+            - jsonPath: $.Demolition.auditDetails.lastModifiedTime
+            - jsonPath: $.Demolition.demolitionNo
+            - jsonPath: $.Demolition.applicationType
+            - jsonPath: $.Demolition.demolitionType
+            - jsonPath: $.Demolition.accountId
+            - jsonPath: $.Demolition.applicationStatus
+            - jsonPath: $.Demolition.approvalNo
+            - jsonPath: $.Demolition.inspectionDate
+              type: LONG
+
+        - query: >
+            INSERT INTO eg_demolition_auditdetails (
+              id, applicationno, tenantid, status, createdby,
+              lastmodifiedby, createdtime, lastmodifiedtime, demolitionno, applicationtype, demolitiontype,
+              accountid, applicationstatus, approvalno, inspectiondate
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: $.Demolition
+          jsonMaps:
+            - jsonPath: $.Demolition.id
+            - jsonPath: $.Demolition.applicationNo
+            - jsonPath: $.Demolition.tenantId
+            - jsonPath: $.Demolition.status
+            - jsonPath: $.Demolition.auditDetails.createdBy
+            - jsonPath: $.Demolition.auditDetails.lastModifiedBy
+            - jsonPath: $.Demolition.auditDetails.createdTime
+            - jsonPath: $.Demolition.auditDetails.lastModifiedTime
+            - jsonPath: $.Demolition.demolitionNo
+            - jsonPath: $.Demolition.applicationType
+            - jsonPath: $.Demolition.demolitionType
+            - jsonPath: $.Demolition.accountId
+            - jsonPath: $.Demolition.applicationStatus
+            - jsonPath: $.Demolition.approvalNo
+            - jsonPath: $.Demolition.inspectionDate
+              type: LONG
+
+        - query: >
+            INSERT INTO eg_demolition_document (
+              uuid, documenttype, documentattachment, documentuid, demolitionid, doc_order, status, createdby,
+              lastmodifiedby, createdtime, lastmodifiedtime
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: $.Demolition.documents.*
+          jsonMaps:
+            - jsonPath: $.Demolition.documents.*.uuid
+            - jsonPath: $.Demolition.documents.*.documentType
+            - jsonPath: $.Demolition.documents.*.documentAttachment
+            - jsonPath: $.Demolition.documents.*.documentUid
+            - jsonPath: $.Demolition.id
+            - jsonPath: $.Demolition.documents.*.order
+            - jsonPath: $.Demolition.documents.*.status
+            - jsonPath: $.Demolition.documents.*.auditDetails.createdBy
+            - jsonPath: $.Demolition.documents.*.auditDetails.lastModifiedBy
+            - jsonPath: $.Demolition.documents.*.auditDetails.createdTime
+            - jsonPath: $.Demolition.documents.*.auditDetails.lastModifiedTime
+
+        - query: >
+            INSERT INTO eg_demolition_details (
+              id, demolitionid, additionaldetails, createdby, lastmodifiedby, createdtime, lastmodifiedtime, tenantid
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: $.Demolition.demolitionDetails
+          jsonMaps:
+            - jsonPath: $.Demolition.demolitionDetails.id
+            - jsonPath: $.Demolition.id
+            - jsonPath: $.Demolition.demolitionDetails.additionalDetails
+              type: JSON
+              dbType: JSONB
+            - jsonPath: $.Demolition.demolitionDetails.auditDetails.createdBy
+            - jsonPath: $.Demolition.demolitionDetails.auditDetails.lastModifiedBy
+            - jsonPath: $.Demolition.demolitionDetails.auditDetails.createdTime
+            - jsonPath: $.Demolition.demolitionDetails.auditDetails.lastModifiedTime
+            - jsonPath: $.Demolition.demolitionDetails.tenantId
+
+        - query: >
+            INSERT INTO eg_demolition_owner (
+              id, tenantid, demolitionid, status, isprimaryowner,
+              ownertype, ownershippercentage, institutionid, relationship,
+              createdby, createdtime, lastmodifiedby, lastmodifiedtime, additionaldetails, uuid
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT (uuid, demolitionid) DO UPDATE SET
+              tenantid = EXCLUDED.tenantid,
+              status = EXCLUDED.status,
+              isprimaryowner = EXCLUDED.isprimaryowner,
+              ownertype = EXCLUDED.ownertype,
+              ownershippercentage = EXCLUDED.ownershippercentage,
+              institutionid = EXCLUDED.institutionid,
+              relationship = EXCLUDED.relationship,
+              lastmodifiedby = EXCLUDED.lastmodifiedby,
+              lastmodifiedtime = EXCLUDED.lastmodifiedtime,
+              additionaldetails = EXCLUDED.additionaldetails;
+          basePath: $.Demolition.owners.*
+          jsonMaps:
+            - jsonPath: $.Demolition.owners.*.id
+            - jsonPath: $.Demolition.owners.*.tenantId
+            - jsonPath: $.Demolition.id
+            - jsonPath: $.Demolition.owners.*.status
+            - jsonPath: $.Demolition.owners.*.isPrimaryOwner
+            - jsonPath: $.Demolition.owners.*.type
+            - jsonPath: $.Demolition.owners.*.ownershipPercentage
+            - jsonPath: $.Demolition.owners.*.institutionId
+            - jsonPath: $.Demolition.owners.*.relationship
+            - jsonPath: $.Demolition.owners.*.createdBy
+            - jsonPath: $.Demolition.owners.*.createdDate
+            - jsonPath: $.Demolition.owners.*.lastModifiedBy
+            - jsonPath: $.Demolition.owners.*.lastModifiedDate
+            - jsonPath: $.Demolition.owners.*.additionalDetails
+              type: JSON
+              dbType: JSONB
+            - jsonPath: $.Demolition.owners.*.uuid
+
+    - version: 1.0
+      description: Update Demolition entry
+      fromTopic: update-demolition-application
+      isTransaction: true
+      queryMaps:
+        - query: >
+            UPDATE eg_demolition
+             SET status = ?, applicationstatus = ?, demolitionno = ?,
+                 applicationtype = ?, demolitiontype = ?,
+                 lastmodifiedby = ?, lastmodifiedtime = ?,
+                 tenantid = ?, inspectiondate = ?, approvalno = ?
+             WHERE id = ?;
+          basePath: $.Demolition
+          jsonMaps:
+            - jsonPath: $.Demolition.status
+            - jsonPath: $.Demolition.applicationStatus
+            - jsonPath: $.Demolition.demolitionNo
+            - jsonPath: $.Demolition.applicationType
+            - jsonPath: $.Demolition.demolitionType
+            - jsonPath: $.Demolition.auditDetails.lastModifiedBy
+            - jsonPath: $.Demolition.auditDetails.lastModifiedTime
+            - jsonPath: $.Demolition.tenantId
+            - jsonPath: $.Demolition.inspectionDate
+              type: LONG
+            - jsonPath: $.Demolition.approvalNo
+            - jsonPath: $.Demolition.id
+
+        - query: >
+            INSERT INTO eg_demolition_auditdetails (
+              id, applicationno, tenantid, status, createdby,
+              lastmodifiedby, createdtime, lastmodifiedtime, demolitionno, applicationtype, demolitiontype,
+              accountid, applicationstatus, approvalno, inspectiondate
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: $.Demolition
+          jsonMaps:
+            - jsonPath: $.Demolition.id
+            - jsonPath: $.Demolition.applicationNo
+            - jsonPath: $.Demolition.tenantId
+            - jsonPath: $.Demolition.status
+            - jsonPath: $.Demolition.auditDetails.createdBy
+            - jsonPath: $.Demolition.auditDetails.lastModifiedBy
+            - jsonPath: $.Demolition.auditDetails.createdTime
+            - jsonPath: $.Demolition.auditDetails.lastModifiedTime
+            - jsonPath: $.Demolition.demolitionNo
+            - jsonPath: $.Demolition.applicationType
+            - jsonPath: $.Demolition.demolitionType
+            - jsonPath: $.Demolition.accountId
+            - jsonPath: $.Demolition.applicationStatus
+            - jsonPath: $.Demolition.approvalNo
+            - jsonPath: $.Demolition.inspectionDate
+              type: LONG
+
+        - query: >
+            INSERT INTO eg_demolition_document (
+              uuid, documenttype, documentattachment, documentuid, demolitionid, doc_order, status, createdby,
+              lastmodifiedby, createdtime, lastmodifiedtime
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT (uuid) DO UPDATE SET
+              documenttype = EXCLUDED.documenttype,
+              documentattachment = EXCLUDED.documentattachment,
+              documentuid = EXCLUDED.documentuid,
+              demolitionid = EXCLUDED.demolitionid,
+              doc_order = EXCLUDED.doc_order,
+              status = EXCLUDED.status,
+              createdby = COALESCE(eg_demolition_document.createdby, EXCLUDED.createdby),
+              lastmodifiedby = EXCLUDED.lastmodifiedby,
+              createdtime = COALESCE(eg_demolition_document.createdtime, EXCLUDED.createdtime),
+              lastmodifiedtime = EXCLUDED.lastmodifiedtime;
+          basePath: $.Demolition.documents.*
+          jsonMaps:
+            - jsonPath: $.Demolition.documents.*.uuid
+            - jsonPath: $.Demolition.documents.*.documentType
+            - jsonPath: $.Demolition.documents.*.documentAttachment
+            - jsonPath: $.Demolition.documents.*.documentUid
+            - jsonPath: $.Demolition.id
+            - jsonPath: $.Demolition.documents.*.order
+            - jsonPath: $.Demolition.documents.*.status
+            - jsonPath: $.Demolition.documents.*.auditDetails.createdBy
+            - jsonPath: $.Demolition.documents.*.auditDetails.lastModifiedBy
+            - jsonPath: $.Demolition.documents.*.auditDetails.createdTime
+            - jsonPath: $.Demolition.documents.*.auditDetails.lastModifiedTime
+
+        - query: >
+            UPDATE eg_demolition_details
+            SET additionaldetails = ?, tenantid = ?,
+                lastmodifiedby = ?, lastmodifiedtime = ?
+            WHERE id = ?;
+          basePath: $.Demolition.demolitionDetails
+          jsonMaps:
+            - jsonPath: $.Demolition.demolitionDetails.additionalDetails
+              type: JSON
+              dbType: JSONB
+            - jsonPath: $.Demolition.demolitionDetails.tenantId
+            - jsonPath: $.Demolition.demolitionDetails.auditDetails.lastModifiedBy
+            - jsonPath: $.Demolition.demolitionDetails.auditDetails.lastModifiedTime
+            - jsonPath: $.Demolition.demolitionDetails.id
+
+        - query: >
+            INSERT INTO eg_demolition_owner (
+              id, tenantid, demolitionid, status, isprimaryowner,
+              ownertype, ownershippercentage, institutionid, relationship,
+              createdby, createdtime, lastmodifiedby, lastmodifiedtime, additionaldetails, uuid
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT (uuid, demolitionid) DO UPDATE SET
+              tenantid = EXCLUDED.tenantid,
+              status = EXCLUDED.status,
+              isprimaryowner = EXCLUDED.isprimaryowner,
+              ownertype = EXCLUDED.ownertype,
+              ownershippercentage = EXCLUDED.ownershippercentage,
+              institutionid = EXCLUDED.institutionid,
+              relationship = EXCLUDED.relationship,
+              lastmodifiedby = EXCLUDED.lastmodifiedby,
+              lastmodifiedtime = EXCLUDED.lastmodifiedtime,
+              additionaldetails = EXCLUDED.additionaldetails;
+          basePath: $.Demolition.owners.*
+          jsonMaps:
+            - jsonPath: $.Demolition.owners.*.id
+            - jsonPath: $.Demolition.owners.*.tenantId
+            - jsonPath: $.Demolition.id
+            - jsonPath: $.Demolition.owners.*.status
+            - jsonPath: $.Demolition.owners.*.isPrimaryOwner
+            - jsonPath: $.Demolition.owners.*.type
+            - jsonPath: $.Demolition.owners.*.ownershipPercentage
+            - jsonPath: $.Demolition.owners.*.institutionId
+            - jsonPath: $.Demolition.owners.*.relationship
+            - jsonPath: $.Demolition.owners.*.createdBy
+            - jsonPath: $.Demolition.owners.*.createdDate
+            - jsonPath: $.Demolition.owners.*.lastModifiedBy
+            - jsonPath: $.Demolition.owners.*.lastModifiedDate
+            - jsonPath: $.Demolition.owners.*.additionalDetails
+              type: JSON
+              dbType: JSONB
+            - jsonPath: $.Demolition.owners.*.uuid
+
+        - query: >
+            UPDATE public.eg_demolition_document_check_list
+            SET tenantid = ?
+            WHERE applicationno = ?;
+          basePath: $.Demolition
+          jsonMaps:
+            - jsonPath: $.Demolition.tenantId
+            - jsonPath: $.Demolition.applicationNo
+
+    - version: 1.0
+      description: Update Demolition workflow entry
+      fromTopic: update-demolition-workflow
+      isTransaction: true
+      queryMaps:
+        - query: >
+            UPDATE eg_demolition
+             SET status = ?, applicationstatus = ?, demolitionno = ?,
+                 applicationtype = ?, demolitiontype = ?,
+                 lastmodifiedby = ?, lastmodifiedtime = ?,
+                 tenantid = ?, inspectiondate = ?, approvalno = ?
+             WHERE id = ?;
+          basePath: $.Demolition
+          jsonMaps:
+            - jsonPath: $.Demolition.status
+            - jsonPath: $.Demolition.applicationStatus
+            - jsonPath: $.Demolition.demolitionNo
+            - jsonPath: $.Demolition.applicationType
+            - jsonPath: $.Demolition.demolitionType
+            - jsonPath: $.Demolition.auditDetails.lastModifiedBy
+            - jsonPath: $.Demolition.auditDetails.lastModifiedTime
+            - jsonPath: $.Demolition.tenantId
+            - jsonPath: $.Demolition.inspectionDate
+              type: LONG
+            - jsonPath: $.Demolition.approvalNo
+            - jsonPath: $.Demolition.id
+
+        - query: >
+            INSERT INTO eg_demolition_auditdetails (
+              id, applicationno, tenantid, status, createdby,
+              lastmodifiedby, createdtime, lastmodifiedtime, demolitionno, applicationtype, demolitiontype,
+              accountid, applicationstatus, approvalno, inspectiondate
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: $.Demolition
+          jsonMaps:
+            - jsonPath: $.Demolition.id
+            - jsonPath: $.Demolition.applicationNo
+            - jsonPath: $.Demolition.tenantId
+            - jsonPath: $.Demolition.status
+            - jsonPath: $.Demolition.auditDetails.createdBy
+            - jsonPath: $.Demolition.auditDetails.lastModifiedBy
+            - jsonPath: $.Demolition.auditDetails.createdTime
+            - jsonPath: $.Demolition.auditDetails.lastModifiedTime
+            - jsonPath: $.Demolition.demolitionNo
+            - jsonPath: $.Demolition.applicationType
+            - jsonPath: $.Demolition.demolitionType
+            - jsonPath: $.Demolition.accountId
+            - jsonPath: $.Demolition.applicationStatus
+            - jsonPath: $.Demolition.approvalNo
+            - jsonPath: $.Demolition.inspectionDate
+              type: LONG
+
+        - query: >
+            INSERT INTO eg_demolition_document (
+              uuid, documenttype, documentattachment, documentuid, demolitionid, doc_order, status, createdby,
+              lastmodifiedby, createdtime, lastmodifiedtime
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT (uuid) DO UPDATE SET
+              documenttype = EXCLUDED.documenttype,
+              documentattachment = EXCLUDED.documentattachment,
+              documentuid = EXCLUDED.documentuid,
+              demolitionid = EXCLUDED.demolitionid,
+              doc_order = EXCLUDED.doc_order,
+              status = EXCLUDED.status,
+              createdby = COALESCE(eg_demolition_document.createdby, EXCLUDED.createdby),
+              lastmodifiedby = EXCLUDED.lastmodifiedby,
+              createdtime = COALESCE(eg_demolition_document.createdtime, EXCLUDED.createdtime),
+              lastmodifiedtime = EXCLUDED.lastmodifiedtime;
+          basePath: $.Demolition.documents.*
+          jsonMaps:
+            - jsonPath: $.Demolition.documents.*.uuid
+            - jsonPath: $.Demolition.documents.*.documentType
+            - jsonPath: $.Demolition.documents.*.documentAttachment
+            - jsonPath: $.Demolition.documents.*.documentUid
+            - jsonPath: $.Demolition.id
+            - jsonPath: $.Demolition.documents.*.order
+            - jsonPath: $.Demolition.documents.*.status
+            - jsonPath: $.Demolition.documents.*.auditDetails.createdBy
+            - jsonPath: $.Demolition.documents.*.auditDetails.lastModifiedBy
+            - jsonPath: $.Demolition.documents.*.auditDetails.createdTime
+            - jsonPath: $.Demolition.documents.*.auditDetails.lastModifiedTime
+
+        - query: >
+            UPDATE eg_demolition_details
+            SET additionaldetails = ?, tenantid = ?,
+                lastmodifiedby = ?, lastmodifiedtime = ?
+            WHERE id = ?;
+          basePath: $.Demolition.demolitionDetails
+          jsonMaps:
+            - jsonPath: $.Demolition.demolitionDetails.additionalDetails
+              type: JSON
+              dbType: JSONB
+            - jsonPath: $.Demolition.demolitionDetails.tenantId
+            - jsonPath: $.Demolition.demolitionDetails.auditDetails.lastModifiedBy
+            - jsonPath: $.Demolition.demolitionDetails.auditDetails.lastModifiedTime
+            - jsonPath: $.Demolition.demolitionDetails.id
+
+        - query: >
+            INSERT INTO eg_demolition_owner (
+              id, tenantid, demolitionid, status, isprimaryowner,
+              ownertype, ownershippercentage, institutionid, relationship,
+              createdby, createdtime, lastmodifiedby, lastmodifiedtime, additionaldetails, uuid
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT (uuid, demolitionid) DO UPDATE SET
+              tenantid = EXCLUDED.tenantid,
+              status = EXCLUDED.status,
+              isprimaryowner = EXCLUDED.isprimaryowner,
+              ownertype = EXCLUDED.ownertype,
+              ownershippercentage = EXCLUDED.ownershippercentage,
+              institutionid = EXCLUDED.institutionid,
+              relationship = EXCLUDED.relationship,
+              lastmodifiedby = EXCLUDED.lastmodifiedby,
+              lastmodifiedtime = EXCLUDED.lastmodifiedtime,
+              additionaldetails = EXCLUDED.additionaldetails;
+          basePath: $.Demolition.owners.*
+          jsonMaps:
+            - jsonPath: $.Demolition.owners.*.id
+            - jsonPath: $.Demolition.owners.*.tenantId
+            - jsonPath: $.Demolition.id
+            - jsonPath: $.Demolition.owners.*.status
+            - jsonPath: $.Demolition.owners.*.isPrimaryOwner
+            - jsonPath: $.Demolition.owners.*.type
+            - jsonPath: $.Demolition.owners.*.ownershipPercentage
+            - jsonPath: $.Demolition.owners.*.institutionId
+            - jsonPath: $.Demolition.owners.*.relationship
+            - jsonPath: $.Demolition.owners.*.createdBy
+            - jsonPath: $.Demolition.owners.*.createdDate
+            - jsonPath: $.Demolition.owners.*.lastModifiedBy
+            - jsonPath: $.Demolition.owners.*.lastModifiedDate
+            - jsonPath: $.Demolition.owners.*.additionalDetails
+              type: JSON
+              dbType: JSONB
+            - jsonPath: $.Demolition.owners.*.uuid
+
+        - query: >
+            UPDATE public.eg_demolition_document_check_list
+            SET tenantid = ?
+            WHERE applicationno = ?;
+          basePath: $.Demolition
+          jsonMaps:
+            - jsonPath: $.Demolition.tenantId
+            - jsonPath: $.Demolition.applicationNo
+
+    - version: 1.0
+      description: Save Demolition Document Check List
+      fromTopic: save-demolition-document-checklist
+      isTransaction: true
+      queryMaps:
+        - query: >
+            INSERT INTO public.eg_demolition_document_check_list (
+              id, documentuid, applicationno, tenantid, action, remarks,
+              createdby, lastmodifiedby, createdtime, lastmodifiedtime
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          basePath: $.checkList.*
+          jsonMaps:
+            - jsonPath: $.checkList.*.id
+            - jsonPath: $.checkList.*.documentuid
+            - jsonPath: $.checkList.*.applicationNo
+            - jsonPath: $.checkList.*.tenantId
+            - jsonPath: $.checkList.*.action
+            - jsonPath: $.checkList.*.remarks
+            - jsonPath: $.checkList.*.createdby
+            - jsonPath: $.checkList.*.lastmodifiedby
+            - jsonPath: $.checkList.*.createdtime
+            - jsonPath: $.checkList.*.lastmodifiedtime
+
+    - version: 1.0
+      description: Update Demolition Document Check List
+      fromTopic: update-demolition-document-checklist
+      isTransaction: true
+      queryMaps:
+        - query: >
+            UPDATE public.eg_demolition_document_check_list
+            SET action = ?, remarks = ?, lastmodifiedby = ?, lastmodifiedtime = ?
+            WHERE id = ? AND tenantid = ?;
+          basePath: $.checkList.*
+          jsonMaps:
+            - jsonPath: $.checkList.*.action
+            - jsonPath: $.checkList.*.remarks
+            - jsonPath: $.checkList.*.lastmodifiedby
+            - jsonPath: $.checkList.*.lastmodifiedtime
+            - jsonPath: $.checkList.*.id
+            - jsonPath: $.checkList.*.tenantId

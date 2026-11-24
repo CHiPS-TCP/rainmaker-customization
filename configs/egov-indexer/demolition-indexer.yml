@@ -1,0 +1,321 @@
+ServiceMaps:
+  serviceName: egov-demolition-services
+  version: 1.0.0
+  mappings:
+
+    # ===============================
+    # SAVE DEMOLITION APPLICATION
+    # ===============================
+    - topic: save-demolition-application
+      configKey: INDEX
+      indexes:
+        - name: demolition-application-index
+          type: general
+          id: $.Demolition.id, $.Demolition.tenantId
+          isBulk: false
+          timeStampField: $.Demolition.auditDetails.createdTime
+          jsonPath: $
+          customJsonMapping:
+            indexMapping:
+              Data:
+                id: id
+                tenantId: tenantId
+                applicationNo: applicationNo
+                approvalNo: approvalNo
+                demolitionNo: demolitionNo
+                demolitionType: demolitionType
+                applicationType: applicationType
+                status: status
+                applicationStatus: applicationStatus
+                inspectionDate: inspectionDate
+                accountId: accountId
+                workflowAction: workflowAction
+                createdBy: createdBy
+                lastModifiedBy: lastModifiedBy
+                createdTime: createdTime
+                lastModifiedTime: lastModifiedTime
+                documents: documents
+                owners: owners
+                demolitionDetails: demolitionDetails
+                siteDetails: {}
+                additionalDetails: {}
+            fieldMapping:
+              - inJsonPath: $.Demolition.id
+                outJsonPath: $.Data.id
+              - inJsonPath: $.Demolition.tenantId
+                outJsonPath: $.Data.tenantId
+              - inJsonPath: $.Demolition.applicationNo
+                outJsonPath: $.Data.applicationNo
+              - inJsonPath: $.Demolition.approvalNo
+                outJsonPath: $.Data.approvalNo
+              - inJsonPath: $.Demolition.demolitionNo
+                outJsonPath: $.Data.demolitionNo
+              - inJsonPath: $.Demolition.demolitionType
+                outJsonPath: $.Data.demolitionType
+              - inJsonPath: $.Demolition.applicationType
+                outJsonPath: $.Data.applicationType
+              - inJsonPath: $.Demolition.status
+                outJsonPath: $.Data.status
+              - inJsonPath: $.Demolition.applicationStatus
+                outJsonPath: $.Data.applicationStatus
+              - inJsonPath: $.Demolition.inspectionDate
+                outJsonPath: $.Data.inspectionDate
+              - inJsonPath: $.Demolition.accountId
+                outJsonPath: $.Data.accountId
+              - inJsonPath: $.Demolition.workflow.action
+                outJsonPath: $.Data.workflowAction
+              - inJsonPath: $.Demolition.auditDetails.createdBy
+                outJsonPath: $.Data.createdBy
+              - inJsonPath: $.Demolition.auditDetails.lastModifiedBy
+                outJsonPath: $.Data.lastModifiedBy
+              - inJsonPath: $.Demolition.auditDetails.createdTime
+                outJsonPath: $.Data.createdTime
+              - inJsonPath: $.Demolition.auditDetails.lastModifiedTime
+                outJsonPath: $.Data.lastModifiedTime
+              - inJsonPath: $.Demolition.documents
+                outJsonPath: $.Data.documents
+              - inJsonPath: $.Demolition.owners
+                outJsonPath: $.Data.owners
+              - inJsonPath: $.Demolition.demolitionDetails
+                outJsonPath: $.Data.demolitionDetails
+              - inJsonPath: $.Demolition.demolitionDetails.additionalDetails.siteDetails
+                outJsonPath: $.Data.siteDetails
+              - inJsonPath: $.Demolition.demolitionDetails.additionalDetails
+                outJsonPath: $.Data.additionalDetails
+
+    # ===============================
+    # LEGACY INDEX (DB -> ES BACKFILL)
+    # ===============================
+    - topic: demolition-application-legacyIndex
+      configKey: LEGACYINDEX
+      indexes:
+        - name: demolition-application-index
+          type: general
+          id: $.id, $.tenantId
+          isBulk: true
+          timeStampField: $.auditDetails.createdTime
+          jsonPath: $.Demolition
+          customJsonMapping:
+            indexMapping:
+              Data:
+                id: id
+                tenantId: tenantId
+                applicationNo: applicationNo
+                approvalNo: approvalNo
+                demolitionNo: demolitionNo
+                demolitionType: demolitionType
+                applicationType: applicationType
+                status: status
+                applicationStatus: applicationStatus
+                inspectionDate: inspectionDate
+                accountId: accountId
+                createdBy: createdBy
+                lastModifiedBy: lastModifiedBy
+                createdTime: createdTime
+                lastModifiedTime: lastModifiedTime
+                documents: documents
+                owners: owners
+                demolitionDetails: demolitionDetails
+                siteDetails: {}
+                additionalDetails: {}
+            fieldMapping:
+              - inJsonPath: $.id
+                outJsonPath: $.Data.id
+              - inJsonPath: $.tenantId
+                outJsonPath: $.Data.tenantId
+              - inJsonPath: $.applicationNo
+                outJsonPath: $.Data.applicationNo
+              - inJsonPath: $.approvalNo
+                outJsonPath: $.Data.approvalNo
+              - inJsonPath: $.demolitionNo
+                outJsonPath: $.Data.demolitionNo
+              - inJsonPath: $.demolitionType
+                outJsonPath: $.Data.demolitionType
+              - inJsonPath: $.applicationType
+                outJsonPath: $.Data.applicationType
+              - inJsonPath: $.status
+                outJsonPath: $.Data.status
+              - inJsonPath: $.applicationStatus
+                outJsonPath: $.Data.applicationStatus
+              - inJsonPath: $.inspectionDate
+                outJsonPath: $.Data.inspectionDate
+              - inJsonPath: $.accountId
+                outJsonPath: $.Data.accountId
+              - inJsonPath: $.auditDetails.createdBy
+                outJsonPath: $.Data.createdBy
+              - inJsonPath: $.auditDetails.lastModifiedBy
+                outJsonPath: $.Data.lastModifiedBy
+              - inJsonPath: $.auditDetails.createdTime
+                outJsonPath: $.Data.createdTime
+              - inJsonPath: $.auditDetails.lastModifiedTime
+                outJsonPath: $.Data.lastModifiedTime
+              - inJsonPath: $.documents
+                outJsonPath: $.Data.documents
+              - inJsonPath: $.owners
+                outJsonPath: $.Data.owners
+              - inJsonPath: $.demolitionDetails
+                outJsonPath: $.Data.demolitionDetails
+              - inJsonPath: $.demolitionDetails.additionalDetails.siteDetails
+                outJsonPath: $.Data.siteDetails
+              - inJsonPath: $.demolitionDetails.additionalDetails
+                outJsonPath: $.Data.additionalDetails
+
+    # ===============================
+    # UPDATE DEMOLITION APPLICATION
+    # ===============================
+    - topic: update-demolition-application
+      configKey: INDEX
+      indexes:
+        - name: demolition-application-index
+          type: general
+          id: $.Demolition.id, $.Demolition.tenantId
+          isBulk: false
+          timeStampField: $.Demolition.auditDetails.lastModifiedTime
+          jsonPath: $
+          customJsonMapping:
+            indexMapping:
+              Data:
+                id: id
+                tenantId: tenantId
+                applicationNo: applicationNo
+                approvalNo: approvalNo
+                demolitionNo: demolitionNo
+                demolitionType: demolitionType
+                applicationType: applicationType
+                status: status
+                applicationStatus: applicationStatus
+                inspectionDate: inspectionDate
+                accountId: accountId
+                workflowAction: workflowAction
+                createdBy: createdBy
+                lastModifiedBy: lastModifiedBy
+                createdTime: createdTime
+                lastModifiedTime: lastModifiedTime
+                documents: documents
+                owners: owners
+                demolitionDetails: demolitionDetails
+                siteDetails: {}
+                additionalDetails: {}
+            fieldMapping:
+              - inJsonPath: $.Demolition.id
+                outJsonPath: $.Data.id
+              - inJsonPath: $.Demolition.tenantId
+                outJsonPath: $.Data.tenantId
+              - inJsonPath: $.Demolition.applicationNo
+                outJsonPath: $.Data.applicationNo
+              - inJsonPath: $.Demolition.approvalNo
+                outJsonPath: $.Data.approvalNo
+              - inJsonPath: $.Demolition.demolitionNo
+                outJsonPath: $.Data.demolitionNo
+              - inJsonPath: $.Demolition.demolitionType
+                outJsonPath: $.Data.demolitionType
+              - inJsonPath: $.Demolition.applicationType
+                outJsonPath: $.Data.applicationType
+              - inJsonPath: $.Demolition.status
+                outJsonPath: $.Data.status
+              - inJsonPath: $.Demolition.applicationStatus
+                outJsonPath: $.Data.applicationStatus
+              - inJsonPath: $.Demolition.inspectionDate
+                outJsonPath: $.Data.inspectionDate
+              - inJsonPath: $.Demolition.accountId
+                outJsonPath: $.Data.accountId
+              - inJsonPath: $.Demolition.workflow.action
+                outJsonPath: $.Data.workflowAction
+              - inJsonPath: $.Demolition.auditDetails.createdBy
+                outJsonPath: $.Data.createdBy
+              - inJsonPath: $.Demolition.auditDetails.lastModifiedBy
+                outJsonPath: $.Data.lastModifiedBy
+              - inJsonPath: $.Demolition.auditDetails.createdTime
+                outJsonPath: $.Data.createdTime
+              - inJsonPath: $.Demolition.auditDetails.lastModifiedTime
+                outJsonPath: $.Data.lastModifiedTime
+              - inJsonPath: $.Demolition.documents
+                outJsonPath: $.Data.documents
+              - inJsonPath: $.Demolition.owners
+                outJsonPath: $.Data.owners
+              - inJsonPath: $.Demolition.demolitionDetails
+                outJsonPath: $.Data.demolitionDetails
+              - inJsonPath: $.Demolition.demolitionDetails.additionalDetails.siteDetails
+                outJsonPath: $.Data.siteDetails
+              - inJsonPath: $.Demolition.demolitionDetails.additionalDetails
+                outJsonPath: $.Data.additionalDetails
+
+    # ===============================
+    # UPDATE DEMOLITION WORKFLOW
+    # ===============================
+    - topic: update-demolition-workflow
+      configKey: INDEX
+      indexes:
+        - name: demolition-application-index
+          type: general
+          id: $.Demolition.id, $.Demolition.tenantId
+          isBulk: false
+          timeStampField: $.Demolition.auditDetails.lastModifiedTime
+          jsonPath: $
+          customJsonMapping:
+            indexMapping:
+              Data:
+                id: id
+                tenantId: tenantId
+                applicationNo: applicationNo
+                approvalNo: approvalNo
+                demolitionNo: demolitionNo
+                demolitionType: demolitionType
+                applicationType: applicationType
+                status: status
+                applicationStatus: applicationStatus
+                inspectionDate: inspectionDate
+                accountId: accountId
+                workflowAction: workflowAction
+                createdBy: createdBy
+                lastModifiedBy: lastModifiedBy
+                createdTime: createdTime
+                lastModifiedTime: lastModifiedTime
+                documents: documents
+                owners: owners
+                demolitionDetails: demolitionDetails
+                siteDetails: {}
+                additionalDetails: {}
+            fieldMapping:
+              - inJsonPath: $.Demolition.id
+                outJsonPath: $.Data.id
+              - inJsonPath: $.Demolition.tenantId
+                outJsonPath: $.Data.tenantId
+              - inJsonPath: $.Demolition.applicationNo
+                outJsonPath: $.Data.applicationNo
+              - inJsonPath: $.Demolition.approvalNo
+                outJsonPath: $.Data.approvalNo
+              - inJsonPath: $.Demolition.demolitionNo
+                outJsonPath: $.Data.demolitionNo
+              - inJsonPath: $.Demolition.demolitionType
+                outJsonPath: $.Data.demolitionType
+              - inJsonPath: $.Demolition.applicationType
+                outJsonPath: $.Data.applicationType
+              - inJsonPath: $.Demolition.status
+                outJsonPath: $.Data.status
+              - inJsonPath: $.Demolition.applicationStatus
+                outJsonPath: $.Data.applicationStatus
+              - inJsonPath: $.Demolition.inspectionDate
+                outJsonPath: $.Data.inspectionDate
+              - inJsonPath: $.Demolition.accountId
+                outJsonPath: $.Data.accountId
+              - inJsonPath: $.Demolition.workflow.action
+                outJsonPath: $.Data.workflowAction
+              - inJsonPath: $.Demolition.auditDetails.createdBy
+                outJsonPath: $.Data.createdBy
+              - inJsonPath: $.Demolition.auditDetails.lastModifiedBy
+                outJsonPath: $.Data.lastModifiedBy
+              - inJsonPath: $.Demolition.auditDetails.createdTime
+                outJsonPath: $.Data.createdTime
+              - inJsonPath: $.Demolition.auditDetails.lastModifiedTime
+                outJsonPath: $.Data.lastModifiedTime
+              - inJsonPath: $.Demolition.documents
+                outJsonPath: $.Data.documents
+              - inJsonPath: $.Demolition.owners
+                outJsonPath: $.Data.owners
+              - inJsonPath: $.Demolition.demolitionDetails
+                outJsonPath: $.Data.demolitionDetails
+              - inJsonPath: $.Demolition.demolitionDetails.additionalDetails.siteDetails
+                outJsonPath: $.Data.siteDetails
+              - inJsonPath: $.Demolition.demolitionDetails.additionalDetails
+                outJsonPath: $.Data.additionalDetails
