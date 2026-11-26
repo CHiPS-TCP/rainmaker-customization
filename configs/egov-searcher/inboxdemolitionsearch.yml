@@ -1,0 +1,248 @@
+SearchDefinitions:
+  moduleName: demolition-services
+  summary: Demolition Services Inbox API
+  version: 1.0.0
+  definitions:
+    - name: inboxdemolitionsearch
+      query:
+        baseQuery: |
+          Select row_to_json(result) from (
+            select DISTINCT(demo.applicationno),
+                   demo.createdtime,
+                   pi.status as status_id,
+                   demo.id,
+                   demo.tenantid,
+                   demo.status,
+                   demo.demolitionno,
+                   demo.approvalno,
+                   demo.applicationtype,
+                   demo.demolitiontype,
+                   demo.accountid,
+                   demo.applicationstatus,
+                   demo.inspectiondate
+            from eg_demolition as demo
+            LEFT JOIN eg_demolition_details details ON details.demolitionid = demo.id
+            LEFT JOIN eg_demolition_owner owner ON owner.demolitionid = demo.id
+            INNER JOIN eg_wf_processinstance_v2 pi ON pi.businessid = demo.applicationno
+            LEFT JOIN eg_wf_state_v2 ws ON ws.uuid = pi.status
+            LEFT JOIN eg_wf_assignee_v2 assg ON pi.id = assg.processinstanceid
+            $where
+            AND pi.latest = TRUE
+            order by demo.createdtime asc
+            $pagination
+          ) result
+        groupBy:
+        orderBy:
+      searchParams:
+        condition: AND
+        params:
+          - name: demo.tenantid
+            isMandatory: true
+            jsonPath: $.searchCriteria.tenantId
+          - name: demo.id
+            isMandatory: false
+            jsonPath: $.searchCriteria.id
+          - name: pi.status
+            isMandatory: false
+            jsonPath: $.searchCriteria.status
+            operator: IN
+          - name: demo.applicationno
+            isMandatory: false
+            jsonPath: $.searchCriteria.applicationNumber
+          - name: demo.demolitionno
+            isMandatory: false
+            jsonPath: $.searchCriteria.demolitionNumber
+          - name: demo.approvalno
+            isMandatory: false
+            jsonPath: $.searchCriteria.approvalNumber
+          - name: pi.businessservice
+            isMandatory: false
+            jsonPath: $.searchCriteria.businessservice
+            operator: IN
+          - name: assg.assignee
+            isMandatory: false
+            jsonPath: $.searchCriteria.assignee
+          - name: demo.applicationstatus
+            isMandatory: false
+            jsonPath: $.searchCriteria.applicationStatus
+          - name: demo.applicationtype
+            isMandatory: false
+            jsonPath: $.searchCriteria.applicationType
+          - name: demo.demolitiontype
+            isMandatory: false
+            jsonPath: $.searchCriteria.demolitionType
+          - name: demo.accountid
+            isMandatory: false
+            jsonPath: $.searchCriteria.accountId
+          - name: owner.ownertype
+            isMandatory: false
+            jsonPath: $.searchCriteria.ownerType
+          - name: owner.uuid
+            isMandatory: false
+            jsonPath: $.searchCriteria.userid
+            operator: IN
+        pagination:
+          noOfRecords: $.searchCriteria.noOfRecords
+          offset: $.searchCriteria.offset
+      output:
+        jsonFormat: {"ResponseInfo": {},"demolitionApplication": []}
+        outJsonPath: $.demolitionApplication
+        responseInfoPath: $.ResponseInfo
+
+    - name: inboxdemolitionsearchcount
+      query:
+        baseQuery: |
+          Select row_to_json(result) from (
+            select COUNT(DISTINCT(demo.applicationno)) as totalCount
+            from eg_demolition as demo
+            LEFT JOIN eg_demolition_details details ON details.demolitionid = demo.id
+            LEFT JOIN eg_demolition_owner owner ON owner.demolitionid = demo.id
+            INNER JOIN eg_wf_processinstance_v2 pi ON pi.businessid = demo.applicationno
+            LEFT JOIN eg_wf_state_v2 ws ON ws.uuid = pi.status
+            LEFT JOIN eg_wf_assignee_v2 assg ON pi.id = assg.processinstanceid
+            $where
+            AND pi.latest = TRUE
+          ) result
+        groupBy:
+        orderBy:
+      searchParams:
+        condition: AND
+        params:
+          - name: demo.tenantid
+            isMandatory: true
+            jsonPath: $.searchCriteria.tenantId
+          - name: demo.id
+            isMandatory: false
+            jsonPath: $.searchCriteria.id
+          - name: pi.status
+            isMandatory: false
+            jsonPath: $.searchCriteria.status
+            operator: IN
+          - name: demo.applicationno
+            isMandatory: false
+            jsonPath: $.searchCriteria.applicationNumber
+          - name: demo.demolitionno
+            isMandatory: false
+            jsonPath: $.searchCriteria.demolitionNumber
+          - name: demo.approvalno
+            isMandatory: false
+            jsonPath: $.searchCriteria.approvalNumber
+          - name: pi.businessservice
+            isMandatory: false
+            jsonPath: $.searchCriteria.businessservice
+            operator: IN
+          - name: assg.assignee
+            isMandatory: false
+            jsonPath: $.searchCriteria.assignee
+          - name: demo.applicationstatus
+            isMandatory: false
+            jsonPath: $.searchCriteria.applicationStatus
+          - name: demo.applicationtype
+            isMandatory: false
+            jsonPath: $.searchCriteria.applicationType
+          - name: demo.demolitiontype
+            isMandatory: false
+            jsonPath: $.searchCriteria.demolitionType
+          - name: demo.accountid
+            isMandatory: false
+            jsonPath: $.searchCriteria.accountId
+          - name: owner.ownertype
+            isMandatory: false
+            jsonPath: $.searchCriteria.ownerType
+          - name: owner.uuid
+            isMandatory: false
+            jsonPath: $.searchCriteria.userid
+            operator: IN
+        pagination:
+          noOfRecords: $.searchCriteria.noOfRecords
+          offset: $.searchCriteria.offset
+      output:
+        jsonFormat: {"ResponseInfo": {},"totalCount": []}
+        outJsonPath: $.totalCount
+        responseInfoPath: $.ResponseInfo
+
+    - name: inboxdemolitionsearchdesc
+      query:
+        baseQuery: |
+          Select row_to_json(result) from (
+            select DISTINCT(demo.applicationno),
+                   demo.createdtime,
+                   pi.status as status_id,
+                   demo.id,
+                   demo.tenantid,
+                   demo.status,
+                   demo.demolitionno,
+                   demo.approvalno,
+                   demo.applicationtype,
+                   demo.demolitiontype,
+                   demo.accountid,
+                   demo.applicationstatus,
+                   demo.inspectiondate
+            from eg_demolition as demo
+            LEFT JOIN eg_demolition_details details ON details.demolitionid = demo.id
+            LEFT JOIN eg_demolition_owner owner ON owner.demolitionid = demo.id
+            INNER JOIN eg_wf_processinstance_v2 pi ON pi.businessid = demo.applicationno
+            LEFT JOIN eg_wf_state_v2 ws ON ws.uuid = pi.status
+            LEFT JOIN eg_wf_assignee_v2 assg ON pi.id = assg.processinstanceid
+            $where
+            AND pi.latest = TRUE
+            order by demo.createdtime desc
+            $pagination
+          ) result
+        groupBy:
+        orderBy:
+      searchParams:
+        condition: AND
+        params:
+          - name: demo.tenantid
+            isMandatory: true
+            jsonPath: $.searchCriteria.tenantId
+          - name: demo.id
+            isMandatory: false
+            jsonPath: $.searchCriteria.id
+          - name: pi.status
+            isMandatory: false
+            jsonPath: $.searchCriteria.status
+            operator: IN
+          - name: demo.applicationno
+            isMandatory: false
+            jsonPath: $.searchCriteria.applicationNumber
+          - name: demo.demolitionno
+            isMandatory: false
+            jsonPath: $.searchCriteria.demolitionNumber
+          - name: demo.approvalno
+            isMandatory: false
+            jsonPath: $.searchCriteria.approvalNumber
+          - name: pi.businessservice
+            isMandatory: false
+            jsonPath: $.searchCriteria.businessservice
+            operator: IN
+          - name: assg.assignee
+            isMandatory: false
+            jsonPath: $.searchCriteria.assignee
+          - name: demo.applicationstatus
+            isMandatory: false
+            jsonPath: $.searchCriteria.applicationStatus
+          - name: demo.applicationtype
+            isMandatory: false
+            jsonPath: $.searchCriteria.applicationType
+          - name: demo.demolitiontype
+            isMandatory: false
+            jsonPath: $.searchCriteria.demolitionType
+          - name: demo.accountid
+            isMandatory: false
+            jsonPath: $.searchCriteria.accountId
+          - name: owner.ownertype
+            isMandatory: false
+            jsonPath: $.searchCriteria.ownerType
+          - name: owner.uuid
+            isMandatory: false
+            jsonPath: $.searchCriteria.userid
+            operator: IN
+        pagination:
+          noOfRecords: $.searchCriteria.noOfRecords
+          offset: $.searchCriteria.offset
+      output:
+        jsonFormat: {"ResponseInfo": {},"demolitionApplication": []}
+        outJsonPath: $.demolitionApplication
+        responseInfoPath: $.ResponseInfo
