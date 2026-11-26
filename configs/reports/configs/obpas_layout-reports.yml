@@ -1,7 +1,6 @@
 ---
 ReportDefinitions:
   - reportName: LayoutApplicationRecentReport
-    decryptionPathId: LAYOUTREPORTS
     summary: Recent Layout Applications Status and Tracking Details for Chhattisgarh
     version: 1.0.0
     moduleName: rainmaker-obpas_layout
