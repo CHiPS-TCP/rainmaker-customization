@@ -29,52 +29,54 @@ ReportDefinitions:
         source: obpas_layout
         total: false
     searchParams:
-      - name: tenantId
+      - name: regionalOffice
         label: Regional Office / ULB
         type: singlevaluelist
         pattern: http://egov-mdms-service:8080/egov-mdms-service/v1/_get?tenantId=$tenantid&moduleName=tenant&masterName=tenants|$.MdmsRes.tenant.tenants.*.code|$.MdmsRes.tenant.tenants.*.name
         source: obpas_layout
         wrapper: true
         isMandatory: false
-        searchClause: AND l.tenantid = $tenantId
+        searchClause: AND l.tenantid = $regionalOffice
       - name: location
         label: Location
         type: string
         source: obpas_layout
         isMandatory: false
-        searchClause: AND (SPLIT_PART(l.tenantid, '.', 2) ILIKE CONCAT('%', $location,
-          '%') OR d.additionaldetails::text ILIKE CONCAT('%', $location, '%'))
+        searchClause: AND (SPLIT_PART(l.tenantid, '.', 2) ILIKE CONCAT('%', $location, '%') OR d.additionaldetails::text ILIKE CONCAT('%', $location, '%'))
       - name: fromDate
         label: From Date
         type: epoch
         source: obpas_layout
         isMandatory: false
-        searchClause: AND l.createdtime >= $fromDate
+        searchClause: AND sub.submission_time >= $fromDate
       - name: toDate
         label: To Date
         type: epoch
         source: obpas_layout
         isMandatory: false
-        searchClause: AND l.createdtime <= $toDate
+        searchClause: AND sub.submission_time <= $toDate
     query: >
       SELECT 
           l.applicationno AS file_number,
           INITCAP(REPLACE(SPLIT_PART(l.tenantid, '.', 2), '_', ' ')) AS regional_office_name,
           TO_CHAR(
               TO_TIMESTAMP(sub.submission_time / 1000.0) AT TIME ZONE 'Asia/Kolkata',
-              'YYYY-MM-DD HH24:MI:SS'
+              'DD-Mon-YYYY HH24:MI'
           ) AS submission_date_to_office,
           l.applicationstatus AS current_status
       FROM eg_layout l
-
       LEFT JOIN eg_layout_details d 
           ON d.layoutid = l.id
-      LEFT JOIN (
+      INNER JOIN (
           SELECT 
               wf.businessid,
               MIN(wf.createdtime) AS submission_time
           FROM eg_wf_processinstance_v2 wf
-          WHERE wf.action NOT IN ('INITIATE', 'SAVE_AS_DRAFT')
+          JOIN eg_wf_state_v2 s 
+              ON s.uuid = wf.status
+          WHERE wf.businessid LIKE '%PL1%'
+            AND wf.action = 'PAY'
+            AND s.applicationstatus = 'L1_VERIFICATION'
           GROUP BY wf.businessid
       ) sub 
           ON sub.businessid = l.applicationno
@@ -86,4 +88,4 @@ ReportDefinitions:
             'PENDING_APPLICATION_FEE'
         )
         AND (d.additionaldetails::text NOT LIKE '%ismigrationtrue%' OR d.additionaldetails IS NULL)
-    orderby: ORDER BY l.createdtime DESC
+    orderby: ORDER BY l.tenantid ASC, sub.submission_time DESC
